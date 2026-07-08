@@ -21,4 +21,9 @@ public final class AppModel {
             zone = .parent
         }
     }
+
+    /// Returns to the child zone. Always allowed — no gate needed to leave.
+    public func exitToChildZone() {
+        zone = .child
+    }
 }

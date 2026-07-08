@@ -27,4 +27,14 @@ final class AppModelTests: XCTestCase {
         XCTAssertEqual(model.zone, .child)   // kid-mode lock holds
         XCTAssertEqual(gate.callCount, 1)
     }
+
+    func testExitToChildZoneReturnsToChild() async {
+        let model = AppModel(gate: MockParentGate(result: true))
+        await model.enterParentZone()
+        XCTAssertEqual(model.zone, .parent)   // precondition
+
+        model.exitToChildZone()
+
+        XCTAssertEqual(model.zone, .child)
+    }
 }
