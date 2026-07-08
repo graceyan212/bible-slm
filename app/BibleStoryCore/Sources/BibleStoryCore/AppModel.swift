@@ -12,4 +12,13 @@ public final class AppModel {
     public init(gate: ParentGate) {
         self.gate = gate
     }
+
+    /// Attempts to move from the child zone into the parent zone.
+    /// Requires passing the parent gate — the kid-mode lock.
+    public func enterParentZone() async {
+        let didAuthenticate = await gate.authenticate()
+        if didAuthenticate {
+            zone = .parent
+        }
+    }
 }
