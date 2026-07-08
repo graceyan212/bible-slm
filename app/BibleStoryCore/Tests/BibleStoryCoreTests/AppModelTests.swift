@@ -37,4 +37,28 @@ final class AppModelTests: XCTestCase {
 
         XCTAssertEqual(model.zone, .child)
     }
+
+    func testConcurrentEnterIsGuarded() async {
+        let gate = ControllableParentGate()
+        let model = AppModel(gate: gate)
+
+        // Start the first attempt but do not await it — it suspends in the gate.
+        async let firstAttempt: Void = model.enterParentZone()
+        // Let the first attempt reach the gate's suspension point.
+        while !model.isAuthenticating { await Task.yield() }
+
+        XCTAssertTrue(model.isAuthenticating)
+        XCTAssertEqual(gate.callCount, 1)
+
+        // A second attempt while authenticating must be ignored.
+        await model.enterParentZone()
+        XCTAssertEqual(gate.callCount, 1, "second attempt should be a no-op")
+
+        // Finish the first attempt.
+        gate.complete(with: true)
+        await firstAttempt
+
+        XCTAssertEqual(model.zone, .parent)
+        XCTAssertFalse(model.isAuthenticating)
+    }
 }
