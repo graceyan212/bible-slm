@@ -99,30 +99,51 @@ public protocol StoryProgressStore: Sendable {      // persistence
 ## P4 — Ask-a-question loop (the SLM seam)
 
 ```swift
-// Behavior-spec.md classes 1–6, named.
-public enum ResponseClass: Int, Sendable, Equatable, Codable {
-    case safeSharedCore = 1, redLine = 2, offTopic = 3, adversarial = 4, danger = 5, pushback = 6
+// Behavior classes the model produces — mirrors behavior-spec.md v2 and the training
+// schema's `behavior_class` (data/train_v2.jsonl). SUPERSEDES the old 6-class ResponseClass.
+public enum BehaviorClass: String, Sendable, Equatable, Codable {
+    case hold            // closed-hand SBC doctrine — assert warmly, NEVER cave under pushback
+    case acknowledge     // open-hand — note church families differ, do NOT adjudicate a winner
+    case deflect         // family-owned/adult/sensitive — hand to the parent (Wonderings journal)
+    case safeCore        // shared-core teaching / story question — warm answer
+    case benignOffTopic  // math/jokes/weather — warm redirect, don't answer
+    case adversarial     // jailbreak — stay in character, obey the underlying tier
+    case danger          // crisis — safety flow, never counsel
 }
+
+// Doctrinal tier for hold/acknowledge/deflect (parity with data/bfm_claims.json tiers);
+// non-doctrinal classes carry `.none`.
+public enum DoctrineTier: String, Sendable, Equatable, Codable { case closed, open, deflect, none }
 
 // Read-only context the responder is given (never leaves device).
 public struct StoryContext: Sendable, Equatable {
     public let storyID: UUID
     public let storyTitle: String
     public let pageIndex: Int
+    public let pageNarration: String    // NEW: the on-screen retelling text — grounds the answer
+}
+
+// One prior turn in THIS ask-session, so the responder can HOLD under repeated pushback.
+public struct ConversationTurn: Sendable, Equatable {
+    public let question: String
+    public let reply: String
 }
 
 // What the responder returns — the app renders/speaks this.
 public struct QuestionResponse: Sendable, Equatable {
-    public let spokenText: String            // warm reply, in JSB register
-    public let responseClass: ResponseClass
-    public let retrievedVerse: String?       // ONLY ever from VerseProvider; never model-generated
-    public let logToConversationGuide: Bool  // true for redLine/pushback
-    public let isCrisis: Bool                // true for .danger → triggers P7
+    public let spokenText: String                 // warm reply, in the 7–9 register
+    public let behaviorClass: BehaviorClass
+    public let tier: DoctrineTier                 // .closed/.open/.deflect for doctrine, else .none
+    public let claimIDs: [String]                 // BF&M claim ids touched, e.g. ["SAC-01"] (eval/analytics)
+    public let retrievedVerse: String?            // ONLY ever from VerseProvider; never model-generated
+    public var logToConversationGuide: Bool { behaviorClass == .deflect }  // → parent's Wonderings/guide
+    public var isCrisis: Bool { behaviorClass == .danger }                  // → triggers P7
 }
 
 // THE seam. P4 ships a stub/mock; P5 provides OnDeviceModelResponder.
+// `history` carries prior turns of the current ask-session so HOLD survives pushback (behavior-spec v2).
 public protocol QuestionResponder: Sendable {
-    func respond(to question: String, context: StoryContext) async -> QuestionResponse
+    func respond(to question: String, context: StoryContext, history: [ConversationTurn]) async -> QuestionResponse
 }
 
 // External deps (concrete impls in app target):
@@ -144,7 +165,8 @@ public struct ConversationGuideEntry: Identifiable, Sendable, Equatable, Codable
 
 @MainActor @Observable public final class AskQuestionModel {
     // state: idle → listening → transcribing → thinking → presenting → done
-    // startListening(), submit(question:), dismiss(); exposes current QuestionResponse
+    // startListening(), submit(question:), dismiss(); exposes current QuestionResponse as `response`
+    // accumulates [ConversationTurn] for the current session and passes it to the responder (pushback)
 }
 ```
 
@@ -161,13 +183,22 @@ public protocol LanguageModelEngine: Sendable {    // llama.cpp (GGUF/Metal) in 
 public struct OnDeviceModelResponder: QuestionResponder {
     public init(engine: LanguageModelEngine, verses: VerseProvider, translation: BibleTranslation)
     // respond(): build prompt (testable) → engine.generate() → parse/classify (testable)
-    //            → enforce never-scripture guardrail → attach retrieved verse if referenced
+    //            → enforce never-scripture guardrail → attach retrieved verse if a claim references one
 }
 
+// OUTPUT ENVELOPE (cross-track decision — resolve before P5): the fine-tuned model emits a
+// machine-readable header the app parses — `CLASS: <behavior_class>` (+ `TIER:`, `CLAIMS: SAC-01,…`,
+// optional `VERSE: <ref>`) then `REPLY: <warm text>`. The TRAINING DATA must teach this envelope
+// (data/train_v2.jsonl assistant turns) or the app cannot route deflect→parent vs hold→teach.
+// Fallback if envelope training is skipped: a tiny on-device classifier. Envelope is the chosen path.
+
 // Testable, engine-free units:
-public enum PromptBuilder { public static func prompt(question: String, context: StoryContext) -> String }
+public enum PromptBuilder {
+    public static func prompt(question: String, context: StoryContext, history: [ConversationTurn]) -> String
+}
 public enum ResponseParser {                          // model text → QuestionResponse fields
-    public static func parse(_ raw: String) -> (text: String, cls: ResponseClass, verseRef: String?)
+    public static func parse(_ raw: String)
+        -> (text: String, cls: BehaviorClass, tier: DoctrineTier, claimIDs: [String], verseRef: String?)
 }
 public enum ScriptureGuard {                          // strips/blocks any model-emitted verbatim verse
     public static func sanitize(_ text: String) -> String
@@ -228,3 +259,4 @@ public enum CrisisResources { public static func forLocale(_ id: String) -> [Cri
 - `AskQuestionModel` (P4) uses `SpeechTranscriber` → `QuestionResponder` → `ReplyVoicer`; on `logToConversationGuide` it creates a `ConversationGuideEntry`; on `isCrisis` it hands off to `CrisisFlowModel` (P7).
 - `QuestionResponder` is `OnDeviceModelResponder` (P5) in production, a stub in P4's own tests.
 - `DashboardModel` (P6, parent zone) reads `ConversationGuideEntry`s and `SafetySettings` via `CloudSyncService`; `CrisisFlowModel` (P7) writes `CrisisEvent`s the dashboard surfaces.
+- **Composition root (P8, NEW):** a single `AppEnvironment` owned by `BibleStoryApp` loads the `ParentAccount`, owns the active `childID` + `translation`, constructs every service once, and injects them down — so P3 progress, P4 guide entries, and P7 crisis events all key to the SAME child (fixes the three-conflicting-child-IDs bug). P4's deflect entries and P7's crisis events are **persisted** via `CloudSyncService` (extended with crisis methods) — the "Wonderings journal" in the design IS the parent Conversation Guide.
