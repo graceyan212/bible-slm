@@ -1,15 +1,18 @@
 import SwiftUI
 import BibleStoryCore
 
+/// Top-level router: onboarding (first-run) → child zone (Home) → parent zone (gated).
 struct RootView: View {
-    let appModel: AppModel
+    let env: AppEnvironment
 
     var body: some View {
-        switch appModel.zone {
+        switch env.phase {
+        case .onboarding:
+            OnboardingView(env: env)
         case .child:
-            ChildZoneView(appModel: appModel)
+            HomeView(env: env)
         case .parent:
-            ParentZoneView(appModel: appModel)
+            ParentZoneView(env: env)
         }
     }
 }
