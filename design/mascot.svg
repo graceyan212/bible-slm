@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  POLI — the Trail-Compass  ·  mascot for "Starlight Trail" (Kids' Bible Guide, ages 7–9)
+  A warm brass pocket-compass with a face. Compass (guide) + North-Star needle (the world)
+  + mic grille (voice / SLM tap-to-talk) + ember glow (warmth) — one shape doing all four.
+  Transparent background so it composes on the warm map parchment. Scales to a 44pt FAB.
+
+  THE NEEDLE *IS* THE BEHAVIOR SPEC. Every moving part product code needs to drive the
+  HOLD / ACKNOWLEDGE / DEFLECT / CRISIS stance has its own id + a fill-box transform-origin,
+  so a host page can point-true-north, wobble, swing off-compass, blink, wave, or dim Poli:
+
+    #poli            whole mascot (giggle bounce / global dim)
+    #poli-aura       outer warm halo            #poli-ember       captured ember glow
+    #poli-needle     the North-Star pointer  (origin = its base, so rotate() = swing/wobble)
+    #poli-needle-glow the soft glow behind the needle (dim at crisis)
+    #poli-eyes       eye whites   #poli-pupils  gaze target (nudge to "look" at the signpost)
+    #poli-cheeks     rosy cheeks  #poli-mouth   smile (giggle)   #poli-arm-wave  waving arm
+    #poli-mic        mic grille (voice)
+
+  Defaults below are gentle + reduced-motion-safe; host pages override per-state with
+  higher-specificity rules (e.g. `.is-listening #poli-needle { … }`).
+-->
+<svg width="260" height="300" viewBox="0 0 260 300" fill="none"
+     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Poli, a friendly brass compass with a glowing North-Star needle">
+  <defs>
+    <radialGradient id="aura" cx="50%" cy="52%" r="55%">
+      <stop offset="0%"  stop-color="#FFB877" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#FF9E5A" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#FF9E5A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="brassBody" x1="0" y1="60" x2="0" y2="258" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"  stop-color="#FFE7A8"/>
+      <stop offset="45%" stop-color="#FFC24B"/>
+      <stop offset="100%" stop-color="#D98A2B"/>
+    </linearGradient>
+    <linearGradient id="rimGold" x1="0" y1="78" x2="0" y2="242" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"  stop-color="#FFE49A"/>
+      <stop offset="100%" stop-color="#E9A23B"/>
+    </linearGradient>
+    <radialGradient id="glass" cx="42%" cy="34%" r="72%">
+      <stop offset="0%"  stop-color="#DCE7EC"/>
+      <stop offset="55%" stop-color="#AFC4CE"/>
+      <stop offset="100%" stop-color="#8AA3B2"/>
+    </radialGradient>
+    <radialGradient id="ember" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#FFD3A6" stop-opacity="0.95"/>
+      <stop offset="55%" stop-color="#FF9E5A" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#FF9E5A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="needleGold" x1="130" y1="78" x2="130" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0%"  stop-color="#FFF6DE"/>
+      <stop offset="55%" stop-color="#FFD25E"/>
+      <stop offset="100%" stop-color="#F2B01F"/>
+    </linearGradient>
+    <radialGradient id="needleGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#FFE9A6" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#FFE9A6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <style>
+    /* transform-origins so a host page's rotate()/translate() pivots correctly */
+    #poli-needle { transform-box: fill-box; transform-origin: 50% 100%; }
+    #poli-arm-wave { transform-box: fill-box; transform-origin: 12% 90%; }
+    #poli { transform-box: fill-box; transform-origin: 50% 100%; }
+    #poli-pupils { transition: transform .3s cubic-bezier(.4,0,.2,1); }
+    #poli-needle, #poli-needle-glow, #poli-aura, #poli-ember,
+    #poli-eyes, #poli-mouth { transition: transform .4s cubic-bezier(.4,0,.2,1), opacity .4s ease; }
+    /* gentle default: needle bobs like a cowlick "toward the next adventure" */
+    #poli-needle { animation: poli-needle-bob 3.6s cubic-bezier(.4,0,.2,1) infinite; }
+    @keyframes poli-needle-bob { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      #poli-needle { animation: none; }
+      #poli-pupils, #poli-needle, #poli-needle-glow, #poli-aura,
+      #poli-ember, #poli-eyes, #poli-mouth { transition: none; }
+    }
+  </style>
+
+  <g id="poli">
+  <!-- soft warm glow behind Poli -->
+  <ellipse id="poli-aura" cx="130" cy="158" rx="128" ry="140" fill="url(#aura)"/>
+
+  <!-- ARMS + HANDS (behind the body; hands peek out at the sides) -->
+  <g stroke="#140F38" stroke-linecap="round" stroke-linejoin="round">
+    <!-- left arm, resting -->
+    <path d="M64 176 Q46 190 36 196" stroke-width="17"/>
+    <path d="M64 176 Q46 190 36 196" stroke="#FFC24B" stroke-width="11"/>
+  </g>
+  <circle cx="34"  cy="198" r="15" fill="#FFC24B" stroke="#140F38" stroke-width="4"/>
+  <!-- right arm, raised waving -->
+  <g id="poli-arm-wave" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M196 150 Q220 122 230 100" stroke="#140F38" stroke-width="17"/>
+    <path d="M196 150 Q220 122 230 100" stroke="#FFC24B" stroke-width="11"/>
+    <circle cx="231" cy="96"  r="15" fill="#FFD25E" stroke="#140F38" stroke-width="4"/>
+  </g>
+
+  <!-- HANGING LOOP / mic-loop at the top -->
+  <circle cx="130" cy="50" r="19" fill="none" stroke="#140F38" stroke-width="13"/>
+  <circle cx="130" cy="50" r="19" fill="none" stroke="url(#rimGold)" stroke-width="7"/>
+
+  <!-- COMPASS CASE -->
+  <circle cx="130" cy="160" r="92" fill="url(#brassBody)" stroke="#140F38" stroke-width="6"/>
+  <!-- bright brass rim ring -->
+  <circle cx="130" cy="160" r="82" fill="none" stroke="url(#rimGold)" stroke-width="12"/>
+  <!-- faint N / E / W compass ticks engraved on the rim -->
+  <g fill="#8A5A16" opacity="0.55">
+    <path d="M130 74 l5 8 -5 8 -5 -8 z"/>
+    <path d="M212 160 l-8 5 -8 -5 8 -5 z"/>
+    <path d="M48 160 l8 5 8 -5 -8 -5 z"/>
+  </g>
+
+  <!-- GLASS DOME (the face) -->
+  <circle id="poli-glass" cx="130" cy="160" r="71" fill="url(#glass)" stroke="#140F38" stroke-width="5"/>
+  <!-- captured ember glow near the bottom of the glass (warmth) -->
+  <ellipse id="poli-ember" cx="130" cy="196" rx="58" ry="42" fill="url(#ember)"/>
+  <!-- glossy glass highlight, upper-left -->
+  <path d="M78 128 Q96 96 134 96" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="7" stroke-linecap="round" fill="none"/>
+
+  <!-- NORTH-STAR NEEDLE — sits above the eyes as a bobbing cowlick / pointer -->
+  <circle id="poli-needle-glow" cx="130" cy="112" r="30" fill="url(#needleGlow)"/>
+  <g id="poli-needle">
+    <polygon points="130,80 137,105 148,112 137,119 130,140 123,119 112,112 123,105"
+             fill="url(#needleGold)" stroke="#140F38" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="130" cy="88" r="4" fill="#FFFFFF"/>
+  </g>
+
+  <!-- FACE -->
+  <!-- eyes -->
+  <g id="poli-eyes">
+    <ellipse cx="108" cy="160" rx="15" ry="18" fill="#FFFFFF" stroke="#140F38" stroke-width="3"/>
+    <ellipse cx="152" cy="160" rx="15" ry="18" fill="#FFFFFF" stroke="#140F38" stroke-width="3"/>
+    <g id="poli-pupils">
+      <circle cx="111" cy="163" r="7.5" fill="#33291F"/>
+      <circle cx="155" cy="163" r="7.5" fill="#33291F"/>
+      <circle cx="114" cy="159" r="2.6" fill="#FFFFFF"/>
+      <circle cx="158" cy="159" r="2.6" fill="#FFFFFF"/>
+    </g>
+  </g>
+  <!-- rosy cheeks -->
+  <g id="poli-cheeks">
+    <ellipse cx="90"  cy="182" rx="11" ry="7" fill="#E28A6A" opacity="0.6"/>
+    <ellipse cx="170" cy="182" rx="11" ry="7" fill="#E28A6A" opacity="0.6"/>
+  </g>
+  <!-- brave little smile -->
+  <path id="poli-mouth" d="M113 186 Q130 200 147 186" stroke="#33291F" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+
+  <!-- (Voice/mic cue is carried by the tap-to-talk LISTENING sound-rings on the
+       host screens, not a literal grille — an earlier grille here read as a
+       "bandaid" on the compass at small sizes, so it was removed.) -->
+
+  <!-- little feet -->
+  <ellipse cx="106" cy="250" rx="16" ry="10" fill="#FFC24B" stroke="#140F38" stroke-width="4"/>
+  <ellipse cx="154" cy="250" rx="16" ry="10" fill="#FFC24B" stroke="#140F38" stroke-width="4"/>
+
+  <!-- ambient sparkles / twinkles -->
+  <g id="poli-sparkles">
+    <polygon points="40,86 43,95 52,98 43,101 40,110 37,101 28,98 37,95" fill="#FFF3D6"/>
+    <polygon points="210,52 212,59 219,61 212,63 210,70 208,63 201,61 208,59" fill="#D98E6A"/>
+    <polygon points="224,214 226,221 233,223 226,225 224,232 222,225 215,223 222,221" fill="#8FA79B"/>
+    <circle cx="60" cy="250" r="3" fill="#B0805A"/>
+    <circle cx="196" cy="238" r="2.4" fill="#D19A44"/>
+  </g>
+  </g>
+</svg>

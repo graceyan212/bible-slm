@@ -13,3 +13,6 @@ DerivedData/
 *.xcscmblueprint
 *.xccheckout
 build/
+
+# Superpowers visual-brainstorm mockups (local only)
+.superpowers/

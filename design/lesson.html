@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Brave Shepherd Boy — Lesson</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  html,body{height:100%}
+  .phone{max-width:430px;margin:0 auto;min-height:100vh;position:relative;display:flex;flex-direction:column}
+  .bar{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-4);position:sticky;top:0;z-index:20;
+    background:linear-gradient(180deg,var(--c-parchment) 60%,rgba(240,225,192,0))}
+  .bar .x{width:44px;height:44px;flex:none;display:grid;place-items:center;border-radius:50%;
+    background:var(--surface);border:var(--outline-w) solid var(--outline);color:var(--text);cursor:pointer;font-size:1.2rem}
+  .bar .progress{flex:1}
+
+  .scene{flex:1;overflow-y:auto;padding:var(--sp-4) var(--sp-4) 160px;display:flex;flex-direction:column;gap:var(--sp-4)}
+  .art{height:180px;border-radius:var(--r-xl);display:grid;place-items:center;font-size:4.5rem;
+    background:radial-gradient(120% 90% at 50% 18%,#EEDBB2,#D3B67C);
+    border:var(--outline-w) solid var(--outline);box-shadow:var(--shadow-soft);position:relative;overflow:hidden}
+  .art .spark{position:absolute;color:var(--c-brass-deep);opacity:.6}
+
+  .story-card{position:relative}
+  .story-card .tag{display:inline-block;font-family:var(--font-hand);font-size:1.2rem;color:var(--c-lantern-amber)}
+  .verse-chip{margin-top:var(--sp-4)}
+  .wonder{font-family:var(--font-hand);font-size:1.6rem;line-height:1.35;color:var(--c-caramel);
+    background:rgba(176,128,90,.14);border:2px dashed rgba(176,128,90,.55);border-radius:var(--r-md);
+    padding:var(--sp-4)}
+  /* Christ Connection — the gospel-centered beat (SBC pedagogy): every story points to Jesus */
+  .christ-connection{margin-top:var(--sp-4);padding:var(--sp-3) var(--sp-4);
+    background:rgba(143,167,155,.18);border:2px solid var(--c-sage);border-radius:var(--r-md);
+    display:flex;flex-direction:column;gap:5px}
+  .christ-connection b{font-family:var(--font-display);color:var(--c-ink);font-size:1.05rem}
+  .christ-connection span{font-size:var(--fs-body);line-height:1.5;color:var(--c-ink)}
+
+  .footer{position:fixed;left:0;right:0;bottom:0;max-width:430px;margin:0 auto;z-index:30;
+    display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-4);
+    background:linear-gradient(0deg,var(--c-parchment) 55%,rgba(240,225,192,0))}
+  .footer .btn{flex:1}
+  /* the in-lesson Poli button — the SLM signal */
+  .ask-poli{width:64px;height:64px;flex:none;border:none;background:transparent;cursor:pointer;position:relative}
+  .ask-poli img{width:100%;height:100%;filter:drop-shadow(var(--glow-amber));animation:twinkle 3.2s ease-in-out infinite}
+  .ask-poli::after{content:"?";position:absolute;top:-2px;right:-2px;width:22px;height:22px;border-radius:50%;
+    background:var(--c-comet-pink);color:var(--c-outline-ink);font-family:var(--font-display);font-weight:800;font-size:.95rem;
+    display:grid;place-items:center;border:2px solid var(--outline)}
+
+  /* in-lesson helper modal */
+  .sheet-wrap{position:fixed;inset:0;z-index:60;display:none;align-items:flex-end;justify-content:center;
+    background:rgba(59,46,35,.55)}
+  .sheet-wrap.open{display:flex}
+  .sheet{width:100%;max-width:430px;background:var(--c-deep-indigo);border-top-left-radius:var(--r-xl);
+    border-top-right-radius:var(--r-xl);border-top:var(--outline-w) solid var(--outline);
+    padding:var(--sp-5) var(--sp-4) var(--sp-6);max-height:80vh;overflow-y:auto;display:flex;flex-direction:column;gap:var(--sp-4)}
+  .sheet .grab{width:44px;height:5px;border-radius:99px;background:var(--c-locked-slate);margin:0 auto}
+  .sheet .who{display:flex;align-items:center;gap:var(--sp-2)}
+  .sheet .who img{width:40px;height:40px}
+  .sheet .who b{font-family:var(--font-display);color:var(--c-starlight-gold)}
+  .chip-row{display:flex;flex-wrap:wrap;gap:var(--sp-2)}
+  .qchip{min-height:44px;display:inline-flex;align-items:center;padding:var(--sp-2) var(--sp-4);
+    border-radius:var(--r-pill);background:var(--surface);
+    border:2px solid var(--outline);color:var(--text);font-weight:600;cursor:pointer;font-size:.95rem}
+</style>
+</head>
+<body class="starlight">
+<div class="phone">
+  <header class="bar">
+    <div class="x" onclick="location.href='home.html'" role="button" aria-label="Close lesson">✕</div>
+    <div class="progress"><div class="progress__fill" style="--value:45%"></div></div>
+    <span class="pill pill--xp" style="font-size:.9rem">✦ 4</span>
+  </header>
+
+  <main class="scene">
+    <div class="art">🪃<i class="spark" style="top:20px;left:40px">✦</i><i class="spark" style="bottom:24px;right:50px">✧</i></div>
+
+    <div class="card card--parchment story-card">
+      <span class="tag">✦ The Rescuer · Story 4</span>
+      <h2 class="h2">The Brave Shepherd Boy</h2>
+      <p class="story-text">Once there was a shepherd boy named David — the youngest and smallest in his whole family. But this story isn't really about how brave David was. It's about how big and how faithful <em>God</em> is.</p>
+      <p class="story-text">God's people were shaking with fear in front of a giant named Goliath, and not one strong soldier would face him. So God chose the least-likely person of all — a shepherd boy with a sling — to rescue them, so everyone could see the victory was <em>God's</em>, not a strong man's.</p>
+      <p class="story-text">With one small stone, down came the giant. God saved his whole people through one young shepherd who stood in their place. And because God is that strong and that faithful, his people didn't have to be afraid.</p>
+      <div class="christ-connection">
+        <b>✦ How it points to Jesus</b>
+        <span>David was the king who stood in his people's place and won the battle for them — a little picture of <em>Jesus</em>, the true King who steps in and wins the biggest rescue of all, for us.</span>
+      </div>
+      <div class="verse-chip answer-card__bible">📖 Memory verse (from your family's Bible): 1 Samuel 17 — tap to read together</div>
+    </div>
+
+    <div class="wonder">✧ I wonder… God chose the <em>smallest</em> one so everyone could see the rescue was <em>his</em>. What does that show you about how big God is?</div>
+  </main>
+
+  <div class="footer">
+    <button class="ask-poli" id="askPoli" aria-label="Tap Poli if you have a question"><img src="mascot.svg" alt=""></button>
+    <button class="btn btn--primary btn--lg" onclick="location.href='home.html'">Continue ✦</button>
+  </div>
+</div>
+
+<!-- in-lesson SLM helper -->
+<div class="sheet-wrap" id="sheet" role="dialog" aria-modal="true" aria-label="Ask Poli">
+  <div class="sheet">
+    <div class="grab"></div>
+    <div class="who"><img src="mascot.svg" alt=""><b>Ask Poli</b></div>
+    <p class="caption">Tap a question, or tap Poli to talk. Poli tells the story in its own words and always points you back to your Bible.</p>
+    <div class="chip-row" id="qchips">
+      <button class="qchip" data-q="Why wasn't David scared of the giant?">Why wasn't David scared?</button>
+      <button class="qchip" data-q="Was Goliath real?">Was Goliath real?</button>
+      <button class="qchip" data-q="Is my grandpa in heaven?">Is my grandpa in heaven?</button>
+    </div>
+    <div id="ans"></div>
+    <button class="btn btn--ghost" onclick="closeSheet()">Back to the story</button>
+  </div>
+</div>
+
+<script>
+const sheet=document.getElementById('sheet');
+const phone=document.querySelector('.phone');
+const askBtn=document.getElementById('askPoli');
+function openSheet(){sheet.classList.add('open');phone.setAttribute('inert','');const b=sheet.querySelector('.btn--ghost');if(b)b.focus();}
+function closeSheet(){sheet.classList.remove('open');phone.removeAttribute('inert');askBtn.focus();}
+askBtn.addEventListener('click',openSheet);
+sheet.addEventListener('click',e=>{if(e.target===sheet)closeSheet();});        // tap backdrop to close
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sheet.classList.contains('open'))closeSheet();});
+// mock SLM (same 3-tier behavior as compass.html). TODO: replace with real SLM endpoint.
+function reply(q){
+  const s=q.toLowerCase();
+  if(/(grandpa|grandma|die|heaven|hell|pet|hamster|dog)/.test(s))
+    return {deflect:true, html:`That's a big, tender wonder, and it belongs to you and your family. Your mom or dad would be the very best person to talk about that one with. 💛`};
+  if(/real|really happen/.test(s))
+    return {html:`It's a true story from long ago! The Bible tells it as something that really happened. The best place to read it for yourself is your family's Bible — want to read 1 Samuel 17 together with a grown-up?`};
+  return {html:`Great question! Here's the secret: the battle was really <em>God's</em>, not David's. God picked the smallest, least-likely person so everyone could see that <em>He</em> was the Rescuer. David stood in for his people and won — a little picture of Jesus, who stands in for us and wins the biggest rescue of all. Isn't God strong?`};
+}
+document.querySelectorAll('.qchip').forEach(c=>c.addEventListener('click',()=>{
+  const r=reply(c.dataset.q);const box=document.getElementById('ans');
+  box.innerHTML = r.deflect
+    ? `<div class="signpost"><div class="signpost__arrow">🏡</div><div>${r.html}</div></div>`
+    : `<div class="answer-card"><div class="answer-card__from">✦ Poli says</div>${r.html}</div>`;
+}));
+</script>
+</body>
+</html>

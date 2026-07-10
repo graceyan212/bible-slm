@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ask Poli — your compass guide</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  html,body{height:100%}
+  .phone{max-width:430px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;position:relative}
+  .bar{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-4);
+    position:sticky;top:0;z-index:20;background:linear-gradient(180deg,var(--c-parchment) 60%,rgba(240,225,192,0))}
+  .bar .back{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;
+    background:var(--surface);border:var(--outline-w) solid var(--outline);color:var(--text);cursor:pointer;font-size:1.3rem}
+  .bar .who{display:flex;align-items:center;gap:var(--sp-2)}
+  .bar .who img{width:40px;height:40px}
+  .bar .who b{font-family:var(--font-display);font-size:1.15rem;color:var(--c-starlight-gold)}
+  .bar .who small{display:block;color:var(--text-muted);font-size:.8rem;font-weight:600}
+
+  .thread{flex:1;overflow-y:auto;padding:var(--sp-4) var(--sp-4) 150px;display:flex;flex-direction:column;gap:var(--sp-5)}
+
+  /* kid bubble (right) */
+  .kid{align-self:flex-end;max-width:80%;background:var(--c-sand);color:var(--c-ink);
+    padding:var(--sp-3) var(--sp-4);border-radius:var(--r-lg) var(--r-lg) 6px var(--r-lg);
+    border:var(--outline-w) solid var(--outline);font-weight:700}
+  /* Poli row (left): little mascot + an answer-card */
+  .poli-row{display:flex;gap:var(--sp-3);align-items:flex-end;max-width:92%}
+  .poli-row img.face{width:44px;height:44px;flex:none;filter:drop-shadow(var(--glow-amber))}
+
+  /* guided-topic picker */
+  .guide-pick .h3{color:var(--c-starlight-gold);margin:0 0 var(--sp-3)}
+  .topics{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3)}
+  .topic{display:flex;flex-direction:column;gap:6px;text-align:left;cursor:pointer;
+    background:var(--surface);border:var(--outline-w) solid var(--outline);border-radius:var(--r-lg);
+    padding:var(--sp-4);color:var(--text);box-shadow:var(--shadow-sticker);
+    transition:transform var(--dur-fast) var(--ease-pop),box-shadow var(--dur-fast) var(--ease-pop)}
+  .topic:active{transform:translateY(4px);box-shadow:var(--shadow-sticker-press)}
+  .topic .emoji{font-size:1.8rem}
+  .topic b{font-family:var(--font-display);font-size:1rem}
+  .topic small{color:var(--text-muted);font-size:.8rem}
+
+  /* input bar with mic */
+  .inputbar{position:fixed;left:0;right:0;bottom:0;max-width:430px;margin:0 auto;z-index:30;
+    display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-4);
+    background:linear-gradient(0deg,var(--c-parchment) 58%,rgba(240,225,192,0))}
+  .textin{flex:1;min-height:52px;padding:var(--sp-3) var(--sp-5);border-radius:var(--r-pill);
+    border:var(--outline-w) solid var(--outline);background:var(--surface);color:var(--text);
+    font-family:var(--font-body);font-size:var(--fs-body)}
+  .textin::placeholder{color:var(--text-muted)}
+  /* the tap-to-talk button IS Poli, driving the compass states (listen/think/answer) */
+  .mic{width:66px;height:66px;flex:none;border:none;background:transparent;cursor:pointer;padding:0;
+    position:relative;display:grid;place-items:center;filter:drop-shadow(var(--glow-amber));
+    transition:filter var(--dur-base) var(--ease-calm)}
+  .mic img{width:100%;height:100%;display:block}
+  .mic:active{transform:translateY(2px)}
+  .mic.listening{filter:drop-shadow(var(--glow-teal))}
+  .mic.listening .sound-rings i{border-color:var(--c-aurora-teal)}
+  .mic.thinking{filter:drop-shadow(var(--glow-violet));animation:poli-think 1s var(--ease-calm) infinite}
+  .mic.answering{filter:drop-shadow(var(--glow-gold))}
+  .mic::after{content:"🎙️";position:absolute;bottom:-3px;right:-3px;font-size:.85rem;line-height:1;
+    background:var(--c-deep-indigo);border-radius:50%;padding:2px;border:2px solid var(--outline)}
+</style>
+</head>
+<body class="starlight">
+<div class="phone">
+  <header class="bar">
+    <div class="back" onclick="location.href='home.html'" role="button" aria-label="Back to the trail">‹</div>
+    <div class="who"><img src="mascot.svg" alt=""><span><b>Poli</b><small>your compass guide</small></span></div>
+  </header>
+
+  <main class="thread" id="thread">
+    <!-- greeting -->
+    <div class="poli-row">
+      <img class="face" src="mascot.svg" alt="Poli">
+      <div class="answer-card">
+        <div class="answer-card__from">✦ Poli says</div>
+        Hi explorer! I'm Poli, your compass. Ask me anything about our Bible stories — or if you're not sure what to explore, tap a star below and I'll take you there!
+      </div>
+    </div>
+
+    <!-- guided-topic picker (for "I don't know what to learn") -->
+    <div class="poli-row guide-pick">
+      <div style="width:44px;flex:none"></div>
+      <div style="flex:1">
+        <div class="h3">Not sure? Let's pick a star ✦</div>
+        <div class="topics" id="topics">
+          <button class="topic" data-topic="the brave shepherd boy, David and Goliath"><span class="emoji">🪃</span><b>The Brave Shepherd Boy</b><small>David &amp; the giant</small></button>
+          <button class="topic" data-topic="Noah's big boat and the animals"><span class="emoji">🌈</span><b>Noah's Big Boat</b><small>a promise in the sky</small></button>
+          <button class="topic" data-topic="the shepherd who finds the one lost sheep"><span class="emoji">🐑</span><b>The Lost Sheep</b><small>everybody matters</small></button>
+          <button class="topic" data-topic="Jesus calms the big storm"><span class="emoji">⛵</span><b>Jesus &amp; the Storm</b><small>bigger than the waves</small></button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="inputbar">
+    <button class="mic" id="mic" aria-label="Tap Poli to talk"><img src="mascot.svg" alt=""><span class="sound-rings" hidden><i></i><i></i><i></i></span></button>
+    <input class="textin" id="textin" placeholder="Ask Poli a question…" aria-label="Type your question">
+  </div>
+</div>
+
+<script>
+/* ============================================================================
+   MOCK SLM  — placeholder that mimics the 3-tier behavior from behavior-spec.md.
+   HOLD (retell/teach the SBC line) · ACKNOWLEDGE (others differ) · DEFLECT (to a
+   grown-up) · never quotes a verse (points to "your Bible"). Voice/STT is faked.
+
+   >>> TODO: replace mockSLM() with a call to the real fine-tuned SLM endpoint. <<<
+   e.g.  const r = await fetch(SLM_URL,{method:'POST',body:JSON.stringify({messages})});
+   Keep the SAME 3-tier system prompt used at train/eval time. Verses come from the
+   retrieval file, NEVER from the model.
+============================================================================ */
+const thread = document.getElementById('thread');
+
+function bubbleKid(t){const d=document.createElement('div');d.className='kid';d.textContent=t;thread.appendChild(d);scroll();}
+function poliCard(html){
+  const row=document.createElement('div');row.className='poli-row';
+  row.innerHTML=`<img class="face" src="mascot.svg" alt="Poli"><div class="answer-card"><div class="answer-card__from">✦ Poli says</div>${html}</div>`;
+  thread.appendChild(row);scroll();
+}
+function poliSignpost(html){
+  const row=document.createElement('div');row.className='poli-row';
+  row.innerHTML=`<div style="width:44px;flex:none"></div><div class="signpost" style="flex:1"><div class="signpost__arrow">🏡</div><div>${html}</div></div>`;
+  thread.appendChild(row);scroll();
+}
+const scroll=()=>thread.scrollTop=thread.scrollHeight;
+
+function mockSLM(text){
+  const q=text.toLowerCase();
+  // DEFLECT — named soul / afterlife / family-owned / sensitive
+  if(/(hamster|dog|cat|pet|grandma|grandpa|die|died|heaven|hell|hurt|scared|sad)/.test(q))
+    return {type:'deflect', html:`That's a big, tender wonder — and it's a perfect one to talk about with your mom or dad. They'd love to sit with you on that one. Want to hear a story while you're here?`};
+  // HOLD — baptism (a closed-hand SBC distinctive) with retell + "from your Bible"
+  if(/bapti/.test(q))
+    return {type:'hold', html:`Great question! At our church family, baptism is for people old enough to choose to follow Jesus themselves — so we don't baptize babies. When someone's ready, they go all the way under the water, like a happy picture of a brand-new life with Jesus. Some church families do it differently, and they love God too. <div class="answer-card__bible">📖 Your Bible: Matthew 3 — read it with a grown-up</div>`};
+  // ACKNOWLEDGE — open-hand
+  if(/(end of the world|rapture|dinosaur|how old|tongues|speak.*language)/.test(q))
+    return {type:'ack', html:`Ooh, that's one of the big wonders! Christians who all love the Bible see that one differently — some think one way, some another. It's a great thing to explore with your family. What do <em>you</em> think?`};
+  // HOLD/RETELL default — a story
+  return {type:'hold', html:`Let me tell you! Once, a shepherd boy named David — smaller than everyone — trusted God and faced a giant no grown-up soldier dared to. With one little stone and a big brave heart, down went the giant. I wonder what made David so brave? <div class="answer-card__bible">📖 Your Bible: 1 Samuel 17 — read it with a grown-up</div>`};
+}
+
+function ask(text){
+  bubbleKid(text);
+  const poli=document.getElementById('mic'); // reuse for a beat of "thinking"
+  setTimeout(()=>{const r=mockSLM(text); r.type==='deflect'?poliSignpost(r.html):poliCard(r.html);},450);
+}
+
+document.querySelectorAll('.topic').forEach(b=>b.addEventListener('click',()=>ask('Tell me about '+b.dataset.topic)));
+const input=document.getElementById('textin');
+input.addEventListener('keydown',e=>{if(e.key==='Enter'&&input.value.trim()){ask(input.value.trim());input.value='';}});
+// faux voice: tap mic -> listening rings -> a sample spoken question
+const mic=document.getElementById('mic');
+mic.addEventListener('click',()=>{
+  const rings=mic.querySelector('.sound-rings');
+  mic.classList.add('listening');rings.hidden=false;              // Poli listens (needle/teal rings)
+  setTimeout(()=>{
+    mic.classList.remove('listening');rings.hidden=true;
+    bubbleKid('How do you get baptized?');
+    mic.classList.add('thinking');                                // Poli thinks (violet)
+    setTimeout(()=>{
+      mic.classList.remove('thinking');mic.classList.add('answering'); // Poli answers (gold)
+      const r=mockSLM('how do you get baptized'); r.type==='deflect'?poliSignpost(r.html):poliCard(r.html);
+      setTimeout(()=>mic.classList.remove('answering'),1400);
+    },750);
+  },1500);
+});
+</script>
+</body>
+</html>

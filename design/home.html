@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Treasure Trail — Home</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* ---- phone frame (prototype only) ---- */
+  html,body{height:100%}
+  .phone{max-width:430px;margin:0 auto;min-height:100vh;position:relative;overflow-x:hidden;isolation:isolate}
+
+  /* ambient gold-dust flecks (faint, warm — like stipple on old paper) */
+  .sky-stars{position:fixed;inset:0;z-index:-1;pointer-events:none}
+  .sky-stars i{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--c-sepia-line);opacity:.28}
+  /* faint compass-rose watermark, like an engraving on the map */
+  .map-rose{position:fixed;top:11%;right:-46px;width:270px;height:270px;z-index:-1;opacity:.13;pointer-events:none}
+
+  /* ---- top HUD ---- */
+  .topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:var(--sp-3);
+    padding:var(--sp-4) var(--sp-4) var(--sp-3);
+    background:linear-gradient(180deg,var(--c-parchment) 55%,rgba(240,225,192,0));}
+  .topbar .grow{flex:1}
+  .unit-chip{display:flex;flex-direction:column;gap:2px;padding:var(--sp-2) var(--sp-4);
+    background:var(--surface);border:var(--outline-w) solid var(--outline);border-radius:var(--r-lg);
+    box-shadow:var(--shadow-soft)}
+  .unit-chip small{font-size:.72rem;color:var(--text-muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+  .unit-chip b{font-family:var(--font-display);font-size:1rem;color:var(--c-starlight-gold)}
+
+  /* ---- unit banner ---- */
+  .banner{text-align:center;padding:var(--sp-5) var(--sp-4) var(--sp-2)}
+  .banner .kicker{font-family:var(--font-hand);font-size:1.35rem;color:var(--c-nebula-violet)}
+
+  /* ---- the winding trail ---- */
+  .trail{position:relative;display:flex;flex-direction:column;align-items:center;
+    gap:var(--sp-2);padding:var(--sp-4) 0 220px}
+  .step{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative}
+  /* wander left/right like a real map path */
+  .step.l{transform:translateX(-84px)} .step.r{transform:translateX(84px)}
+  .step.l2{transform:translateX(-44px)} .step.r2{transform:translateX(44px)}
+  .step .label{font-family:var(--font-display);font-weight:700;font-size:.98rem;color:var(--text);
+    background:rgba(251,243,225,.92);padding:4px 14px;border-radius:var(--r-pill);
+    border:2px solid var(--c-sepia-line);box-shadow:0 2px 6px rgba(90,60,25,.16)}
+  .step.done .label{color:var(--c-ink-soft)}
+  .seg{height:var(--sp-6)} /* trail-line spacer set inline */
+
+  /* constellation reveal card at a milestone */
+  .constellation{margin:var(--sp-3) auto 0;max-width:230px;text-align:center}
+  .constellation .badge{margin:0 auto var(--sp-2)}
+
+  /* start campfire */
+  .campfire{position:relative;margin-top:var(--sp-4);text-align:center;color:var(--c-lantern-amber);
+    font-family:var(--font-hand);font-size:1.3rem}
+  .campfire .fire{font-size:2.4rem;filter:drop-shadow(var(--glow-amber));animation:twinkle 2s ease-in-out infinite}
+
+  /* Poli dock (mascot FAB + hint) */
+  .poli-dock{position:fixed;left:0;right:0;bottom:0;z-index:40;max-width:430px;margin:0 auto;
+    display:flex;flex-direction:column;align-items:center;gap:var(--sp-2);
+    padding:var(--sp-4) 0 var(--sp-6);
+    background:linear-gradient(0deg,var(--c-parchment) 45%,rgba(240,225,192,0))}
+  /* re-anchor the fixed FAB inside the dock for the prototype */
+  .poli-dock .poli-fab{position:static;transform:none}
+  .poli-dock .poli-fab.is-idle{animation:poli-breathe-static 3.2s var(--ease-calm) infinite}
+  @keyframes poli-breathe-static{0%,100%{transform:scale(1);filter:drop-shadow(0 0 16px rgba(255,158,90,.5))}50%{transform:scale(1.06);filter:drop-shadow(0 0 30px rgba(255,158,90,.85))}}
+</style>
+</head>
+<body class="starlight">
+<div class="sky-stars" id="stars"></div>
+<svg class="map-rose" viewBox="0 0 100 100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#7a5a2e" stroke-width="1.2"><circle cx="50" cy="50" r="37"/><circle cx="50" cy="50" r="30"/></g>
+  <g fill="#7a5a2e">
+    <polygon points="50,5 56,47 50,52 44,47"/><polygon points="95,50 53,56 48,50 53,44"/>
+    <polygon points="50,95 44,53 50,48 56,53"/><polygon points="5,50 47,44 52,50 47,56"/>
+    <circle cx="50" cy="50" r="3.4"/>
+  </g>
+  <g fill="#7a5a2e" opacity=".55">
+    <polygon points="72,28 53,47 50,50 51,45"/><polygon points="72,72 51,55 50,50 55,51"/>
+    <polygon points="28,72 47,53 50,50 49,55"/><polygon points="28,28 49,45 50,50 45,49"/>
+  </g>
+</svg>
+<div class="phone">
+
+  <!-- HUD -->
+  <header class="topbar">
+    <span class="pill pill--streak">🔥 5</span>
+    <span class="pill pill--xp">✦ 320</span>
+    <span class="grow"></span>
+    <span class="unit-chip"><small>Unit 2</small><b>The Rescuer</b></span>
+  </header>
+
+  <div class="banner">
+    <div class="kicker">✦ your treasure map ✦</div>
+    <h1 class="display display--glow">The Rescuer</h1>
+    <p class="caption">Reach each stop along the trail · finish the map to uncover the Lamb ✦</p>
+  </div>
+
+  <!-- TREASURE-MAP TRAIL — climb from the campfire (bottom) UP to the milestone (top) -->
+  <main class="trail">
+    <!-- MILESTONE (top): the treasure you're climbing toward -->
+    <div class="step locked r2">
+      <div class="node node--milestone"><span class="node__icon">💎</span></div>
+      <span class="label">Uncover the Lamb ✦</span>
+    </div>
+    <div class="trail-line seg"></div>
+
+    <div class="step locked l">
+      <div class="node node--locked"><span class="node__icon">🔒</span></div>
+      <span class="label">A Big Fish</span>
+    </div>
+    <div class="trail-line seg"></div>
+
+    <!-- ACTIVE — where you are now -->
+    <div class="step r">
+      <div class="node node--active" id="go" role="button" tabindex="0" aria-label="Start: The Brave Shepherd Boy">
+        <span class="node__icon">✦</span>
+        <span class="node__badge">START</span>
+      </div>
+      <span class="label">The Brave Shepherd Boy</span>
+    </div>
+    <div class="trail-line trail-line--lit seg"></div>
+
+    <div class="step done l2">
+      <div class="node node--done"><span class="node__icon">✓</span></div>
+      <span class="label">Baby in a Basket</span>
+    </div>
+    <div class="trail-line trail-line--lit seg"></div>
+
+    <div class="step done l">
+      <div class="node node--done"><span class="node__icon">✓</span></div>
+      <span class="label">The Promise</span>
+    </div>
+    <div class="trail-line trail-line--lit seg"></div>
+
+    <div class="step done r2">
+      <div class="node node--done"><span class="node__icon">✓</span></div>
+      <span class="label">Creation</span>
+    </div>
+
+    <!-- START (bottom): where the trail begins -->
+    <div class="campfire">
+      <div class="fire">🏕️</div>
+      you started your trail here
+    </div>
+  </main>
+
+  <!-- POLI — the compass guide / tap-to-talk (SLM) -->
+  <div class="poli-dock">
+    <span class="talk-hint">✦ tap Poli if you have a question</span>
+    <button class="poli-fab is-idle" id="poli" aria-label="Ask your guide, Poli">
+      <img src="mascot.svg" alt="">
+    </button>
+  </div>
+</div>
+
+<script>
+  // sprinkle a calm star field
+  const sky=document.getElementById('stars');
+  for(let i=0;i<46;i++){const s=document.createElement('i');
+    s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';
+    s.style.opacity=(.12+Math.random()*.22).toFixed(2);
+    s.style.transform=`scale(${(.6+Math.random()*1.2).toFixed(2)})`;sky.appendChild(s);}
+  // navigation (prototype)
+  const go=()=>location.href='lesson.html';
+  document.getElementById('go').addEventListener('click',go);
+  document.getElementById('go').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')go();});
+  document.getElementById('poli').addEventListener('click',()=>location.href='compass.html');
+</script>
+</body>
+</html>

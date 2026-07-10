@@ -1,0 +1,618 @@
+/* =============================================================================
+   TREASURE TRAIL — Design Tokens & Base Components
+   Kids' Bible Guide (SBC), ages 7–9.  Tagline: "Follow your true North."
+   -----------------------------------------------------------------------------
+   Self-contained: <link rel="stylesheet" href="tokens.css"> on any HTML page.
+   A warm explorer's-journal world: aged map parchment, brass compass gold, sage
+   islands, caramel leather, dusty-blue sea. Big squishy pressable candy buttons;
+   lesson "stops" that light up along a winding treasure-map route to the reveal.
+   Mascot = Poli, a brass pocket-compass with a face whose North-Star needle is
+   the tap-to-talk (SLM) button and physicalizes the HOLD/ACKNOWLEDGE/DEFLECT
+   behavior stance.
+
+   Vibe reference: the "treasure map / explorer's journal" board — antique maps,
+   brass compass, illuminated storybook lettering, handwritten journal + palette
+   (caramel · sage · wheat-gold · sand). Warm daylight, NOT a night sky.
+
+   Accessibility baked in: warm 60-30-10 LIGHT UI, AAA sepia-ink text on parchment
+   (~10:1), node/stop state is never color-alone (color + shape + icon), body
+   ≥ 17px, honors reduced-motion.
+   ============================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Cinzel:wght@500;600;700&family=Lexend:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap');
+
+:root {
+  /* ---------------------------------------------------------------------------
+     1. RAW COLOR PALETTE  (hex + role)  — sampled from the treasure-map board
+     60% warm parchment · 30% sand/caramel paper panels · 10% brass-gold + sage
+  --------------------------------------------------------------------------- */
+  --c-parchment:      #F0E1C0; /* MAIN aged-paper background — the ~60% field */
+  --c-parchment-lit:  #FBF3E1; /* lifted paper: cards, HUD, story surface, pills */
+  --c-parchment-deep: #E4CFA1; /* aged edges / darker paper / gradient base */
+  --c-sand:           #D8C08B; /* muted sand — locked stops, panel fills (p10 #5) */
+
+  --c-ink:            #3B2E23; /* sepia near-black — body text (~10.9:1 on parchment, AAA) */
+  --c-ink-soft:       #6E5A44; /* muted brown — secondary text (~5.7:1 on parchment, AA) */
+  --c-sepia-line:     #B79A6B; /* faint map hairlines / dotted routes / engraving */
+
+  --c-brass:          #D19A44; /* rich brass gold — primary CTA, active stop, XP (the hero 10%) */
+  --c-brass-lit:      #EFCC7A; /* bright brass highlight / glow center */
+  --c-brass-deep:     #9A6B24; /* deep engraved brass — outlines on gold, glowing titles */
+
+  --c-caramel:        #B0805A; /* warm leather/caramel — brand accent, milestone (p10 #1) */
+  --c-terracotta:     #C2683C; /* campfire / lantern / streak flame — warm ember */
+
+  --c-sage:           #8FA79B; /* dusty sage-blue — DONE stops, sea, secondary btn (p10 #2/#4) */
+  --c-sage-deep:      #6E8A80; /* deeper sage — outline/hover on sage */
+  --c-sea:            #A9C0BA; /* light sage tint — soft fills */
+
+  --c-rose:           #D98E6A; /* soft coral — celebration bursts, reward confetti (warm) */
+  --c-locked:         #C3B08A; /* faded sepia — undiscovered / locked stop outline */
+  --c-warm-brick:     #B4472C; /* gentle parent-alert / crisis flag — NEVER a clinical red */
+  --c-cream:          #FFF8EA; /* light text on the brick/deep fills that need it */
+  --c-outline:        #3B2E23; /* the chunky sepia "ink" outline on stops, pills & buttons */
+
+  /* ---------------------------------------------------------------------------
+     1b. LEGACY ALIASES  — the previous "starlight/twilight" names still used in
+     the per-screen inline styles now point at the warm palette, so every screen
+     re-skins from this one file. Prefer the names above in new code.
+  --------------------------------------------------------------------------- */
+  --c-midnight-void:   var(--c-parchment-deep);
+  --c-deep-indigo:     var(--c-parchment);
+  --c-twilight-violet: var(--c-sand);
+  --c-nebula-violet:   var(--c-caramel);
+  --c-aurora-teal:     var(--c-sage);
+  --c-starlight-gold:  var(--c-brass);
+  --c-comet-pink:      var(--c-rose);
+  --c-lantern-amber:   var(--c-terracotta);
+  --c-moonlight:       var(--c-ink);      /* was light text on dark; now dark ink + focus rings */
+  --c-star-dust:       var(--c-ink-soft); /* muted text + ghost borders */
+  --c-soft-parchment:  var(--c-parchment-lit);
+  --c-ink-brown:       var(--c-ink);
+  --c-locked-slate:    var(--c-locked);
+  --c-outline-ink:     var(--c-outline);
+
+  /* ---------------------------------------------------------------------------
+     2. SEMANTIC TOKENS  (use these in product code, not the raw hex)
+  --------------------------------------------------------------------------- */
+  --bg:            var(--c-parchment);
+  --bg-deep:       var(--c-parchment-deep);
+  --surface:       var(--c-parchment-lit);     /* lifted paper cards / HUD / map chrome */
+  --surface-read:  var(--c-parchment-lit);     /* story + spoken-answer + parent surface */
+  --text:          var(--c-ink);               /* text on parchment */
+  --text-muted:    var(--c-ink-soft);
+  --text-read:     var(--c-ink);
+  --brand:         var(--c-caramel);           /* progress fill / brand accent */
+  --cta:           var(--c-brass);             /* primary tappable buttons */
+  --cta-ink:       var(--c-outline);           /* dark sepia text/icon on the brass CTA */
+  --go:            var(--c-sage);              /* done / correct / go (secondary) */
+  --delight:       var(--c-rose);              /* rewards, confetti */
+  --warm:          var(--c-terracotta);        /* campfire warmth, streak flame */
+  --danger:        var(--c-warm-brick);        /* crisis / parent alert */
+  --locked:        var(--c-locked);
+  --outline:       var(--c-outline);
+
+  /* ---------------------------------------------------------------------------
+     3. TYPOGRAPHY
+     Fraunces = warm storybook display serif ("once upon a time").
+     Cinzel   = engraved cartographer caps — eyebrows, unit tags, map labels.
+     Lexend   = early-reader body (tuned for reading proficiency).
+     Caveat   = fountain-pen journal hand — Poli's captions & the "Wonderings".
+  --------------------------------------------------------------------------- */
+  --font-display: 'Fraunces', 'Georgia', 'Times New Roman', serif;
+  --font-map:     'Cinzel', 'Fraunces', Georgia, serif;
+  --font-body:    'Lexend', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-hand:    'Caveat', 'Patrick Hand', 'Comic Sans MS', cursive;
+
+  --fs-display: 2.375rem; /* 38px — unit / chapter banner (serif reads a touch smaller) */
+  --fs-h1:      1.875rem; /* 30px — screen title */
+  --fs-h2:      1.5rem;   /* 24px — section / card title */
+  --fs-h3:      1.3125rem;/* 21px — stop label */
+  --fs-story:   1.1875rem;/* 19px — story narration (bumped for 7–9 readers) */
+  --fs-body:    1.0625rem;/* 17px — default body (floor for kids) */
+  --fs-label:   1rem;     /* 16px — buttons & labels */
+  --fs-caption: 0.875rem; /* 14px — captions / meta */
+
+  --lh-tight: 1.15;
+  --lh-snug:  1.3;
+  --lh-body:  1.6;   /* generous for early readers */
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   800;
+
+  /* ---------------------------------------------------------------------------
+     4. SPACING  (4px base)
+  --------------------------------------------------------------------------- */
+  --sp-1: 0.25rem; /* 4  */
+  --sp-2: 0.5rem;  /* 8  */
+  --sp-3: 0.75rem; /* 12 */
+  --sp-4: 1rem;    /* 16 */
+  --sp-5: 1.5rem;  /* 24 */
+  --sp-6: 2rem;    /* 32 */
+  --sp-7: 3rem;    /* 48 */
+  --sp-8: 4rem;    /* 64 */
+
+  /* ---------------------------------------------------------------------------
+     5. RADIUS  — everything fat & rounded ("gummy")
+  --------------------------------------------------------------------------- */
+  --r-sm:   0.625rem; /* 10 */
+  --r-md:   1rem;     /* 16 */
+  --r-lg:   1.5rem;   /* 24 */
+  --r-xl:   2rem;     /* 32 */
+  --r-pill: 999px;
+
+  /* ---------------------------------------------------------------------------
+     6. OUTLINE, SHADOW & GLOW
+     Light theme -> warm sepia drop shadows + soft brass/sage halos. The chunky
+     "sticker" ink outline + hard-offset shadow give buttons candy pressability.
+  --------------------------------------------------------------------------- */
+  --outline-w: 3px;
+  --outline-w-thick: 4px;
+
+  --shadow-sticker: 0 6px 0 0 var(--c-outline);           /* candy hard offset (rest) */
+  --shadow-sticker-press: 0 2px 0 0 var(--c-outline);     /* squished (active) */
+  --shadow-soft:    0 8px 22px rgba(90, 60, 25, 0.18);    /* card elevation (warm) */
+  --shadow-lift:    0 14px 34px rgba(90, 60, 25, 0.26);
+
+  --glow-gold:   0 0 20px rgba(209, 154, 68, 0.55);   /* brass */
+  --glow-teal:   0 0 20px rgba(143, 167, 155, 0.75);  /* sage (Poli "listening") */
+  --glow-violet: 0 0 20px rgba(176, 128, 90, 0.70);   /* caramel (Poli "thinking") */
+  --glow-pink:   0 0 20px rgba(217, 142, 106, 0.60);  /* rose (reward) */
+  --glow-amber:  0 0 24px rgba(194, 104, 60, 0.55);   /* terracotta (Poli ember) */
+
+  /* ---------------------------------------------------------------------------
+     7. MOTION
+  --------------------------------------------------------------------------- */
+  --ease-pop:   cubic-bezier(0.34, 1.56, 0.64, 1); /* overshoot / squish-pop */
+  --ease-calm:  cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:   140ms;
+  --dur-base:   240ms;
+  --dur-slow:   600ms;
+
+  /* Component sizes */
+  --node-size:  4.5rem;  /* 72px lesson stop */
+  --node-active-size: 5.5rem; /* 88px */
+  --poli-fab:   4rem;    /* 64px persistent tap-to-talk button */
+  --tap-min:    2.75rem; /* 44px min tap target (Kids-category safe) */
+}
+
+/* =============================================================================
+   BASE
+   ============================================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+
+body.starlight {
+  margin: 0;
+  min-height: 100%;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--text);
+  /* aged treasure-map paper: soft light center, warm brass pooled at the bottom,
+     gently darkened aged edges — calm and warm, like a map on a table */
+  background:
+    radial-gradient(150% 95% at 50% -8%, #FCF5E6 0%, rgba(252,245,230,0) 52%),
+    radial-gradient(120% 78% at 50% 120%, rgba(209,154,68,0.14) 0%, rgba(209,154,68,0) 60%),
+    radial-gradient(135% 120% at 50% 50%, rgba(59,46,35,0) 62%, rgba(120,84,38,0.14) 100%),
+    var(--c-parchment);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* =============================================================================
+   TYPOGRAPHY CLASSES
+   ============================================================================= */
+.display { font-family: var(--font-display); font-weight: var(--fw-black); font-size: var(--fs-display); line-height: var(--lh-tight); letter-spacing: 0.005em; }
+.h1 { font-family: var(--font-display); font-weight: var(--fw-black); font-size: var(--fs-h1); line-height: var(--lh-tight); }
+.h2 { font-family: var(--font-display); font-weight: var(--fw-bold); font-size: var(--fs-h2); line-height: var(--lh-snug); }
+.h3 { font-family: var(--font-display); font-weight: var(--fw-bold); font-size: var(--fs-h3); line-height: var(--lh-snug); }
+.story-text { font-family: var(--font-body); font-weight: var(--fw-regular); font-size: var(--fs-story); line-height: var(--lh-body); color: var(--text-read); max-width: 60ch; }
+.body { font-size: var(--fs-body); line-height: var(--lh-body); }
+.caption { font-size: var(--fs-caption); font-weight: var(--fw-medium); color: var(--text-muted); }
+.handwritten { font-family: var(--font-hand); font-size: 1.5rem; line-height: 1.4; }
+
+/* Engraved cartographer caps — eyebrows, unit tags, section kickers ("MAP LABELS") */
+.mapcaps { font-family: var(--font-map); font-weight: var(--fw-semi); letter-spacing: 0.16em; text-transform: uppercase; }
+
+/* Embossed brass title on parchment (unit banners / hero) — warm letterpress, not neon */
+.display--glow, .h1--glow {
+  color: var(--c-brass-deep);
+  text-shadow: 0 1px 0 #FFF7E4, 0 2px 4px rgba(120, 84, 38, 0.28);
+}
+
+/* =============================================================================
+   BUTTONS  — fat, rounded, sticker-outlined, squishy-pressable
+   .btn + .btn--primary | --secondary | --ghost | --danger   (+ .btn--lg / --sm)
+   ============================================================================= */
+.btn {
+  --_bg: var(--surface);
+  --_fg: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: var(--tap-min);
+  padding: var(--sp-3) var(--sp-5);
+  border: var(--outline-w) solid var(--outline);
+  border-radius: var(--r-pill);
+  background: var(--_bg);
+  color: var(--_fg);
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: var(--shadow-sticker);
+  transition: transform var(--dur-fast) var(--ease-pop),
+              box-shadow var(--dur-fast) var(--ease-pop),
+              filter var(--dur-fast) var(--ease-calm);
+}
+.btn:hover { filter: brightness(1.04); }
+/* squish: press the candy down, shadow shrinks */
+.btn:active {
+  transform: translateY(4px);
+  box-shadow: var(--shadow-sticker-press);
+}
+.btn:focus-visible { outline: 3px solid var(--c-brass-deep); outline-offset: 3px; }
+
+.btn--primary   { --_bg: var(--cta);   --_fg: var(--cta-ink); }        /* Brass gold, dark ink (~5:1) */
+.btn--secondary { --_bg: var(--go);    --_fg: var(--c-outline); }      /* Sage, dark ink (~5.4:1) */
+/* gentle warm brick. Label is CREAM (#FFF8EA on #B4472C ≈ 4.7:1, passes WCAG AA);
+   dark ink was only 2.7:1 and FAILED. This is the crisis / parent-alert affordance,
+   so it must not fail contrast. */
+.btn--danger    { --_bg: var(--danger);--_fg: var(--c-cream); }
+.btn--ghost {
+  --_bg: transparent; --_fg: var(--text);
+  border-color: var(--c-caramel);
+  box-shadow: none;
+}
+.btn--ghost:active { transform: translateY(2px); box-shadow: none; }
+
+.btn--lg { min-height: 3.5rem; padding: var(--sp-4) var(--sp-7); font-size: 1.125rem; border-radius: var(--r-pill); }
+.btn--sm { min-height: var(--tap-min); padding: var(--sp-2) var(--sp-4); font-size: var(--fs-caption); }
+.btn--block { display: flex; width: 100%; }
+
+/* =============================================================================
+   LESSON STOPS  — landmarks along the winding treasure-map route
+   Markup:
+     <div class="node node--active">
+       <span class="node__icon">…</span>      (lock / ✦ / ✓ / gem — NEVER color alone)
+       <span class="node__badge">START</span> (active only)
+     </div>
+   State = color + SHAPE (size) + ICON, so it's colorblind-safe.
+   done = sage "cleared island" · active = bright brass "you are here" ·
+   locked = faded sand · milestone = caramel treasure.
+   ============================================================================= */
+.node {
+  position: relative;
+  width: var(--node-size);
+  height: var(--node-size);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: var(--outline-w-thick) solid var(--outline);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: var(--fw-black);
+  cursor: pointer;
+  transition: transform var(--dur-base) var(--ease-pop), filter var(--dur-base) var(--ease-calm);
+}
+.node:active { transform: scale(0.92); }               /* squish */
+.node__icon { font-size: 1.75rem; line-height: 1; }
+.node__badge {
+  position: absolute; bottom: -0.9rem;
+  font-family: var(--font-body); font-weight: var(--fw-bold); font-size: 0.75rem;
+  color: var(--c-outline); background: var(--cta);
+  padding: 2px 10px; border-radius: var(--r-pill);
+  border: 2px solid var(--outline); white-space: nowrap;
+}
+
+/* LOCKED — faded sand, smaller, padlock (an undiscovered spot on the map) */
+.node--locked {
+  background: var(--c-sand);
+  border-color: var(--locked);
+  color: var(--text-muted);
+  transform: scale(0.82);
+  cursor: not-allowed;
+  filter: saturate(0.7) opacity(0.9);
+}
+.node--locked:active { transform: scale(0.82); }
+
+/* ACTIVE — bigger bright-brass "you are here", breathing glow, START bubble */
+.node--active {
+  width: var(--node-active-size);
+  height: var(--node-active-size);
+  background: radial-gradient(circle at 50% 38%, var(--c-brass-lit) 0%, var(--c-brass) 72%);
+  color: var(--c-outline);
+  filter: drop-shadow(var(--glow-gold));
+  animation: node-pulse 2.4s var(--ease-calm) infinite;
+}
+
+/* DONE — sage "cleared island" fill, soft glow, check; its route segment is lit */
+.node--done {
+  background: radial-gradient(circle at 50% 38%, var(--c-sea) 0%, var(--c-sage) 72%);
+  color: var(--c-outline);
+  filter: drop-shadow(var(--glow-teal));
+}
+
+/* MILESTONE — a caramel treasure "chest" that reveals the finished picture */
+.node--milestone {
+  width: var(--node-active-size);
+  height: var(--node-active-size);
+  border-radius: var(--r-lg);
+  background: radial-gradient(circle at 50% 35%, #D79A56 0%, var(--c-caramel) 78%);
+  color: #FFF3DA;
+  border-color: var(--c-brass-deep);
+  filter: drop-shadow(var(--glow-violet));
+}
+
+/* Optional literal 5-point star silhouette (glow via drop-shadow follows the shape). */
+.node--star {
+  border: none;
+  border-radius: 0;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+/* =============================================================================
+   ROUTE LINE — the dashed "explorer's dotted route" connecting the stops
+   (like the dotted trail to the X on a treasure map)
+   ============================================================================= */
+.trail-line {
+  width: 6px;
+  min-height: var(--sp-7);
+  border-radius: var(--r-pill);
+  background-image: radial-gradient(circle, var(--c-sepia-line) 40%, transparent 42%);
+  background-size: 6px 15px;   /* dashed */
+  background-repeat: repeat-y;
+  opacity: 0.7;
+}
+.trail-line--lit {
+  background-image: radial-gradient(circle, var(--c-brass) 46%, transparent 48%);
+  opacity: 1;
+  filter: drop-shadow(0 0 5px rgba(209, 154, 68, 0.55));
+}
+
+/* =============================================================================
+   HUD / PILLS / PROGRESS
+   ============================================================================= */
+.hud { display: flex; align-items: center; gap: var(--sp-3); }
+.pill {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--surface);
+  border: var(--outline-w) solid var(--outline);
+  border-radius: var(--r-pill);
+  font-family: var(--font-display); font-weight: var(--fw-bold);
+  color: var(--text);
+  box-shadow: var(--shadow-soft);
+}
+.pill--streak { color: var(--c-terracotta); }  /* campfire flame */
+.pill--xp     { color: var(--c-brass-deep); }  /* brass coins */
+
+.progress {
+  width: 100%; height: 14px;
+  background: var(--c-sand);
+  border: 2px solid var(--outline);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+.progress__fill {
+  height: 100%;
+  width: var(--value, 40%);
+  border-radius: var(--r-pill);
+  background: linear-gradient(90deg, var(--c-caramel), var(--c-brass));
+  transition: width var(--dur-slow) var(--ease-calm);
+}
+
+/* =============================================================================
+   CARDS
+   .card           — lifted parchment panel (map / HUD / parent chrome)
+   .card--parchment— warmer reading surface (story text, parent copy)
+   .answer-card    — Poli's retold spoken reply (parchment + speech tail)
+   ============================================================================= */
+.card {
+  background: var(--surface);
+  border: var(--outline-w) solid rgba(59, 46, 35, 0.22);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+  color: var(--text);
+  box-shadow: var(--shadow-soft);
+}
+.card--parchment {
+  background: var(--surface-read);
+  border-color: rgba(59, 46, 35, 0.16);
+  color: var(--text-read);
+}
+.card--parchment .h2, .card--parchment .h3 { color: var(--c-ink); }
+
+.answer-card {
+  position: relative;
+  background: var(--surface-read);
+  color: var(--text-read);
+  border: var(--outline-w) solid rgba(59, 46, 35, 0.16);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+  box-shadow: var(--shadow-lift);
+  font-size: var(--fs-story);
+  line-height: var(--lh-body);
+}
+.answer-card::after { /* speech-bubble tail pointing down toward Poli */
+  content: ""; position: absolute; left: 40px; bottom: -14px;
+  border: 14px solid transparent;
+  border-top-color: var(--surface-read);
+  border-bottom: 0;
+}
+
+/* Gentle crisis / parent-alert banner — warm, never clinical */
+.alert-crisis {
+  background: #F7E2D6;
+  border: var(--outline-w) solid var(--c-warm-brick);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+  color: #5A2A18;
+}
+
+/* Reward / collectible sticker badge */
+.badge {
+  display: inline-grid; place-items: center;
+  width: 5rem; height: 5rem; border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, var(--c-rose), var(--c-brass-deep));
+  border: var(--outline-w-thick) solid var(--outline);
+  color: var(--c-cream); box-shadow: var(--glow-pink);
+}
+
+/* =============================================================================
+   POLI — the persistent tap-to-talk (SLM) button
+   States: .is-idle | .is-listening | .is-thinking | .is-answering
+   Markup: <button class="poli-fab is-idle" aria-label="Ask your guide, Poli">
+             <img src="mascot.svg" alt=""> </button>
+   ============================================================================= */
+.poli-fab {
+  position: fixed;
+  left: 50%; bottom: var(--sp-6);
+  transform: translateX(-50%);
+  width: var(--poli-fab); height: var(--poli-fab);
+  display: grid; place-items: center;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  z-index: 50;
+}
+.poli-fab img, .poli-fab svg { width: 100%; height: 100%; display: block; }
+.poli-fab:focus-visible { outline: 3px solid var(--c-brass-deep); outline-offset: 4px; border-radius: 50%; }
+
+/* IDLE — slow warm breathing ember glow */
+.poli-fab.is-idle { filter: drop-shadow(var(--glow-amber)); animation: poli-breathe 3.2s var(--ease-calm) infinite; }
+/* LISTENING — needle spins, mic-rings bloom (sage) */
+.poli-fab.is-listening { filter: drop-shadow(var(--glow-teal)); }
+.poli-fab.is-listening::before {
+  content: ""; position: absolute; inset: -8px; border-radius: 50%;
+  border: 3px solid var(--c-sage);
+  animation: poli-ring 1.2s var(--ease-calm) infinite;
+}
+/* THINKING — caramel magic pulse */
+.poli-fab.is-thinking { filter: drop-shadow(var(--glow-violet)); animation: poli-think 1s var(--ease-calm) infinite; }
+/* ANSWERING — warm brass pulse in time with the spoken reply */
+.poli-fab.is-answering { filter: drop-shadow(var(--glow-gold)); animation: poli-answer 0.9s var(--ease-calm) infinite; }
+
+/* =============================================================================
+   SLM CONVERSATION & SAFETY SURFACES
+   The tap-to-talk answer surfaces + the visible safety behaviors from the
+   behavior-spec (retell-not-quote, DEFLECT-to-parent signpost, Wonderings
+   hand-off, warm crisis). Reused by compass.html and lesson.html.
+   ============================================================================= */
+
+/* "Tap me & talk" idle hint that sits under Poli. */
+.talk-hint {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  font-family: var(--font-hand); font-size: 1.5rem;
+  color: var(--c-ink-soft);
+  background: rgba(251, 243, 225, 0.82);
+  border: 2px solid var(--c-sepia-line);
+  border-radius: var(--r-pill);
+}
+
+/* Sage sound-rings that bloom while Poli is LISTENING (on-device STT).
+   Markup: <span class="sound-rings"><i></i><i></i><i></i></span>  */
+.sound-rings { position: absolute; inset: 0; pointer-events: none; }
+.sound-rings i {
+  position: absolute; inset: 0; margin: auto; width: 100%; height: 100%;
+  border-radius: 50%; border: 3px solid var(--c-sage);
+  opacity: 0; animation: sound-bloom 1.8s var(--ease-calm) infinite;
+}
+.sound-rings i:nth-child(2) { animation-delay: 0.6s; }
+.sound-rings i:nth-child(3) { animation-delay: 1.2s; }
+
+/* Attribution + the always-visible retell-not-quote promise on Poli's card.
+   This is the whole trust story: Poli retells, and points back to YOUR Bible. */
+.answer-card__from {
+  display: flex; align-items: center; gap: var(--sp-2);
+  font-family: var(--font-hand); font-size: 1.35rem; color: #7A5A30;
+  margin-bottom: var(--sp-2);
+}
+.answer-card__bible {
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  margin-top: var(--sp-4); padding: var(--sp-3) var(--sp-4);
+  background: #EFE2C4; border: 2px dashed #C7A863; border-radius: var(--r-md);
+  font-family: var(--font-body); font-weight: var(--fw-semi);
+  font-size: var(--fs-body); color: var(--c-ink);
+}
+
+/* DEFLECT signpost — the needle swings off-compass to "your grown-up".
+   Warm home/parent signpost, not a dead end. */
+.signpost {
+  display: flex; align-items: center; gap: var(--sp-4);
+  padding: var(--sp-4) var(--sp-5);
+  background: linear-gradient(180deg, rgba(194,104,60,0.16), rgba(176,128,90,0.16));
+  border: var(--outline-w) solid var(--c-terracotta);
+  border-radius: var(--r-lg);
+  color: var(--text);
+}
+.signpost__arrow {
+  flex: none; width: 3rem; height: 3rem; display: grid; place-items: center;
+  border-radius: 50%; background: var(--c-terracotta); color: var(--c-cream);
+  border: var(--outline-w) solid var(--outline); font-size: 1.6rem;
+  box-shadow: var(--glow-amber);
+}
+
+/* Wonderings journal — deliberately UN-gamified, handwritten, for the grown-up. */
+.wonderings {
+  background: var(--surface-read); color: var(--text-read);
+  border-radius: var(--r-lg); padding: var(--sp-5);
+  border: 2px solid rgba(59, 46, 35, 0.16);
+  box-shadow: var(--shadow-soft);
+}
+.wonderings__title {
+  font-family: var(--font-hand); font-size: 1.7rem; color: var(--c-ink);
+  margin: 0 0 var(--sp-2);
+}
+.wonderings__item {
+  font-family: var(--font-hand); font-size: 1.5rem; line-height: 1.5;
+  color: #4A3F38; padding: var(--sp-2) 0;
+  border-bottom: 2px dotted rgba(59, 46, 35, 0.22);
+}
+.wonderings__item::before { content: "✧ "; color: var(--c-terracotta); }
+
+/* =============================================================================
+   KEYFRAMES
+   ============================================================================= */
+@keyframes sound-bloom {
+  0%   { transform: scale(0.7); opacity: 0.85; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+@keyframes node-pulse {
+  0%, 100% { filter: drop-shadow(0 0 7px rgba(209,154,68,0.5)); transform: scale(1); }
+  50%      { filter: drop-shadow(0 0 18px rgba(209,154,68,0.85)); transform: scale(1.05); }
+}
+@keyframes poli-breathe {
+  0%, 100% { transform: translateX(-50%) scale(1);    filter: drop-shadow(0 0 16px rgba(194,104,60,0.5)); }
+  50%      { transform: translateX(-50%) scale(1.06); filter: drop-shadow(0 0 30px rgba(194,104,60,0.8)); }
+}
+@keyframes poli-ring   { 0% { transform: scale(0.9); opacity: 0.9; } 100% { transform: scale(1.6); opacity: 0; } }
+@keyframes poli-think  { 0%,100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.08); } }
+@keyframes poli-answer { 0%,100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.05); } }
+
+/* Ambient twinkle for decorative map flecks: <i class="twinkle"></i> */
+.twinkle { display: inline-block; color: var(--c-brass); animation: twinkle 2.6s ease-in-out infinite; }
+@keyframes twinkle { 0%,100% { opacity: 0.45; transform: scale(0.9); } 50% { opacity: 0.9; transform: scale(1.12); } }
+
+/* =============================================================================
+   REDUCED MOTION  — calm ethos + accessibility.
+   Kill looping animation; keep instant, non-vestibular state feedback.
+   ============================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F0E1C0">
+<title>Welcome to Treasure Trail</title>
+
+<!-- The design system: one link, everything else is self-contained -->
+<link rel="stylesheet" href="tokens.css">
+
+<style>
+  /* =========================================================================
+     ONBOARDING — page-specific layout on top of the Starlight Trail tokens.
+     A 3-step welcome: Poli says hi → pick your explorer → light your first star.
+     ========================================================================= */
+  html, body { height: 100%; }
+  body.starlight { overflow-x: hidden; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  /* Decorative twinkling starfield behind everything -------------------------- */
+  .sky-stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .sky-stars .star {
+    position: absolute; color: var(--c-sepia-line);
+    font-size: 0.9rem; opacity: 0.32;
+    animation: twinkle 3.4s ease-in-out infinite;
+    text-shadow: none;
+  }
+
+  /* Shell -------------------------------------------------------------------- */
+  .onboard {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column;
+    width: 100%; max-width: 30rem;
+    min-height: 100dvh;
+    margin: 0 auto;
+    padding: max(var(--sp-4), env(safe-area-inset-top)) var(--sp-5)
+             max(var(--sp-6), env(safe-area-inset-bottom));
+  }
+
+  /* Top bar: back + constellation progress dots ------------------------------ */
+  .topbar {
+    display: grid; grid-template-columns: 3rem 1fr 3rem; align-items: center;
+    margin-bottom: var(--sp-4); min-height: 3rem;
+  }
+  .backbtn {
+    width: 3rem; height: 3rem; display: grid; place-items: center;
+    border-radius: 50%; border: var(--outline-w) solid var(--c-star-dust);
+    background: transparent; color: var(--text); font-size: 1.4rem;
+    cursor: pointer; transition: transform var(--dur-fast) var(--ease-pop);
+  }
+  .backbtn:active { transform: translateY(2px); }
+  .backbtn:focus-visible { outline: 3px solid var(--c-moonlight); outline-offset: 3px; }
+  .topbar[data-step="1"] .backbtn { visibility: hidden; }
+
+  .dots { position: relative; display: flex; gap: 1.75rem; align-items: center; justify-self: center; }
+  .dots::before {
+    content: ""; position: absolute; left: 7px; right: 7px; top: 50%; height: 3px;
+    transform: translateY(-50%);
+    background-image: radial-gradient(circle, var(--c-star-dust) 42%, transparent 44%);
+    background-size: 7px 3px; background-repeat: repeat-x; opacity: 0.5;
+  }
+  .dot {
+    position: relative; z-index: 1; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--surface); border: 2px solid var(--locked);
+    transition: transform var(--dur-base) var(--ease-pop),
+                box-shadow var(--dur-base) var(--ease-calm),
+                background var(--dur-base) var(--ease-calm);
+  }
+  .dot.is-done, .dot.is-current {
+    background: var(--cta); border-color: var(--outline);
+    box-shadow: var(--glow-gold);
+  }
+  .dot.is-current { transform: scale(1.35); }
+
+  /* Step container ----------------------------------------------------------- */
+  .steps { flex: 1; display: flex; flex-direction: column; }
+  .step {
+    flex: 1; display: flex; flex-direction: column;
+    text-align: center; align-items: center;
+  }
+  .step[hidden] { display: none; }
+  .step.is-active { animation: step-in var(--dur-slow) var(--ease-pop) both; }
+  @keyframes step-in {
+    from { opacity: 0; transform: translateY(18px) scale(0.98); }
+    to   { opacity: 1; transform: none; }
+  }
+  .step__body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--sp-4); width: 100%; }
+  .step__foot { width: 100%; padding-top: var(--sp-5); }
+
+  .eyebrow {
+    font-family: var(--font-map); font-weight: var(--fw-semi);
+    font-size: var(--fs-caption); letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--c-ink-soft);
+  }
+  .step p.lead { color: var(--text); max-width: 24ch; margin: 0; }
+  .step p.muted { color: var(--text-muted); max-width: 30ch; margin: 0; }
+
+  /* Poli — hero (welcome) and mini (setup steps) ----------------------------- */
+  .poli-hero { width: min(58vw, 232px); height: auto; display: block; will-change: transform;
+               animation: poli-float 4s var(--ease-calm) infinite; filter: drop-shadow(var(--glow-amber)); }
+  .poli-mini { width: 92px; height: auto; display: block; filter: drop-shadow(var(--glow-amber));
+               animation: poli-float 4s var(--ease-calm) infinite; }
+  @keyframes poli-float {
+    0%, 100% { transform: translateY(0) scale(1);      filter: drop-shadow(0 6px 18px rgba(255,158,90,0.45)); }
+    50%      { transform: translateY(-10px) scale(1.02); filter: drop-shadow(0 14px 30px rgba(255,158,90,0.75)); }
+  }
+
+  /* Poli's handwritten hello bubble (parchment speech card + tail) ----------- */
+  .hello {
+    position: relative; display: inline-block;
+    background: var(--surface-read); color: var(--text-read);
+    border-radius: var(--r-lg); padding: var(--sp-3) var(--sp-5);
+    box-shadow: var(--shadow-lift); max-width: 22ch;
+    font-family: var(--font-hand); font-size: 1.4rem; line-height: 1.35;
+    animation: pop-in var(--dur-slow) var(--ease-pop) both;
+  }
+  .hello::after {
+    content: ""; position: absolute; left: 50%; bottom: -13px; transform: translateX(-50%);
+    border: 13px solid transparent; border-top-color: var(--surface-read); border-bottom: 0;
+  }
+  @keyframes pop-in { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
+
+  .poli-line { /* Poli's little handwritten aside on setup steps */
+    font-family: var(--font-hand); font-size: 1.3rem; color: var(--c-star-dust);
+    margin: 0; max-width: 26ch;
+  }
+
+  /* Choice grids (avatars + topics) ------------------------------------------ */
+  .grid { display: grid; gap: var(--sp-3); width: 100%; }
+  .grid--avatar { grid-template-columns: repeat(3, 1fr); }
+  .grid--topic  { grid-template-columns: repeat(2, 1fr); }
+
+  .choice {
+    --accent: var(--c-nebula-violet);
+    position: relative; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: var(--sp-2);
+    padding: var(--sp-4) var(--sp-2); min-height: 7rem;
+    background: var(--surface); color: var(--text);
+    border: var(--outline-w) solid var(--outline);
+    border-radius: var(--r-lg); cursor: pointer;
+    box-shadow: var(--shadow-sticker);
+    font-family: var(--font-body);
+    transition: transform var(--dur-fast) var(--ease-pop),
+                box-shadow var(--dur-fast) var(--ease-pop),
+                border-color var(--dur-base) var(--ease-calm);
+  }
+  .choice:hover { filter: brightness(1.06); }
+  .choice:active { transform: translateY(4px); box-shadow: var(--shadow-sticker-press); }
+  .choice:focus-visible { outline: 3px solid var(--c-moonlight); outline-offset: 3px; }
+
+  .choice__art {
+    display: grid; place-items: center; width: 3.5rem; height: 3.5rem;
+    border-radius: 50%; font-size: 2rem; line-height: 1;
+    background: radial-gradient(circle at 50% 35%, color-mix(in srgb, var(--accent) 70%, white), var(--accent));
+    border: var(--outline-w) solid var(--outline);
+  }
+  .grid--topic .choice__art { border-radius: var(--r-md); }
+  .choice__label { font-weight: var(--fw-bold); font-size: 0.95rem; line-height: 1.2; }
+  .choice__sub   { font-size: var(--fs-caption); color: var(--text-muted); line-height: 1.2; }
+
+  /* the little ✓ sticker that appears on the chosen tile */
+  .choice__check {
+    position: absolute; top: -0.6rem; right: -0.6rem;
+    width: 1.7rem; height: 1.7rem; display: grid; place-items: center;
+    border-radius: 50%; background: var(--cta); color: var(--cta-ink);
+    border: var(--outline-w) solid var(--outline); font-weight: var(--fw-black);
+    font-size: 0.9rem; transform: scale(0); transition: transform var(--dur-base) var(--ease-pop);
+  }
+  .choice[aria-pressed="true"] {
+    border-color: var(--cta); background: var(--c-twilight-violet);
+    box-shadow: var(--shadow-sticker), var(--glow-gold);
+  }
+  .choice[aria-pressed="true"] .choice__check { transform: scale(1); }
+  .choice[aria-pressed="true"] .choice__label { color: var(--c-starlight-gold); }
+
+  /* Disabled continue button ------------------------------------------------- */
+  .btn[disabled] {
+    opacity: 0.45; filter: grayscale(0.4); cursor: not-allowed;
+    box-shadow: var(--shadow-sticker-press);
+  }
+  .btn[disabled]:active { transform: none; }
+
+  /* Finale overlay ----------------------------------------------------------- */
+  .finale {
+    position: fixed; inset: 0; z-index: 60; display: grid; place-items: center;
+    padding: var(--sp-5); background: rgba(59, 46, 35, 0.78);
+    backdrop-filter: blur(4px);
+  }
+  .finale[hidden] { display: none; }
+  .finale__card {
+    width: 100%; max-width: 26rem; text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: var(--sp-4);
+    padding: var(--sp-6) var(--sp-5);
+    animation: pop-in var(--dur-slow) var(--ease-pop) both;
+  }
+  .recap {
+    display: flex; align-items: center; justify-content: center; gap: var(--sp-4);
+    width: 100%; padding: var(--sp-4); margin: 0;
+    background: rgba(176,128,90,0.14); border-radius: var(--r-lg);
+    border: 2px dashed rgba(209,154,68,0.55);
+  }
+  .recap__item { display: flex; flex-direction: column; align-items: center; gap: var(--sp-1); }
+  .recap__emoji { font-size: 2.2rem; line-height: 1; }
+  .recap__cap { font-size: var(--fs-caption); color: var(--text-muted); }
+  .recap__link { color: var(--c-starlight-gold); font-size: 1.4rem; }
+
+  /* Confetti comets ---------------------------------------------------------- */
+  .confetti-layer { position: fixed; inset: 0; z-index: 70; pointer-events: none; overflow: hidden; }
+  .comet {
+    position: absolute; top: -24px; width: 10px; height: 16px; border-radius: 4px;
+    will-change: transform, opacity;
+    animation: comet-fall linear forwards;
+  }
+  @keyframes comet-fall {
+    0%   { transform: translateY(-10vh) rotate(0deg);   opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0.9; }
+  }
+
+  /* Reduced motion: quiet the ambient float/twinkle (tokens.css handles loops,
+     this also neutralizes the transform so nothing sits mid-animation) -------- */
+  @media (prefers-reduced-motion: reduce) {
+    .poli-hero, .poli-mini { transform: none; }
+    .sky-stars { display: none; }
+  }
+</style>
+</head>
+
+<body class="starlight">
+
+  <!-- Ambient starfield (decorative) -->
+  <div class="sky-stars" aria-hidden="true" id="skyStars"></div>
+
+  <main class="onboard">
+
+    <!-- Top bar: back arrow + 3-star progress -->
+    <div class="topbar" data-step="1" id="topbar">
+      <button class="backbtn" type="button" id="backBtn" aria-label="Go back a step">&#8592;</button>
+      <div class="dots" role="progressbar" aria-label="Setup progress" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1">
+        <span class="dot is-current"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <span aria-hidden="true"></span>
+    </div>
+
+    <div class="steps">
+
+      <!-- ============================ STEP 1 — HELLO ======================= -->
+      <section class="step is-active" data-step="1" aria-labelledby="t1">
+        <div class="step__body">
+          <p class="eyebrow">Treasure Trail</p>
+          <div class="hello handwritten">Hi there, explorer! I'm so glad you found me. &#10022;</div>
+          <img class="poli-hero" src="mascot.svg"
+               alt="Poli, a friendly glowing brass compass with big eyes and a North-Star needle">
+          <h1 class="display display--glow" id="t1">I'm Poli!</h1>
+          <p class="lead">I'm your trail&#8209;compass for the greatest stories ever told. Together we'll follow the map &mdash; and uncover its treasures one stop at a time.</p>
+        </div>
+        <div class="step__foot">
+          <button class="btn btn--primary btn--lg btn--block" type="button" data-next>
+            Start your adventure &#10022;
+          </button>
+        </div>
+      </section>
+
+      <!-- ========================= STEP 2 — AVATAR ========================= -->
+      <section class="step" data-step="2" aria-labelledby="t2" hidden>
+        <div class="step__body">
+          <img class="poli-mini" src="mascot.svg" alt="">
+          <p class="poli-line">First&hellip; who's exploring today?</p>
+          <h1 class="h1" id="t2">Pick your explorer</h1>
+          <div class="grid grid--avatar" role="group" aria-label="Choose an explorer buddy" data-choice="avatar">
+            <button class="choice" type="button" aria-pressed="false" data-emoji="&#129418;" data-name="Fox" style="--accent:#FF9E5A">
+              <span class="choice__art" aria-hidden="true">&#129418;</span>
+              <span class="choice__label">Fox</span>
+              <span class="choice__check" aria-hidden="true">&#10003;</span>
+            </button>
+            <button class="choice" type="button" aria-pressed="false" data-emoji="&#129417;" data-name="Owl" style="--accent:#8B6BFF">
+              <span class="choice__art" aria-hidden="true">&#129417;</span>
+              <span class="choice__label">Owl</span>
+              <span class="choice__check" aria-hidden="true">&#10003;</span>
+            </button>
+            <button class="choice" type="button" aria-pressed="false" data-emoji="&#128059;" data-name="Bear" style="--accent:#37E0C8">
+              <span class="choice__art" aria-hidden="true">&#128059;</span>
+              <span class="choice__label">Bear</span>
+              <span class="choice__check" aria-hidden="true">&#10003;</span>
+            </button>
+            <button class="choice" type="button" aria-pressed="false" data-emoji="&#129409;" data-name="Lion" style="--accent:#FFD25E">
+              <span class="choice__art" aria-hidden="true">&#129409;</span>
+              <span class="choice__label">Lion</span>
+              <span class="choice__check" aria-hidden="true">&#10003;</span>
+            </button>
+            <button class="choice" type="button" aria-pressed="false" data-emoji="&#128048;" data-name="Bunny" style="--accent:#FF83C0">
+              <span class="choice__art" aria-hidden="true">&#128048;</span>
+              <span class="choice__label">Bunny</span>
+              <span class="choice__check" aria-hidden="true">&#10003;</span>
+            </button>
+            <button class="choice" type="button" aria-pressed="false" data-emoji="&#128060;" data-name="Panda" style="--accent:#ECF1FF">
+              <span class="choice__art" aria-hidden="true">&#128060;</span>
+              <span class="choice__label">Panda</span>
+              <span class="choice__check" aria-hidden="true">&#10003;</span>
+            </button>
+          </div>
+        </div>
+        <div class="step__foot">
+          <button class="btn btn--primary btn--lg btn--block" type="button" data-next data-requires="avatar" disabled>
+            That's me!
+          </button>
+        </div>
+      </section>
+
+      <!-- ========================== STEP 3 — TOPIC ========================= -->
+      <section class="step" data-step="3" aria-labelledby="t3" hidden>
+        <div class="step__body">
+          <img class="poli-mini" src="mascot.svg" alt="">
+          <p class="poli-line">Ooh &mdash; which story feels right to start?</p>
+          <h1 class="h1" id="t3">Choose your first star</h1>
+          <div class="grid grid--topic" role="group" aria-label="Choose your first story" data-choice="topic">
+            <button class="choice" type="button" aria-pressed="false" data-emoji="&#127752;" data-name="Noah's Ark" style="--accent:#37E0C8">
+              <span class="choice__art" aria-hidden="true">&#127752;</span>
+              <span class="choice__label">Noah's Ark</span>
+              <span class="choice__sub">a big boat &amp; a promise</span>
+              <span class="choice__check" aria-hidden="true">&#10003;</span>
+            </button>
+            <button class="choice" type="button" aria-pressed="false" data-emoji="&#128031;" data-name="Jonah &amp; the Big Fish" style="--accent:#8B6BFF">
+              <span class="choice__art" aria-hidden="true">&#128031;</span>
+              <span class="choice__label">Jonah &amp; the Big Fish</span>
+              <span class="choice__sub">a great big adventure</span>
+              <span class="choice__check" aria-hidden="true">&#10003;</span>
+            </button>
+            <button class="choice" type="button" aria-pressed="false" data-emoji="&#11088;" data-name="The First Christmas" style="--accent:#FFD25E">
+              <span class="choice__art" aria-hidden="true">&#11088;</span>
+              <span class="choice__label">The First Christmas</span>
+              <span class="choice__sub">follow the bright star</span>
+              <span class="choice__check" aria-hidden="true">&#10003;</span>
+            </button>
+            <button class="choice" type="button" aria-pressed="false" data-emoji="&#129409;" data-name="Daniel &amp; the Lions" style="--accent:#FF9E5A">
+              <span class="choice__art" aria-hidden="true">&#129409;</span>
+              <span class="choice__label">Daniel &amp; the Lions</span>
+              <span class="choice__sub">brave in the dark</span>
+              <span class="choice__check" aria-hidden="true">&#10003;</span>
+            </button>
+            <button class="choice" type="button" aria-pressed="false" data-emoji="&#128017;" data-name="The Good Shepherd" style="--accent:#FF83C0">
+              <span class="choice__art" aria-hidden="true">&#128017;</span>
+              <span class="choice__label">The Good Shepherd</span>
+              <span class="choice__sub">nobody gets left behind</span>
+              <span class="choice__check" aria-hidden="true">&#10003;</span>
+            </button>
+            <button class="choice" type="button" aria-pressed="false" data-emoji="&#127758;" data-name="In the Beginning" style="--accent:#ECF1FF">
+              <span class="choice__art" aria-hidden="true">&#127758;</span>
+              <span class="choice__label">In the Beginning</span>
+              <span class="choice__sub">how it all started</span>
+              <span class="choice__check" aria-hidden="true">&#10003;</span>
+            </button>
+          </div>
+        </div>
+        <div class="step__foot">
+          <button class="btn btn--primary btn--lg btn--block" type="button" id="finishBtn" data-requires="topic" disabled>
+            Light my first star! &#10022;
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============================ FINALE OVERLAY ========================== -->
+  <div class="finale" id="finale" role="dialog" aria-modal="true" aria-labelledby="finaleTitle" hidden>
+    <div class="card finale__card" tabindex="-1" id="finaleCard">
+      <img class="poli-mini" src="mascot.svg" alt="" style="width:110px">
+      <h2 class="h1 h1--glow" id="finaleTitle">You're all set, explorer!</h2>
+      <p class="body" style="margin:0;max-width:30ch">Your trail is glowing and ready. Let's go light your very first star together.</p>
+      <p class="recap">
+        <span class="recap__item">
+          <span class="recap__emoji" id="recapAvatar">&#129418;</span>
+          <span class="recap__cap">your explorer</span>
+        </span>
+        <span class="recap__link" aria-hidden="true">&#10022;</span>
+        <span class="recap__item">
+          <span class="recap__emoji" id="recapTopic">&#127752;</span>
+          <span class="recap__cap" id="recapTopicName">Noah's Ark</span>
+        </span>
+      </p>
+      <button class="btn btn--primary btn--lg btn--block" type="button" id="enterBtn">Enter the trail map &#8594;</button>
+      <button class="btn btn--ghost btn--sm" type="button" id="restartBtn">Start over</button>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    "use strict";
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* ---- Ambient starfield -------------------------------------------------- */
+    (function seedStars() {
+      var layer = document.getElementById("skyStars");
+      if (!layer || reduceMotion) return;
+      var glyphs = ["✦", "✧", "·", "✵"];
+      var frag = document.createDocumentFragment();
+      for (var i = 0; i < 34; i++) {
+        var s = document.createElement("span");
+        s.className = "star";
+        s.textContent = glyphs[i % glyphs.length];
+        s.style.left = (Math.random() * 100).toFixed(2) + "%";
+        s.style.top = (Math.random() * 92).toFixed(2) + "%";
+        s.style.fontSize = (0.55 + Math.random() * 1.1).toFixed(2) + "rem";
+        s.style.animationDelay = (Math.random() * 3.4).toFixed(2) + "s";
+        s.style.opacity = (0.25 + Math.random() * 0.5).toFixed(2);
+        frag.appendChild(s);
+      }
+      layer.appendChild(frag);
+    })();
+
+    /* ---- Step navigation ---------------------------------------------------- */
+    var steps = Array.prototype.slice.call(document.querySelectorAll(".step"));
+    var dots = Array.prototype.slice.call(document.querySelectorAll(".dot"));
+    var topbar = document.getElementById("topbar");
+    var backBtn = document.getElementById("backBtn");
+    var progressbar = document.querySelector(".dots");
+    var current = 1;
+    var state = { avatar: null, topic: null };
+
+    function showStep(n) {
+      current = n;
+      steps.forEach(function (el) {
+        var isThis = Number(el.dataset.step) === n;
+        el.hidden = !isThis;
+        el.classList.toggle("is-active", isThis);
+      });
+      dots.forEach(function (d, i) {
+        d.classList.toggle("is-current", i + 1 === n);
+        d.classList.toggle("is-done", i + 1 < n);
+      });
+      topbar.setAttribute("data-step", String(n));
+      progressbar.setAttribute("aria-valuenow", String(n));
+      // move focus to the new step's heading for screen-reader + keyboard users
+      var heading = steps[n - 1].querySelector("h1");
+      if (heading) { heading.setAttribute("tabindex", "-1"); heading.focus({ preventScroll: true }); }
+      window.scrollTo(0, 0);
+    }
+
+    document.querySelectorAll("[data-next]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (btn.disabled) return;
+        if (current < steps.length) showStep(current + 1);
+      });
+    });
+    backBtn.addEventListener("click", function () {
+      if (current > 1) showStep(current - 1);
+    });
+
+    /* ---- Choice groups (single-select) ------------------------------------- */
+    document.querySelectorAll("[data-choice]").forEach(function (group) {
+      var kind = group.dataset.choice;
+      var tiles = Array.prototype.slice.call(group.querySelectorAll(".choice"));
+      tiles.forEach(function (tile) {
+        tile.addEventListener("click", function () {
+          tiles.forEach(function (t) { t.setAttribute("aria-pressed", t === tile ? "true" : "false"); });
+          state[kind] = { emoji: tile.dataset.emoji, name: tile.dataset.name };
+          // enable the continue button that requires this choice
+          var cta = document.querySelector('[data-requires="' + kind + '"]');
+          if (cta) cta.disabled = false;
+        });
+      });
+    });
+
+    /* ---- Finale ------------------------------------------------------------- */
+    var finale = document.getElementById("finale");
+    var finishBtn = document.getElementById("finishBtn");
+
+    function decode(html) { var d = document.createElement("textarea"); d.innerHTML = html; return d.value; }
+
+    finishBtn.addEventListener("click", function () {
+      if (finishBtn.disabled) return;
+      // mark all three stars lit
+      dots.forEach(function (d) { d.classList.remove("is-current"); d.classList.add("is-done"); });
+      if (state.avatar) document.getElementById("recapAvatar").textContent = decode(state.avatar.emoji);
+      if (state.topic) {
+        document.getElementById("recapTopic").textContent = decode(state.topic.emoji);
+        document.getElementById("recapTopicName").innerHTML = state.topic.name;
+      }
+      finale.hidden = false;
+      document.getElementById("finaleCard").focus();
+      burstConfetti();
+    });
+
+    document.getElementById("enterBtn").addEventListener("click", function () {
+      burstConfetti();
+      this.textContent = "Enjoy the trail, explorer! ✦";
+      this.disabled = true;
+    });
+    document.getElementById("restartBtn").addEventListener("click", function () {
+      finale.hidden = true;
+      state.avatar = state.topic = null;
+      document.querySelectorAll(".choice").forEach(function (t) { t.setAttribute("aria-pressed", "false"); });
+      document.querySelectorAll("[data-requires]").forEach(function (b) { b.disabled = true; });
+      var enter = document.getElementById("enterBtn");
+      enter.disabled = false; enter.innerHTML = "Enter the trail map &#8594;";
+      showStep(1);
+    });
+
+    /* ---- Confetti comets ---------------------------------------------------- */
+    function burstConfetti() {
+      if (reduceMotion) return;
+      var colors = ["#D19A44", "#D98E6A", "#8FA79B", "#B0805A", "#C2683C"];
+      var layer = document.createElement("div");
+      layer.className = "confetti-layer";
+      document.body.appendChild(layer);
+      var n = 90, done = 0;
+      for (var i = 0; i < n; i++) {
+        var c = document.createElement("i");
+        c.className = "comet";
+        c.style.left = (Math.random() * 100).toFixed(2) + "%";
+        c.style.background = colors[i % colors.length];
+        var dur = (1.5 + Math.random() * 1.4);
+        c.style.animationDuration = dur.toFixed(2) + "s";
+        c.style.animationDelay = (Math.random() * 0.5).toFixed(2) + "s";
+        var w = (6 + Math.random() * 8);
+        c.style.width = w.toFixed(0) + "px";
+        c.style.height = (w * 1.5).toFixed(0) + "px";
+        c.style.opacity = (0.75 + Math.random() * 0.25).toFixed(2);
+        if (Math.random() < 0.35) c.style.borderRadius = "50%";
+        c.addEventListener("animationend", function () {
+          this.remove(); done++;
+          if (done >= n) layer.remove();
+        });
+        layer.appendChild(c);
+      }
+      // safety cleanup
+      setTimeout(function () { if (layer.parentNode) layer.remove(); }, 4200);
+    }
+  })();
+  </script>
+
+  <!-- FIRST-RUN GROWN-UP / TRUST + PARENT-GATE MOMENT (added per design panel) -->
+  <div id="grownup-gate" role="dialog" aria-label="For grown-ups"
+       style="position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:var(--sp-5);background:rgba(59,46,35,.85);backdrop-filter:blur(3px)">
+    <div class="card" style="max-width:26rem;width:100%;text-align:left">
+      <div class="eyebrow" style="text-align:center">👋 For grown-ups · just once</div>
+      <h2 class="h2" style="text-align:center;color:var(--c-starlight-gold);margin:.25rem 0 var(--sp-4)">Before Poli meets your kid</h2>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--sp-3);line-height:1.5">
+        <li>🔒 <b>Private by design.</b> Runs on-device, minimal data, parent-gated — no open internet chat.</li>
+        <li>🧭 <b>A guide, not an &ldquo;AI friend.&rdquo;</b> Poli helps with Bible stories; it never pretends to be a person or a confidant.</li>
+        <li>📖 <b>Never misquotes Scripture.</b> Poli retells in its own warm words; real verses come from <i>your</i> family&rsquo;s Bible &amp; translation.</li>
+        <li>✝️ <b>Your tradition.</b> Represented from the Southern Baptist Convention (Baptist Faith &amp; Message).</li>
+        <li>💬 <b>Hard questions come home to you.</b> Big or sensitive ones are gently handed back with a conversation guide.</li>
+      </ul>
+      <p class="muted" style="margin:var(--sp-4) 0;text-align:center">Set it up together, then hand the device to your little explorer.</p>
+      <button class="btn btn--primary btn--block btn--lg" onclick="document.getElementById('grownup-gate').style.display='none'">I&rsquo;m a grown-up — let&rsquo;s begin ✦</button>
+      <p class="caption" style="text-align:center;margin-top:var(--sp-3)">A quick tap-and-hold parent gate lives here in the real app.</p>
+    </div>
+  </div>
+</body>
+</html>

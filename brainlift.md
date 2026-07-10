@@ -1,23 +1,21 @@
 ## Purpose
 
-### Purpose
-
-**Goal:** The purpose of this BrainLift is to decide what a trustworthy kids' Bible product must be, what the existing (and existing AI) faith apps actually do, and evidence of how general-purpose AI already fails for children, for religion, and for Christianity specifically.
+**Goal:** Decide what a trustworthy kids' Bible model must be for **one tradition — the Southern Baptist Convention (SBC)** — using the **Baptist Faith & Message 2000 (BF&M)** as its source of truth: what the existing (and existing AI) faith apps do, how general-purpose AI fails for children and for Christianity, and what a *tradition-anchored* model must therefore be. The product's behavior is a model that **confidently holds the SBC's core doctrine at a kid's level, graciously notes where Christians differ, and hands family-owned questions to the parent.**
 
 ### In Scope
 
-- **User:** the Christian-parent buyer and the 6–9 year old user
+- **User:** the evangelical / SBC-family buyer (parent) and the 6–9 year old user
     - Who they are, what they value, what they fear/reject
 - **Current Landscape:** existing faith apps (YouVersion, Hallow, etc), existing AI faith apps (Bible Chat/CrossTalk, Text With Jesus, "AI Jesus," Magisterium AI), existing children's faith apps
     - What they do and where they fail
-- **Why AI underperforms:** for children, for religion generally, and for Christianity specifically.
-- What those constraints imply the product must be
+- **Why AI underperforms:** for children, for religion generally, and for Christianity specifically — especially *flattening* every tradition into a generic "Christians believe…"
+- **The doctrine tiering:** which SBC positions the model holds (closed-hand), acknowledges as contested (open-hand), or deflects to the family — all anchored to the BF&M.
 
 ### Out of Scope
 
 - **How to build/fine-tune a model** — QLoRA, parameters, base-model choice, training recipe. Cut per instructor guidance.
 - Full app architecture, monetization mechanics, GTM sequencing.
-- The v2 "configurable doctrine" engine (SPOV 3 argues it's the wrong frame anyway).
+- **Runtime-configurable multi-denomination doctrine** — this project commits to *one* tradition (SBC) done rigorously; a parameterized "tradition pack" is a later idea, not this build.
 - Crisis-disclosure product design beyond naming it a launch requirement.
 
 ---
@@ -25,14 +23,15 @@
 ## DOK 4: Spiky Points of View (SPOVs)
 
 - **Spiky POV 1:** AI doesn't fail at faith because it isn't smart enough. It fails because it's built to agree.
-    - **Elaboration:** The failures in Category 3 aren't gaps that a bigger model fixes — they're the predictable output of the training. Models optimize for the answer a human rater prefers, and matching the user's existing view is one of the strongest predictors of that preference (Sharma et al.). So the model learns to affirm. That's fine for most consumer tasks but not for faith formation, where the formative answer is frequently no — "that's not what this teaches," "sit with the hard part," "ask your parents." A smarter model trained the same way is just a better sycophant. This is why "just use a better model" isn't the fix, and why the product has to be built around a behavior.
-- **Spiky POV 2:** Deflection is the whole product, not the fallback. One behavior solves three separate failures at once.
-    - **Elaboration:** When a kid asks something hard and the app "wonders" instead of answering, that looks like a cop-out. However, the warm wondering question is the most valuable thing the product does for three reasons:
-        1. It is the opposite of sycophancy — it neither caves to the child's premise nor asserts a possibly-wrong answer.
-        2. It delivers doctrine-neutrality through the PRD's loop: kid asks hard question → warm wondering → parent gets a conversation guide, so contested belief is handed to the family that owns it.
-        3. It reduces the likelihood of hallucinations, because the model isn't producing an authoritative answer it could get wrong.
+    - **Elaboration:** The failures in Category 3 aren't gaps that a bigger model fixes — they're the predictable output of the training. Models optimize for the answer a human rater prefers, and matching the user's existing view is one of the strongest predictors of that preference (Sharma et al.). So the model learns to affirm. That's fine for most consumer tasks but not for faith formation, where the formative answer is frequently no — "that's not what this teaches," "sit with the hard part," "ask your parents." A smarter model trained the same way is just a better sycophant. This is why "just use a better model" isn't the fix, and why the product has to be built around a behavior. For a tradition-anchored model the proof is sharpest: holding believer's baptism warmly when a child pushes "but my cousin's baby got baptized" is exactly the loving "no" a sycophant can't give — and the base-vs-tuned delta lands right there.
+- **Spiky POV 2:** Specificity beats neutrality — anchor to one tradition and *hold its line*. Deflection is one move of three, not the whole product.
+    - **Elaboration:** The dominant AI failure in faith isn't heresy — it's *flattening*: collapsing every tradition's distinctives into a generic "different Christians believe…" mush (Owen 2026 measured exactly this — models sound orthodox but capture barely half the doctrinal content). A model anchored to one tradition is the direct structural answer, and there was never a truly "neutral" answer to a 7-year-old's hard question anyway — "neutral" is always either flattened or some tradition's view in disguise. So the product's behavior is a **three-tier stance** keyed to the SBC's Baptist Faith & Message:
+        1. **HOLD** the closed-hand core confidently at a kid's level — believer's baptism, eternal security, symbolic Lord's Supper — and never cave under pushback (this is the anti-sycophancy proof from SPOV 1).
+        2. **ACKNOWLEDGE** that church families differ on open-hand matters (election, end-times, tongues) without picking a winner — the humility that keeps it from being sectarian.
+        3. **DEFLECT** the genuinely family-owned or adult questions (a named soul's eternity, why God allowed a real loss, sex, gender roles) to the parent — the family still owns those.
+    - Deflection matters — it is one of the three tiers — but the product is the *stance*, not the dodge. This is what sharpens the base-vs-tuned delta: a well-prompted base model flattens exactly where this product must hold, and flip-flops under "but my teacher said…" exactly where it must not.
 - **Spiky POV 3:** The most trustworthy Bible AI is one that never quotes the Bible.
-    - **Elaboration:** It sounds backwards — a Bible product whose model won't produce Bible verses. But generating Scripture from a model's memory is exactly where the fatal errors live: ChatGPT invented a fake scripture-styled passage of Jesus affirming a transgender person (Answers in Genesis), and Bible Chat — which markets itself as "theologian-reviewed" — quoted Romans 12:2 while labeling it Philippians 4:8 (Brave Parenting), the very kind of confident misquote Christianity Today documented. A fabricated or misattributed verse shown to a child is the single most damaging screenshot the product could produce. So the model never free-generates verse text or references; it retells stories in its own warm words, and any verbatim verse is retrieved from a fixed Bible file in the translation the parent chose at onboarding. The file is the guardrail: the only Scripture a child ever sees is text that physically exists in a real, family-chosen Bible — never something the model wrote. That is a guarantee the leading AI Bible apps demonstrably can't make, which turns "our AI can't quote the Bible" from a limitation into the trust claim.
+    - **Elaboration:** It sounds backwards — a Bible product whose model won't produce Bible verses. But generating Scripture from a model's memory is exactly where the fatal errors live: ChatGPT invented a fake scripture-styled passage of Jesus affirming a transgender person (Answers in Genesis), and Bible Chat — which markets itself as "theologian-reviewed" — quoted Romans 12:2 while labeling it Philippians 4:8 (Brave Parenting), the very kind of confident misquote Christianity Today documented. A fabricated or misattributed verse shown to a child is the single most damaging screenshot the product could produce. So the model never free-generates verse text or references; it retells stories in its own warm words, and any verbatim verse is retrieved from a fixed Bible file in the translation the parent chose at onboarding. The file is the guardrail: the only Scripture a child ever sees is text that physically exists in a real, family-chosen Bible — never something the model wrote. That is a guarantee the leading AI Bible apps demonstrably can't make, which turns "our AI can't quote the Bible" from a limitation into the trust claim. This coexists cleanly with SPOV 2: the model now *asserts doctrine* confidently, yet still never *types a verse* — holding a belief and quoting Scripture are two different acts, and only the second is where the fatal hallucination lives.
 
 ---
 
@@ -56,6 +55,7 @@
 - **Insight 1:** There is a large consumer base that is willing to pay for apps but is hesitant about AI + faith.
 - **Insight 2:** There is a gap between a desire for parents to pass on their faith and little structure and practice.
 - **Insight 3:** AI's Scripture errors are a distinct failure from getting doctrine wrong — a fabricated or misquoted verse is a discrete, screenshot-fatal event, and it comes specifically from the model *generating* text it should only ever *retrieve*.
+- **Insight 4:** The dominant AI failure in Christian contexts is *flattening*, not heresy — so the winning move is **specificity** (anchor to one tradition and hold its line), and the very same flattening metric (Owen's atomic-claim scoring) becomes the eval. Picking a tradition turns AI's biggest weakness into the product's measurable edge.
 
 ---
 
@@ -150,6 +150,7 @@
                 - Dominant error was flattening/omission (collapsing distinctives into a generic "Christians"); outright contradiction was rare but serious, concentrated in sacraments and eschatology (e.g., Eucharist described as merely symbolic, denying Catholic/Orthodox real presence). Minority traditions (Orthodox, Pentecostal, LDS, Jehovah's Witnesses) were systematically underrepresented.
             - **DOK 2 - Summary:**
                 - The only peer-reviewed, Christianity-specific study proving models sound orthodox while getting doctrine substantively wrong. The core threat isn't outright error (rare) but partial truth — fluent, surface-accurate answers that often omit.
+                - **Pivot note:** for this SBC project the finding flips from a *warning* into the *pro-argument and the eval backbone* — since flattening is the dominant failure, a tradition-anchored model is the structural fix, and Owen's atomic-claim method is exactly how we score it (`data/bfm_claims.json`).
             - **Link to source:** https://link.springer.com/article/10.1007/s43681-026-01051-0
         - **Source 2: Rozado — "The Political Preferences of LLMs," *PLOS ONE* (2024)**
             - **DOK 1 - Facts:**
@@ -199,3 +200,4 @@
 - Answers in Genesis (2023). ChatGPT Generates Bible Verse. https://answersingenesis.org/technology/chatgpt-generates-bible-verse/
 - Christianity Today (2023). Misreading Scripture with Artificial Eyes. https://www.christianitytoday.com/2023/07/ai-chatgpt-exegetical-tool-bible-scripture-sermon-mount/
 - Pew Research Center (2025). How Americans View AI and Its Impact on People and Society. https://www.pewresearch.org/science/2025/09/17/how-americans-view-ai-and-its-impact-on-people-and-society/
+- Southern Baptist Convention. The Baptist Faith & Message 2000 (source of truth for the model's doctrine tiering; Art. VI amended 2023). https://bfm.sbc.net/bfm2000/
