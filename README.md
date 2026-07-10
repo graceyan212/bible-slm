@@ -15,7 +15,7 @@ The dataset (not the model) is the deliverable; the same flatten-rate is the eva
 ## Start here
 - **Read:** [`MORNING-BRIEF.md`](MORNING-BRIEF.md) — what's built, what needs you, status.
 - **See the app:** open [`design/index.html`](design/index.html) in a browser → `home.html` (constellation trail), `lesson.html` (story + Ask-Poli), `compass.html` (SLM chat/voice + guided-topic picker). Design system + mascot in `design/tokens.css` + `design/mascot.svg`; rationale in `design/DESIGN-BRIEF.md`; review record in `design/PANEL.md` (**panel PASSED**).
-- **Run the model** (your Colab GPU): [`train/README.md`](train/README.md) — baseline eval → QLoRA fine-tune → tuned eval → results table.
+- **Run the model** (your Colab GPU): [**▶️ open `train/colab.ipynb` in Colab**](https://colab.research.google.com/github/graceyan212/bible-slm/blob/main/train/colab.ipynb) (set T4 GPU → Run all) — baseline eval → QLoRA fine-tune → tuned eval → results table. Runbook: [`train/README.md`](train/README.md).
 
 ## Repo map
 | Path | What |

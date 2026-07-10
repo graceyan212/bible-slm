@@ -1,5 +1,7 @@
 # train/ — QLoRA fine-tune + base-vs-tuned eval (Colab runbook)
 
+> ▶️ **Easiest path:** [**Open `colab.ipynb` in Colab**](https://colab.research.google.com/github/graceyan212/bible-slm/blob/main/train/colab.ipynb) → set **Runtime → T4 GPU** → **Run all**. It does everything below automatically (clone → install → baseline eval → fine-tune → tuned eval → results table). The manual steps are documented here for reference.
+
 This is the **button-press** Grace runs on Colab (free T4 is enough for Qwen3-1.7B/4B). The
 dataset + eval are the graded deliverables; this just turns them into the number.
 
