@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Treasure Trail — Base vs Tuned (the delta)</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body.starlight{padding:var(--sp-6) var(--sp-4) var(--sp-8)}
+  .report{max-width:940px;margin:0 auto}
+  .head{text-align:center;margin-bottom:var(--sp-6)}
+  .head .kicker{font-family:var(--font-map);letter-spacing:.18em;text-transform:uppercase;
+    color:var(--c-ink-soft);font-size:.85rem}
+  .head p.sub{color:var(--c-ink-soft);max-width:60ch;margin:var(--sp-3) auto 0}
+  .legend{display:flex;gap:var(--sp-5);justify-content:center;margin:var(--sp-4) 0 var(--sp-6);font-weight:700}
+  .swatch{display:inline-block;width:16px;height:16px;border-radius:4px;border:2px solid var(--outline);vertical-align:-3px;margin-right:6px}
+  .sw-base{background:var(--c-locked)} .sw-tuned{background:var(--c-brass)}
+
+  /* flagship before→after cards */
+  .flagship{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-bottom:var(--sp-6)}
+  .stat{background:var(--surface);border:var(--outline-w) solid var(--outline);border-radius:var(--r-lg);
+    padding:var(--sp-4);box-shadow:var(--shadow-soft);text-align:center}
+  .stat .lbl{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--c-ink);min-height:2.6em;display:block}
+  .stat .nums{font-family:var(--font-display);font-weight:800;font-size:1.5rem;margin:var(--sp-2) 0}
+  .stat .b{color:var(--c-ink-soft)} .stat .t{color:var(--c-brass-deep)} .stat .arw{color:var(--c-sage-deep);margin:0 .3em}
+  .stat .cap{font-size:.8rem;color:var(--c-ink-soft)}
+  .stat .dir{display:inline-block;margin-top:6px;font-size:.72rem;font-weight:700;letter-spacing:.04em;
+    color:var(--c-sage-deep);background:rgba(143,167,155,.2);border-radius:var(--r-pill);padding:2px 10px}
+
+  /* grouped bars */
+  .bars{background:var(--surface);border:var(--outline-w) solid var(--outline);border-radius:var(--r-lg);
+    padding:var(--sp-5);box-shadow:var(--shadow-soft)}
+  .row{display:grid;grid-template-columns:130px 1fr;gap:var(--sp-3);align-items:center;margin:var(--sp-3) 0}
+  .row .name{font-weight:700;font-size:.95rem;text-align:right;color:var(--c-ink)}
+  .pair{display:flex;flex-direction:column;gap:5px}
+  .track{position:relative;background:rgba(59,46,35,.08);border-radius:var(--r-pill);height:22px}
+  .fill{height:100%;border-radius:var(--r-pill);border:2px solid var(--outline);box-sizing:border-box;
+    display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:.72rem;font-weight:800;color:var(--c-outline)}
+  .fill.base{background:var(--c-locked)} .fill.tuned{background:var(--c-brass)}
+  .fill.zero{border:none;color:var(--c-ink-soft);justify-content:flex-start;padding-left:2px}
+
+  .caveat{margin-top:var(--sp-5);background:rgba(176,128,90,.12);border:2px dashed var(--c-caramel);
+    border-radius:var(--r-md);padding:var(--sp-4);font-size:.92rem;color:var(--c-ink)}
+  .thesis{text-align:center;font-family:var(--font-hand);font-size:1.7rem;color:var(--c-brass-deep);margin:var(--sp-6) auto 0;max-width:44ch}
+  h2.sec{font-family:var(--font-display);color:var(--c-ink);margin:var(--sp-6) 0 var(--sp-3)}
+  @media(max-width:640px){.flagship{grid-template-columns:1fr}.row{grid-template-columns:96px 1fr}}
+</style>
+</head>
+<body class="starlight">
+<div class="report">
+
+  <div class="head">
+    <div class="kicker">✦ Behavior from data ✦</div>
+    <h1 class="display display--glow">Base vs. Tuned — the delta</h1>
+    <p class="sub">Same small model (Qwen3), same steelman 3-tier system prompt, 52 held-out scenarios, tier-aware LLM judge. The only difference: the tuned model saw the <b>1,095-record SBC dataset</b>.</p>
+    <div class="legend"><span><span class="swatch sw-base"></span>Base (prompt only)</span><span><span class="swatch sw-tuned"></span>Tuned (+ our dataset)</span></div>
+  </div>
+
+  <!-- FLAGSHIP: the three behaviors a well-prompted base can't do -->
+  <div class="flagship">
+    <div class="stat">
+      <span class="lbl">Deflect boundary — verdict leaked on family-owned questions</span>
+      <div class="nums"><span class="b">100%</span><span class="arw">→</span><span class="t">9%</span></div>
+      <div class="cap">11/11 → 1/11 leaked</div>
+      <span class="dir">↓ 91 pts better</span>
+    </div>
+    <div class="stat">
+      <span class="lbl">Never cave under pushback (worst-case, 0–2)</span>
+      <div class="nums"><span class="b">0</span><span class="arw">→</span><span class="t">2</span></div>
+      <div class="cap">base fully caves; tuned holds every time</div>
+      <span class="dir">↑ holds firm</span>
+    </div>
+    <div class="stat">
+      <span class="lbl">Over-hold — picks a side on open-hand questions</span>
+      <div class="nums"><span class="b">33%</span><span class="arw">→</span><span class="t">0%</span></div>
+      <div class="cap">2/6 → 0/6 adjudicated</div>
+      <span class="dir">↓ stays neutral</span>
+    </div>
+  </div>
+
+  <h2 class="sec">Pass rate by behavior class</h2>
+  <div class="bars">
+    <!-- each row: base bar then tuned bar; width = % -->
+    <div class="row"><div class="name">deflect</div><div class="pair">
+      <div class="track"><div class="fill base zero" style="width:2%">0%</div></div>
+      <div class="track"><div class="fill tuned" style="width:66%">66%</div></div></div></div>
+    <div class="row"><div class="name">open-hand</div><div class="pair">
+      <div class="track"><div class="fill base" style="width:33%">33%</div></div>
+      <div class="track"><div class="fill tuned" style="width:100%">100%</div></div></div></div>
+    <div class="row"><div class="name">adversarial</div><div class="pair">
+      <div class="track"><div class="fill base" style="width:33%">33%</div></div>
+      <div class="track"><div class="fill tuned" style="width:100%">100%</div></div></div></div>
+    <div class="row"><div class="name">danger</div><div class="pair">
+      <div class="track"><div class="fill base" style="width:33%">33%</div></div>
+      <div class="track"><div class="fill tuned" style="width:100%">100%</div></div></div></div>
+    <div class="row"><div class="name">closed-hand</div><div class="pair">
+      <div class="track"><div class="fill base" style="width:64%">64%</div></div>
+      <div class="track"><div class="fill tuned" style="width:94%">94%</div></div></div></div>
+    <div class="row"><div class="name">benign off-topic</div><div class="pair">
+      <div class="track"><div class="fill base" style="width:20%">20%</div></div>
+      <div class="track"><div class="fill tuned" style="width:80%">80%</div></div></div></div>
+    <div class="row"><div class="name">safe_core</div><div class="pair">
+      <div class="track"><div class="fill base" style="width:83%">83%</div></div>
+      <div class="track"><div class="fill tuned" style="width:83%">83%</div></div></div></div>
+  </div>
+
+  <div class="caveat">
+    <b>Honest caveats.</b> Small n (52 scenarios; 3–17 per class), so read single points as directional — but the flagship deltas (deflect-leak 11/11→1/11, cave 0→2) are unambiguous. The one blemish: on <em>direct</em> demo-doctrine questions the tuned model flattened <b>1 of 12</b> (0%→8%) where the steelman-prompted base didn't — but the base only "held" those easy asks because the prompt fed it the answers, then <b>caved under pushback</b>. safe_core held (83→83; task-quality 1.83→2.0) — no capability regression.
+  </div>
+
+  <p class="thesis">A tradition-anchored dataset taught a small model to hold under pressure, not over-hold, and defer family-owned questions — a stance a well-prompted base can't sustain.</p>
+
+</div>
+</body>
+</html>

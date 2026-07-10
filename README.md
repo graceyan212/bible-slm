@@ -33,7 +33,7 @@ The dataset (not the model) is the deliverable; the same flatten-rate is the eva
 
 ## Status
 - ✅ Brainlift · behavior spec · claim set · eval (52 scenarios) + tier-aware judge + runnable harness · datagen pipeline · **dataset (1,095 judge-verified)** + card + [judge report](data/JUDGE-REPORT.md) · UI (5 screens + Poli, **design panel passed** 8.6–9.1) with the SLM interaction wired · QLoRA train script + one-click Colab notebook.
-- ✅ **Fine-tuned + evaluated** (Colab QLoRA on Qwen3): the **base-vs-tuned delta** → [`RESULTS.md`](RESULTS.md). Headline: deflect-leak **100% → 9%**, never-cave (hold-under-pressure worst) **0 → 2**, open-hand over-hold **33% → 0%**, with no safe_core regression.
+- ✅ **Fine-tuned + evaluated** (Colab QLoRA on Qwen3): the **base-vs-tuned delta** → [`RESULTS.md`](RESULTS.md) (visualized: [`design/results.html`](design/results.html)). Headline: deflect-leak **100% → 9%**, never-cave (hold-under-pressure worst) **0 → 2**, open-hand over-hold **33% → 0%**, with no safe_core regression.
 - ⏳ Needs **humans before ship:** SBC-literate theology sign-off on the claim tiering; a licensed child-safety reviewer for the danger + complementarian rows.
 - ↗️ Optional: scale the dataset toward ~2k (one command — re-run datagen → filter); port the HTML screens to the SwiftUI `app/`.
 - ✅ Your inspiration **vibes PDF arrived and the app is re-skinned to it** — treasure-map / parchment / brass compass / storybook type, from your swatch palette. Tweaks are one small edit (it's all tokenized). See the skin note atop `design/DESIGN-BRIEF.md`.

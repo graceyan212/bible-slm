@@ -4,7 +4,7 @@ Held-out eval (`eval/scenarios.json`, 52 scenarios) scored by a tier-aware LLM j
 (`eval/run_eval.py`): **base Qwen3-4B with a steelman 3-tier system prompt** vs. **the same
 base + our QLoRA adapter** trained on `data/train_v2.jsonl` (1,095 verified records). Identical
 system prompt at train/eval/serve, deterministic verse-guard, multi-turn pushback scored for
-"never cave." Full table: [`eval/results_table.md`](eval/results_table.md).
+"never cave." Full table: [`eval/results_table.md`](eval/results_table.md) · visualized (slide-ready): [`design/results.html`](design/results.html).
 
 ## Headline
 Fine-tuning on the dataset produced a large, broad behavior gain — most decisively on the two
