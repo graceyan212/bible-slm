@@ -1,0 +1,239 @@
+The Future of App Design is Invisible
+https://www.youtube.com/watch?v=zRUoPIwCxfw
+
+Are you designing a BlackBerry in the
+iPhone era? Probably, because most teams
+are still shipping outdated software
+without even realizing. But then you
+have players like Intercom and the
+browser company who have seen the next
+curve. They're not just adding AI to
+interfaces, they're replacing interfaces
+with outcomes. And in this video, we'll
+learn what that means in the AI era, why
+these companies are doing it, and the
+framework we can use to design
+outcomebased interfaces that will
+thrive. But before we get into any of
+that, we need to understand what
+actually happened to poor old
+BlackBerry. Because most people forget
+BlackBerry was winning. They owned
+almost half the smartphone market in the
+US. Presidents used it. CEOs swore by
+it. And then something happened. An
+Apple keynote with Steve Jobs announcing
+the iPhone. Didn't take long before
+texting with keyboards and navigating
+with these odd scroll balls was a thing
+of the past. And at this point, it was
+clear the phone game had changed
+forever. BlackBerry didn't fail because
+they were bad at building phones. They
+failed because the rules of the game had
+changed and they didn't realize until it
+was too late. The iPhone introduced a
+new interaction layer which was touch
+first and appentric. Well, Blackberry
+was still building for a world people
+were walking away from. Today, the same
+shift is happening. Interfaces like
+keyboards back then are now becoming
+less important because with AI, we're
+forced to think much more about outcomes
+and much less about screens, something
+most startups are still missing. We'll
+still see today's app builders pad AI
+features onto legacy interfaces. And
+while that's understandable since
+everyone else is doing it, it's the
+wrong approach entirely. We're at a
+stage in tech where we need to rethink
+what an app even is. And this is
+something the browser company understood
+when they, despite a bunch of backlash,
+decided to sunset their innovative and
+hugely popular browser called Arc.
+Before we dig into that though, if
+you're looking for help in exploring how
+to design your product for the future,
+we offer free monthly design strategy
+sessions at ZipSap. Just click the link
+below and remember, we only have a few
+spots per month, so don't miss out. Now,
+ARK was ambitious and beautiful. While
+it was clearly very innovative at its
+core, it was still based on an old model
+of how interfaces should behave. And
+this was something leadership
+understood. So instead of incrementally
+iterating and padding it with AI
+features, they announced to the world
+that ARC would be no more. In its place,
+they would build a re-imagined browser
+called DIA. What makes DIA feel like a
+real leap, not just a facelift, is this,
+it's not trying to deliver a better
+browsing experience. It's trying to
+deliver browsing outcomes without making
+you browse. And that's the key. This
+isn't outcome first design as we knew
+it. It's outcome first design for the AI
+era where the journey itself often
+disappears entirely. You don't navigate,
+you just ask and it answers. DI
+collapses the flow and gives you what
+you came for faster than you even knew
+was possible. And this is why it's clear
+that DIA isn't trying to be a better
+BlackBerry. It's aiming to become the
+iPhone moment for browsing. However,
+they're not the only ones aiming for
+this. But before we get into the lessons
+and the frameworks we can take with us
+from this, let's look at an arguably
+more interesting case of recent outcome
+first design in the AI space.
+Billiondoll customer service behemoth
+Intercom. They saw the same exact wave
+coming. But the crazy thing about them
+is how they were already a category
+leader in customer support. They have a
+super clear product market fit, huge
+brand equity, and thousands of
+customers. which makes it kind of insane
+to think that instead of protecting this
+old playbook that has been working for
+them, they just threw it out because as
+their chief product officer Paul Adams
+said within a week of chat GPT
+launching, they paused the road map and
+built Finn, an AI native product focused
+on one thing, resolving questions
+instantly. Finn, much like Intercom,
+still has a dashboard for now, but the
+product is outcome first. Customers get
+a direct AI powered resolution before
+they ever touch a help article or a
+human rep. And this is even reflected in
+their pricing model, which is based on
+resolved tickets, aka successful
+outcomes. The interface didn't
+disappear, but its role changed. The
+outcome comes first and everything else
+gets out of the way. And as a result of
+this, Finn is now intercom's fastest
+growing product ever and has become the
+company's main focus, which is really
+cool. But how do we learn from this? And
+how do you apply it to a smaller sized
+startup, for example? Well, I'll go into
+that in just a moment. But first, if
+you're looking for someone to talk to
+about these strategic product and design
+questions, check out the free strategy
+calls in the link down below. Now,
+designing for outcomes is nothing new.
+But with AI, it's just different. We can
+now design for outcomes by skipping
+steps entirely in some cases. Which begs
+the question, how do we evaluate what
+those cases are? The cases where AI will
+disrupt our product or where it will
+unlock shorter paths to outcomes. Well,
+it starts with a simple but powerful
+matrix. First, what type of value does
+your product deliver? Is it utility or
+experience? Is the user's core task
+repetitive or nuanced? place your
+product or even individual flows in your
+product inside a matrix and you'll get a
+rough idea of where AI can take over the
+flow completely versus where the
+experience still matters. When something
+is highly repetitive, mechanical,
+rule-based, and utility focused, that's
+a red flag. You're in an AI dangerous
+zone at this point. These are the kinds
+of interfaces that will be automated,
+maybe even removed or rebuilt from
+scratch. Take something like Adobe
+Premiere for example. A huge part of
+professional editing is rulebased, like
+trimming gaps, fine-tuning audio,
+syncing tracks, removing silences. And
+all of this is now automatable by AI in
+some way or form. So, if you're building
+the next editing app, the question is no
+longer how do we make the timeline
+easier. It's rather does the user even
+need to touch the timeline at all. Now,
+on the other side of the spectrum, we
+have areas with low AI risk and these
+are typically apps that are emotion
+oriented, judgmentheavy, or based on
+interaction itself as the value. For
+example, a game. While you're trying to
+get to an outcome, winning the game, the
+game play itself is the goal. In this
+case, AI can amplify the experience like
+adjusting difficulty or generating
+narrative, but it won't replace the UI
+or remove the human from the loop. In
+fact, designing for delight becomes even
+more important in a case like this. So,
+can AI replace this interface? isn't the
+question. The question is, is the
+interface just a means to an end or is
+it the experience itself? Now, there are
+also some interesting edge cases where
+full outcome first automation or
+invisible UI might not make sense. For
+example, say you're checking your bank
+balance in a co-working space. You
+probably don't want to say it out loud
+and you definitely don't want an
+assistant reading it back to you. In
+this case, the invisible interface like
+voice might take a step back. But of
+course, AI can still play a sport role
+in the background like flagging unusual
+transactions, predicting upcoming bills,
+or even proactively nudging you when
+your spending spikes. And the same goes
+for informationheavy interfaces like
+investment dashboards. Users often need
+to see multiple data points side by
+side, scan visual patterns, and make
+human decisions fast. Therefore,
+interfaces here need to stay visible and
+flexible with outcome oriented
+automation for summarizing trends,
+recommending actions or highlighting
+anomalies. So yes, there are edge cases
+where full removal of UI or relying on
+automation completely doesn't apply, but
+these are the exceptions, not the rule.
+In most products, the default assumption
+should be that you're not thinking
+deeply enough about user outcomes and
+how you can cut steps. So always ask
+yourself, what's the quickest line
+between user and outcome? What parts of
+that journey are mechanical and slow
+today? What parts would users happily
+never do again if something else just
+handled it? And most importantly, don't
+think in terms of screens. Think in
+terms of outcomes. Design your product
+around the fastest, least distracting
+path to get there. even if that path
+disappears entirely. On top of that, if
+you want to design weirdly addictive
+interfaces in the cases where it still
+matters, check out the video here which
+is about emotional design and how apps
+like Dualingo and Revolute and Phantom
+use it to kind of manipulate people.
+Now, until the next one though, have a
+great life.

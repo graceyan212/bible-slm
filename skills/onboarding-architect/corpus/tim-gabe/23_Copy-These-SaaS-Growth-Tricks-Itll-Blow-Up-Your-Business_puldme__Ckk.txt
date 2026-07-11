@@ -1,0 +1,209 @@
+Copy These SaaS Growth Tricks (It'll Blow Up Your Business)
+https://www.youtube.com/watch?v=puldme__Ckk
+
+Whether your SAS business thrives or
+flatlines can come down to two moments.
+How well you handle your free trials and
+pay walls, as well as what happens when
+it's time to upgrade. So, in this video,
+we'll learn how to supercharge those two
+moments by breaking down real AB test
+results that have driven serious growth
+for apps like Headspace, Uber, and
+Blinkist. Now, before we jump to the
+impressive gains unlocked by some of
+these upgrade and subscription tricks,
+let's start with the first and most
+pivotal lever. How you handle your free
+trial and pay wall flow. Take Blinkist
+as an example. They didn't overhaul
+their offer. They simply made it easier
+to say yes to it by visually explaining
+the 7-day free trial using a simple
+step-by-step breakdown. They anchored it
+in reality. And this taps into the
+psychology of progressive disclosure,
+which shows us that people don't fear
+commitment as much as they fear the
+unknown. And in this case, when users
+know exactly what happens each day, the
+trial feels less like a leap and more
+like a guided walk. And the result of
+this particular guided walk was a 23%
+increase in trial signups. So, don't
+just offer the experience, let users
+preview it. Let them see it like it's a
+7-day itinerary. With that said though,
+making something clearer is one thing,
+but what if you can add thousands or
+even millions of signups yearly by
+making it feel special instead? That's
+exactly what Headspace did. And before
+we break it down, just a quick note
+here. If upgrading your trial or payw
+wall experience sounds like something
+that's valuable but timeconuming, at
+SIPAP, we run free design strategy
+sessions focused entirely on flows like
+this. So, if you're curious, there is a
+link down below that you can use to see
+if there are any spots left this month.
+Now, back to Headspace. They completely
+reframed their trial offer. Instead of
+using the word trial, which is a word
+loaded with obligation, they called it a
+30-day guest pass. And that's not just a
+word shift. That's pure psychology. And
+more specifically, they were using
+what's called the framing effect. While
+trial feels transactional, guest pass
+feels kind of like an invitation. It's
+exclusive, feels temporary, and it's
+respectful. The result was a 7% increase
+in new signups from a tiny word change.
+So the actionable advice here is reframe
+copy to match the emotion you want users
+to feel. Don't just automatically resort
+to the word trial or any other word
+standard for that matter. Now changing
+the words isn't the only thing you can
+do in this case. You can also change the
+options. Moonly found that when they
+offered a free trial exclusively on the
+annual plan, conversions didn't dip.
+They flew through the freaking roof. By
+removing the trial from the monthly
+option entirely, the annual subscription
+suddenly felt like the smarter purchase.
+This is called the decoy effect. A
+classic pricing SCOP. By adding
+exclusive value to one plan, you're not
+just offering more. You're guiding
+decisions through a symmetry. And in
+this case, it resulted in a 39%
+conversion rate boost and a 47% increase
+in revenue per 100 installs. That's a
+lot of ROI. So, don't just add new
+plans. Try making your best plan harder
+to ignore by giving it something no
+other option has. Now, of course, none
+of this really matters if users never
+even activate their trial, which brings
+us to the case of Slopes. They tackled
+the core issue that most trials face,
+getting started. Instead of a multi-step
+payw wall mess, they introduced a
+one-touch free trial, an instant
+frictionless start. This speaks to the
+idea of reducing cognitive load, which
+basically says that the more effort
+someone exerts up front, the less likely
+they'll commit. And as we know in SAS,
+friction at the wrong moment is fatal.
+This change gave slopes a 25% boost in
+trial start rates. So, if your signups
+are low, look at your entry point. Every
+extra step you have in there could mean
+lots of lost users and revenue. But of
+course, trial speed isn't everything
+because if you just add a tiny little
+bit of psychology to the length of the
+trial, things get even more interesting.
+Which brings us back to Headspace. They
+offered a 7-day trial for monthly
+subscribers, but 14 days for annual
+subscribers. And that small difference
+triggered huge results because it
+activated the anchoring bias. When users
+compare plans, they don't just compare
+price, they compare benefits. A longer
+trial feels like a better deal, even if
+the value isn't really tangible. And the
+result was an insane double-digit
+increase in conversions. So the lesson
+here is try using softer perks like
+longer trials to make your high value
+plans feel higher value. Now trials are
+essential to let your users gain
+confidence in your products, but what
+actually shows on the bottom line of
+your business is usually your upgrades
+and your subscription revenue. And to
+kick this segment off, we're gonna look
+at how Mobin increased conversions
+significantly
+by adding a tiny little batch. First
+though, it's my obligation to remind you
+if you're looking to grow your business
+with design tweaks like this, or if you
+need to build an entire website,
+product, or even a brand from scratch,
+feel free to sign up for SIPAP's free
+strategy calls in the link down below.
+We'd love to chat with you. Now, what
+Mobin did is quite interesting because
+they didn't launch new paywalt features.
+They just increased visibility to the
+ones that were already there by adding
+pro labels to the log content across the
+entire product and suddenly conversions
+spiked. Why is that? Well, it's because
+of loss aversion, also known as the
+human tendency to avoid losing something
+more than we desire gaining something
+new. So when users saw what they
+couldn't really touch that drove that
+impulse to upgrade and as a result
+mobbing got a 35% increase in freeto
+paid conversions. So remember highlight
+what's missing not just what your users
+will gain. Make value visible through
+contrast. However, showing what users
+can't have is one path, but stopping
+them right at the moment they want more
+is another interesting one. The language
+learning app Buzzu made one bold change.
+Free users could only learn one
+language. If they wanted to start a
+second, they had to upgrade. And here's
+an important detail. This wasn't
+limiting for casual users, but it was
+devastating for power users, which makes
+it a super clever use of scarcity,
+cutting off access right as utility
+increases. This seemingly subtle move
+resulted in a crazy 83% conversion rate
+increase among engaged users. So, the
+lesson here is don't punish beginners
+with your feature locks. instead soft
+lock features where deeper engagement
+intersects with higher user intent or do
+like Uber double down on certainty. You
+see Uber used to only display a pricing
+range in their UI and they did this for
+a very long time but after testing a
+single estimated price usage increased
+significantly. Why is that? Well, as
+humans, we're wired for the certainty
+effect. We'll often choose the
+guaranteed result over a potentially
+better one with unknowns attached to it.
+And in Uber's case, people didn't want
+to guess what the ride would cost. They
+wanted to know for sure. And this change
+resulted in an insane doubledigit
+increase in rides per user, which at
+Uber scale is huge. But even if you're
+not nearly as big as Uber, remember if
+transparency builds trust with a user,
+get specific because uncertainty can
+kill purchase decisions really quickly.
+Now, if you found this video helpful,
+chances are you could also use some of
+my best tips for increasing SAS website
+conversions. Check the video somewhere
+around here. And again, if you want to
+chat more about any of this really,
+check out the free design strategy call
+below.
+Until the next one, have a great

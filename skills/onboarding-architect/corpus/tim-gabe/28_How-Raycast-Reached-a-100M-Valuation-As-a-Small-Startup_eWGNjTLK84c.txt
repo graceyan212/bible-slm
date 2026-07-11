@@ -1,0 +1,262 @@
+How Raycast Reached a $100M+ Valuation (As a Small Startup)
+https://www.youtube.com/watch?v=eWGNjTLK84c
+
+Hundreds of thousands of users, millions
+in funding, a team of less than 40
+people, and a valuation north of $100
+million. Raycast growth wasn't luck. It
+was literally by design. You see, much
+of their success was driven by growth
+focused design decisions. And in this
+video, I'll break down four of the
+biggest ones that made them succeed and
+the lessons you can use for your own
+product. Now, Raycast didn't try to
+reinvent people's workflow. They just
+embedded themselves into it. Instead of
+pulling users away from their tools,
+Raycast made itself genuinely useful by
+integrating directly with them. By
+launch they already supported tools like
+GitHub, Jira, Slack and many more and
+not just surface level like we have the
+logo kind of integrations actual utility
+like opening your assigned GitHub issues
+or updating a Jira ticket without ever
+touching your browser. And here's the
+key it wasn't just good UX, it was smart
+distribution. Every time someone
+installs the GitHub or Slack extension,
+they're experiencing the value of a
+recast inside a tool their teammates
+also use, which creates pull instantly.
+They didn't need referral tricks or
+share to grow features because they grew
+by being genuinely useful in all the
+right places. They didn't just fit into
+existing workflows, they made people
+want to stay there. It was frictionless.
+And as we'll learn later in the video,
+strangely addictive. And this was all a
+design decision. So if you're building a
+product, ask yourself, where are my
+users already working? And how can our
+design meet them right there? Raycast
+didn't try to change people's habits.
+They designed themselves right into
+them. And that's what made adoption
+effortless. And this is also what we
+call growth focused UX. not just how
+your product looks, but where it lives,
+how it shows up, and how it fits into
+how people already think. This is
+actually one of the things we help
+businesses with at SIPAP. So, if you're
+trying to grow your business, you can
+sign up for one of our design strategy
+calls. It's 100% free, but we only do
+them with a few tech companies each
+month. So, the spots do run out, but if
+it sounds interesting, the links down
+below. Now, back to the lesson. Design
+yourself into people's habits. It
+doesn't matter if it's a Chrome
+extension, a Slack command, or a notion
+embed. Whatever it is, distribution is
+often just a design problem in disguise.
+And if you solve it well, the upside is
+massive. But getting in front of people
+is one thing. Changing how they behave
+once they're there, that's a whole
+different level. It's also one of the
+most brilliant aspects of Raycast's
+design playbook. They didn't just hope
+users would figure the app out. They
+designed the experience to shape how
+people worked from day one. Because
+Raycast as an app has a very strong
+opinions. This isn't a product that is
+trying to please everyone. It's a
+product that knows exactly who it's for
+and how it should be used. For example,
+everything inside of Raycast is built
+around a keyboard interaction pattern,
+not just as a power feature. It's the
+primary way to use the app. If you try
+to rely on the mouse too much, you'll
+feel it pushing you back towards speed.
+And that's not a bug. It's a constraint
+designed to train a different working
+rhythm. Also, there is zero UI clutter
+in Raycast. What you see is
+intentionally minimal so that utility of
+the tool gets the spotlight. The power
+is there, but it reveals itself as you
+go. A form of progressive disclosure if
+we're speaking UX lingo. And while there
+is now a lightweight onboarding flow to
+help users ramp up, that wasn't always
+the case. In the early days, Raycast
+skipped the formal onboarding
+completely. And despite that, firsttime
+users were successful because Raycast
+had built a product that was intuitive
+enough to teach you how to use it as you
+use it, which honestly is really
+impressive when you're building
+something so opinionated. And it also
+shows how Raycast managed to nail that
+balance between friction and
+learnability. Even in areas like
+customization, you could build your own
+extensions, but they didn't launch with
+a full-blown marketplace. They
+prioritized utility for builders over
+browsability for browsers. On top of
+that, the interaction model is
+intentionally rigid. Open, type, act.
+You can't redesign the layout or
+dramatically reshape its flow. And
+that's the point. It reinforces clarity
+and habit by limiting variation. So if
+you want to create habits, you have to
+design with clear opinions and commit to
+those opinions. That might mean
+introducing constraints, simplifying
+options, or just removing flexibility
+altogether. And while your sharpest
+opinions might turn some people away, it
+will also create your biggest product
+believers because people don't rave
+about an app or a UI with the most
+options. They rave about qualities like
+speed and clarity and trust. So be
+willing to make the hard decisions for
+your users because if it works for the
+right people, that's all you need. And
+again, now I'm going to sound like a
+broken record here, but if you are
+aiming to beat your competition and grow
+your product with strong design, check
+out the link below. Free strategy call,
+no strings attached, a few spots each
+month. Hope to see you there. Now,
+creating a habit for a user is one
+thing, but how do you design a product
+that strengthens that habit every time
+they come back to the app? Raycast
+approached this by designing systems
+that actively reinforced core user
+behaviors. Each feature wasn't just a
+standalone utility. It was part of a
+bigger loop. The design encouraged
+repeated use, brought features together
+in seamless ways, and made the product
+more valuable the deeper you engaged
+with it. Here's what that looked like in
+practice. The search bar was the core
+interface and still is the core
+interface that unlocks everything else.
+Install an extension and suddenly that
+bar could find your Google Drive files,
+control your Spotify, or create a notion
+page. The more tools you connect, the
+more tasks you can complete without
+switching context, making every
+interaction faster, more focused, and
+more productive. The extension store
+then gave people reasons to keep
+exploring while the API empowered
+developers to build those extensions
+which in turn kept the store growing.
+It's not just a tool, it's a flywheel.
+Each system feeds the next. Each
+discovery prompts another and each
+action opens your eyes towards new ways
+of using the app. It's the definition of
+a welldesigned loop inside of a product.
+But that's not all. Even if we go into
+the onboarding, Raycast didn't treat
+that as a oneanddone moment. For them,
+it became an ongoing activation through
+surprise, getting users to constantly
+find themselves saying, "Wait, I didn't
+know I could do that, too." Raycast
+really shows how the best product
+experiences don't stay static. They
+evolve. They reward depth. They pull you
+further in into the app the more you
+engage with it. So, when you're
+designing features, ask yourself this.
+Does this unlock something else that
+already lives inside the product, or
+does it just sit there waiting to be
+used? If it's the ladder, you're
+building utility, and that's completely
+fine. But if you want compounding value,
+you need to be designing loops. Loops
+that pull people forward, features that
+reward a user's curiosity, and systems
+that strengthen the entire engine.
+That's how you spark the light and more
+importantly how you sustain it. But
+durable growth like that doesn't happen
+by accident. It starts with intentional
+product design. And sure, we've all
+heard the words focus on one user like a
+thousand times. But it's really worth
+unpacking how Raycast approached that
+quote because the way they focused on
+their user informed every design
+decision they made, which in the end
+made all the difference. You see,
+Raycast didn't just pick a niche for a
+pitch deck. They designed around it
+obsessively, deliberately, and end to
+end. Again, from the very beginning,
+their goal wasn't to serve everyone. It
+was to build something undeniably fast,
+intuitive, and delightful for a very
+specific kind of user. Macbased
+developers who lived on their keyboard.
+But here's what made that focus
+different and why it worked. They didn't
+just build a fast launcher. They made
+every design decision through the lens
+of a core principle. If it didn't
+increase speed, reduce cognitive load,
+or fit seamlessly into keyboard-driven
+workflows, it didn't belong in the
+product. Compare that to a tool like
+Alfred. Alfred was already a very
+popular tool in the same niche for power
+users because they had a bunch of
+features and customizations. But Raycast
+wasn't trying to outfeature them. They
+competed on clarity, a cleaner, more
+opinionated UI, a larger search bar
+placed front and center because that's
+where every Raycast session begins. Less
+friction, fewer options, better default.
+All of it was intentional. And that
+level of design discipline created real
+results. Obviously, Raycast is huge
+today. So, what's the lesson here? The
+real key isn't just to focus on one
+user. It's to obsessively overd deliver
+for that one user. Raycast made speed
+and clarity non-negotiable. And they
+removed anything that got in the way of
+that. They didn't try to chase general
+usage metrics because they weren't
+trying to design for everyone. Instead,
+they designed so well for someone that
+everyone else eventually wanted in. Now,
+if you found this helpful, then I
+suggest you check out the video that
+ends up somewhere here on the screen. Or
+if you want to see how we achieve real
+results with strategic design for our
+clients, consider checking out our case
+studies in the link down below. Until
+the next one, have a great

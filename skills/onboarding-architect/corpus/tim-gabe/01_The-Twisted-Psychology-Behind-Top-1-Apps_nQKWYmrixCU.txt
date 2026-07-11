@@ -1,0 +1,272 @@
+The Twisted Psychology Behind Top 1% Apps
+https://www.youtube.com/watch?v=nQKWYmrixCU
+
+Not sure if you noticed, but some of
+today's most addictive [music] and
+explosively growing products make you
+feel seen. Like showing you the exact
+month you'll meet your soulmate. Or your
+face scored out of 10. Some even make
+you feel like they know who you really
+are. And while most of it is kind of
+fake, one thing is clear. The apps
+[music] who do this right are hugely
+successful. So in this video, I'm going
+to break down the psychology behind all
+of it. The psychology that makes your
+product feel built for your users, even
+if it isn't. To make it even more
+tangible, I'm also going to show you
+three products killing it right now by
+using this to their advantage. By the
+way, I'm Tim. I've designed products for
+over a decade from Spotify to a bunch of
+multi-million dollar startups. So this
+is stuff I think about 24/7. Now, many
+times we think personalization or
+feeling seen means data. Like hundreds
+of interviews or a recommendation engine
+or custom trained AI models. But some of
+today's fastest growing products barely
+do any of that. Instead, they lean on
+two psychological effects working
+together. The first, something a
+psychologist named Forer proved back in
+1948. We now call it the Barnum effect
+where generic thing gets engineered to
+feel like it was made for you and only
+you. The second one is even simpler. The
+more effort someone puts in to get
+something, the more they value it even
+when it's pretty average. But as you'll
+learn, in very different but creative
+ways. Now, just before we dig into the
+first one, if you need help with product
+design strategy just like this, we run a
+few free design strategy calls monthly
+at Zip Zap. Link's down below if you're
+interested. All right, the first
+chapter, something I call the mirror.
+There's this app called Starcrossed,
+built by a single founder off the back
+of her TikTok. It tells you the exact
+month and year you'll meet your
+soulmate. Now, before it shows you
+anything, it asks for your birthday,
+your exact birth time, the city you were
+born in, a bunch of personal
+information, right? Then it sits there
+generating, reading your chart, building
+your result, and finally it generates
+your reveal, a specific month, a drawing
+of your soulmate's face. Basically, a
+full breakdown of who they are. Except
+all of that sits behind a paywall. But
+by now you've sunk so much time into
+this that you just pay. That's how
+strong it is. Here's the thing though,
+if you read the app's FAQ, you'll see
+that for each piece of your soulmate, it
+picks from a couple of options that were
+already chosen to be compatible with
+you. So that result was never
+discovered. It was just assembled to fit
+you. And that, right there, is the
+Barnum effect shipped as an app. A
+reading that's just vague and flattering
+enough to feel like it's about you and
+only you. When really it would feel that
+way for almost anyone. But on its own,
+this output is just a clever
+description. What turns huh, kind of
+accurate into holy dang, this is me, is
+everything the app made you do to get
+there. Because think about it, before it
+told you a single thing, you handed over
+a bunch of data. You worked hard for the
+result that you got. And that's the
+second piece of psychology hiding in
+here. You see, in 1959, 11 years after
+Forer ran his experiments, two
+psychologists named Aronson and Mills
+proved something that makes the Barnum
+effect even more powerful. They proved
+that the more effort you put into
+something, the more you value what you
+get out of it. Again, even when
+objectively the output isn't even that
+great. So, that long, at times tedious,
+onboarding isn't friction. It is the
+actual amplifier. So, by the time you
+entered your exact birth time and
+watched a loader tell you it was reading
+the stars for you, you're already very
+invested. And that investment makes a
+generic astrology reading feel like it's
+earned, like it's yours. So, here's the
+first meta lesson if you're a founder.
+If you're ever debating whether your
+onboarding should be long or short or
+how much personal info to ask for up
+front, remember, the more someone
+invests before the payoff, the more they
+believe that payoff was worth it.
+There's a reason long quiz-style
+onboarding flows are everywhere right
+now. They work, and how your brain
+functions is a big reason why. Now, this
+kind of psychology is perfect for the
+onboarding moment. But onboarding only
+gets someone through the door, right?
+And getting them through the door is
+usually the easier part. The hard part,
+the part that decides whether you have a
+long-term business, is whether they
+stay. So, the next product I'll show you
+doesn't just make you feel seen once. It
+has you something you walk away with and
+carry around as a part of who you are.
+And that turns out to be the strongest
+retention there is. The second chapter
+is what I call the label. You've
+probably done this one yourself, the
+world-famous 16 Personalities. The
+website where you answer a bunch of
+questions and and it hands you a
+four-letter type, like INFJ, the
+advocate, or ENTP, the debater. Over a
+billion of these tests have been taken,
+and here's the wild part. People don't
+just read their results and move on.
+They put it in their dating bio. They
+bring it up at work. They'll literally
+explain themselves with it, like, "Oh,
+that's just because I'm an INFJ." They
+took a label a website gave them in 10
+minutes and they wear it as a part of
+who they are. So, why does a generic
+personality bucket feel so personally,
+undeniably true? It's the same Barnum
+effect from before. The description is
+written to be flattering and just
+specific enough to feel tailored, while
+still fitting almost anyone. Something
+like, "You have a rich inner world and
+hold yourself to high standards, but you
+can be hard on yourself when you fall
+short." That might feel like you. It
+also kind of feels like everyone. But,
+that's not the point. The part founders
+should learn from is what happens after
+you accept that kind of label. Because
+the moment someone takes on a label for
+who they are, it gets sticky. They start
+seeing the world through it. They'll
+defend it and they keep coming back to
+anything that kind of reinforces this
+worldview of themselves. So, if your
+product becomes part of how someone
+describes themselves, leaving your
+product means that they're basically
+giving up a piece of who they are. So,
+how do you achieve this with your
+product? Well, you can give people a
+label they'd be proud to claim. It could
+be a type, like 16 personalities. It
+could be a status, like being in the top
+percent of listeners, a role, like top
+creator or expert. The movie's always
+kind of the same. Make it specific
+enough to feel earned, flattering enough
+that they want it, and then put it
+somewhere they can show it off. Get that
+right and you've done something no ad
+budget can buy. Your product stops being
+a thing they use and becomes a thing
+they are, which is really powerful
+because people don't churn out very
+easily from their own identity. With
+that said, the first two moves only work
+on one user at a time. Therefore, this
+last one is the one I'd pay the most
+attention to because when done right, it
+doesn't just keep the user, it turns
+them into your single biggest
+acquisition engine. Right before we dig
+into that, another quick note. If you
+want to turn your product into something
+users actually identify with, not just
+something they use, that's exactly the
+kind of stuff we dig into during our
+free design strategy calls at Zips App.
+Links down below. Now, the next chapter
+is called the flex, and this is Air
+Buds, a little widget that shows what
+your friends are listening to. And every
+Sunday it hands you a recap of your top
+artists. Think about it like a tiny
+Spotify wrapped every week. Now, this
+point is different from the first two
+because this one isn't faking anything.
+The recap here is your real listening
+data, but what matters is how that data
+gets packaged. It's a clean, flattering
+little card that says something about
+your taste, and that's exactly what
+makes you want to post it. And here's
+the truly genius part about Air Buds. To
+unlock the fuller version of your recap,
+guess what? You have to invite friends.
+So, the thing you want to show off and
+the thing that grows the app are two
+sides of the same exact loop. The
+selfish share function doubles as the
+invite. And that's how Airbuds grows for
+free. Their investor, Alexis Ohanian,
+captured this pretty nicely. Music has
+never just been about access. It's
+identity. It's how we tell the world who
+we are. And honestly, this is a part I
+spend a lot of time talking about when
+helping founders design successful
+products. Finding that one thing that
+your app already knows about user that
+they'd be proud to share with the world.
+Because a referral program bolted onto
+something nobody wants to show off does
+zero. Nada. The magic is when being seen
+and growing the app become the same
+action. So, the move here, if you're a
+founder, is to find the thing your
+product knows about your user that
+they'd want to brag about. Then, when
+you have that, make sure to make this
+sharing, this bragging, the same action
+that grows you. Spotify Wrapped does it
+once a year. Strava does it with a map
+of the run you're already proud of.
+Wordle did it with a little grid of
+green and yellow squares that took over
+everyone's feed. Same move every time.
+The product hands as proof of who we
+are, and we happily go do its marketing
+for it. To recap, three products, three
+ways to make a person feel seen. The
+mirror, where a long quiz makes a
+generic result feel earned. The label,
+where a generic label feels undeniably
+like you. And the flex, where a true
+flattering snapshot of you becomes the
+thing that grows the app. Now, if you
+found this breakdown useful, and you're
+wondering how to build this kind of
+feeling into your own product. For the
+last time, we open up a few free design
+strategy calls at Zips App each and
+every month. Just check the link down
+below. And if you like this video,
+you'll probably love this video here
+somewhere where I break down the secret
+behind weirdly addicted apps like
+Duolingo. Now, until the next one, have
+a great life.
