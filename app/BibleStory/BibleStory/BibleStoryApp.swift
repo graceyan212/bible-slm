@@ -18,6 +18,8 @@ struct BibleStoryApp: App {
             // directly (deterministic; avoids racing the onboarding transition).
             if ProcessInfo.processInfo.arguments.contains("-uiPreviewReader") {
                 NavigationStack { StoryView(env: env) }
+            } else if ProcessInfo.processInfo.arguments.contains("-uiPreviewAsk") {
+                NavigationStack { CompassView(env: env) }
             } else {
                 RootView(env: env)
                     .onAppear {
