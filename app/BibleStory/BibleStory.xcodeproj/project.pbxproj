@@ -11,6 +11,7 @@
 		2EF3CC82D5197DBDBA691551 /* BibleStoryCore in Frameworks */ = {isa = PBXBuildFile; productRef = A65B3DCF3340364C71A22176 /* BibleStoryCore */; };
 		409349B5ECF19823AB9C67C2 /* BibleStoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF53E5A1DEA05B865D09C14 /* BibleStoryApp.swift */; };
 		4533045AF6CE2CCA186A77C8 /* AskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751716D2F7BE556DE63630E /* AskView.swift */; };
+		6A24D3C523BBC9FD6AB4C0FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122DFAFE7CC62CB06BBEDA94 /* Assets.xcassets */; };
 		8EB78790C19F2630DFFBE49F /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D09CF65C46A2745498362 /* Components.swift */; };
 		9F36C2EC0642332243F0E1F8 /* BiometricParentGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9489C61C969D52CE9194B5 /* BiometricParentGate.swift */; };
 		B1A1DB742759EF66E4D167F2 /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4DDAD15B1D838153F05E77 /* CompassView.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		122DFAFE7CC62CB06BBEDA94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25E25D3197F54C81B9A51FAA /* BibleStoryCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BibleStoryCore; path = ../BibleStoryCore; sourceTree = SOURCE_ROOT; };
 		2751716D2F7BE556DE63630E /* AskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskView.swift; sourceTree = "<group>"; };
 		7C4DDAD15B1D838153F05E77 /* CompassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				2751716D2F7BE556DE63630E /* AskView.swift */,
+				122DFAFE7CC62CB06BBEDA94 /* Assets.xcassets */,
 				EBF53E5A1DEA05B865D09C14 /* BibleStoryApp.swift */,
 				8E9489C61C969D52CE9194B5 /* BiometricParentGate.swift */,
 				7C4DDAD15B1D838153F05E77 /* CompassView.swift */,
@@ -97,6 +100,7 @@
 			buildConfigurationList = 9B3E5D82982AF773F5E9038C /* Build configuration list for PBXNativeTarget "BibleStory" */;
 			buildPhases = (
 				E3D94D73A8914999EC662672 /* Sources */,
+				220A0B055AE495496B585E84 /* Resources */,
 				E3CAD2BB8E728728550EB654 /* Frameworks */,
 			);
 			buildRules = (
@@ -143,6 +147,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		220A0B055AE495496B585E84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A24D3C523BBC9FD6AB4C0FB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E3D94D73A8914999EC662672 /* Sources */ = {
