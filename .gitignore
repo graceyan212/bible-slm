@@ -17,6 +17,11 @@ build/
 # Superpowers visual-brainstorm mockups (local only)
 .superpowers/
 
+# Private: onboarding-architect skill — kept LOCAL, never published to the public repo
+skills/onboarding-architect/
+docs/superpowers/plans/2026-07-11-onboarding-architect-skill.md
+docs/superpowers/specs/2026-07-11-onboarding-architect-skill-design.md
+
 # local secrets (TrueFoundry token etc.)
 .env
 .env.local
