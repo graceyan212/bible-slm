@@ -215,15 +215,11 @@ struct OnboardingView: View {
                 .multilineTextAlignment(.center)
                 .lineSpacing(3)
                 .frame(maxWidth: 340)
-            VStack(spacing: 12) {
-                HStack(spacing: 12) {
-                    ForEach([BibleTranslation.nirv, .icb, .esv], id: \.self) { t in translationChip(t) }
-                }
-                HStack(spacing: 12) {
-                    ForEach([BibleTranslation.niv, .kjv], id: \.self) { t in translationChip(t) }
-                }
+            VStack(spacing: 10) {
+                ForEach(BibleTranslation.allCases, id: \.self) { t in translationRow(t) }
             }
             .padding(.top, 6)
+            .frame(maxWidth: 360)
         }
     }
 
@@ -357,8 +353,55 @@ struct OnboardingView: View {
 
     // MARK: Building blocks
 
-    private func translationChip(_ t: BibleTranslation) -> some View {
-        OnbChip(text: t.displayName, selected: translation == t) { translation = t }
+    /// A full-width list row for one translation: abbreviation + plain-English name
+    /// (so "NIrV" is self-explanatory) with a brass check when selected.
+    private func translationRow(_ t: BibleTranslation) -> some View {
+        let selected = translation == t
+        return Button { translation = t } label: {
+            HStack(spacing: 14) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(t.displayName)
+                        .font(OnbFont.body(18, .bold))
+                        .foregroundStyle(OnbColors.ink)
+                    Text(translationSubtitle(t))
+                        .font(OnbFont.body(13))
+                        .foregroundStyle(OnbColors.inkSoft)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer(minLength: 8)
+                if selected {
+                    Image(systemName: "checkmark")
+                        .font(.system(size: 13, weight: .black))
+                        .foregroundStyle(OnbColors.ctaInk)
+                        .frame(width: 26, height: 26)
+                        .background(Circle().fill(OnbColors.brass))
+                        .overlay(Circle().stroke(OnbColors.outline, lineWidth: 2))
+                        .transition(.scale)
+                } else {
+                    Circle().stroke(OnbColors.sepiaLine, lineWidth: 2).frame(width: 26, height: 26)
+                }
+            }
+            .padding(.vertical, 12)
+            .padding(.horizontal, 18)
+            .frame(maxWidth: .infinity)
+            .background(RoundedRectangle(cornerRadius: 16).fill(selected ? OnbColors.sand : OnbColors.surface))
+            .overlay(RoundedRectangle(cornerRadius: 16)
+                .stroke(selected ? OnbColors.brass : OnbColors.outline, lineWidth: selected ? 3 : 2))
+        }
+        .buttonStyle(.plain)
+        .animation(.spring(response: 0.25, dampingFraction: 0.7), value: selected)
+        .accessibilityLabel("\(t.displayName), \(translationSubtitle(t))")
+        .accessibilityAddTraits(selected ? [.isSelected, .isButton] : .isButton)
+    }
+
+    private func translationSubtitle(_ t: BibleTranslation) -> String {
+        switch t {
+        case .nirv: "New International Reader’s Version · easiest for kids"
+        case .icb:  "International Children’s Bible · simple for young readers"
+        case .esv:  "English Standard Version"
+        case .niv:  "New International Version"
+        case .kjv:  "King James Version"
+        }
     }
 
     private func planCard(annual: Bool, title: String, price: String, note: String, badge: String?) -> some View {
