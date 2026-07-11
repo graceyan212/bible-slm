@@ -22,18 +22,20 @@ struct HomeView: View {
 
     var body: some View {
         NavigationStack(path: $path) {
-            VStack(spacing: 0) {
+            ZStack(alignment: .bottom) {
                 Group {
                     switch tab {
                     case .map:       expeditionMap
-                    case .stories:   SectionPanel(title: "Stories", icon: "book.pages", blurb: "Every story you've explored on the trail.")
-                    case .ask:       AskPanel { path.append(.compass) }
-                    case .treasures: TreasuresView()
+                    case .stories:   SectionPanel(title: "Stories", icon: "book.pages", blurb: "Every story you've explored on the trail.").padding(.bottom, 62)
+                    case .ask:       AskPanel { path.append(.compass) }.padding(.bottom, 62)
+                    case .treasures: TreasuresView().padding(.bottom, 62)
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-                MapTabBar(selection: $tab)
+                // On the Map tab the bar rides the map's own painted tan strip
+                // (transparent bg); other tabs give it a parchment backing.
+                MapTabBar(selection: $tab, transparent: tab == .map)
             }
             .background(Theme.parchment.ignoresSafeArea())
             .toolbar {
@@ -51,12 +53,16 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: HomeRoute.self) { route in
                 switch route {
-                case .story: StoryView(env: env)
-                case .compass: CompassView(env: env)
+                case .story: StoryView(env: env, onClose: pop)
+                case .compass: CompassView(env: env, onClose: pop)
                 }
             }
         }
     }
+
+    /// Pop one level off the navigation path. Explicit path mutation is reliable
+    /// even when a pushed screen hides the nav bar (where `dismiss()` can no-op).
+    private func pop() { if !path.isEmpty { path.removeLast() } }
 
     // MARK: The framed treasure-map screen (the "Map" tab)
 
@@ -103,7 +109,7 @@ struct HomeView: View {
             .frame(width: w, height: h)
             .clipped()
         }
-        .ignoresSafeArea(edges: .top)
+        .ignoresSafeArea()
     }
 }
 

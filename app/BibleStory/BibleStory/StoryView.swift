@@ -9,6 +9,9 @@ import BibleStoryCore
 struct StoryView: View {
     let env: AppEnvironment
     var storyID: String = "creation"
+    /// Explicit exit (pop the navigation path). Reliable even with the nav bar
+    /// hidden; falls back to `dismiss()` if not provided.
+    var onClose: (() -> Void)? = nil
 
     @Environment(\.dismiss) private var dismiss
     @State private var page = 0
@@ -16,9 +19,10 @@ struct StoryView: View {
     @State private var showAsk = false
 
     private let story: StoryContent?
-    init(env: AppEnvironment, storyID: String = "creation") {
+    init(env: AppEnvironment, storyID: String = "creation", onClose: (() -> Void)? = nil) {
         self.env = env
         self.storyID = storyID
+        self.onClose = onClose
         let loaded = StoryContent.load(storyID)
         self.story = loaded
         // Dev/screenshot deep-links for the later reader states.
@@ -241,7 +245,7 @@ struct StoryView: View {
                         .multilineTextAlignment(.center)
                         .padding(.top, 6)
 
-                    Button { dismiss() } label: {
+                    Button { close() } label: {
                         HStack(spacing: 7) {
                             Image(systemName: "location.north.circle.fill").font(.system(size: 14))
                             Text("BACK TO THE MAP").font(Theme.mapCaps(15)).tracking(1.5)
@@ -281,8 +285,13 @@ struct StoryView: View {
         } else if page > 0 {
             withAnimation(.easeInOut(duration: 0.22)) { page -= 1 }
         } else {
-            dismiss()
+            close()
         }
+    }
+
+    /// Leave the reader (back to the map).
+    private func close() {
+        if let onClose { onClose() } else { dismiss() }
     }
 
     /// Illuminated initial + body: the first glyph in the display serif/gold, the

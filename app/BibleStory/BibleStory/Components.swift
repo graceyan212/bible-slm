@@ -927,12 +927,15 @@ enum MapTab: String, CaseIterable, Hashable {
 
 struct MapTabBar: View {
     @Binding var selection: MapTab
+    /// When true, no parchment backing is drawn — the bar rides directly on the
+    /// painted map's own tan strip (Map tab).
+    var transparent: Bool = false
     var body: some View {
         HStack(spacing: 0) {
             ForEach(MapTab.allCases, id: \.self) { tab in tabButton(for: tab) }
         }
         .padding(.horizontal, 12).padding(.top, 12).padding(.bottom, 6)
-        .background(barBackground)
+        .background { if !transparent { barBackground } }
     }
     private func tabButton(for tab: MapTab) -> some View {
         let isSelected = selection == tab

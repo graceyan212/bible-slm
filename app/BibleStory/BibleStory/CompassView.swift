@@ -5,6 +5,7 @@ import BibleStoryCore
 /// the guided-topic picker. Uses the environment's shared responder seam.
 struct CompassView: View {
     let env: AppEnvironment
+    var onClose: (() -> Void)? = nil
     @State private var session: AskSessionModel?
 
     var body: some View {
@@ -17,6 +18,16 @@ struct CompassView: View {
         }
         .navigationTitle("Ask Poli")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(onClose != nil)
+        .toolbar {
+            if let onClose {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button { onClose() } label: {
+                        Label("Map", systemImage: "chevron.left")
+                    }
+                }
+            }
+        }
         .task {
             if session == nil {
                 session = env.makeAskSession(context: Self.context)
