@@ -8,19 +8,29 @@ struct BibleStoryApp: App {
         gate: BiometricParentGate()
     )
 
+    init() {
+        AppFonts.register()   // register bundled IM Fell English / Atkinson faces
+    }
+
     var body: some Scene {
         WindowGroup {
-            RootView(env: env)
-                .onAppear {
-                    // UI-preview shortcut: `-uiPreviewChild` jumps past onboarding
-                    // straight to the child-zone treasure map (dev/screenshot only).
-                    if ProcessInfo.processInfo.arguments.contains("-uiPreviewChild") {
-                        env.completeOnboarding(
-                            child: ChildProfile(name: "Explorer", age: 8),
-                            translation: .nirv
-                        )
+            // Dev/screenshot shortcut: `-uiPreviewReader` shows the Story Reader
+            // directly (deterministic; avoids racing the onboarding transition).
+            if ProcessInfo.processInfo.arguments.contains("-uiPreviewReader") {
+                NavigationStack { StoryView(env: env) }
+            } else {
+                RootView(env: env)
+                    .onAppear {
+                        // `-uiPreviewChild` jumps past onboarding straight to the
+                        // child-zone treasure map (dev/screenshot only).
+                        if ProcessInfo.processInfo.arguments.contains("-uiPreviewChild") {
+                            env.completeOnboarding(
+                                child: ChildProfile(name: "Explorer", age: 8),
+                                translation: .nirv
+                            )
+                        }
                     }
-                }
+            }
         }
     }
 }

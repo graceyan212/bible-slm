@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 import BibleStoryCore
 
 // MARK: - Theme (ported from design/tokens.css — "Treasure Trail" explorer's-journal world)
@@ -35,18 +36,43 @@ enum Theme {
     static let warmBrick      = Color(hex: 0xB4472C)
     static let locked         = Color(hex: 0xC3B08A)
 
-    // Fonts — Fraunces/Cinzel → system serif; Lexend → rounded; Caveat → serif-italic hand.
+    // Fonts — the finished design's real faces (bundled + registered by AppFonts).
+    // IM Fell English → headings/banner/titles; IM Fell English SC → small-caps
+    // labels; Atkinson Hyperlegible → body/UI; IM Fell English Italic → the "hand".
+    // Each degrades to the closest system face if the bundled font fails to load.
+    private static let imFellRoman  = "IM_FELL_English_Roman"
+    private static let imFellItalic = "IM_FELL_English_Italic"
+    private static let imFellSC     = "IM_FELL_English_SC"
+    private static let atkinson     = "AtkinsonHyperlegible-Regular"
+    private static let atkinsonBold = "AtkinsonHyperlegible-Bold"
+
+    /// True when a face is registered and resolvable by name.
+    private static func available(_ name: String) -> Bool { UIFont(name: name, size: 12) != nil }
+
+    private static func isBoldish(_ w: Font.Weight) -> Bool {
+        switch w { case .semibold, .bold, .heavy, .black: return true; default: return false }
+    }
+
+    /// Display serif — IM Fell English (falls back to bold system serif).
     static func display(_ size: CGFloat, weight: Font.Weight = .black) -> Font {
-        .system(size: size, weight: weight, design: .serif)
+        available(imFellRoman) ? .custom(imFellRoman, size: size)
+                               : .system(size: size, weight: weight, design: .serif)
     }
+    /// Small-caps map/label serif — IM Fell English SC (falls back to system serif).
     static func mapCaps(_ size: CGFloat, weight: Font.Weight = .semibold) -> Font {
-        .system(size: size, weight: weight, design: .serif)
+        available(imFellSC) ? .custom(imFellSC, size: size)
+                            : .system(size: size, weight: weight, design: .serif)
     }
+    /// Body / UI — Atkinson Hyperlegible (Regular or Bold; falls back to rounded system).
     static func body(_ size: CGFloat, weight: Font.Weight = .regular) -> Font {
-        .system(size: size, weight: weight, design: .rounded)
+        let name = isBoldish(weight) ? atkinsonBold : atkinson
+        return available(name) ? .custom(name, size: size)
+                               : .system(size: size, weight: weight, design: .rounded)
     }
+    /// The warm "hand" — IM Fell English Italic (falls back to italic system serif).
     static func hand(_ size: CGFloat) -> Font {
-        .system(size: size, weight: .semibold, design: .serif).italic()
+        available(imFellItalic) ? .custom(imFellItalic, size: size)
+                                : .system(size: size, weight: .semibold, design: .serif).italic()
     }
 }
 
