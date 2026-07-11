@@ -16,3 +16,7 @@ build/
 
 # Superpowers visual-brainstorm mockups (local only)
 .superpowers/
+
+# local secrets (TrueFoundry token etc.)
+.env
+.env.local
