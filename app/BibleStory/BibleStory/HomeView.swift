@@ -12,6 +12,14 @@ struct HomeView: View {
     @State private var path: [HomeRoute] = []
     @State private var tab: MapTab = .map
 
+    init(env: AppEnvironment) {
+        self.env = env
+        // Dev/screenshot deep-links (see BibleStoryApp `-uiPreviewChild`).
+        let args = ProcessInfo.processInfo.arguments
+        if args.contains("-uiPreviewTreasures") { _tab = State(initialValue: .treasures) }
+        if args.contains("-uiPreviewStory") { _path = State(initialValue: [.story]) }
+    }
+
     var body: some View {
         NavigationStack(path: $path) {
             VStack(spacing: 0) {
@@ -20,7 +28,7 @@ struct HomeView: View {
                     case .map:       expeditionMap
                     case .stories:   SectionPanel(title: "Stories", icon: "book.pages", blurb: "Every story you've explored on the trail.")
                     case .ask:       AskPanel { path.append(.compass) }
-                    case .treasures: SectionPanel(title: "Treasures", icon: "shippingbox.fill", blurb: "The gems and badges you've collected.")
+                    case .treasures: TreasuresView()
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -56,51 +64,46 @@ struct HomeView: View {
         GeometryReader { geo in
             let w = geo.size.width
             let h = geo.size.height
-
-            // Fractional anchors for the three stops (a wandering map route).
-            let creation = CGPoint(x: w * 0.35, y: h * 0.245)
-            let redSea   = CGPoint(x: w * 0.64, y: h * 0.485)
-            let jesus    = CGPoint(x: w * 0.42, y: h * 0.735)
-            let cardW    = w * 0.40
+            let stopW = w * 0.45   // frame width (matches expedition-home.html)
 
             ZStack {
-                MapBackdrop()
-
-                RopeTrail(points: [creation, redSea, jesus])
-                    .allowsHitTesting(false)
+                PaintedMapBackdrop()
+                    .frame(width: w, height: h)
+                    .clipped()
 
                 ExpeditionBanner(title: "THE EXPEDITION")
                     .frame(width: w * 0.92)
-                    .position(x: w * 0.5, y: h * 0.08)
+                    .position(x: w * 0.5, y: h * 0.075)
 
-                FramedStoryCard(title: "Creation: Perfect Start", scene: .garden, state: .done)
-                    .frame(width: cardW)
-                    .position(creation)
-
-                FramedStoryCard(title: "The Red Sea Rescue", scene: .redSea, state: .done)
-                    .frame(width: cardW)
-                    .position(redSea)
-
-                FramedStoryCard(title: "Jesus era", scene: .jesus, state: .active) {
+                // Four story stops, staggered down the map (positions from
+                // build_map_mockup.py LAYOUT). Only the current story glows; done
+                // stops carry a ✓, the not-yet story a lock.
+                PaintedStoryFrame(coverAsset: "CoverCreation", title: "Creation", state: .done) {
                     path.append(.story)
                 }
-                .frame(width: cardW * 1.06)
-                .position(jesus)
+                .frame(width: stopW)
+                .position(x: w * 0.33, y: h * 0.22)
 
-                StartLessonButton { path.append(.story) }
-                    .frame(width: w * 0.58)
-                    .position(x: w * 0.42, y: h * 0.905)
+                PaintedStoryFrame(coverAsset: "CoverRedSea", title: "The Red Sea", state: .done) {
+                    path.append(.story)
+                }
+                .frame(width: stopW)
+                .position(x: w * 0.66, y: h * 0.40)
 
-                PoliCompassView(size: w * 0.24)
-                    .position(x: w * 0.83, y: h * 0.885)
-                    .accessibilityLabel("Poli, your compass guide")
-                    .onTapGesture { path.append(.compass) }
+                PaintedStoryFrame(coverAsset: "CoverJesusChildren", title: "Jesus & the Children", state: .active) {
+                    path.append(.story)
+                }
+                .frame(width: stopW)
+                .position(x: w * 0.33, y: h * 0.58)
 
-                MapBorderOverlay()
+                PaintedStoryFrame(coverAsset: "CoverThePromise", title: "The Promise", state: .locked)
+                    .frame(width: stopW)
+                    .position(x: w * 0.66, y: h * 0.76)
             }
             .frame(width: w, height: h)
             .clipped()
         }
+        .ignoresSafeArea(edges: .top)
     }
 }
 
