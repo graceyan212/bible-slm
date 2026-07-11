@@ -96,22 +96,60 @@ extension Color {
     }
 }
 
-/// Poli, the trail-compass mascot. One component, state-driven (idle/listening/thinking/answering).
-/// Visuals are placeholder — the real "Treasure Trail" skin comes from design/tokens.css later.
+/// Poli's illustrated poses (the `final_compass_mascot_set` art, bundled as assets).
+/// One pose per emotional beat, reused across onboarding, the trail, and the Ask page.
+enum PoliPose: String {
+    case waving      = "PoliWaving"
+    case pointing    = "PoliPointing"
+    case praying     = "PoliPraying"
+    case celebrating = "PoliCelebrating"
+    case thumbsUp    = "PoliThumbsUp"
+}
+
+/// The mascot, rendered from the illustrated pose art. Session-agnostic, so it can
+/// be dropped anywhere (onboarding, HUD, reward moments) — not just the ask loop.
+/// Falls back to the compass emoji if the asset is ever missing.
+struct PoliImage: View {
+    let pose: PoliPose
+    var size: CGFloat = 120
+
+    var body: some View {
+        Group {
+            if UIImage(named: pose.rawValue) != nil {
+                Image(pose.rawValue).resizable().scaledToFit()
+            } else {
+                Text("🧭").font(.system(size: size * 0.5))
+            }
+        }
+        .frame(width: size, height: size)
+    }
+}
+
+/// Poli, the trail-compass mascot — state-driven (idle/listening/thinking/answering).
+/// Maps each ask-loop state to an illustrated pose, with a soft state glow + caption.
 struct PoliMascotView: View {
     let state: AskSessionModel.PoliState
+    var size: CGFloat = 116
 
     var body: some View {
         VStack(spacing: 4) {
             ZStack {
-                Circle().fill(glow.opacity(0.3)).frame(width: 88, height: 88)
-                Text("🧭").font(.system(size: 50))
+                Circle().fill(glow.opacity(0.28)).frame(width: size * 0.86, height: size * 0.86).blur(radius: 6)
+                PoliImage(pose: pose, size: size)
             }
             Text(caption).font(Theme.body(15)).foregroundStyle(.secondary)
         }
         .accessibilityLabel("Poli, \(caption)")
     }
 
+    private var pose: PoliPose {
+        switch state {
+        case .idle: .waving
+        case .listening: .pointing
+        case .thinking: .praying
+        case .answering: .thumbsUp
+        }
+    }
     private var glow: Color {
         switch state {
         case .idle: .orange

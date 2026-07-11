@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B7E7A9DFC343CC09A63A2A7 /* creation.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F0A3558923D410125D71912 /* creation.json */; };
+		20E2EED34BE22EB0B9F310F3 /* OnboardingTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F672A6DEAB6F7826A1B0CCF /* OnboardingTheme.swift */; };
 		278016A5D5971B7B293EA1DE /* AtkinsonHyperlegible-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F674FCF04692AD05E7B33F37 /* AtkinsonHyperlegible-Regular.ttf */; };
 		2935EB127A0B8B271F8DE6B3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3042E3E486F721B5F5BF75D /* OnboardingView.swift */; };
 		2EF3CC82D5197DBDBA691551 /* BibleStoryCore in Frameworks */ = {isa = PBXBuildFile; productRef = A65B3DCF3340364C71A22176 /* BibleStoryCore */; };
@@ -55,6 +56,7 @@
 		70FB7C3CADA06829CFA450A4 /* TreasuresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuresView.swift; sourceTree = "<group>"; };
 		7C4DDAD15B1D838153F05E77 /* CompassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
 		7F0A3558923D410125D71912 /* creation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = creation.json; sourceTree = "<group>"; };
+		7F672A6DEAB6F7826A1B0CCF /* OnboardingTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTheme.swift; sourceTree = "<group>"; };
 		8CE3DC3A141F6EA9432D61AC /* IMFeENit28P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMFeENit28P.ttf; sourceTree = "<group>"; };
 		8E9489C61C969D52CE9194B5 /* BiometricParentGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricParentGate.swift; sourceTree = "<group>"; };
 		99E7509E9BB780ED4DCCEEA5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				B78D09CF65C46A2745498362 /* Components.swift */,
 				F9779E94CB9D658872118D8C /* Fonts.swift */,
 				99E7509E9BB780ED4DCCEEA5 /* HomeView.swift */,
+				7F672A6DEAB6F7826A1B0CCF /* OnboardingTheme.swift */,
 				C3042E3E486F721B5F5BF75D /* OnboardingView.swift */,
 				431CDD2300DDB5E98060AE76 /* PaintedMap.swift */,
 				E6529AA880BF03A87893733D /* ParentZoneView.swift */,
@@ -214,7 +217,13 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					49CB08B9032956728CD057FA = {
+						DevelopmentTeam = 4DMP5UV5S6;
+						ProvisioningStyle = Automatic;
+					};
 					D1CFDFAF5BE607037A27EC4E = {
+						DevelopmentTeam = 4DMP5UV5S6;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 49CB08B9032956728CD057FA;
 					};
 				};
@@ -280,6 +289,7 @@
 				8EB78790C19F2630DFFBE49F /* Components.swift in Sources */,
 				7F86FCAB21DE4ED6F0015761 /* Fonts.swift in Sources */,
 				C9921D36E97033329AF0AB60 /* HomeView.swift in Sources */,
+				20E2EED34BE22EB0B9F310F3 /* OnboardingTheme.swift in Sources */,
 				2935EB127A0B8B271F8DE6B3 /* OnboardingView.swift in Sources */,
 				BDE21FF6D1A42D23BDDF98BD /* PaintedMap.swift in Sources */,
 				D4B032C72A1F094E2F9E0CB3 /* ParentZoneView.swift in Sources */,
@@ -305,6 +315,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4DMP5UV5S6;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -324,9 +336,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4DMP5UV5S6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Confirm you're a grown-up to open the parent area.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Poli listens so you can ask questions out loud.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Your words become text on this device so Poli can understand your question.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -345,6 +361,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4DMP5UV5S6;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -427,9 +445,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4DMP5UV5S6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Confirm you're a grown-up to open the parent area.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Poli listens so you can ask questions out loud.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Your words become text on this device so Poli can understand your question.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
