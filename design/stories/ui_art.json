@@ -1,0 +1,13 @@
+{
+  "style": "Flat folk-art children's Bible-storybook illustration, hand-drawn. Every shape carries a bold, even, medium-thick ink outline in warm dark espresso-brown \u2014 never pure black, never woodcut-heavy \u2014 slightly wobbly and clearly hand-inked, with closed contours and only a few simple interior lines. Fills are flat, matte, opaque single-tone color like gouache or marker: no gradients, no blending, no glossy highlights, and minimal shading (at most one flat darker tone per shape). Palette is bright yet warm and slightly earthy, never neon: sunny gold, sky blue and teal, leafy green, warm sand, terracotta red, with pink and purple flower accents \u2014 kept identical across all covers. Subtle cream paper grain overall. Shapes are simple, rounded and gently naive; figures have large round heads and kind, gentle faces (dot eyes, small smiles, soft rosy cheeks, calm reverent wonder). Full-bleed horizontal 3:2 composition: the scenery (sky, hills, water, ground) fills the ENTIRE frame all the way to every edge \u2014 no empty margins, no cream border, no letterboxing, no vignette \u2014 with the single key subject centered and the background simple and uncluttered.",
+  "negative": "photorealism, 3D render, CGI, cinematic or volumetric lighting, soft airbrushed gradients, glossy highlights, glowing halos, heavy woodcut/linocut black outlines, thin sketchy pencil lines, muted/washed-out or desaturated colors, neon colors, watercolor bleed, fine intricate detail, busy cluttered backgrounds, empty margins, cream borders, letterboxing, blank space around the scene, text, words, letters, numbers, logos, watermarks, borders, frames, signatures.",
+  "aspect_ratio": "3:2",
+  "size": "1024x1024",
+  "scenes": [
+    {
+      "id": "treasure_chest",
+      "title": "Treasure chest",
+      "prompt": "An open wooden treasure chest overflowing with shining gold coins, a few colorful gems, and a small glowing golden compass resting on top. Warm, inviting, and magical, sitting simply on plain ground. Centered single subject."
+    }
+  ]
+}
