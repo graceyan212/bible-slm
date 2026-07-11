@@ -15,6 +15,51 @@ secondary mode. Ethics stance: **neutral menu with warnings** — it surfaces ev
 including aggressive ones, but labels manipulative patterns with their trust/App-Store/legal
 risk and leaves the choice to the user.
 
+## Core principles (always top of mind)
+
+`SKILL.md` opens with these named pillars, and every generated flow is checked against
+them (and every audit evaluates against them). They are evidence-ranked from the corpus —
+César's frequency across 152 teardowns cross-referenced with Mobbin's conversion science.
+Each pillar carries its named exemplars so the skill reasons from concrete precedent, not
+abstraction.
+
+1. **Show, don't explain — deliver a taste of the core value before the paywall.** The single
+   most-repeated verdict. Interactive-from-the-start; let users experience the product pre-signup.
+   *Exemplars:* Elma (try core experience before signup), Runkeeper (animation on open),
+   Timehop (product-in-action welcome), Duolingo (first lesson before account).
+2. **Engineer the emotional arc: problem → future-self → solution.** Make them feel the problem,
+   frame who they become, position the app as the bridge. (César's spiky POV.)
+3. **Collect data early — and make it visibly pay off in a personalized plan.** Every question
+   feeds a named, personalized result so the paywall feels made-for-me. *Exemplars:* Speak
+   ("in 2 months you'll communicate in France"), Byte Pal (plan + exact goal date), Endless,
+   Brilliant, Headspace multi-intent (+10%), Dollar Shave Club conversational quiz (+5%),
+   Grammarly tailored plans (+20%).
+4. **The paywall is a flow, not a screen.** Sell the outcome first so it's the natural next step;
+   multi-page beats single; reduce risk with a "how your trial works" timeline + "cancel anytime."
+5. **Pricing architecture: annual-default, anchored, honest trial.** Two plans, annual pre-selected,
+   monthly anchor, labeled trial. (César's most-mentioned topic; 178 references.)
+6. **Polish & memorability are table stakes.** Animation, delight, a nameable mascot; even
+   loading/verification states. Makes a long flow feel short. *Exemplars:* Bipul (nameable
+   raccoon, 61 screens), Bump (animated loading states), Duolingo.
+7. **Trust & momentum mechanics.** Social proof (Superhuman logos, Timely proof page), founder/
+   human touches (One Year signature, Basecamp/Airbnb CEO note), permission priming before the OS
+   prompt (Brilliant, Center), progress indicators + reassuring microcopy (Cake Equity), checklists
+   for retention (Mural +10% one-week), effort-justification/IKEA-effect, review-ask at the peak.
+
+**Two philosophies that override the pillars when they conflict:**
+- **Length isn't the enemy — "feeling long" is.** Avg app = 25 screens; the best long flows
+  (Duolingo ~60) don't feel long because of delight/personalization. Don't optimize for *short*.
+- **Sometimes the best onboarding is none.** If the product speaks for itself (Mobbin, AI-chat
+  where the first prompt is the value), get out of the way. The skill must be willing to
+  recommend a minimal/no-onboarding path when the app calls for it.
+
+**The tension the skill names explicitly (⚠️ headline example in `dark-patterns.md`):**
+César's most-loved paywall lever — **escalating exit-offer discounts** ("close → 50% off → close
+again → 80% off," 67 references) — is exactly the gray-zone pattern Mobbin's own skeptic, Apple,
+and Filip flag as trust-eroding and bad for LTV. The skill surfaces it honestly: high-conversion,
+high-risk, user's call. This collision between the anchor source and the ethics pole is the
+neutral-menu-with-warnings stance in action.
+
 ## Goals
 
 - From an app idea, decide **what onboarding questions are necessary** (name, age, goals,
@@ -123,9 +168,17 @@ laws.**
 César's breakdowns + Mobbin's personalization findings. `dark-patterns.md` draws the Will pole +
 Filip's critiques + Apple/FTC constraints into a labeled catalog with severity + risk.
 
+**Preserve concrete exemplars.** Each principle in `onboarding-principles.md` / `paywall-levers.md`
+must carry its **named app examples** (Elma, Runkeeper, Timehop, Duolingo, Headspace, Speak,
+Byte Pal, Endless, Brilliant, Grammarly, Superhuman, One Year, Basecamp, Airbnb, Cake Equity,
+Mural, Bump, Bipul, House, Tide, Focus Flight, Dollar Shave Club, plus César's teardown subjects)
+— the skill reasons from precedent, and generated specs cite "like X does" rather than asserting
+in the abstract. The two overriding philosophies (length ≠ enemy; sometimes no onboarding) and the
+escalating-discount tension are captured verbatim, not smoothed away.
+
 **Quality bar:** every principle traceable to a source; stats framed as hypotheses; ethical
-warnings attached where relevant. Distillation naturally parallelizes (one pass per reference doc);
-sequential-vs-parallel execution is a plan-level decision.
+warnings attached where relevant; named exemplars retained. Distillation naturally parallelizes
+(one pass per reference doc); sequential-vs-parallel execution is a plan-level decision.
 
 ## Edge cases
 
