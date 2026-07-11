@@ -85,7 +85,8 @@ struct StoryView: View {
         let p = s.pages[page]
         let isLast = page == s.pages.count - 1
         return VStack(spacing: 0) {
-            topBar(s, showProgress: true)
+            topBar(s)
+            progressStrip(total: s.pages.count, current: page)
 
             Image(p.assetName)
                 .resizable()
@@ -123,7 +124,7 @@ struct StoryView: View {
         }
     }
 
-    private func topBar(_ s: StoryContent, showProgress: Bool) -> some View {
+    private func topBar(_ s: StoryContent) -> some View {
         HStack(spacing: 8) {
             Button { back() } label: {
                 Image(systemName: "arrow.left")
@@ -138,17 +139,14 @@ struct StoryView: View {
                 .font(Theme.display(24)).foregroundStyle(topInk)
                 .lineLimit(1).minimumScaleFactor(0.6)
             Spacer()
-            HStack(spacing: 8) {
-                Button { showAsk = true } label: {
-                    Image(systemName: "bubble.left.and.text.bubble.right.fill")
-                        .font(.system(size: 23))
-                        .frame(width: 44, height: 44)
-                        .contentShape(Rectangle())
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Ask Poli")
-                if showProgress { progressDots(total: s.pages.count, current: page) }
+            // Tap Poli to ask a question out loud (opens the Ask-Poli sheet).
+            Button { showAsk = true } label: {
+                PoliCompassView(size: 36)
+                    .frame(width: 44, height: 44)
+                    .contentShape(Rectangle())
             }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Ask Poli")
         }
         .foregroundStyle(topIcon)
         .padding(.horizontal, 12)
@@ -157,7 +155,6 @@ struct StoryView: View {
 
     private func footer(_ s: StoryContent, isLast: Bool) -> some View {
         HStack {
-            progressDots(total: s.pages.count, current: page)
             Spacer()
             Button { advance(s) } label: {
                 HStack(spacing: 8) {
@@ -171,7 +168,7 @@ struct StoryView: View {
                                                   startPoint: .top, endPoint: .bottom))
                 )
                 .overlay(Capsule().strokeBorder(Color(hex: 0x8A5A22), lineWidth: 1.5))
-                .shadow(color: Color(hex: 0x9A6B25), radius: 0, x: 0, y: 2)
+                .shadow(color: Color(hex: 0x5A3C14, opacity: 0.28), radius: 5, x: 0, y: 3)
             }
             .buttonStyle(.plain)
         }
@@ -180,14 +177,31 @@ struct StoryView: View {
         .padding(.bottom, 12)
     }
 
-    private func progressDots(total: Int, current: Int) -> some View {
-        HStack(spacing: 6) {
-            ForEach(0..<total, id: \.self) { i in
-                Circle()
-                    .fill(i == current ? Color(hex: 0xB07E2C) : Color(hex: 0xD3BD8E))
-                    .frame(width: 9, height: 9)
+    /// Slim treasure-map progress: one refined capsule per page, filled (brass) up
+    /// to the current page, plus a small count. Lives once, under the title.
+    private func progressStrip(total: Int, current: Int) -> some View {
+        HStack(spacing: 8) {
+            HStack(spacing: 5) {
+                ForEach(0..<total, id: \.self) { i in
+                    Capsule()
+                        .fill(i <= current
+                              ? AnyShapeStyle(LinearGradient(colors: [Color(hex: 0xF6D062), Color(hex: 0xD19A34)],
+                                                             startPoint: .top, endPoint: .bottom))
+                              : AnyShapeStyle(Color(hex: 0xEBDCB4)))
+                        .frame(height: 5)
+                        .overlay {
+                            if i > current {
+                                Capsule().strokeBorder(Color(hex: 0xCBB27A), lineWidth: 1)
+                            }
+                        }
+                }
             }
+            Text("\(current + 1)/\(total)")
+                .font(Theme.mapCaps(11)).tracking(1)
+                .foregroundStyle(Color(hex: 0x8A5F22))
         }
+        .padding(.horizontal, 22)
+        .padding(.top, 10)
     }
 
     // MARK: Verse card (visibly distinct from the retell)
@@ -234,7 +248,7 @@ struct StoryView: View {
 
     private func completionScreen(_ s: StoryContent) -> some View {
         VStack(spacing: 0) {
-            topBar(s, showProgress: false)
+            topBar(s)
             ScrollView {
                 VStack(spacing: 8) {
                     RewardMedallion(icon: s.reward.icon)
@@ -272,7 +286,7 @@ struct StoryView: View {
                                                           startPoint: .top, endPoint: .bottom))
                         )
                         .overlay(Capsule().strokeBorder(Color(hex: 0x8A5A22), lineWidth: 1.5))
-                        .shadow(color: Color(hex: 0x9A6B25), radius: 0, x: 0, y: 2)
+                        .shadow(color: Color(hex: 0x5A3C14, opacity: 0.28), radius: 5, x: 0, y: 3)
                     }
                     .buttonStyle(.plain)
                     .padding(.top, 16)
