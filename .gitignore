@@ -25,3 +25,7 @@ docs/superpowers/specs/2026-07-11-onboarding-architect-skill-design.md
 # local secrets (TrueFoundry token etc.)
 .env
 .env.local
+
+# Private: scraped research corpus that fed the onboarding skill — LOCAL only
+x-scrape/
+youtube-transcripts/
