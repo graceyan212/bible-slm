@@ -1,0 +1,268 @@
+I Studied 500+ Gamified Apps (Here's What Actually Works)
+https://www.youtube.com/watch?v=LXX_qOA5D8E
+
+I studied hundreds of gamification
+implementations for mobile apps, and
+here's the thing. The three elements
+every app adds first, like points,
+badges, and leaderboards, are also the
+three most documented failures in
+product history. Meanwhile, Strava built
+180 million users without a traditional
+badge in sight. An Apple Watch drove a
+49.5%
+behavior change in 160,000
+people purely through completion drive.
+The Apple one is kind of wild, and we'll
+come back to it because how they did it
+is probably the most important point out
+of all of the seven research-backed
+patterns I'm going to cover in this
+video. You're going to see what kind of
+gamification actually works, what's
+theater, and the specific mechanics the
+best retaining apps in the world are
+actually using. By the way, I'm Tim.
+I've spent over a decade designing
+software for companies like Spotify, and
+I've helped clients reach the top of the
+US App Store working on exactly these
+kinds of problems. Now, pattern one is
+what I call the PBL fallacy. PBL stands
+for points, badges, and leaderboards,
+the three mechanics every app reaches
+for first. And the reason this leads the
+video is because of what happened in
+2024. LinkedIn quietly retired its
+community top voice gold badges. Their
+internal read was that badge-motivated
+users had been producing quantity over
+quality, chasing the badge instead of
+sharing expertise. And this isn't new.
+It's actually history repeating.
+Foursquare scrapped mayorships and
+badges in 2014
+after their data showed gamification
+drove check-ins but not the discovery
+behavior that business actually needed.
+Google News killed its badge system for
+the same exact reason. The gamification
+OG, Yu-kai Chou, put it best. PBL is the
+scoreboard of a game, not the game
+itself. You wouldn't walk into a
+baseball stadium, look at the
+scoreboard, and feel motivated to play
+baseball, right? Most apps though build
+the scoreboard and forget to build the
+game. So, let's look at the counter
+example, Strava. 180 million registered
+users and the engagement number that
+genuinely shocked me. Strava users
+average 1 hour of real-world activity
+for every 2 minutes spent in the app.
+That's not a retention metric, that's
+more like an influence metric. The
+mechanism doing most of the work is
+segments. A segment is any user-defined
+stretch of road or trail. Run it and
+your time gets logged on a leaderboard
+sorted by age and gender cohort. Now,
+that sounds like a leaderboard, which I
+just told you is kind of broken. But,
+here's the difference. Strava didn't
+build one global leaderboard, they built
+thousands of hyper-local
+micro-competitions.
+The hill on your morning route, the
+segment outside your office. These
+competitions are winnable and
+winnability is the strongest predictor
+of competitive motivation. A 2022
+Science Direct study confirmed this.
+Kudos on Strava, the small social
+acknowledgement when someone completes a
+run, increase future run frequency. And
+the social side has compounded fast.
+Strava's clubs grew 59% in 2024 alone,
+and the platform handed out 14 billion
+kudos in 2025. Strava's lesson for
+founders is direct. Enable users to
+compete more locally. Engineer the size
+of the competition rather than inflating
+empty metrics. And before we keep going
+here, if you want to chat about how any
+of these patterns would apply to your
+app, we open up a few free design
+strategy calls monthly at Zipsnap. You
+can grab your spot in the link below.
+Now, so far this might suggest the
+answer is just to add the right kinds of
+mechanics. More features, but smarter
+ones. That's where pattern three comes
+in, and it's the most counterintuitive
+of the seven, the S-curve problem. A
+2025 peer-reviewed study in Frontiers in
+Psychology found that gamification
+feature richness follows an S-shaped
+curve. Adding features helps engagement
+up to a point. After that point, more
+features actually reverse engagement.
+The empirical proof here is Habitica,
+probably the most aggressively gamified
+productivity app ever built. Daily tasks
+become quests. Habits become character
+stats. Missing a task damages your HP.
+The peer-reviewed study on Habitica
+found that 100% of participants
+experienced counterproductive effects.
+Users got so absorbed in managing the
+game layer that actual productivity
+behavior got buried. This is cognitive
+overload disguised as engagement. If
+you're stacking streaks plus points plus
+badges plus challenges plus
+leaderboards, the data says you're past
+the peak of the curve, not climbing it.
+Which brings us to the most dangerous
+mechanic in the founder toolkit.
+Streaks. Pattern four is the streak
+trap. Research from the Decision Lab
+found that streaks gradually shift from
+motivational to obligational the longer
+they run. Users move from I want to do
+this to I can't miss today. The
+canonical case here is Snapchat. A 2023
+Belgium study of almost 2,500
+adolescents found that streak frequency
+correlates with FOMO, problematic
+smartphone use, and reduced social media
+self-control. In 2024, the Nevada
+Attorney General filed litigation
+against Snapchat. And the EU Digital
+Fairness Act heading toward a
+legislative proposal in late 2026
+is specifically
+aiming at addictive streak mechanics.
+So, if you're shipping a streak in 2026,
+know this. The longer it runs, the more
+it shifts toward obligation. And you're
+shipping into space that's now being
+monitored by regulators. That doesn't
+mean streaks are universally bad, of
+course. Duolingo has run hundreds and
+hundreds of experiments on theirs, and
+the version they ship today obviously
+retains users. But notice how they ship
+it. Users choose their goal level. They
+can buy a streak freeze. The mechanic is
+wrapped in agency. A streak you can't
+pause, can't influence, and can't escape
+is the design researchers are currently
+flagging. Okay, so if streaks burn out
+at day 31, what works instead? Pattern
+five is variable reward magnitude,
+anticipation not loss aversion. The gap
+between knowing a reward is coming and
+not knowing how big it is. That's one of
+the strongest engagement signals in all
+of product design. Take the example of
+Gameblazers, a fantasy card game where
+the pack opening flow is the heart of
+the product. The product has three
+stages. Anticipation, you tap a pack, no
+idea what's inside, could be junk, could
+be the rare you've been chasing for
+weeks. Reveal, cards flip one at a time.
+Each card resets the anticipation cycle.
+Same data, but one dopamine event
+becomes five. And celebration, rare card
+hits, screen reacts, glows, haptics.
+That's why you tap the next pack. Now,
+compare that to a streak. Streaks run on
+fear of losing what you built. Variable
+rewards run on the pull towards what's
+next. Same surface behavior, opposite
+emotional engine. One burns out while
+the other keeps recharging itself. By
+the way, we designed the entire
+Gameblazers app at Sipsap. And we do
+this for a lot of clients, including
+Freecash, who's paid out over 300
+million euros and are absolutely killing
+it on the gamification side. So again,
+if you need help with this kind of stuff
+for your own product, we run a few free
+design strategy calls each month. Links
+down below. Now, the Apple Watch thing I
+told you was possibly the most important
+part of this entire video. Here's what
+they actually did. They built the entire
+system around one principle, completion
+drive. And that's how they got 49.5%
+behavior change in 160,000
+people. The activity ring system is
+possibly the most underrated
+gamification design pattern in consumer
+tech. They've got three rings: move,
+exercise, stand. Close all three to
+complete your day. The system runs on
+one principle from cognitive psychology,
+the Gestalt principle of closure. The
+brain is hardwired to perceive
+incomplete patterns as demanding
+completion. A 90% filled circle creates
+an open loop, and the brain wants to
+close it. Users who regularly close
+rings are 48% less likely to experience
+poor sleep quality. This is exactly what
+great gamification design is all about.
+The mechanic produces a real-world
+positive outcomes, not engagement
+theater. And here's the part most
+founders miss. Apple's rings work
+because they make you want to finish
+what you started. Anticipation toward
+closure. That's the engine. If you can
+choose which lever your app runs on,
+completion drive is a strong
+alternative. Pattern seven builds
+directly on this. I call it competence
+versus badge theater. The 2024 Springer
+Nature meta-analysis on gamification
+found something brutal. Gamification
+reliably improves a user's perception of
+autonomy and relatedness, but has
+minimal impact on competence, the one
+psychological need most tied to
+long-term intrinsic motivation. Most
+apps engineer recognition and forget to
+engineer mastery. Peloton is the
+cleanest counterexample of this. Members
+who use the social and output features
+work out 15% more frequently, but the
+mechanism isn't competition, it's
+competence feedback. Output is measured
+in real time. Personal records gets
+auto-flagged. The 100 ride badge means
+something because it represents 100
+actual rides. That's not theater, that's
+evidence of skill development. Chess.com
+runs the same play with ELO ratings.
+Garmin's training readiness and body
+battery scores do it in fitness
+wearables. Build mechanics that signal
+you got better at the actual thing, not
+mechanics that signal you opened the app
+a lot. Now, if you found this breakdown
+helpful at all and you're wondering how
+this might apply to your own product,
+for the last time, we open up a few free
+design strategy calls each month at
+Sipsup. The link's down below, as
+always. Also, if you like this video,
+you'll probably also like this one,
+somewhere around here, where I break
+down how Spotify, Tinder, and Netflix
+use psychology to dominate their
+categories. Now, until the next one,
+have a great life.

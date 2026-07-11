@@ -1,0 +1,11 @@
+# Corpus sources
+- cesar-breakdowns.txt — @cesaralvarezll, onboarding/paywall teardowns (captions + OCR'd screens)
+- cesar-tweets.txt — @cesaralvarezll full timeline captions
+- filip-ethics.txt — @filippkowalski, dark-pattern / ethics lens
+- alex-pricing.txt — @alexcooldev, pricing / anti-underpricing
+- will-aggressive.txt — @athcanft, aggressive hard-paywall / weekly-pricing playbook
+- yoni-brainrot.txt — @YoniSmolyar, indie onboarding (worked example)
+- mobbin-onboarding-study.txt — Mobbin "1,460 Onboarding Flows"
+- mobbin-paywalls-study.txt — Mobbin "2,995 Paywalls / 4,700+"
+- mobbin-why-streaks.txt — Mobbin streaks/retention
+- tim-gabe/*.txt — Tim Gabe app teardown subset

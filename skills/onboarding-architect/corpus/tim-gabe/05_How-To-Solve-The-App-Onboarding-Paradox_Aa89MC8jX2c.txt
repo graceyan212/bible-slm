@@ -1,0 +1,118 @@
+How To Solve The App Onboarding Paradox
+https://www.youtube.com/watch?v=Aa89MC8jX2c
+
+On average, absolute 77% of their users
+within 3 days. Not because they have bad
+features, not because their marketing is
+broken, because of one onboarding choice
+that's either buying you retention or
+killing. And most founders don't even
+know this is the lever to pull. So in
+this video, I'm going to break down the
+one rule that flips the 77% number
+around. The app killing it right now
+with a two-screen onboarding and a
+calendar case that breaks the rule on
+purpose and still wins big time. By the
+way, I'm Tim. I've spent the last decade
+designing digital products from Big Tech
+to startups all over the world. And the
+difference between an app that hooks
+users in week one and an app that loses
+them in less than 3 days comes down to
+one rule that most founders get wrong.
+The thing is, most apps out there
+onboard like government forms, sign-up
+screens, permission requests,
+walkthroughs. By the time the user gets
+to do anything, they click through
+screens that to them have seemingly
+little to do with the value of the
+product. And if your product isn't
+heavily dependent on personalization,
+the fix usually isn't more onboarding.
+It's onboarding that does the work for
+the user, not work for you. The clearest
+example of this is Granola. It's the AI
+notes app that raised $125
+million in March 2026 at a $1.5 billion
+valuation, six times what it was worth
+12 months earlier. Their onboarding is
+two screens. Screen one, signing with
+Google. Screen two, grant microphone
+access. That's it. The next thing you do
+is open Granola during your next
+meeting. The app records, transcribes,
+summarizes. The value lands in the very
+next thing you were already going to do.
+Many apps in the AI productivity space
+will onboard with sign up, then a
+feature tour, then maybe a goals wizard.
+Granola skipped all of that. Just two
+screens to value, and they're growing
+like crazy. Quick note, onboarding is
+just one of many things we help founders
+think about during our free design
+strategy calls at Zipsa. Links down
+below if you want to grab a spot. Now,
+here's where it gets interesting and
+counterintuitive. Some of the
+fastest-growing apps in 2026 have
+absurdly long onboardings. Cal AI is the
+calorie tracking app that did $35
+million
+in revenue in its first year. Their
+onboarding is a 20-plus step quiz. Think
+about that. You answer 20-plus questions
+before you ever see the product. Noom,
+the weight-loss app worth billions, runs
+you through 113
+onboarding screens. If short was always
+right, those apps wouldn't thrive. So,
+what's going on here? These long
+onboardings do two things at once, and
+this is the key thing to understand.
+One, they earn a personalized first
+experience. Cal AI asks a lot of
+questions because without that data, the
+moment you land on the home screen would
+feel too generic, like every other
+calorie tracker. The long onboarding is
+the trade-off. You give up speed, but
+you get a first experience built
+specifically for you. Two, they filter
+for buyers. Users who bounce on a
+20-step quiz were less likely to convert
+anyway. The ones who finish are showing
+you they have deep pain and willingness
+to pay. Long onboarding kind of
+self-selects in that way. That's why it
+works for Cal AI. Calorie tracking is a
+deep pain niche where personalization
+really matters. The quiz is both a buyer
+qualifier and an aha moment builder. So,
+here's the actual rule to remember. By
+default, keep your onboarding as short
+as possible. Or better yet, surface
+tangible value as fast as possible.
+That's the rule for most apps out there.
+The exception kicks in when long
+onboarding buys you something users
+actually really need in order to stick.
+Either a personalized first experience
+that wouldn't be possible without the
+data or a filter that gets you actual
+buyers. Apply this and I can assure you
+that your retention curve will start
+looking healthier. Now, if you found
+this short breakdown useful, again,
+design choices like these are just one
+of many things that we help founders
+think about during our free design
+strategy calls at Zipsip. Link's down
+below if you're interested. Also, check
+out this video here somewhere where I
+break down the design moves the top 1%
+of apps use that most founders never
+even consider. Now, until the next one,
+have a great life.

@@ -1,0 +1,331 @@
+Our World Class App Design Formula
+https://www.youtube.com/watch?v=wmTkiF23GRQ
+
+How do you go from a napkin sketch to a
+world-class app in a predictable way
+every single time? Well, the key is a
+system that derisks every step of the
+process. And in this video, I'm going to
+walk through the exact six-stage formula
+that helps us make worldclass
+transformation more predictable. The
+same formula that's helped our clients
+raise tens of millions of dollars and
+scale to tens of thousands of users. By
+the end of the video, you'll know the
+exact decisions we make at each stage of
+the process and how we turn a raw vision
+into a productionready app or website.
+Now, I always say this, but great
+product design really is like building a
+house. You need a solid foundation
+before you add the beautiful finishes.
+And the road to get to that beautiful
+house is simple. reduce risk at each
+step of the project so that a
+engineering moves fast after handoff and
+b users feel something real when they
+use your product. But if it's so simple,
+why is it so hard for founders to find a
+design partner that makes success feel
+inevitable? Well, a big part of the
+answer lies in what Arnold Glasso once
+said, "Success isn't a result of
+spontaneous combustion. You must set
+yourself on fire." You see, the truth is
+that some design teams will jump into
+pixels too soon. Others will waste
+months on endless research only to learn
+it doesn't work in practice or even
+worse, they skip the research
+altogether. On top of that, most won't
+even mention emotional design and how to
+strategically make users hooked to your
+app. This creates rework, misalignment,
+and frankly flat products that users
+will forget. So, let's talk about the
+system we use at SIPAP to skip all the
+fuzz and create predictable results time
+after time. It has six key parts:
+onboarding, discovery, UX, UI, emotional
+integration, and delivery. At Zips Up,
+we always start with onboarding, which
+is about getting the client set up for
+clarity and success. Now, before we get
+there though, if you're a founder who
+wants to chat about strategic design and
+how it can grow your business, check out
+our free design strategy calls below.
+Now, back to onboarding. If you're
+working with our agency, you get a
+dedicated client portal in notion with
+timelines, tasks, decisions, files,
+meeting notes, everything you need in
+one place. This really matters because
+it organizes the entire engagement from
+day one. By the way, huge shout out to
+John D. Saunders where I first learned
+about this concept. It truly adds a next
+level of structure to projects and it's
+still something most agencies and
+freelancers don't really include. For
+us, it's not just a nice to have because
+without this single source of truth,
+details will just spread across emails
+and chats, which in the end slows you
+down and ultimately leads to more risk
+of misunderstanding. So, we skip all of
+that headache by setting up all of this
+as part of your onboarding process.
+You'll have coms channels, file access,
+Google Drive folders, and your own
+Notion client OS on day one. You'll get
+a welcome checklist and a summarized
+discovery and strategy doc so you always
+know what's next. In the end, this
+creates a super transparent environment
+and keeps everyone in the project
+aligned. And it's with this foundation
+in place that we can confidently move
+into discovery. In any project we start,
+we run at least one project discovery
+workshop to define outcomes,
+constraints, and success metrics. It's
+high level and strategic because this
+stage determines everything that
+follows. You see, here's what typically
+goes wrong when working with an agency.
+As we touched on earlier, some will jump
+straight to UI while some will spend
+months, literally months, on research.
+Both are a recipe for potential disaster
+in my experience because you either get
+pretty UIs that don't address the user's
+pain points or needs effectively or you
+simply just waste time. And regardless,
+you can bet that you will pay for that
+later in the form of app rework and user
+churn. However, avoiding this is quite
+simple. Try to land in the middle. At
+Sips App, we use a balanced approach
+that kind of gets the best from both
+worlds, both speed and insight. We'll
+collect references to align taste and
+add clear guard rails. We'll analyze
+competitors, indirect or direct, by
+downloading and testing their actual
+apps. We'll run focused product research
+to derisk key decisions for key flows
+before design. This gives us the luxury
+of having very clear targets instead of
+loose assumptions without spending
+months. Now with that said, having a
+plan and doing research is of course
+just the start. While this discovery
+phase gives us direction, the UX stage
+is what turns our strategy into
+structure. We always start this part of
+the process by mapping out things like
+core user journeys and what we call wire
+flows for the entire app with the
+biggest focus on key flows. In other
+words, a settings screen won't get as
+much deep attention as an onboarding
+flow, for example. Before proceeding
+with highfidelity wireframes for
+priority flows, we might also draft more
+lowfidelity layouts to get buy in on
+less refined ideas before spending too
+much time on them. In the end, the whole
+goal here is to explore and communicate
+direction as fast as possible, which I
+think the larger design community
+sometimes miss because wireframing
+generally gets a lot of flack, but it's
+amazing for this kind of stuff. For us,
+wireframing is a super effective tool
+for focusing on solving problems before
+obsessing over visual details, which I
+feel is a key thing a lot of teams miss.
+When they jump straight into visuals,
+the risk of creating a less than ideal
+user experience is pretty high. That
+doesn't mean, of course, that it's going
+to be bad 100%. It just means that it
+could probably be a lot better. So to
+avoid that, we simply align on journeys,
+states, edge cases, all of that stuff
+very early. We also try to pin potential
+emotional design moments on specific
+screens to make sure that we design for
+feeling, not just function. And if we
+need to showcase important interactions,
+for example, we'll create prototypes to
+simulate and validate the experience.
+This allows us to land on the full flow
+and logic before starting that really
+exciting stuff that comes next because
+once the structure is solid, we finally
+move on to actually making the UI look
+awesome. Now, right before that, if you
+believe this kind of design work could
+benefit your business, feel free to sign
+up for the design strategy calls below.
+They're totally free, but since we only
+have a limited amount of spots, they do
+run out. So, if it sounds interesting,
+be sure to grab your spot. Now, in the
+UI phase, we start by exploring concept
+direction for the entire product
+experience. Very much like with the
+previous stages, we'll start broad and
+gradually go deep. Think mood boards,
+concept screens, lots of different
+directions. It's only after a ton of
+experimentation and back and forth that
+we move into the actual highfidelity
+visual design and start building out
+reusable UI patterns. Now, people will
+underestimate the importance of tackling
+this UI stage carefully. I personally
+have full-on OCD with the UI stage. And
+this is where big parts of my personal
+QA time during a project will come in
+because you won't believe how much
+damage seemingly small inconsistencies
+here and there can do to products. I'm
+talking about things like misaligned
+border radi or overusing shades of a
+color or not being intentional with
+visual emphasis. All these things will
+compound and break that worldclass
+feeling you need if you want to compete
+with the best of the best. On top of
+that, it will also make a developer's
+life super miserable when you're
+fighting with an inconsistent design
+system. So, how do we avoid this? First
+step is to have an airtight QA protocol,
+checking every visual checkbox for every
+screen before moving to the next. If you
+saw our internal Figma files with the
+comments that pile up, you'd understand
+how serious we are about this. But it is
+truly essential because again, this is
+what takes you to that worldass quality
+level. You need to stress all the
+tiniest details from microcopy to
+precise opacities on every element. You
+then systemize this component by
+component until you built out the entire
+library. Now, while this is where it all
+starts looking like a worldclass app to
+the average person, it's not going to be
+enough to make people feel something
+when they use it. Which brings us over
+to our agency's bread and butter,
+emotional integration. In this phase, we
+return to the emotional moments we
+pinned earlier in the project and choose
+the ones that matter the most for your
+business goals. Any animation we create
+here is designed to be both lightweight
+and in many cases interactive. We use
+tools like RI for this which for context
+is the same tool Dual Lingo uses to
+create high-erforming animations that
+delight users. And that last part is key
+delight because remember we're in the AI
+slope era where products are built at an
+unprecedented scale. Competitors are
+everywhere. And what do they all have in
+common? They stop at usability. But the
+problem is that even if you reach
+usability, that just doesn't cut it
+anymore. To compete today and to truly
+stand out today amongst all these
+different competitors, we need emotional
+touch points. And this is not just about
+animation. This is about creating a
+feeling at the right moment. You need to
+intentionally design the right kind of
+emotional response that can help you
+drive behavior and stickiness. Lots of
+clients come to us for this specific
+expertise. For example, with a crypto
+project, we took a core piece of each
+main page and gave it meaning through
+colors. Every time a user opens their
+portfolio or commits a key action, we
+reinforce that experience. With another
+client in the trading space, we created
+a truly unique and quite mesmerizing
+first impression to help them make their
+launch campaign extra impactful. Free
+Cash, one of our most longlasting
+clients and currently number two in the
+app store, got a tiered diamond system
+that makes users return for more. For
+Nila Health, an app in the hyper
+competitive AI note takingaking niche,
+we marry the logo type with a core
+experience of the app. And with a
+fintech client, among many things, we
+frontloaded emotional connection during
+the onboarding to gain that extra bit of
+trust with a very trust sensitive web 3
+audience. These are just a few examples,
+but there's a comment thread here. We
+choose moments based on strategic goals.
+What feelings do we want to evoke at
+what moment of the user journey to
+strategically incentivize users to keep
+coming back for more? So again, don't
+mistake this for fancy animations for
+the sake of fancy animations. It takes
+deep thinking to make these emotional
+moments actually have an impact on the
+business bottom line. Now, before we
+wrap up a project, we make it ready for
+a proper handoff. That means cleaning
+up, covering any last edge cases, any
+remaining states or missing
+accessibility details. We'll run another
+round of QA across the entire project to
+make sure we didn't miss anything. And
+this is super important because if you
+skip this step, you can be sure that the
+small cracks will turn into bigger
+problems after handoff. So because of
+that, we just make sure we packaged the
+source file, included the specs, and
+tidied the components so that our
+clients engineering team or the founder
+himself, if he's building it, or she is
+building it herself, has everything they
+need to succeed. And that's it. Those
+are the six steps that we always follow
+to ensure world-class app results. Just
+to summarize, onboarding to set up clear
+systems and communication. Discovery to
+define goals and derisk key decisions.
+UX foundation to map flows and validate
+logic. Some UI polish to create
+consistent pixel perfect designs.
+Emotional integration to add strategic
+moments that hook users. and then
+cleanup and delivery to package
+everything for seamless handoff. Each
+stage reduces risk, cuts off time, and
+bumps up quality. Now, lastly, again, if
+you want your vision translated into a
+worldclass app with a predictable
+process, again, check out the free
+strategy calls below. And if you like
+this kind of video, especially the last
+parts about emotional design, you'll
+probably love this video about how
+Dolingo, Revolute, and Phantom use
+emotional design to crush their
+industries. With that, until the next
+one, have a great

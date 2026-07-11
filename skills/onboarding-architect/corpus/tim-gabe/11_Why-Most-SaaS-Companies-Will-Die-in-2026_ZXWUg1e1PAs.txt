@@ -1,0 +1,289 @@
+Why Most SaaS Companies Will Die in 2026
+https://www.youtube.com/watch?v=ZXWUg1e1PAs
+
+There is a question that every founder,
+building an app right now, needs to ask
+themselves. The question is, if an AI
+could do everything my app does through
+a single text message, why would anyone
+open my app ever again? 40% of
+enterprise apps will have task-specific
+AI agents embedded by the end of this
+year. That is a Gartner prediction. And
+if your app is primarily a tool that
+helps people get something done, that
+prediction is about you. So in this
+video, I am going to show you exactly
+what the apps that survive this shift
+are doing differently. Because there is
+one layer on your product that agents
+will never be able to touch, and almost
+nobody is building for it. By the way,
+I'm Tim. I've spent over a decade
+designing software for companies like
+Spotify and startups across basically
+every category. And I run a design
+agency that works with founders building
+future-proof products. So this is
+generally what I think about every
+single day. Now here's the mistake most
+founders make when they think about AI
+agents. They look at what agents can do:
+scheduling meetings, filing expenses,
+summarizing inboxes, answering support
+tickets. And they think, my app is safe.
+Agents are a feature, an assistant, not
+a threat. That is the wrong frame
+entirely. Agents do not replace apps.
+They replace the reason users came to
+your app. When an agent can book a
+restaurant, rebalance a portfolio, or
+log a workout in plain language without
+ever opening a UI, the question stops
+being can users accomplish the task?
+Instead it becomes why would users come
+back to your interface at all? And this
+is where a paradox kicks in. The more
+agents absorb functional layer of
+digital products, the more emotional
+connection becomes the actual product,
+not the task completion, not the
+algorithm, the emotional layer, the
+places where identity is expressed,
+where rituals are honored, where
+community creates meaning. Agents handle
+all logistics beautifully, but they
+cannot replace belonging. And this is
+what most founders are not seeing. The
+very technology that automates
+everything functional makes everything
+emotional the only thing that matters. I
+call it the agent paradox. Founders who
+see this now will build modes that are
+nearly impossible to crack. Meanwhile,
+founders who figure this out in a year
+from now will be rebuilding from scratch
+against products that already carved
+their way into a user's identity. And
+before we dig into what actually
+survives this shift, if you want help
+thinking through how the agent era
+affects your specific products, we open
+up free design strategy calls monthly at
+Sipsip. You can grab your spot in the
+link down below. All right, so what does
+surviving the agent era actually look
+like? The first thing you need to
+understand is the difference between a
+product that people use and a product
+that people belong to. And the clearest
+example of this playing out right now is
+Strava. Strava hit roughly $500 million
+in annual recurring revenue and a $2.2
+billion dollar valuation in 2025.
+Runkeeper and a dozen other fitness
+trackers offered technically competitive
+or superior GPS tracking, and yet Strava
+dominate. The reason is structural.
+Strava is not a fitness tracker with
+social features bolted on. When you open
+Strava, your home feed is filled with
+what the people you follow have been
+doing: their runs, their rides, their
+achievements. It is designed around
+community activity. That is an
+architectural decision. The social layer
+is not a feature, it is the product. The
+tracking is just what makes the social
+layer function. Now think about what
+happens when AI agents can automatically
+log workouts, generate training plans,
+and analyze your fitness data better
+than any app out there. The Strava users
+who were only there for GPS tracking,
+Strava better be scared about them
+churning because an agent does that
+better even today. But the users who are
+there because their running club is in
+Strava, because their segment PRs are
+public records, because if it's not on
+Strava, it didn't happen is literally
+how they think about exercise, those
+users cannot be poached by a smarter
+algorithm. Their identity lives in
+Strava. That is the moat. And here is
+what is interesting about Strava's
+recent moves. In April 2024, they hired
+Mat Ellisar as chief product officer.
+This guy was previously VP of product
+and growth at Epic Games, where he led
+Fortnite's growth team. They also
+brought on Rob Terrell as CTO, who spent
+over a decade at Zynga leading the
+FarmVille franchise. Gaming executives,
+people who understand social mechanics,
+leaderboards, challenges, and
+competitive loops at a deep level.
+Whether or not they said we are
+preparing for the agent era out loud,
+the signal is clear. Strava is doubling
+down on the social and competitive
+layer, not on tracking accuracy. For
+founders, the test is simple. Where does
+the social layer sit in your product's
+navigation? If it's buried in a tab
+somewhere, or worse, you don't have one,
+you're potentially exposed to the threat
+of agents. And I say potentially because
+social identity is one way to build an
+emotional layer agents cannot touch. But
+there is another mechanism that is even
+more personal. And I'm going to use
+myself as the example for this one. I
+wear a Whoop, and I want to be honest
+with you. I do not care about my daily
+recovery score, not really. The feature
+that genuinely changed how I interact
+with this product is something called
+Whoop Age. Whoop Age is an estimate of
+your physiological age based on months
+of health data across nine different
+metrics: sleep consistency, VO2 max,
+resting heart rate, lean body mass,
+daily steps, time in different heart
+rate zones. It takes all of that, runs
+it through a formula, and tells you
+whether your body is aging faster or
+slower than your actual age. And here is
+the part that hooks you. Every single
+week, Whoop updates a score called Pace
+of Aging. It ranges from -1 to 3. -1
+means you're aging slower than real
+time. Three means your lifestyle choices
+are really accelerating your aging.
+Every week that number moves based on
+your last 30 days of behavior. I check
+this every week, and every week I am
+scared that this number is not going to
+trend in the right direction. So I go in
+and I make sure that it does. And here
+is the thing, I'm making different
+choices about sleep, about daily steps,
+about recovery because of one number on
+a screen. That is the power of this
+design pattern. They are driving true
+positive behavior change through their
+product. And it even gets more personal.
+I bought one Whoop for myself and one
+Whoop for my wife. Her biological age is
+lower than mine, which honestly makes me
+a little bit annoyed, but now I am
+obsessed with competing with her and
+getting my biological age lower. And the
+fact that I am this invested in a number
+on a wearable, competing with my own
+wife over it, that tells you everything
+about how powerful this mechanic is. And
+this is exactly the kind of mechanism
+that agents
+rate variability. It can even generate a
+perfect training plan just for me. But
+it cannot create the feeling of watching
+a single number that represents who you
+are shift week over week. Whoop has
+raised over $800 million
+in funding with a valuation well north
+of $3 billion. And over 50% of their
+members still use the product daily even
+after 18 months after purchase. They
+turned a biometric measurement device
+into an identity platform. That is not
+just good product design. In the agent
+era, that is survival architecture. By
+the way, quick note again, if you are
+building a product and wondering how to
+find your version of the Whoop Age
+moment, at Sipsip we run free design
+strategy calls with founders every
+month. Links down below if you want to
+grab one before they fill up. So Strava
+built social identity before agents
+arrived. Whoop turned data into personal
+identity. But there is a third play
+happening right now that is even more
+interesting. And the company behind it
+is making a very deliberate bet.
+Robinhood announced Robinhood Social at
+Hood Summit 2025, rolling out by
+invitation to a select group of users.
+The core mechanic, users can share live
+verified trades and follow traders they
+trust. You can see exactly when someone
+enters and exits a position, discuss
+strategies in the feed, and even start
+your own trade right from someone else's
+post. Think about what trading looks
+like without this. It is one of the
+loneliest high-stake activities people
+can do in the job world. You're making
+decisions with real money in isolation
+with no social validation. That anxiety
+drives churn from trading apps. And in a
+world where AI agents can execute trades
+and rebalance portfolios via voice
+command, a pure trading tool has almost
+zero defensibility. My agent could just
+do it for me, right? We're already
+seeing examples of trading agents making
+loads of cash by themselves. So, the
+emotional layer Robinhood is trying to
+build is not let me copy whoever is
+winning, it is I am part of an informed
+trading community that makes me a better
+investor. The initial rollout is
+deliberately small and invite-only, and
+the emphasis is on learning and
+discussion, not automated
+follow-the-leader investing. Now,
+whether this works at scale depends on
+execution, of course. But the strategic
+logic is the same Strava and Whoop. Move
+from utility to community and identity
+before agents commoditize the task
+layer. So, let me recap what survives
+the agent era. Comes down to three
+things. First, social identity. Building
+your product so the community is the
+core experience, not a feature. Strava
+proved that when the social layer is
+primary and the utility is secondary, no
+amount of better technology can poach
+your users. Second, personal identity
+mechanics. Creating metrics and rituals
+that become part of how your users see
+themselves. Whoop turned biometric data
+into a weekly identity check-in that
+keeps over half their members using the
+product daily over a year later. Third,
+deliberate community bets. Do not wait
+for agents to eat your lunch and then
+scramble to add social features.
+Robinhood launched social at Hood Summit
+with a deliberately small invite-only
+rollout focused on learning and
+discussion, not automated copying. The
+lesson for founders, build your
+community layer with intention before
+you're forced to. Now, again, last time,
+promise. If you found this breakdown
+helpful at all, and you were wondering
+how this applies to your specific
+product, we open up a couple of free
+design strategy calls each month at Zip
+Zap. Just check the link down below.
+Also, if you like this video, you will
+probably love this one here somewhere.
+Where I break down the exact
+psychological tricks that make certain
+apps just impossible to put down. Now,
+until the next one, have a great life.

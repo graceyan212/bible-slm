@@ -1,0 +1,270 @@
+I Studied 10,000 Paywall Screens (THIS Makes People Pay)
+https://www.youtube.com/watch?v=sYRhXB_ZcLI
+
+I researched 10,000 paywall screens
+across every app category and the data
+revealed something most subscription
+founders never see. Top apps make 18.7
+times more revenue than regular ones.
+Their paywalls generate 636%
+more LTV than the average. Not because
+their products are better, not because
+they're in better categories, because
+they are doing six specific things
+differently. Same audience, same pricing
+tier, wildly different outcomes. So, in
+this video, I'm going to walk you
+through every one of those patterns,
+what they look like, why they work, and
+what the top 10% are actually doing
+based on $3 billion in real subscription
+revenue. By the way, I'm Tim. I've been
+designing software for over a decade,
+consulting for companies like Spotify
+and countless app startups along the
+way. So, it's kind of safe to say that I
+think about this stuff all the time.
+Now, the why behind that 18.7x gap ties
+this whole video together and we'll come
+back to it. But, heading into pattern
+one, the first thing the data reveals is
+a market-level shift most founders
+haven't priced in yet. Pattern number
+one, weekly is the new monthly. Two
+years ago, weekly plans generated 43% of
+all subscription app revenue. Today,
+that number is 55.6%
+Monthly collapsed from 21.1%
+to 11.7 in the same window. Weekly
+cannibalized both at once. Now, the
+reason this happened is kind of
+counterintuitive. By the way, shameless
+plug, if you need help applying any of
+this stuff to your own subscription app,
+we open up free design strategy calls
+monthly at Zip Zap. Just check the link
+down below. Okay, so weekly plans
+convert 1.7 to 7.4 times better than
+annual plans across every price tier.
+Users with high intent, but uncertainty
+the about long-term value will commit to
+$7 a week when they won't commit to $38
+a year. Even though the annual plan is a
+dramatically better deal for them. Once
+they're in, many of them stay. So, the
+math compounds in your favor. The apps
+winning this shift didn't ask the user
+to commit to a calendar year on first
+contact. They asked for a coffee. Seven
+bucks a week feels like nothing. The
+same user would never sign up for a $400
+a year annual plan, but by month four,
+they're in deep enough that the annual
+plan becomes easy. So, if you're still
+defaulting to monthly because that's
+what you launched with, you're operating
+on a model the market already moved away
+from. The question isn't should we offer
+weekly, it's why aren't you offering
+weekly first? But, picking the right
+plan structure is only really half the
+battle. There's a deeper psychological
+window that decides whether the user
+will ever say yes at all. Pattern number
+two, you have one session, that's it.
+82% of all starts happen on the day a
+user installs the app, according to
+RevenueCat. Adapty puts the same number
+at 89.4%.
+Regardless, it's clear the first session
+is the entire subscription game. 55% of
+three-day trial cancellations also
+happen on day zero. After day seven,
+trial to paid conversion drops sharply
+and never recovers. Now, here's where it
+gets interesting. The apps winning these
+one-session game aren't the ones with
+the shortest paywall or the shortest
+onboarding. Cal AI, the calorie tracker
+that did $35 million in year one
+revenue, ran the user through a
+28-screen
+onboarding flow before ever showing them
+the price. 28. Most founders see that
+number and assume it's a UX disaster.
+And while keeping onboarding short is a
+very good rule of thumb, Cal AI shows us
+it's not the only way. Inside their
+flow, there's a three-screen trial
+explanation moment that did the heavy
+lifting. Cal AI told the user exactly
+when they would be charged and
+explicitly promised to send a reminder
+before the trial ended. The headline
+copy on those screens read, "No payment
+due now." By the time the user reached
+the paywall, the decision was already
+made. Lose it ran the same play in fewer
+screens. They dedicated an entire
+section of the paywall to explaining
+exactly how the free trial worked,
+walking the user through the full
+timeline before any payment was due. The
+result, $3.3 million
+in monthly revenue at 350k
+installs. This is now one of five
+structures the industry now treats as
+canonical for million-dollar paywalls.
+Remember, your paywall is a trust screen
+as much as it is a pricing screen. Does
+it appear after the user has felt
+something? Does it tell them exactly
+when they will be charged? If not,
+you're kind of asking for trust before
+you earned it. Now, once you fix this
+timing, you have to also fix the
+architecture underneath because that's
+where the real revenue lives. Pattern
+number three, structure over price. This
+is the one that should change how you
+think about paywall optimization for the
+rest of your career probably. Adapty's
+2026 report ranks paywall experiments by
+measured LTV uplift across $3 in
+subscription data. Local tests, meaning
+translating the paywall into a user's
+local language and currency, deliver
+62.3%
+LTV uplift. Trial structure changes
+deliver 59.6%.
+Plan count changes drive 63% more
+conversion uplift than any price test.
+Price changes themselves come in
+dramatically lower than all of the
+above. Listen to that again. The number
+of plans you show drives more uplift
+than the price you charge. Most founders
+run the price test anyway, AB testing
+999 against 1299 for 3 weeks, and never
+once testing how many plans they show.
+But the headline structural finding is
+bigger. A weekly plan with no trial
+generates $7.40
+in LTV over 12 months. The same weekly
+plan with a trial added generates
+$54.50.
+That's the 636%
+increase from the start, and it didn't
+come from a price test. It came from a
+structural decision. Yazio understood
+this. The calorie tracker did around $3
+million in monthly revenue at 700,000
+installs. And their paywall was built
+around structure first, plan options,
+trial framing, streak mechanics. Price
+was the last thing they tuned. So,
+you're not losing subscribers because of
+your price. You're losing them because
+of your architecture, which raises the
+next question. What does your paywall
+actually say to the user about what's
+going to happen to their money? Pattern
+number four, honest paywalls. This one
+actually breaks a piece of conventional
+wisdom that most founders never
+question. The default assumption is that
+friction reduction means hiding the
+cost. Fewer clicks, less information,
+faster commitment. Blinkist proved the
+opposite. They ran one of the most
+documented paywall redesigns in the
+industry. They added one thing. An
+explicit line telling users exactly when
+they would be charged and what for. Not
+buried in fine print, front and center.
+The result was a 23% increase in
+conversion rate, a 55% drop in
+complaints, and zero change in churn.
+Users who knew what they were getting
+didn't leave more often. They committed
+harder. The mechanism is trust
+economics. Users who feel surprised
+cancel immediately and review poorly.
+Users who know exactly what they're
+getting into stay. The transparency
+isn't scaring people off. It's capturing
+the users who previously didn't believe
+the offer was real. So, if your paywall
+has any ambiguity about when the user
+gets charged, what they get, or how to
+cancel, that ambiguity is potentially
+costing you both conversions and
+cancellations at the same time.
+Transparency isn't soft. It's a
+conversion mechanism. And now the other
+half of the price psychology story is
+going to make you even more
+uncomfortable. Pattern number five,
+higher prices, better conversion. This
+is the finding most founders refuse to
+believe, or at least it seems like that
+when you look at pricing across the
+board. According to RevenueCat's 2026
+data, the median high-priced app
+converts downloads at 2.8%.
+The median mid price app converts at 2%.
+The top quartile of high priced apps
+hits 6.1%
+higher prices higher conversion. The
+mechanism matters here because the
+service read is dangerous. It's not that
+any user pays more if you charge more,
+of course, it's that higher prices
+attract higher intent users. Someone
+willing to pay a premium price has self
+selected as serious about the outcome.
+They made a decision before they ever
+see your paywall. Most founders
+benchmark against the cheapest
+competitor and then race to the bottom.
+Now, the data is telling us the bottom
+is exactly where conversion goes to die.
+So, to be clear, I'm not saying raise
+your price tomorrow. I'm saying if
+you've been assuming that a lower price
+will save your conversion rate, the data
+does not support you. You may actually
+be doing the opposite. Which brings us
+to pattern number six, the
+experimentation gap. So, let's go back
+to the 18.7 x gap I mentioned at the
+start. You see, the top apps don't just
+have better paywalls. They run more
+experiments on them, a lot more. This
+crazy gap is between apps that ran 50
+plus paywall experiments a year versus
+apps that ran one. 18.7 times more
+revenue. Just listen to that insane
+number. And again, remember, same
+product categories, similar price
+points. The only consistent difference
+is testing velocity. Top performers
+average almost 15 paywall experiments
+per year. Most founders run zero or one.
+Treat their paywall like a checkout
+screen and never touch it again. We do
+experiments for our clients all the
+time. For example, one home screen
+widget redesign for Freecash drove their
+day seven retention up by several
+percentage points. One experiment, one
+surface. That compounds over time. If
+you want help thinking about how to run
+experiments like this, again, jump on a
+free design strategy call. It's linked
+down below. Now, if you like this video,
+you'll probably love this video here
+somewhere where I cover how Duolingo,
+Revolut, and Phantom use emotional
+design to beat their competition. Until
+the next one, have a great life.

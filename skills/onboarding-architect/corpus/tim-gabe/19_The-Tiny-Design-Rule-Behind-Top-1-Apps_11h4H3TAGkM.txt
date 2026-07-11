@@ -1,0 +1,253 @@
+The Tiny Design Rule Behind Top 1% Apps
+https://www.youtube.com/watch?v=11h4H3TAGkM
+
+What does the world's most popular
+rental app, an Apple design award
+winner, and one of Silicon Valley's
+biggest success stories all have in
+common. It's not just good designs. How
+they master two simple but critical
+moments, the peak and the end. In this
+video, I'll show you how they do it.
+Drawing from a decade of experience
+designing for both scrappy startups and
+global tech giants, you'll learn how
+these apps intentionally design those
+moments to keep you hooked and the exact
+checklist you can use to do the same
+[music] for your own product. But to
+make sense of this entire concept, you
+have to understand why these moments
+work in the first place. So, let's break
+down the psychology behind it. It all
+started with the Nobel Prizeinning
+psychologist Daniel Conan discovering
+that our brain doesn't remember an
+experience as a whole. It compresses it.
+What we actually recall is how we felt
+at the two specific points I mentioned
+in the beginning of the video. the peak,
+aka the most intense part of the
+experience, and the end, aka the last
+part of the experience. Everything else
+is basically just noise. And nowhere is
+this better illustrated than at the
+Disney theme parks because to be honest,
+like waiting in line for 90 minutes in
+the sun, hustling between attractions,
+and fighting for $10 fries, all of that
+kind of sucks. I mean, it's very clear
+that not everything about the Disney
+experience is smooth. But Disney knew
+something most theme parks didn't. They
+could intentionally design what visitors
+remember. And they did so by leaning in
+hard on the high points, the peaks, and
+making sure the final moment before you
+left the park, the end, felt carefully
+crafted. Whether that was a surprise
+interaction with a character, the last
+firework show of the night, or even the
+music playing as you exit the park,
+everything is deliberately timed to a
+peak and then gently winds down to a
+great ending. And as a result, about
+70%, again, 70% of Disney park visitors
+come back for a second visit. Not
+because the entire day was flawless, but
+because the moments they remember were.
+So, if Disney can pull this off in a
+6-hour, $200 experience, what could you
+do with your app in a couple of minutes?
+Well, turns out a lot. But before we
+look at how Airbnb does this in their
+app, if you want to talk about this or
+anything else design related with a team
+that has many decades of design
+experience, then check out the free
+design strategy calls we do at SIPAP.
+It's in the link down below. Now, let's
+zoom in on Airbnb. They're known for
+being one of the most design focused
+companies on the planet. But what truly
+sets them apart is how they sweat the
+small stuff. Every screen feels like it
+was crafted by hand. When you open the
+app, you're met with friendly openings
+and subtle animations. Even their icon
+set comes alive as you switch between
+tabs in the app. And all of this helps
+make the experience truly top tier. But
+the strongest parts of the app comes
+later because Airbnb knows that the
+first core moment for guests, the one
+they really want to elevate into a peak,
+is when they find that perfect listing.
+Knowing this, they sprinkle in nice
+little micro animations and supporting
+tags showing the unique value to your
+specific pick, all to make you feel
+confident and excited in that peak
+moment. Then once you make the decision
+to reserve your booking, they end your
+experience with a super slick purchase
+animation in their trademark 3D style.
+And while these things may seem a bit
+trivial at a first glance, knowing how
+datadriven the team at Airbnb is, it's
+pretty safe to assume that this exact
+peak experience has been tested
+extensively to help boost their booking
+rates. However, with that said, peak and
+moments can come in more forms than just
+elevating actions like booking a
+listing. The Apple Design Award winner
+ahead uses these moments to create a
+really sticky and friendly user
+experience. Most wellness apps lean on
+moral pressure or habit dashboards. But
+Ahead took a different path. They
+designed a flow that guides you kindly
+from start to finish. Let's take when
+you first download the app. You're
+welcomed with a smooth, quiet splash
+screen that really sets the vibe of the
+app immediately. Then you ease into a
+self-p profofiling journey, answering
+key questions at just the right cadence.
+But while this is all really
+well-crafted and amazing, it's not the
+peak or the end. Because as the
+experience continues, you're not just
+shown a report. You get a carefully,
+deliberately designed peak experience, a
+brief that just gets constructed right
+in front of you, making you as a user
+feel like this is made for me at just
+the right moment. Then as the grand
+finale before closing the app, you'll
+get a gentle nudge to come back
+tomorrow, subtly reinforcing that your
+time meant something and that we care to
+see you coming back to the app. So, this
+is a great example of how to use the
+peak rule to create more stickiness with
+our users in a friendly way. But what if
+we want to use the peak and power to
+have users directly contribute to
+reducing churn on our app? That's where
+Uber comes in with one of their most
+popular UI patterns. Because while Uber
+can't really brag about fancy skumorphic
+icons or super cool animations, there's
+one thing they reliably do better than
+most. They end the journey extremely
+well. After a ride, you don't just exit
+the car and call it a day. You're giving
+a tight little peak and flow, a
+vibration of the phone, and a double
+reward opportunity. Rate your driver and
+leave a tip. And it's not enforced. It's
+gentle and it's polite because Uber
+knows their riders already experienced
+the peak which was about reaching their
+destination. So all they have to do is
+wrap a sense of completion into the
+ending. A completion that might give the
+driver an additional tip and help grow
+their reputation which in turn helps
+keep the drivers on Uber's platform.
+This of course creates a really virtuous
+cycle where satisfied drivers provide
+better experiences which encourages
+riders to use Uber more frequently which
+in turn further increases demand and
+supply reliability for Uber. A win-win
+for the users and a great business
+outcome for the company. But now the
+question is how do you apply this to
+your context? How do you take the same
+patterns with intentional peaks and good
+endings and leverage it to make users
+crazy about your product? Well, I'm
+going to show you step by step how I
+would guide clients through it at SIPAP.
+But first, if you want this actually
+applied to your context, or if you just
+want to chat about a new website, a
+rebrand, or a product design in general,
+again, take a look at our free strategy
+calls in the link down below. Now, the
+step-by-step guide. As a first step, you
+want to map out your entire customer
+journey. You can use sticky notes on a
+wall or a digital board in a tool like
+Fig Jam. doesn't really matter, but I
+prefer to have it online, so I just use
+Fig Jam. Then you lay out every step
+your user takes in your core flow from
+sign up to task completion to whatever
+the end looks like in your product.
+After that, ask questions like, where is
+the user slowed down? Where might stress
+peak? Where's the quiet in between? Save
+the result of this exercise and treat it
+as a living tool you will iterate on as
+your product evolves. The next step is
+to pick your magical moment or your one
+welltimed peak. Pick just one spot in
+the journey to spark it. For example,
+after a user completes a core task,
+right when they hit a milestone or at a
+point when they're investing a lot of
+effort. This is where you place the holy
+dang moment. could be a badge, a
+sparkle, an animation, or just surprise
+copy that lifts the experience above
+what's expected. But remember, don't say
+the magic for the end. Peak first,
+because a lot of apps just end. They
+fall off without closure or the feeling
+of you're done or you're doing great.
+And that, ladies and gents, is what we
+call a missed opportunity. So instead,
+use the ending state for something like
+celebrating what was done, encouraging
+what comes next or reaffirming progress.
+It might be a check mark or a summary
+card or even a message like you showed
+up today. That's huge. The bottom line
+is it doesn't have to be fancy, but it
+should be designed with intent. Then as
+the fourth step, bring out the vacuum
+cleaner. Look at your weight screens,
+your error states, your long forms, and
+ask yourself, where might someone feel
+stuck or uncertain? Then make an effort
+to wrap those moments in true care.
+Again, use microcopy that's uplifting or
+add tools that help before they even
+ask, or use delays as opportunities
+instead of dead space. Because negative
+moments are as memorable as positive
+ones. So, make sure you do your absolute
+best to locate them and reduce them.
+Then lastly, just run variations of your
+peak moments. Try timing changes, emojis
+versus icons, animations versus static
+feedback. Watch where people drop off,
+and where they stay around a bit longer
+than expected or necessary. That's your
+signal to jump in and tweak the
+experience. Now, if you want guidance on
+any of this, we're happy to help at
+SIPAP. And for the last time, feel free
+to check the link below for that free
+design strategy call I cannot shut up
+about. Also, if you like this video, I'm
+pretty sure you'll love this video here
+that is about very related stuff. It's
+about emotional design and how apps like
+Dualingo and Revolute use it to crush
+their competition. Now, until the next
+one though, have a great
