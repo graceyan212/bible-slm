@@ -356,14 +356,16 @@ struct OnbChip: View {
 
 // MARK: - Poli — the trail-compass mascot
 //
-// Onboarding uses the SAME mascot as the rest of the app: the shared
-// `PoliCompassView` (Components.swift). This thin wrapper keeps onboarding's
-// height-based call sites while delegating to the one source of truth.
+// Onboarding uses the SAME illustrated mascot art as the rest of the app: the
+// `final_compass_mascot_set` poses, rendered via the shared `PoliImage`
+// (Components.swift). This thin wrapper keeps onboarding's height-based call
+// sites while delegating to the one source of truth, and lets each step choose
+// a fitting pose (welcome waves, the finale celebrates, …).
 
 struct OnbPoli: View {
     var height: CGFloat = 220
+    var pose: PoliPose = .waving
     var body: some View {
-        // PoliCompassView sizes by width (native 260×300); convert from height.
-        PoliCompassView(size: height * 260.0 / 300.0)
+        PoliImage(pose: pose, size: height)
     }
 }

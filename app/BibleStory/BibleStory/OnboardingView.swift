@@ -156,7 +156,7 @@ struct OnboardingView: View {
             eyebrow("Treasure Trail")
             OnbSpeechBubble(text: "Hi there, explorer! I'm so glad you found me. ✦")
                 .padding(.bottom, 6)
-            OnbPoli(height: 208)
+            OnbPoli(height: 208, pose: .waving)
             glowTitle("Hi! I'm Poli!", size: 40)
             Text("I'm your compass on the adventure! Together we'll follow the map and uncover the greatest stories ever told — one stop at a time.")
                 .font(OnbFont.body(18))
@@ -270,7 +270,7 @@ struct OnboardingView: View {
 
     private var explorerStep: some View {
         VStack(spacing: 14) {
-            OnbPoli(height: 84)
+            OnbPoli(height: 84, pose: .pointing)
             Text("Now the fun part — who's exploring today?")
                 .font(OnbFont.hand(20))
                 .foregroundStyle(OnbColors.inkSoft)
@@ -298,7 +298,7 @@ struct OnboardingView: View {
     private var finale: some View {
         VStack(spacing: 20) {
             Spacer(minLength: 0)
-            OnbPoli(height: 132)
+            OnbPoli(height: 132, pose: .celebrating)
             glowTitle("You're all set, explorer!", size: 30)
                 .multilineTextAlignment(.center)
             Text("Your trail is glowing and ready. Let's go light your very first star together.")
