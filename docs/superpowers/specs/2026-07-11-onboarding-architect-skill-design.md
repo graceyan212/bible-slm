@@ -23,10 +23,13 @@ César's frequency across 152 teardowns cross-referenced with Mobbin's conversio
 Each pillar carries its named exemplars so the skill reasons from concrete precedent, not
 abstraction.
 
-1. **Show, don't explain — deliver a taste of the core value before the paywall.** The single
-   most-repeated verdict. Interactive-from-the-start; let users experience the product pre-signup.
-   *Exemplars:* Elma (try core experience before signup), Runkeeper (animation on open),
-   Timehop (product-in-action welcome), Duolingo (first lesson before account).
+1. **Show, don't explain — let the user *do the real thing once* before the paywall (a mini
+   free-trial inside onboarding).** The single most-repeated verdict. Go beyond showing value:
+   have them complete one actual unit of the core loop — do a lesson, generate one result, make a
+   pick, explore the map — so they feel the product working before any gate. This interactive taste
+   is itself the strongest conversion lever. *Exemplars:* Duolingo (finish a real first lesson
+   before signup), Elma (try the core experience pre-signup), César's sign-language teardowns
+   ("interactive lesson from the start"), Runkeeper (animation on open), Timehop (product-in-action).
 2. **Engineer the emotional arc: problem → future-self → solution.** Make them feel the problem,
    frame who they become, position the app as the bridge. (César's spiky POV.)
 3. **Collect data early — and make it visibly pay off in a personalized plan.** Every question
@@ -36,8 +39,14 @@ abstraction.
    Grammarly tailored plans (+20%).
 4. **The paywall is a flow, not a screen.** Sell the outcome first so it's the natural next step;
    multi-page beats single; reduce risk with a "how your trial works" timeline + "cancel anytime."
-5. **Pricing architecture: annual-default, anchored, honest trial.** Two plans, annual pre-selected,
-   monthly anchor, labeled trial. (César's most-mentioned topic; 178 references.)
+5. **Pricing architecture: annual-default, anchored, honest trial, with a "Most Popular" badge on
+   the highest-LTV plan.** Two plans, annual pre-selected as the default *and* visually flagged
+   "Most Popular / Recommended" (social proof + default-steering — a real, well-supported lever),
+   monthly as the anchor, labeled trial. Badge the plan that's best for LTV (annual). (César's
+   most-mentioned topic; 178 references; he repeatedly notes the yearly plan being highlighted.)
+   *Honest line:* badging/defaulting the annual plan with both prices visible is fine; **hiding the
+   cheaper plan, or badging a worse-value option "Most Popular," is the dark-pattern side** —
+   flagged in `dark-patterns.md`.
 6. **Polish & memorability are table stakes.** Animation, delight, a nameable mascot; even
    loading/verification states. Makes a long flow feel short. *Exemplars:* Bipul (nameable
    raccoon, 61 screens), Bump (animated loading states), Duolingo.
