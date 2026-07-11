@@ -185,20 +185,20 @@ struct SectionPanel: View {
     var body: some View {
         ZStack {
             MapBackdrop()
-            VStack(spacing: 16) {
+            VStack(spacing: 18) {
                 Image(systemName: icon)
-                    .font(.system(size: 54))
+                    .font(.system(size: 62))
                     .foregroundStyle(Theme.brassDeep)
                 Text(title)
-                    .font(Theme.display(28, weight: .black))
+                    .font(Theme.display(36, weight: .black))
                     .foregroundStyle(Theme.brassDeep)
                 Text(blurb)
-                    .font(Theme.body(16))
+                    .font(Theme.body(20))
                     .foregroundStyle(Theme.inkSoft)
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 40)
+                    .padding(.horizontal, 36)
                 Text("Coming soon ✦")
-                    .font(Theme.hand(22))
+                    .font(Theme.hand(27))
                     .foregroundStyle(Theme.terracotta)
             }
             MapBorderOverlay()
@@ -215,18 +215,18 @@ struct AskPanel: View {
             MapBackdrop()
             VStack(spacing: 20) {
                 Spacer()
-                PoliCompassView(size: 150)
+                PoliCompassView(size: 160)
                 Text("Ask Poli")
-                    .font(Theme.display(26, weight: .black))
+                    .font(Theme.display(34, weight: .black))
                     .foregroundStyle(Theme.brassDeep)
                 Text("Tap Poli to ask about the story.")
-                    .font(Theme.body(16))
+                    .font(Theme.body(20))
                     .foregroundStyle(Theme.inkSoft)
                 Button(action: openCompass) {
                     Text("✦ Tap to talk")
-                        .font(Theme.body(17, weight: .bold))
+                        .font(Theme.body(21, weight: .bold))
                         .foregroundStyle(Theme.ink)
-                        .padding(.horizontal, 28).padding(.vertical, 14)
+                        .padding(.horizontal, 32).padding(.vertical, 16)
                         .background(Capsule().fill(Theme.sage))
                         .overlay(Capsule().strokeBorder(Theme.outline, lineWidth: 3))
                 }

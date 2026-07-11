@@ -93,11 +93,11 @@ struct PaintedStoryFrame: View {
                     .offset(x: ox, y: oy)
 
                 Text(title)
-                    .font(Theme.display(w * 0.082))
+                    .font(Theme.display(w * 0.095))
                     .foregroundStyle(state == .active ? Color(hex: 0x7A4A12) : Color(hex: 0x4A3520))
                     .lineLimit(1)
                     .minimumScaleFactor(0.45)
-                    .frame(width: w * 0.72)
+                    .frame(width: w * 0.74)
                     .position(x: w * 0.5, y: h * Self.ribbonY)
 
                 badge(w: w, h: h)

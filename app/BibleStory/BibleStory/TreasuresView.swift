@@ -37,7 +37,7 @@ struct TreasuresData: Decodable {
 
 struct TreasuresView: View {
     private let data = TreasuresData.load()
-    private let columns = Array(repeating: GridItem(.flexible(), spacing: 6), count: 4)
+    private let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
 
     var body: some View {
         ZStack {
@@ -78,13 +78,13 @@ struct TreasuresView: View {
                     startPoint: .top, endPoint: .bottom)
             )
             .overlay(alignment: .bottom) {
-                VStack(spacing: 1) {
+                VStack(spacing: 2) {
                     Text("Treasures")
-                        .font(Theme.display(27))
+                        .font(Theme.display(34))
                         .foregroundStyle(Color(hex: 0xFBF3DC))
                         .shadow(color: .black.opacity(0.5), radius: 2, x: 0, y: 2)
                     Text("\(d.found) of \(d.total) found")
-                        .font(Theme.body(11, weight: .bold)).tracking(0.5)
+                        .font(Theme.body(15, weight: .bold)).tracking(0.5)
                         .foregroundStyle(Color(hex: 0xF2DFA9))
                 }
                 .padding(.bottom, 10)
@@ -100,11 +100,11 @@ struct TreasuresView: View {
     }
 
     private func pill(icon: String, iconColor: Color, text: String) -> some View {
-        HStack(spacing: 5) {
-            Image(systemName: icon).font(.system(size: 13)).foregroundStyle(iconColor)
-            Text(text).font(Theme.body(12, weight: .bold)).foregroundStyle(Color(hex: 0x6B4A2A))
+        HStack(spacing: 6) {
+            Image(systemName: icon).font(.system(size: 17)).foregroundStyle(iconColor)
+            Text(text).font(Theme.body(16, weight: .bold)).foregroundStyle(Color(hex: 0x6B4A2A))
         }
-        .padding(.horizontal, 11).padding(.vertical, 5)
+        .padding(.horizontal, 14).padding(.vertical, 7)
         .background(Capsule().fill(Color(hex: 0xEFE0BE)))
         .overlay(Capsule().strokeBorder(Color(hex: 0xD6BD88), lineWidth: 1))
     }
@@ -115,7 +115,7 @@ struct TreasuresView: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(spacing: 7) {
                 Text(section.title)
-                    .font(Theme.display(17)).foregroundStyle(Color(hex: 0x7A4A12))
+                    .font(Theme.display(23)).foregroundStyle(Color(hex: 0x7A4A12))
                 Rectangle().fill(Color(hex: 0xD8C39A)).frame(height: 1)
             }
             .padding(.top, 8)
@@ -136,19 +136,21 @@ private struct TreasureTile: View {
     let item: TreasuresData.Item
 
     var body: some View {
-        VStack(spacing: 3) {
+        VStack(spacing: 4) {
             medallion
             Text(item.earned ? item.name : "???")
-                .font(Theme.body(9, weight: .bold))
+                .font(Theme.body(13, weight: .bold))
                 .foregroundStyle(item.earned ? Color(hex: 0x5B4630) : Color(hex: 0x9A8763))
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
+                .minimumScaleFactor(0.7)
                 .fixedSize(horizontal: false, vertical: true)
             Text(item.subtitle)
-                .font(Theme.body(7.5, weight: .bold))
+                .font(Theme.body(11, weight: .bold))
                 .foregroundStyle(Color(hex: 0xA2895F))
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
+                .minimumScaleFactor(0.7)
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .top)
@@ -169,24 +171,24 @@ private struct TreasureTile: View {
                       ? AnyShapeStyle(RadialGradient(colors: [Color(hex: 0xFBE7A6), Color(hex: 0xD9A94E)],
                                                      center: UnitPoint(x: 0.5, y: 0.38), startRadius: 0, endRadius: 34))
                       : AnyShapeStyle(Color(hex: 0xE4D6B4)))
-                .frame(width: 58, height: 58)
+                .frame(width: 72, height: 72)
                 .overlay {
                     if item.earned {
-                        Circle().strokeBorder(Color(hex: 0xB07E2C), lineWidth: 2.5)
+                        Circle().strokeBorder(Color(hex: 0xB07E2C), lineWidth: 3)
                     } else {
                         Circle().strokeBorder(Color(hex: 0xC3AC7D),
-                                              style: StrokeStyle(lineWidth: 2, dash: [3, 3]))
+                                              style: StrokeStyle(lineWidth: 2.5, dash: [3, 3]))
                     }
                 }
                 .shadow(color: item.earned ? Color(hex: 0x5A3C14, opacity: 0.35) : .clear,
                         radius: 2, x: 0, y: 2)
 
             emblem
-                .frame(width: 32, height: 32)
+                .frame(width: 40, height: 40)
 
             badge
         }
-        .frame(width: 62, height: 62)
+        .frame(width: 76, height: 76)
     }
 
     private var emblemColor: Color { item.earned ? Color(hex: 0x6E4514) : Color(hex: 0xB6A480) }
@@ -197,7 +199,7 @@ private struct TreasureTile: View {
             CompassRose(color: emblemColor)
         default:
             Image(systemName: Self.symbol(for: item.emblem))
-                .font(.system(size: 26, weight: .semibold))
+                .font(.system(size: 33, weight: .semibold))
                 .foregroundStyle(emblemColor)
         }
     }
@@ -222,11 +224,11 @@ private struct TreasureTile: View {
             Circle()
                 .fill(item.earned ? Color(hex: 0x7E8B52) : Color(hex: 0x8A7350))
                 .overlay(Circle().strokeBorder(Color(hex: 0xF6EDD7), lineWidth: 2))
-                .frame(width: 19, height: 19)
+                .frame(width: 23, height: 23)
             Image(systemName: item.earned ? "checkmark" : "lock.fill")
-                .font(.system(size: 9, weight: .bold))
+                .font(.system(size: 11, weight: .bold))
                 .foregroundStyle(.white)
         }
-        .offset(x: 22, y: 22)
+        .offset(x: 27, y: 27)
     }
 }

@@ -20,11 +20,13 @@ struct AskView: View {
                 .padding(.top, 8)
 
             ScrollView {
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading, spacing: 12) {
                     if showTopics && session.thread.isEmpty {
-                        Text("Not sure? Pick a star ✦").font(.headline)
+                        Text("Not sure? Pick a star ✦")
+                            .font(Theme.body(21, weight: .bold))
                         ForEach(topics, id: \.self) { topic in
                             Button(topic) { Task { await session.submit(topic) } }
+                                .font(Theme.body(18))
                                 .buttonStyle(.bordered)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                         }
@@ -32,7 +34,8 @@ struct AskView: View {
                     ForEach(session.thread) { turn in
                         if turn.isChild {
                             Text(turn.text)
-                                .padding(10)
+                                .font(Theme.body(18))
+                                .padding(12)
                                 .background(.blue.opacity(0.15), in: RoundedRectangle(cornerRadius: 12))
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                         } else if let response = turn.response {
@@ -43,16 +46,18 @@ struct AskView: View {
                 .padding(.horizontal)
             }
 
-            HStack(spacing: 8) {
+            HStack(spacing: 10) {
                 Button { micTapped() } label: {
-                    Image(systemName: "mic.circle.fill").font(.title)
+                    Image(systemName: "mic.circle.fill").font(.system(size: 40))
                 }
                 .accessibilityLabel("Talk to Poli")
 
                 TextField("Ask Poli…", text: $text)
+                    .font(Theme.body(18))
                     .textFieldStyle(.roundedBorder)
 
                 Button("Send") { send() }
+                    .font(Theme.body(18, weight: .bold))
                     .disabled(text.trimmingCharacters(in: .whitespaces).isEmpty)
             }
             .padding(.horizontal)

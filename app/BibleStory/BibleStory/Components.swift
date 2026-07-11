@@ -104,10 +104,10 @@ struct PoliMascotView: View {
     var body: some View {
         VStack(spacing: 4) {
             ZStack {
-                Circle().fill(glow.opacity(0.3)).frame(width: 76, height: 76)
-                Text("🧭").font(.system(size: 42))
+                Circle().fill(glow.opacity(0.3)).frame(width: 88, height: 88)
+                Text("🧭").font(.system(size: 50))
             }
-            Text(caption).font(.caption).foregroundStyle(.secondary)
+            Text(caption).font(Theme.body(15)).foregroundStyle(.secondary)
         }
         .accessibilityLabel("Poli, \(caption)")
     }
@@ -139,7 +139,7 @@ struct PoliFAB: View {
         Button(action: action) {
             VStack(spacing: 2) {
                 Text("✦ tap Poli if you have a question")
-                    .font(.caption2).foregroundStyle(.secondary)
+                    .font(Theme.body(14)).foregroundStyle(.secondary)
                 PoliMascotView(state: state)
             }
         }
@@ -202,20 +202,20 @@ struct ReplySurfaceView: View {
         switch response.behaviorClass {
         case .deflect:
             card(icon: "house.fill", tint: .brown) {
-                Text(response.spokenText)
+                Text(response.spokenText).font(Theme.body(19))
             }
         case .danger:
             card(icon: "heart.fill", tint: .red) {
-                Text(response.spokenText)
+                Text(response.spokenText).font(Theme.body(19))
             }
         default:
             card(icon: "sparkles", tint: .orange) {
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("✦ Poli says").font(.caption).bold()
-                    Text(response.spokenText)
+                    Text("✦ Poli says").font(Theme.body(14, weight: .bold))
+                    Text(response.spokenText).font(Theme.body(19))
                     if response.retrievedVerse != nil || !response.claimIDs.isEmpty {
                         Label("Read it in your Bible with a grown-up", systemImage: "book")
-                            .font(.caption2).foregroundStyle(.secondary)
+                            .font(Theme.body(14)).foregroundStyle(.secondary)
                     }
                 }
             }
@@ -948,13 +948,13 @@ struct MapTabBar: View {
                         Circle().fill(Theme.brass.opacity(0.16)).frame(width: 40, height: 40).blur(radius: 6)
                     }
                     Image(systemName: tab.systemImage)
-                        .font(.system(size: isSelected ? 24 : 22, weight: isSelected ? .semibold : .regular))
+                        .font(.system(size: isSelected ? 27 : 25, weight: isSelected ? .semibold : .regular))
                         .foregroundStyle(isSelected ? Theme.brass : Theme.inkSoft)
                         .shadow(color: isSelected ? Theme.brass.opacity(0.5) : .clear, radius: isSelected ? 6 : 0)
                 }
-                .frame(height: 30)
+                .frame(height: 32)
                 Text(tab.rawValue)
-                    .font(Theme.body(isSelected ? 12 : 11, weight: isSelected ? .bold : .regular))
+                    .font(Theme.body(isSelected ? 15 : 14, weight: isSelected ? .bold : .regular))
                     .foregroundStyle(isSelected ? Theme.brass : Theme.inkSoft)
             }
             .frame(maxWidth: .infinity, minHeight: 44)
