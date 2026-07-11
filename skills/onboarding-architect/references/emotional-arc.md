@@ -32,13 +32,16 @@ Mapped to the six-stage arc and given a job, a targeted emotion, and a copy patt
 | 3 | **Collect user data early** | Personalized plan (setup) | Ask a handful of low-friction questions that will visibly feed the plan shown next; each answered question is a small commitment | Investment, self-relevance | "Which of these feels most like you?" / tap-to-select, not open text |
 | 4 | **Explain how the app solves it** | Future-self / aspiration + bridge to plan | Connect the data just given to a specific mechanism, using the user's own inputs as proof the app "gets" them | Hope, relief, "this was built for me" | "Because you picked [X], here's how [app] helps with that." |
 | 5 | **Ask for a review mid-onboarding** | Proof / trust | Capture the rating request at the single highest point of emotional goodwill in the whole flow — before any friction (payment) is introduced | Pride, reciprocity, goodwill | "Loving it so far? A quick rating helps us keep building this." (native rating prompt, not App Store deep link) |
-| 6 | **Paywall** | Earned paywall | Present the offer once the user has already invested data, attention, and (often) a public rating — asking now closes a loop instead of opening one | Ownership, momentum, mild loss-aversion on dismiss | Hard paywall; escalating dismiss-discount ("close again for 80% off") converts price-sensitive stragglers without discounting the first ask |
+| 6 | **Paywall** | Earned paywall | Present the offer once the user has already invested data, attention, and (often) a public rating — asking now closes a loop instead of opening one | Ownership, momentum, mild loss-aversion on dismiss | Hard paywall; escalating dismiss-discount ("close again for 80% off") converts price-sensitive stragglers without discounting the first ask (high-risk lever — see `references/dark-patterns.md`) |
 
 Other apps in the corpus follow the same skeleton with variations worth noting: language-learning and habit apps often run the interactive lesson *before* the questionnaire (letting the user feel the core value first), then build the "personalized plan" screen explicitly from the answers just given, then place the review ask directly before the paywall rather than mid-flow. The variation is in sequencing details (review right before vs. mid-flow; demo before vs. after data collection); the invariant is: **problem must be felt before the plan is offered, and the plan must be offered before the price is.**
 
 ## Psychological mechanisms
 
-Each beat above is powered by a named mechanism, not intuition:
+Each beat above is powered by a named mechanism, not intuition. The mechanism-level observations below
+(goal-gradient, IKEA effect, peak-end, Aronson & Mills) are drawn from teardown analysis of real
+app onboarding/paywall flows, including the Tim Gabe teardown corpus (`corpus/tim-gabe/`), cross-checked
+against the named academic sources cited inline.
 
 - **Goal-gradient effect** — motivation to complete a task increases as perceived distance to the goal shrinks. A visible progress bar or step counter ("3 of 6") during data collection makes each question feel like it's accelerating the user toward their plan, not delaying it. This is why data collection is broken into many small screens rather than one long form: more visible progress markers, more acceleration.
 

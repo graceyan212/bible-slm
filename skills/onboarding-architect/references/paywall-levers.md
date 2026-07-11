@@ -39,10 +39,11 @@ fewer "I felt tricked" complaints, and more push-notification opt-ins (users opt
 before they're charged). A "**no commitment, cancel anytime**" subtitle on the paywall reliably bumps
 conversion in Mobbin's dataset. This pattern is now Apple-endorsed, not just a growth trick: in early 2026
 Apple began **rejecting paywalls that rely on a free-trial toggle** (deemed confusing/misleading) alongside
-banning post-close offers stacked on top of the main paywall — the timeline/ramp format this principle
-recommends is the compliant shape, the toggle is not. *Evidence:* [Mobbin, "We Studied 2,995 Paywalls" for
-the Blinkist mechanism and the "cancel anytime" subtitle pattern; @cesaralvarezll teardown feed, 2026-05-16,
-for the Apple toggle/post-close-offer ban].
+rejecting the "close-the-paywall-to-unlock-a-discount" post-close **discount** offer — the timeline/ramp
+format this principle recommends is the compliant shape, the toggle is not (see
+`references/dark-patterns.md` → Platform/legal constraints for the full rule). *Evidence:* [Mobbin, "We
+Studied 2,995 Paywalls" for the Blinkist mechanism and the "cancel anytime" subtitle pattern;
+@cesaralvarezll teardown feed, 2026-05-16, for the Apple toggle/post-close-discount-offer rejection].
 
 **Presentation beats the offer itself.** The same underlying deal, presented with more clarity and
 emphasis, can convert dramatically better — meaning most "the offer isn't good enough" problems are
@@ -78,7 +79,8 @@ yearly plan with **"89% off"** directly on the paywall; the walking-rewards app 
 option "**Most popular**" next to a struck-through weekly-equivalent price; a calorie-tracking app teardown
 does the same — "Most popular / 12 months / ~~95,96 €~~ 35,90 €" next to a plain 3-month option; a
 well-known period-tracking app's paywall (used by Apple itself as the reference example when explaining its
-2026 toggle/post-close-offer ban) marks its **Yearly Plan "MOST POPULAR"** next to a family-plan option.
+2026 toggle/post-close-discount-offer rejection) marks its **Yearly Plan "MOST POPULAR"** next to a
+family-plan option.
 *Evidence:* [@cesaralvarezll teardown feed, 2026-07-07 (AI home-design app, "89% off"); 2026-05-17 (walking
 app WeWard, "Wards" screen); teardown feed calorie-tracking app screenshot; 2026-05-16 (Apple's reference
 screenshot). Individual app screenshots are illustrative of a widespread pattern, not a controlled test —
@@ -100,7 +102,7 @@ choose the best deal, they choose the option with the lowest friction right now.
 anchoring mechanism as "less than a coffee" framing (see Framing levers below), pushed to its most
 aggressive form. It also sits in tension with the "reduce risk to build trust" principle above and with
 Apple's 2026 anti-confusion enforcement — a weekly price this far from the annual price invites the same
-scrutiny that produced the toggle ban. *Evidence:* [@alexcooldev, 2026-07-10 — single builder, single app;
+scrutiny that produced the free-trial-toggle rejection. *Evidence:* [@alexcooldev, 2026-07-10 — single builder, single app;
 **directional A/B hypothesis, not a law**, and worth weighing against the trust cost of a plan that most
 users will regret].
 
@@ -115,11 +117,12 @@ trials; the winning variant was a **14-day trial on the annual plan** — even t
 more, the longer trial made the whole decision feel less risky. *Evidence:* [Mobbin, "We Studied 2,995
 Paywalls" — single-app test result; **directional A/B hypothesis, not a law**].
 
-**Trial length changes conversion at industry-benchmark scale, not just in single-app tests.** Aggregated
-subscription-analytics benchmarks put 7-day free-trial-to-paid conversion around **~37–45%**, versus roughly
-**~25–30%** for a 3-day trial. Treat these as directional medians to calibrate expectations against, not as
-targets your specific app is guaranteed to hit — sample composition, price point, and category all shift
-the real number substantially.
+**The same "longer trial reduces risk" logic tends to hold beyond any one app's test.** A very short trial
+(e.g., 3-day) gives users little time to build the habit that makes converting feel safe, while a longer
+trial (e.g., 7-day or more) gives the risk-reduction lever more room to work — treat "test a longer trial
+before assuming a shorter one converts better" as the principle, not a specific number. *Evidence:*
+[hypothesis extrapolated from the Headspace 7/14/30-day result above; no cross-app benchmark figure for
+this in the corpus — **directional principle, not a benchmarked stat**].
 
 **Friction can filter for intent, which can raise the conversion rate even as it shrinks the funnel.**
 Removing friction doesn't uniformly help — sometimes adding a small amount of friction filters out users who
@@ -162,11 +165,20 @@ coffee or a therapy session ("less than a coffee"). *Evidence:* [Mobbin, "We Stu
 closes the paywall without converting, a single, time-boxed offer shown at that moment — not stacked
 repeatedly — can win back a meaningful share of that traffic before it's gone.
 
+**iOS risk caveat.** On iOS this lever sits directly under Apple's 2026 enforcement: a post-close
+**discount** offer is the "close-the-paywall-to-unlock-a-discount" pattern Apple is actively rejecting,
+while a post-close **longer-trial** offer is not a discount and carries no such rejection risk (see
+`references/dark-patterns.md` → Platform/legal constraints for the full rule). This is exactly why the next
+paragraph prefers a longer trial over a discount — it's the lower-risk shape of the same recovery move.
+
 **Prefer a longer trial over a discount as the recovery offer.** A longer trial extension reduces risk
-(the same lever that works on the primary paywall) without training users to wait out your price, and it
-preserves the trust that discounting erodes. Reserve discounting itself for genuine calendar events (e.g.,
-Black Friday/Cyber Monday) rather than making it the default recovery move. *Evidence:* [Mobbin, "We
-Studied 2,995 Paywalls" — practitioner's stated preference and reasoning, not a single-app stat].
+(the same lever that works on the primary paywall) without training users to wait out your price, preserves
+the trust that discounting erodes, and — on iOS — avoids the App Store rejection risk a post-close discount
+now carries. Reserve discounting itself for genuine calendar events (e.g., Black Friday/Cyber Monday) rather
+than making it the default recovery move, and if you do ship a post-close discount on iOS, treat it as a
+compliance risk to weigh, not a free lever. *Evidence:* [Mobbin, "We Studied 2,995 Paywalls" — practitioner's
+stated preference and reasoning, not a single-app stat; `references/dark-patterns.md` → Platform/legal
+constraints for the Apple enforcement detail].
 
 **The tension to name explicitly: escalating exit discounts convert hard, and are high-risk.** A
 recurring pattern in individual paywall teardowns is an *escalating* discount ladder on close — close once,

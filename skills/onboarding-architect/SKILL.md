@@ -15,11 +15,11 @@ named exemplars — reason from precedent, cite "like X does," don't assert in t
 
 1. **Show, don't explain — let the user *do the real thing once* before the paywall.** A mini
    free-trial inside onboarding: finish a real lesson, generate one result, use the core feature.
-   *(Duolingo, Elma, Runkeeper.)* The strongest single lever.
+   *(Duolingo, Elma.)* The strongest single lever.
 2. **Engineer the emotional arc: problem → future-self → solution.** Make them feel the problem,
    frame who they become, position the app as the bridge. *(César's thesis.)*
 3. **Collect data early — and make it visibly pay off in a personalized plan.** Every question
-   feeds a named, personalized result so the paywall feels made-for-me. *(Speak, Byte Pal, Grammarly.)*
+   feeds a named, personalized result so the paywall feels made-for-me. *(Speak, Byte Pal, Endless.)*
 4. **The paywall is a flow, not a screen.** Sell the outcome first; multi-page; reduce risk with a
    "how your trial works" timeline + "cancel anytime."
 5. **Pricing: annual-default, anchored, honest trial, "Most Popular" badge on the highest-LTV plan.**
