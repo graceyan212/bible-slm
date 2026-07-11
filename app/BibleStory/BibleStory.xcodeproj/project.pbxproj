@@ -19,7 +19,9 @@
 		6A24D3C523BBC9FD6AB4C0FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122DFAFE7CC62CB06BBEDA94 /* Assets.xcassets */; };
 		7C68C9FDFAE967A3E355F13B /* TreasuresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FB7C3CADA06829CFA450A4 /* TreasuresView.swift */; };
 		7F86FCAB21DE4ED6F0015761 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9779E94CB9D658872118D8C /* Fonts.swift */; };
+		84642F2E8C384A522714D8A8 /* BackDiagnosticUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BF2C479CDD3CE1CEF6A502 /* BackDiagnosticUITests.swift */; };
 		8EB78790C19F2630DFFBE49F /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D09CF65C46A2745498362 /* Components.swift */; };
+		92EEBA5C1726EE9189463031 /* BackNavigationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7AEC3F07C2C3263EB11D82 /* BackNavigationUITests.swift */; };
 		9F36C2EC0642332243F0E1F8 /* BiometricParentGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9489C61C969D52CE9194B5 /* BiometricParentGate.swift */; };
 		A33757F59849B9B3C1D78D14 /* IMFeENrm28P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42D818FDAB0393844B4B8CC6 /* IMFeENrm28P.ttf */; };
 		B1A1DB742759EF66E4D167F2 /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4DDAD15B1D838153F05E77 /* CompassView.swift */; };
@@ -32,6 +34,16 @@
 		F522F22DE18162E38534CFE5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB63D0068BE94A24D6466AD /* RootView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6D2BF57DD1D3A00A74EC600C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A60EDF2901573ACE06B8B308 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49CB08B9032956728CD057FA;
+			remoteInfo = BibleStory;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		122DFAFE7CC62CB06BBEDA94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25E25D3197F54C81B9A51FAA /* BibleStoryCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BibleStoryCore; path = ../BibleStoryCore; sourceTree = SOURCE_ROOT; };
@@ -39,6 +51,9 @@
 		2ACD8865EE27F31EE9A9B0A8 /* IMFeENsc28P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMFeENsc28P.ttf; sourceTree = "<group>"; };
 		42D818FDAB0393844B4B8CC6 /* IMFeENrm28P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMFeENrm28P.ttf; sourceTree = "<group>"; };
 		431CDD2300DDB5E98060AE76 /* PaintedMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintedMap.swift; sourceTree = "<group>"; };
+		50BF2C479CDD3CE1CEF6A502 /* BackDiagnosticUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackDiagnosticUITests.swift; sourceTree = "<group>"; };
+		677BBFB221A67495FEB6017F /* BibleStoryUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BibleStoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C7AEC3F07C2C3263EB11D82 /* BackNavigationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavigationUITests.swift; sourceTree = "<group>"; };
 		70FB7C3CADA06829CFA450A4 /* TreasuresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuresView.swift; sourceTree = "<group>"; };
 		7C4DDAD15B1D838153F05E77 /* CompassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
 		7F0A3558923D410125D71912 /* creation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = creation.json; sourceTree = "<group>"; };
@@ -75,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				9C7852791DE394C9C0F83617 /* BibleStory.app */,
+				677BBFB221A67495FEB6017F /* BibleStoryUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,9 +135,19 @@
 			isa = PBXGroup;
 			children = (
 				58FB577254BF24FB91CF229A /* BibleStory */,
+				7776C4E001CD9B61A4917843 /* BibleStoryUITests */,
 				DB226542C9295A879B39D1C5 /* Packages */,
 				18CB13CB9DBA7927800FC694 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		7776C4E001CD9B61A4917843 /* BibleStoryUITests */ = {
+			isa = PBXGroup;
+			children = (
+				50BF2C479CDD3CE1CEF6A502 /* BackDiagnosticUITests.swift */,
+				6C7AEC3F07C2C3263EB11D82 /* BackNavigationUITests.swift */,
+			);
+			path = BibleStoryUITests;
 			sourceTree = "<group>";
 		};
 		D175ACA5F1745B0060F0BF85 /* Content */ = {
@@ -164,6 +190,24 @@
 			productReference = 9C7852791DE394C9C0F83617 /* BibleStory.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D1CFDFAF5BE607037A27EC4E /* BibleStoryUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 851DB5B2DB383559AD0318E5 /* Build configuration list for PBXNativeTarget "BibleStoryUITests" */;
+			buildPhases = (
+				2F062A947051679D6B20222E /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66FD16909F45A1B392027C38 /* PBXTargetDependency */,
+			);
+			name = BibleStoryUITests;
+			packageProductDependencies = (
+			);
+			productName = BibleStoryUITests;
+			productReference = 677BBFB221A67495FEB6017F /* BibleStoryUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -173,6 +217,9 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					D1CFDFAF5BE607037A27EC4E = {
+						TestTargetID = 49CB08B9032956728CD057FA;
+					};
 				};
 			};
 			buildConfigurationList = 2E5386144E54081C8FD9C667 /* Build configuration list for PBXProject "BibleStory" */;
@@ -193,6 +240,7 @@
 			projectRoot = "";
 			targets = (
 				49CB08B9032956728CD057FA /* BibleStory */,
+				D1CFDFAF5BE607037A27EC4E /* BibleStoryUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -216,6 +264,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2F062A947051679D6B20222E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84642F2E8C384A522714D8A8 /* BackDiagnosticUITests.swift in Sources */,
+				92EEBA5C1726EE9189463031 /* BackNavigationUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E3D94D73A8914999EC662672 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,13 +296,43 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		66FD16909F45A1B392027C38 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49CB08B9032956728CD057FA /* BibleStory */;
+			targetProxy = 6D2BF57DD1D3A00A74EC600C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		27F61299247960CE0050C354 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4DMP5UV5S6;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.graceyan.treasuretrail.uitests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BibleStory;
+			};
+			name = Release;
+		};
 		29FD3A86F7E706DA696CEA2E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4DMP5UV5S6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Confirm you're a grown-up to open the parent area.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -261,6 +348,26 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
+		};
+		6BD7881BE214458239F2177B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4DMP5UV5S6;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.graceyan.treasuretrail.uitests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BibleStory;
+			};
+			name = Debug;
 		};
 		6CF2A167C141C48026B5DDA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -330,7 +437,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4DMP5UV5S6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Confirm you're a grown-up to open the parent area.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -411,6 +520,15 @@
 			buildConfigurations = (
 				6CF2A167C141C48026B5DDA5 /* Debug */,
 				D303AC4968C7795BDB1DDBF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		851DB5B2DB383559AD0318E5 /* Build configuration list for PBXNativeTarget "BibleStoryUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BD7881BE214458239F2177B /* Debug */,
+				27F61299247960CE0050C354 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
