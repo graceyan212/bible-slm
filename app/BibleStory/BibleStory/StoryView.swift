@@ -90,27 +90,33 @@ struct StoryView: View {
             Image(p.assetName)
                 .resizable()
                 .scaledToFill()
-                .frame(height: 200)
+                .frame(height: 220)
                 .frame(maxWidth: .infinity)
                 .clipped()
                 .overlay(alignment: .top) { Rectangle().fill(hairline).frame(height: 1.5) }
                 .overlay(alignment: .bottom) { Rectangle().fill(hairline).frame(height: 1.5) }
+                // The illustration is decorative. `scaledToFill` overflows its box
+                // and (despite `.clipped()`, which only clips drawing) its hit-test
+                // region bleeds up over the top-bar back button, making the arrow
+                // untappable. Explicitly opting out of hit-testing frees the back
+                // control (and every other top-bar button).
+                .allowsHitTesting(false)
 
             ScrollView {
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading, spacing: 12) {
                     Text(p.heading)
-                        .font(Theme.display(22))
+                        .font(Theme.display(32))
                         .foregroundStyle(heading)
                         .padding(.top, 4)
                     Text(dropCapAttributed(p.text))
-                        .lineSpacing(5)
+                        .lineSpacing(7)
                         .fixedSize(horizontal: false, vertical: true)
                     if isLast { verseCard(s.verse) }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 20)
-                .padding(.top, 14)
-                .padding(.bottom, 12)
+                .padding(.horizontal, 22)
+                .padding(.top, 16)
+                .padding(.bottom, 16)
             }
 
             footer(s, isLast: isLast)
@@ -118,26 +124,35 @@ struct StoryView: View {
     }
 
     private func topBar(_ s: StoryContent, showProgress: Bool) -> some View {
-        HStack {
+        HStack(spacing: 8) {
             Button { back() } label: {
-                Image(systemName: "arrow.left").font(.system(size: 19, weight: .regular))
+                Image(systemName: "arrow.left")
+                    .font(.system(size: 26, weight: .semibold))
+                    .frame(width: 44, height: 44)      // HIG-min tap target
+                    .contentShape(Rectangle())         // whole 44×44 is tappable
             }
+            .buttonStyle(.plain)
             .accessibilityLabel("Back")
             Spacer()
-            Text(s.title).font(Theme.display(17)).foregroundStyle(topInk)
+            Text(s.title)
+                .font(Theme.display(24)).foregroundStyle(topInk)
+                .lineLimit(1).minimumScaleFactor(0.6)
             Spacer()
-            HStack(spacing: 10) {
+            HStack(spacing: 8) {
                 Button { showAsk = true } label: {
                     Image(systemName: "bubble.left.and.text.bubble.right.fill")
-                        .font(.system(size: 17))
+                        .font(.system(size: 23))
+                        .frame(width: 44, height: 44)
+                        .contentShape(Rectangle())
                 }
+                .buttonStyle(.plain)
                 .accessibilityLabel("Ask Poli")
                 if showProgress { progressDots(total: s.pages.count, current: page) }
             }
         }
         .foregroundStyle(topIcon)
-        .padding(.horizontal, 14)
-        .frame(height: 46)
+        .padding(.horizontal, 12)
+        .frame(height: 54)
     }
 
     private func footer(_ s: StoryContent, isLast: Bool) -> some View {
@@ -145,12 +160,12 @@ struct StoryView: View {
             progressDots(total: s.pages.count, current: page)
             Spacer()
             Button { advance(s) } label: {
-                HStack(spacing: 7) {
-                    Text(isLast ? "FINISH" : "NEXT").font(Theme.mapCaps(15)).tracking(1.5)
-                    Image(systemName: "arrow.right").font(.system(size: 13, weight: .bold))
+                HStack(spacing: 8) {
+                    Text(isLast ? "FINISH" : "NEXT").font(Theme.mapCaps(20)).tracking(1.5)
+                    Image(systemName: "arrow.right").font(.system(size: 17, weight: .bold))
                 }
                 .foregroundStyle(Color(hex: 0x5E3A16))
-                .padding(.horizontal, 20).padding(.vertical, 10)
+                .padding(.horizontal, 24).padding(.vertical, 13)
                 .background(
                     Capsule().fill(LinearGradient(colors: [Color(hex: 0xF6D062), Color(hex: 0xD19A34)],
                                                   startPoint: .top, endPoint: .bottom))
@@ -166,11 +181,11 @@ struct StoryView: View {
     }
 
     private func progressDots(total: Int, current: Int) -> some View {
-        HStack(spacing: 5) {
+        HStack(spacing: 6) {
             ForEach(0..<total, id: \.self) { i in
                 Circle()
                     .fill(i == current ? Color(hex: 0xB07E2C) : Color(hex: 0xD3BD8E))
-                    .frame(width: 7, height: 7)
+                    .frame(width: 9, height: 9)
             }
         }
     }
@@ -178,18 +193,18 @@ struct StoryView: View {
     // MARK: Verse card (visibly distinct from the retell)
 
     private func verseCard(_ v: StoryContent.Verse) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 8) {
             Text(v.ref)
-                .font(Theme.mapCaps(12)).tracking(2)
+                .font(Theme.mapCaps(15)).tracking(2)
                 .foregroundStyle(Color(hex: 0x8A5F22))
             Text("“\(v.text)”")
-                .font(Theme.hand(16))
+                .font(Theme.hand(22))
                 .foregroundStyle(Color(hex: 0x3F2F1C))
                 .fixedSize(horizontal: false, vertical: true)
             HStack(spacing: 4) {
-                Image(systemName: "book.closed.fill").font(.system(size: 9))
+                Image(systemName: "book.closed.fill").font(.system(size: 11))
                 Text("\(v.translation) · shown from your family's Bible")
-                    .font(Theme.body(10, weight: .bold))
+                    .font(Theme.body(12, weight: .bold))
             }
             .foregroundStyle(Color(hex: 0x8A7350))
             .padding(.horizontal, 8).padding(.vertical, 3)
@@ -221,37 +236,37 @@ struct StoryView: View {
         VStack(spacing: 0) {
             topBar(s, showProgress: false)
             ScrollView {
-                VStack(spacing: 6) {
+                VStack(spacing: 8) {
                     RewardMedallion(icon: s.reward.icon)
-                        .frame(width: 120, height: 120)
+                        .frame(width: 132, height: 132)
                         .padding(.top, 12)
                     Text("TREASURE EARNED")
-                        .font(Theme.body(11, weight: .bold)).tracking(1)
+                        .font(Theme.body(14, weight: .bold)).tracking(1)
                         .foregroundStyle(Color(hex: 0x8A5F22))
                         .padding(.top, 2)
                     Text(s.reward.name)
-                        .font(Theme.display(20)).foregroundStyle(Color(hex: 0x4A3520))
+                        .font(Theme.display(26)).foregroundStyle(Color(hex: 0x4A3520))
                     Rectangle().fill(Color(hex: 0xCBB27A)).frame(width: 46, height: 2).padding(.top, 6)
 
                     Text(s.christConnection.heading)
-                        .font(Theme.display(22)).foregroundStyle(heading)
+                        .font(Theme.display(30)).foregroundStyle(heading)
                         .padding(.top, 16)
                     Text(s.christConnection.text)
-                        .font(Theme.body(14)).foregroundStyle(bodyInk)
-                        .lineSpacing(4)
+                        .font(Theme.body(19)).foregroundStyle(bodyInk)
+                        .lineSpacing(6)
                         .multilineTextAlignment(.center)
                     Text(s.reward.text)
-                        .font(Theme.body(13)).foregroundStyle(Color(hex: 0x8A6A3E))
+                        .font(Theme.body(17)).foregroundStyle(Color(hex: 0x8A6A3E))
                         .multilineTextAlignment(.center)
                         .padding(.top, 6)
 
                     Button { close() } label: {
-                        HStack(spacing: 7) {
-                            Image(systemName: "location.north.circle.fill").font(.system(size: 14))
-                            Text("BACK TO THE MAP").font(Theme.mapCaps(15)).tracking(1.5)
+                        HStack(spacing: 8) {
+                            Image(systemName: "location.north.circle.fill").font(.system(size: 18))
+                            Text("BACK TO THE MAP").font(Theme.mapCaps(20)).tracking(1.5)
                         }
                         .foregroundStyle(Color(hex: 0x5E3A16))
-                        .padding(.horizontal, 22).padding(.vertical, 11)
+                        .padding(.horizontal, 26).padding(.vertical, 14)
                         .background(
                             Capsule().fill(LinearGradient(colors: [Color(hex: 0xF6D062), Color(hex: 0xD19A34)],
                                                           startPoint: .top, endPoint: .bottom))
@@ -300,12 +315,12 @@ struct StoryView: View {
         var out = AttributedString()
         if let first = text.first {
             var cap = AttributedString(String(first))
-            cap.font = Theme.display(30)
+            cap.font = Theme.display(56)   // illuminated initial
             cap.foregroundColor = dropCap
             out.append(cap)
         }
         var rest = AttributedString(String(text.dropFirst()))
-        rest.font = Theme.body(15)
+        rest.font = Theme.body(22)         // big, kid-legible narrative
         rest.foregroundColor = bodyInk
         out.append(rest)
         return out

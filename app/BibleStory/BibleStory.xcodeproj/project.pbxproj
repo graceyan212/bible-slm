@@ -19,7 +19,6 @@
 		6A24D3C523BBC9FD6AB4C0FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122DFAFE7CC62CB06BBEDA94 /* Assets.xcassets */; };
 		7C68C9FDFAE967A3E355F13B /* TreasuresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FB7C3CADA06829CFA450A4 /* TreasuresView.swift */; };
 		7F86FCAB21DE4ED6F0015761 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9779E94CB9D658872118D8C /* Fonts.swift */; };
-		84642F2E8C384A522714D8A8 /* BackDiagnosticUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BF2C479CDD3CE1CEF6A502 /* BackDiagnosticUITests.swift */; };
 		8EB78790C19F2630DFFBE49F /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D09CF65C46A2745498362 /* Components.swift */; };
 		92EEBA5C1726EE9189463031 /* BackNavigationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7AEC3F07C2C3263EB11D82 /* BackNavigationUITests.swift */; };
 		9F36C2EC0642332243F0E1F8 /* BiometricParentGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9489C61C969D52CE9194B5 /* BiometricParentGate.swift */; };
@@ -51,7 +50,6 @@
 		2ACD8865EE27F31EE9A9B0A8 /* IMFeENsc28P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMFeENsc28P.ttf; sourceTree = "<group>"; };
 		42D818FDAB0393844B4B8CC6 /* IMFeENrm28P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMFeENrm28P.ttf; sourceTree = "<group>"; };
 		431CDD2300DDB5E98060AE76 /* PaintedMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintedMap.swift; sourceTree = "<group>"; };
-		50BF2C479CDD3CE1CEF6A502 /* BackDiagnosticUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackDiagnosticUITests.swift; sourceTree = "<group>"; };
 		677BBFB221A67495FEB6017F /* BibleStoryUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BibleStoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C7AEC3F07C2C3263EB11D82 /* BackNavigationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavigationUITests.swift; sourceTree = "<group>"; };
 		70FB7C3CADA06829CFA450A4 /* TreasuresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuresView.swift; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 		7776C4E001CD9B61A4917843 /* BibleStoryUITests */ = {
 			isa = PBXGroup;
 			children = (
-				50BF2C479CDD3CE1CEF6A502 /* BackDiagnosticUITests.swift */,
 				6C7AEC3F07C2C3263EB11D82 /* BackNavigationUITests.swift */,
 			);
 			path = BibleStoryUITests;
@@ -268,7 +265,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84642F2E8C384A522714D8A8 /* BackDiagnosticUITests.swift in Sources */,
 				92EEBA5C1726EE9189463031 /* BackNavigationUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,8 +305,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4DMP5UV5S6;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -330,9 +324,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4DMP5UV5S6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Confirm you're a grown-up to open the parent area.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -353,8 +345,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4DMP5UV5S6;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -437,9 +427,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4DMP5UV5S6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Confirm you're a grown-up to open the parent area.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -28,3 +28,29 @@ targets:
         INFOPLIST_KEY_NSFaceIDUsageDescription: "Confirm you're a grown-up to open the parent area."
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
+  BibleStoryUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: BibleStoryUITests
+    dependencies:
+      - target: BibleStory
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.graceyan.treasuretrail.uitests
+        SWIFT_VERSION: "6.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: BibleStory
+schemes:
+  BibleStory:
+    build:
+      targets:
+        BibleStory: all
+        BibleStoryUITests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - BibleStoryUITests
