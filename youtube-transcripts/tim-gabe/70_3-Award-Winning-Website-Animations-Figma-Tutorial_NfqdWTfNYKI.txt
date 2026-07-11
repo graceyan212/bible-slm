@@ -1,0 +1,329 @@
+3 Award Winning Website Animations (Figma Tutorial)
+https://www.youtube.com/watch?v=NfqdWTfNYKI
+
+internet's most stunning websites the
+ones that win fancy Awards and fancy
+award websites usually have one thing in
+common
+cool animations and you might be
+surprised by how many of these can
+actually be recreated in a tool like
+figma so in this tutorial I will show
+you how to use smart anime to recreate
+these kinds of amazing animations if you
+want to follow along the figma file is
+linked in the description below now
+let's waste no more time and get
+straight into it alright everyone so we
+are inside of figma let's jump straight
+to the first animation and this is what
+I call a creative mask and it's made by
+a company called Drive Capital so if we
+go into their website you can see what
+it looks like in action here so we have
+this text masking a video and as we
+scroll the text moves upwards and it
+gets caught off in the top here and
+that's all that happens but it's pretty
+cool they won an award on awards.com for
+this animation so let's see if we can
+recreate it inside of figma first of all
+I have already recreated it so if we
+click play here on animation one you can
+see that we have this slide-in effect as
+we load then as we scroll the text goes
+towards the top and you have an image in
+the background here that hasn't quite
+loaded now it's loaded and you can see
+how it masks the image now I don't have
+a video here in the background that
+would make this look a lot cooler it's
+also not the same font because it's a
+paid font and the reason I don't have a
+video is because for videos to work in
+figma you have to upgrade to a Pro Plan
+but I still think the effect is pretty
+cool so let's see if we can recreate it
+together
+the first step is to create another
+frame so we would create a new frame I
+would call this Frame
+I would give it a black color
+then inside of this Frame I will create
+another frame the reason I'm doing that
+is because I want to clip the content
+inside of this Frame so I create this
+Frame I'll call it container I set it to
+be clip content and we don't need a
+background color for it I'll take my
+text tool and write drive here
+so we have the drive text I'll put in
+the top of the frame I will Center it
+like that I'll actually increase the
+size of this Frame as well
+now the next step we want to do is to
+create another rectangle that covers the
+whole text
+so we put it inside of the same
+container here I'll call this image and
+then I will go over here and grab the
+same image that I used I'll paste it
+onto this image rectangle here
+then I will Target both the image and
+the text and I will go here and say use
+as mask
+so now we have the text masked and let's
+put it in the center so more like that
+now we have the first step here we have
+created the text we have created the
+image mask with the text and those are
+all the things we need now we just need
+to create the interactions so the first
+thing that happened was that we faded
+this text into the frame so I'll take
+this container I'll drag it down a bit
+I'll reduce the opacity to zero so that
+it shows itself in this fade in manner
+then I'll duplicate the frame again move
+it down here and what happens on scroll
+well the text moves upwards and it gets
+clipped by the frame
+so the only thing we need to do is to go
+into the last frame here click on drive
+here which is the text and drag it
+upwards like that
+then the last thing is to take this
+scroll bar you could add a scroll to
+anything in the frames but I'll add a
+scroll bar to make it more realistic so
+I add the scroll bar here I'll go to
+prototype settings and drag it onto this
+Frame and it's going to be on drag
+smart animate and a linear animation
+here
+then I'll take this Frame or I'll
+actually go up here and take this scroll
+bar then take this Frame
+place the scroll bar here so it's the
+exact same scroll bar it's just a
+rectangle that is surrounded and on this
+rectangle we add another interaction
+it's once again on drag we're going to
+navigate back to this Frame it's going
+to be smart anime linear 300
+milliseconds and from this first frame I
+will just add a simple
+fade in animation so after delay one
+millisecond
+we're gonna fade it in in a gentle way
+with a timing of 800 milliseconds
+and let's play it and see what it looks
+like
+there we have it fading in and as we
+scroll the text moves towards the top
+just like the example animation I showed
+so that's the first one
+so I'll remove this
+then we'll move over here and this is an
+animation made by Star Fades
+International
+Dot Com or starfades International I
+guess is the actual name
+um and this animation is quite cool as
+well you can see here when we scroll you
+get this
+once again masking effect where the text
+goes from black to white as it comes
+into the image and the image itself goes
+towards the edges to cover the full
+width
+and this is also taken from awards.com
+so it won an award for its I guess
+animations and overall Beauty in terms
+of the website
+now how do we recreate this well let me
+show you guys we click here we create a
+new desktop frame I'll name it frame
+once again
+and I'll go up here I'll copy the text
+so I'll take this text field copy it and
+place it inside of my frame then I'll
+create another frame in here again and
+this Frame we can call container
+I'll Center it
+and then I'll go in here I'll actually
+cheat a bit because I will copy this
+image and place it in here I'll increase
+the size of it a bit like this and then
+I'll take this text field again I'll
+make sure that it's set to Center sorry
+Center in the top
+like this so the horizontal axis we want
+it to be centered because otherwise as
+we increase the size of this container
+the text inside of it is going to be
+going towards the left you will see what
+I mean in just a second
+so if I take this text copy and paste it
+here we want this text to be white now
+if I didn't set this text to be centered
+when we go to the next step where we
+actually increase the size this is going
+to go towards the left but now it will
+stay centered because we changed the
+constraint settings
+so this is the first state I have here
+what I want to do as a last step is to
+go and grab both of these text items I
+want to make sure that they're aligned
+horizontally and vertically like this so
+now they are stacked on top of each
+other and this is important to achieve
+this effect then I will drag them up
+here so they start a bit above the frame
+or the container here now we can
+recreate or duplicate this Frame put it
+here
+and start creating the effects so in
+this Frame we will drive the text down
+into the frame like this
+we will also increase the size of our
+container now it's important to know
+here that I don't increase the size of
+the image it's just the container that
+masks the image so I'll hold down option
+and I'll drag it to the sides like this
+now once again if I didn't set the text
+to be centered the text would go with
+the frame so that's also important as a
+workflow hack and that's that's really
+it now I go to this Frame
+we maybe do the Lacy lazy version here
+and copy the scroll bar again and I'll
+copy this scroll bar as well
+we'll go to the Prototype settings we'll
+change it from being
+towards this Frame because we copied the
+scroll bar from this so it takes the
+Prototype settings with it
+instead we set it to the second frame on
+drag smart animate ease out 300
+milliseconds and this could as it's just
+a drag interaction you could just have a
+linear it doesn't really matter and the
+same from here we're changing from going
+back to this top one to going to this
+one
+same settings on drag smart animate ESAT
+300 milliseconds now we're going to add
+a flow starting point I'm gonna click
+play
+and we're gonna change to fill screen
+and as we scroll
+we get this same effect as as shown in
+the example over to the last one which
+is an animation made by Apple and if you
+are not super new to design you might
+know that Apple are pretty known for
+their scroll interactions so this one is
+for the iMac 24 and you can see here so
+we have this keyboard so the first thing
+that happens here is that the keyboard
+increases in size so that's the first
+scroll interaction then we have this
+text fading in and as we continue
+scrolling we have this text revealing
+behind the keyboard and then as the last
+thing we have this hand coming into the
+frame so if we go back here
+and we play this animation just to see
+what it looks like in the example I'll
+say fill screen so first we increase the
+size of the keyboard
+then we fade in the text then we reveal
+this text behind the keyboard and then
+that hand comes into the frame
+so how do we recreate this that's
+exactly what I will show you guys right
+now so I'll create a new frame a desktop
+frame I'll call it frame and I'll drag
+it down here
+then I will take this little keyboard I
+will place it inside our frame move it
+up a bit
+so that's the first thing we have this
+keyboard nothing else really happening
+so I'll duplicate the frame
+and then I'll increase the size of this
+keyboard
+that's the thing that happens right as
+we scroll
+what happened next well next we have the
+reveal of this text here so I'll just
+take this text I'll copy it I'll paste
+it in here
+so we have the text I'll move it up a
+bit like this
+and this fades in so
+set it to zero percent opacity in this
+Frame and in here I'll set it to 100
+opacity so it reveals itself
+next thing that happens let's duplicate
+again
+we have this magic text appearing
+so I'll place the magic text here make
+sure that it's hidden oh two copies make
+sure that it's hidden
+so it's hidden behind the keyboard so
+we'll place it behind the keyboard here
+and then I'll do the same here
+we can place it behind the keyboard
+again and here
+the keyboard is going to reveal it so we
+just change the position of the keyboard
+like this
+and maybe we put it keyboard up a bit
+more like that then we will duplicate it
+again and we'll take this hand here
+I'll take the hand and as we saw with
+Apple
+kinda
+slides in a bit like it kind of looks
+like it rotates the hand when it slides
+in so for the first frame here I will
+rotate it maybe take 10 degrees
+and put it outside of the frame
+and when we come here it's going to be
+no rotation
+and it's gonna oh it's gonna come up
+here and place the finger on this key
+here
+and that's the whole thing now we need
+to add the interactions of course and
+once again like I said or like I showed
+in the previous animations you can add a
+scroll bar like I did here if you want
+to be lazy and just prototype an
+animation uh where you just want to be
+able to click through it we can add
+click interactions instead so let's do
+that to make it easy for us
+so instead of on drag let's say on click
+just on the frame here we're gonna have
+a smart anime animation and it can be
+linear it can be
+bouncy quick slow ease out is in
+whatever you want let's go with a simple
+option let's do ease out
+300 milliseconds and I'll do the same
+here on click same kind of Animation
+same here on click same kind of
+animation and on click same kind of
+Animation now if we play it
+and we change to fill screen
+I click I click
+I click I click and there we have it if
+you want more animation tutorials check
+out this playlist here now until the
+next one have a great life we'll talk
+soon ciao

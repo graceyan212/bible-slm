@@ -1,0 +1,78 @@
+Get Started: Figma Variables in 3 Minutes
+https://www.youtube.com/watch?v=XnI-WbMCDyw
+
+in this video we'll learn about figma
+variables a feature that allows you to
+switch things like color themes copy and
+various spacing super easily to get to
+the variables menu just hit escape on
+your keyboard make sure you're on the
+design Tab and then go to the variables
+menu in your right sidebar in the top
+left you'll see collections collections
+are simply collections of variables and
+you can create them by hitting create
+collection then inside of your
+collection you just hit create variable
+to add variables our first collection
+will Define our base variables commonly
+referred to as Primitives by Design
+system Wizards this include things like
+base colors and base sizes we can think
+about our Primitives collection and its
+variables as the base layer that we link
+back to when adding new layers for
+example if we want different color
+themes we would create a color theme
+collection here we could Define values
+like background and button text hitting
+body primary and secondary for each of
+the values we would create an alias
+connecting them back to The Primitives
+variables we could also add a dark mode
+by hitting Plus on new variable mode
+here we'd just invert the values and
+call it a day however unfortunately
+modes are only available on the figma
+Pro Plan I know I've cried myself to
+sleep a bunch of times already we could
+also create a new collection for sizes
+here we add values like small medium
+large and mega and again create aliases
+that refers back to our Primitives
+variables for languages we didn't Define
+them in our Primitives collection so
+here we wouldn't create any aliases in
+this case we'd have a column for the
+English version and then add Swedish as
+another mode note that we could create
+one single collection that combines all
+of these but then we couldn't use them
+separately as we wish in our designs
+speaking of designs now ready to use the
+variables in the wild and for this
+example we have a card layout if we
+highlight our card and Link one of our
+colors for example the background color
+we can then go to layers in the right
+sidebar and change between dark and
+light mode now as you can see we should
+make sure that we link all colors before
+changing themes
+[Music]
+so if we link everything this is how
+easy it is to swap themes if we don't
+like a color we can just quickly change
+it in our Primitives collection to
+change our text from English to Swedish
+we would just highlight the text and
+Link it to our languages collection with
+that we can now swap it in the drop down
+menu same for paddings Corner radius and
+general spacing we highlight our frame
+and Link the values to different
+variables in our spacing collection and
+that's it if you're interested in more
+figma tutorials check out this playlist
+until the next one have a great life
+we'll talk soon ciao

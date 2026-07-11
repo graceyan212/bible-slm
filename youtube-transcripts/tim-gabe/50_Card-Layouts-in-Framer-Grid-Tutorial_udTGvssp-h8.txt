@@ -1,0 +1,78 @@
+Card Layouts in Framer (Grid Tutorial)
+https://www.youtube.com/watch?v=udTGvssp-h8
+
+in this framer tutorial we will learn
+how to set up a responsive card layout
+in three minutes using grids if you want
+to use the same file I'm working in
+you'll find it in the link in the
+description now I like to start by
+creating the items I want to use in my
+grid and to prevent the card layout from
+breaking once thrown into the grid I'm
+going to use stacks and specific sizing
+options for these cards first I create a
+frame I give it some radius and I call
+it card then I create another frame
+inside of this Frame I'll call it image
+after that I'll create two text Fields
+one saying headline bump it up to medium
+and I'll duplicate this and see body
+bump it down a bit give it some opacity
+I'll Target both of the text fields and
+create a stack align them to the left
+decrease the Gap a bit and I'll call it
+text container then I'll go to the
+overall card I'll go to layout and hit
+plus which makes it into a stack I make
+sure that it fits the content vertically
+and that it has a fixed width then I'll
+go to the image make sure that the width
+is set to fill and I'll set a number for
+the height then I go to the text
+container make sure that it has a width
+set to fill I'll give it some padding
+and then I'll set the height to fit
+content the last thing I'll do is to go
+to the card and remove the Gap and
+that's it for the actual card if you
+find stacks and sizing difficult I got a
+dedicated video on it in the top right
+now to give this some color I'll just
+change the image here now with this the
+next step is to add the items into the
+grid so I'll zoom out I'll go to the
+desktop and I'll make it into a stack
+I'll give it a slight grayish background
+color I'll add a frame inside of the
+stack I'll turn it into to a grid remove
+the background color then I'll simply
+copy my card Target the grid and paste
+in my items I go to desktop make sure it
+has a height of fit content then I'll go
+to grid make sure that it has a height
+of fit content now you can see that
+everything becomes squeezed so with my
+grid selected I'll go to the advanced
+settings here and change height from
+fixed to fit content I'll change the Gap
+and the padding to 24 pixels I'll go to
+the plus sign here on desktop hit tablet
+then plus sign on tablet hit phone and
+you can see that we have a working grid
+now we can select the grid again and now
+we can start playing around with columns
+three columns per row two columns per
+Row one column per row you're the boss
+here we can also go to individual cards
+inside of the grid go to span and say
+that maybe this one should take up two
+columns we can even go back to the grid
+say that we're going to have every row
+to contain three columns then I can go
+to the last item here change that to two
+columns and we have this kind of cool
+Bento car layout if you want to scale up
+even more in framer check out my master
+framework playlist until the next one
+have a great life

@@ -1,0 +1,145 @@
+Splash Screen Animation in 6 Minutes (Figma Tutorial)
+https://www.youtube.com/watch?v=s19_n6rcXIY
+
+I'm sure you've seen it many of your
+favorite mobile apps use animated Splash
+screens as a secret trick to create that
+professional feel and in this short
+video tutorial I will show you exactly
+how to create them in figma as always
+the figma file is linked in the
+description below now let's waste no
+time and get straight into it and the
+first point is about creating assets so
+that's the first thing we do when we
+create an animation and for this
+animation it's actually much simpler
+than it looks so what I'm using is a
+rectangle
+a rectangle with rounded Corners I have
+a fill a linear gradient fill and then I
+have a stroke of two pixels with 15 in
+opacity and that's it for the rectangle
+we also have this text container and
+this text container is just a frame that
+has no background fill and then I've put
+a text inside of it but the key thing is
+that we have this option clip content
+you will see why that is key in a bit
+we also have this iPhone mock-up that is
+just gonna act as a markup in the
+animation for it to look good so we've
+created the assets so I will take these
+assets I'll duplicate them and drag them
+over to our second step which is to
+create the storyboard and the storyboard
+is exactly what it sounds like it's a
+board with the story of our animation so
+what happens in our animation
+well we have this rectangle the first
+thing that happens is that it fades in
+so let's take a look at the animation it
+fades in the rectangle fades in then it
+rotates
+rotates and then it goes down in size to
+a circle goes down in size to a circle
+and then it goes to the right like this
+the circle goes to the right the splash
+text comes in it Clips in you barely see
+it but it's clipped so it's not just
+fading in but you have this Frame kind
+of revealing it and then this circle
+increases in size and the text Fades out
+so the rectangle fades in goes up into
+the center it rotates
+135 degrees then it goes down in size
+again becomes a circle and it doesn't
+change the shape it actually just
+decreases in size and maintains the same
+border radius and since it's this small
+the Border radius makes it rounded and
+then it goes to the right and this text
+appears the text container here with
+clip content goes from hiding it to
+showing it and the last thing that
+happens is that this thing increases in
+size and this thing is faded out
+so let's recreate it real quick
+so I'll take our rectangle I'll place it
+inside of our background here and it's
+important that you place it inside of
+this background frame because this also
+has clip content let me just give you an
+example if we wouldn't use this
+background frame so if I increase the
+size here now it's clipped you can see
+here if I move the shape outside
+it's not equipped so that's why we want
+to place it in this Frame you want to do
+the same thing with this text that I'm
+going to show you in just a bit so let's
+go back so we have this rectangle we're
+going to move it down a bit
+fade it out
+Second Step we're gonna fade it in again
+move it up Center it in the frame third
+step we're going to increase the size so
+I hit the K tool 1.5 x and then I go up
+here I say minus 135 to rotate it
+and then we have the next step where it
+goes down in size again to 32 pixels
+and I'm gonna Center it again
+then after that
+we're going to move this circle to the
+right a bit we're going to take our text
+container
+place it in here
+move it down a bit I want to make sure
+that this is centered all of it
+so maybe something like this
+and for this to reveal we have to have a
+starting state so I'm going to add this
+to this Frame as well but in this Frame
+it's going to be clipped like this I'm
+also going to move it a bit to the left
+so that it doesn't just clip but it also
+moves to the right in the animation
+and then the last thing that happens is
+that this circle increases in size and
+this thing moves to the right and Fades
+out
+and there we have our storyboard
+recreated so let's take these and go to
+the third step which is where we add the
+magic the interactions so I'll go here
+I'll go to prototype add a flow and from
+this I will drag an interaction to the
+second frame I will change from on click
+to after delay I'll say one millisecond
+and we're gonna change to smart anime
+and to custom spring
+and then I'm going to go down here to
+stiffness I will change this to 400
+these are settings you can play around
+with and see what suits you the best
+like
+430 in damping and once I've set these
+settings I can just connect each of
+these
+change to after delay
+one millisecond and you can see that it
+maintains the same settings
+so let's do it for all of these
+after delay oh one millisecond same
+thing here
+after delay one millisecond and the same
+thing for the last one here but for this
+one I'm actually gonna increase this to
+650.
+now let's play it and see what it looks
+like if you enjoyed this way of
+animating I do have a full playlist on
+it if you want to check that out it's on
+the screen here somewhere now until the
+next one have a great life we'll talk
+soon ciao

@@ -1,0 +1,56 @@
+Webflow vs Framer in 100 Seconds
+https://www.youtube.com/watch?v=t8ThPNdc_9w
+
+in this video we will compare webflow to
+framer in four different categories
+including pricing figma exports the CMS
+and the overall UI when it comes to
+pricing the biggest difference is with
+simpler landing pages and portfolio
+projects framer's mini plan is five
+dollars versus webflow's basic plan at
+14 for mid-sized projects like blogs
+webflow CMS plan is cheaper than framers
+Pro Plan but that same Pro Plan makes
+framer a bit cheaper for big projects in
+the end I'd call this a tie now with
+framer exports are literally design copy
+paste with webflow exports apart from
+requiring some extra steps your
+incentivized to use figma like you would
+use webflow that is more like a
+traditional drag and drop website
+builder and this makes sense since in
+webflow you don't have the design
+flexibility that you have in a tool like
+figma or framer thus making it more
+important to affect the structure before
+the actual export but if you like design
+freedom and want a two-step export
+process framer takes the win the CMS of
+webflow is probably its strongest
+competitive advantage over framer at
+this point while you can create full-on
+e-commerce projects inside of framer it
+does require you to be a bit more
+creative in how you use the CMS when you
+have more complex setups so therefore
+the win goes to webflow now we already
+kind of covered that framework feels
+like figma hotkeys are similar features
+are located in familiar places and the
+overall design experience is so free
+[Music]
+a perfect tool for designers in
+comparison webflow's UI with its classes
+its drag and drop design experience and
+its overall feature richness is
+perfectly suited for developers so
+naturally as a designer myself I will
+have to go with framer for this one as
+well because in what other tool as a
+designer can you create a custom website
+like the one I created in this video in
+30 minutes I've never been able to do
+that in any other tool now until the
+next one have a great life

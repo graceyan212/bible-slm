@@ -1,0 +1,377 @@
+Crash Course on Framer CMS (Beginner Tutorial)
+https://www.youtube.com/watch?v=ADrNwS19i5I
+
+the framer CMS is the most important
+piece to build out scalable websites
+whether it's blogs portfolio Pages or
+e-commerce pages so in this beginner
+tutorial I will cover all the steps you
+need in order to set up a framer CMS
+from scratch now step one is to design
+the content we want to add our editing
+powers to for this tutorial we will
+recreate the CMS I've set up for
+teamgame.com and to make this extra meta
+the working file is hosted on the same
+website and is linked Down Below on my
+site I have a card that has a title a
+resource type a software icon an image
+and a video and when we click the card I
+want it to take us to a detail page also
+known as a CMS page that has a top trim
+color a title
+a YouTube video and a link to the
+resource now before we create the actual
+CMS I want to make sure that our card
+has the hover state with the video
+preview so I will head into the working
+file and create a component out of my
+card I'll call it card hit create if
+you're new to components inside a framer
+you can pause and check out the video in
+the top right with the layers panel open
+I will select the video and make sure
+that it's set to zero percent in opacity
+I then zoom out a bit go to hover State
+hit plus hover I select the video again
+make sure that it's set to 100 in
+opacity and on top of this I make sure
+that the play button is set to zero
+percent in opacity now to test if this
+works we need to add a placeholder image
+and a placeholder video so I'll Target
+the video I'll choose a file Source I'll
+set it to playing yes and I'll go to the
+image choose image or unsplash if we're
+lazy and now if I hit command p as I
+hover we can see that the video is
+playing now the thing is not all my
+cards will have video previews so how do
+we make sure that this hover state only
+occurs when we have a video preview well
+we'll get to that by the end of the
+tutorial the next step is to create the
+actual CMS and there are three ways you
+can add your CMS the first is to go to
+pages in your left sidebar hit Plus on
+CMS and then add sample this will bring
+you to the CMS page and you'll get five
+sample CMS items added to the CMS
+collection that was just created the
+second way is to hit CMS in the top bar
+and then either import a CSV
+or add a Blog the latter will create the
+same sample of five as we saw in
+alternative one and then we have option
+three which is to once again hit CMS in
+the top bar but then head to this plus
+here when we click this plus this just
+creates a clean CMS collection without
+CMS items I'm going to use this option
+for now but it really doesn't matter
+what you choose I'll call this
+collection resources if you want to add
+more collections you can go to plus add
+here but more than one collection will
+require a Pro Plan for each collection
+we have three main options the first is
+new item the second is edit fields and
+the third is import import is for
+importing CSV files edit Fields is for
+adding and removing fields to our CMS
+items remember the title the content
+type the images and videos inside our
+card
+this is where we add the ability to edit
+those in the CMS view so let's add them
+we already have a title and here we can
+change the title of the title we can add
+a default text a placeholder value and
+decide whether it's a bigger text area
+or just a one-liner the slug is what's
+going to show in the URL in many cases
+it's best to just leave this to be based
+on the title of your page then we have a
+Content field which is great if you have
+a Blog for example in our case we don't
+need it so I'll just right click and hit
+remove now let's add all the things that
+will be either a part of our card or our
+detail page a title we already have but
+the option for this would be plain text
+now since the YouTube video is going to
+be inserted as a URL I'll use plain text
+for this and just call it YouTube URL
+formatted text would give us the content
+field we just removed link allows us to
+link to things which is perfect for a
+resource link so I'll add that and call
+it resource link I'll then hit plus
+again and add an image after that I'll
+add a color for the top trim let's just
+call it color now the toggle can be used
+to toggle things on and off in our CMS
+items for example if we have items that
+are featured and we want to show a
+featured badge for those we could add a
+toggle to show or hide that badge
+options allow us to add multiple options
+to our items this is perfect for a
+resource type and software icon so add
+one and I'll call it resource type I'll
+change the options to be working file
+and website and I'll let the default
+remain to be working file since that's
+currently the most common option on my
+page and of course if we wanted more
+options we could just hit add here now
+we'll add the second option for our
+icons I'll call it software type and
+I'll add framer
+and figma as the options on top of this
+we have numbers we have dates and
+finally we have file which we can use to
+add video files that we can upload from
+our computer I'll add that and I'll call
+it video then I'll manually enter the
+accepted extensions here which in my
+case is going to be only dot MP4 and for
+all Mac users here keep in mind that dot
+mov doesn't work and is generally not
+recommended on the web anyways and
+that's it now we have all the CMS Fields
+created and it's time to add our actual
+items let's add two CMS items really
+quick I'll hit new item and then I'll
+just fill in the fields that we just
+added now with this setup we can start
+linking the CMS to our designs let's
+start by heading back to our main canvas
+then go to the left sidebar by CMS hit
+plus resources and then detail page and
+as you may have guessed by the name here
+this is our detail page for the CMS and
+it works like any other page in framer
+just that it's connected to a specific
+CMS collection in our case resources now
+we can choose to use the template that
+framer has given us here or we can just
+remove everything and do it from scratch
+I'm gonna go back to Pages home I'll go
+to this detail page that I've already
+created here I'll copy it go back into
+this detail page paste it in then I'll
+remove the previous one I'll make sure
+that everything is set up correctly in
+here so I'll probably remove this detail
+page stack here we don't need that I'll
+just take this top bar
+set it to zero in the top I'll go to the
+nav and set that to maybe 24 then for
+this one we can just reduce the top
+padding a bit and now if we play the
+Prototype it looks something like this
+now from here we can just select our
+items so I'll select the top Rim then
+we'll go to the right sidebar I'm gonna
+click plus fill and I'll set the
+variable to be color for the title I'll
+do the same I'll go in here to plus
+content on the text field instead set
+variable to title and for the YouTube
+video I'm going to select it go to plus
+video set variable
+and YouTube URL and lastly for the link
+we're gonna Target the button go to the
+right sidebar to link hit plus then plus
+a link to set variable
+resource link and as you can see here
+all of these things are automatically
+located by framers so what we created in
+our CMS collection can be found here in
+the right sidebar I'm gonna set it to be
+new tab no and we don't need to do
+anything about scroll now our detail
+page is fully connected to the CMS but
+we still need to link the card so let's
+head back to our home page and here is
+our home page design but before we do
+anything else here we need to add
+something called a collection list this
+will allow us to display our CMS items
+anywhere we place the list so I'll go to
+insert scroll down to collection lists
+I'll drag this resources
+into our home page place it here in
+between that title and the footer still
+didn't place it correctly so I'll bump
+it down and just as with the detail page
+this comes with a default template in
+this case I'll just remove everything
+within it and instead I'm going to take
+our card component go back to our
+collection list
+paste it in there then I'll Target The
+Collection list go to the right sidebar
+I'll switch it to grid I'll set the
+width to fill then I'll adjust the Gap a
+bit tweak the padding a bit and there we
+have the beginning of a grid now the
+items are properly structured in the
+collection list but if we play it we can
+see that the content is still static
+it's still using the placeholder images
+and videos and the text Fields hasn't
+changed to make this Dynamic like our
+detail page we need to head into our
+card component so I'll click my way out
+I'll go to the card in here we can do a
+similar thing to what we did for the
+detail page just that here since it's a
+component we have a two-step process
+first we need to head to the top bar
+here and hit variables here we can
+create variables that we can then link
+to the CMS in The Next Step so let's
+start by adding one for image then I'll
+add one for a title so a plain text call
+it title then I'll add an option for
+resource type called resource type I'll
+do the same for software I'll add
+another option I'll call it software
+and I'll add framer and figma and that's
+all we need for now now let's head to
+our icons here so I'll go to the figma
+icon I'll hit plus visible set variable
+software
+equals so whenever software equals figma
+we're gonna show the figma icon now
+reversely if we go to the framer icon go
+to plus visible set variable
+software equals
+whenever software equals framer we're
+going to show this icon then we're going
+to go to the title here again we're
+gonna go to plus content set variable
+title and now the text disappeared why
+is that well since it's not yet
+connected to the CMS and thus it doesn't
+get any text from anywhere and since we
+in variables didn't add a default text
+we don't see anything but if we add
+default here you can see that now the
+default text is at least shown now let's
+select website here go to plus content
+set variable
+resource type and convert option and
+there you can see that it once again
+disappeared this is because once again
+it's not yet connected to the CMS so
+when Option 1 is set we're gonna set
+this text to something and instead of
+having option one here we can go back to
+variables go to resource type and name
+the options so the first could be
+working file just as in the CMS and the
+second one could be website also just
+like in the CMS now if we head back out
+here this is now working file so I'll
+set this to be working file so the text
+is going to be set to working file
+whenever we have chosen working file in
+the convert option and from here we can
+add another condition so when it's set
+to website we'll set it to be website
+now let's go to the video video and for
+the video we just hit plus here we
+create a variable and we'll call it
+video for the image let's target the
+image go down here plus fill set
+variable image and then as a last step
+I'll Target the whole card I'll go to
+link hit plus hit plus and Link two and
+create a variable and this link is not
+going to go to a new tab and it's gonna
+be instant because it's not going to be
+a Scroll once again it's going to go to
+the detail page now we can head back to
+home we can go out here to the right
+sidebar and now all of a sudden we have
+a bunch of options for our card here
+this is because we added those variables
+so now we can go to Plus image here set
+variable to be image and what this does
+is that it connects the component
+variable to the CMS item field so we'll
+connect image to image will connect
+tidal to title we'll connect resource to
+resource type convert option and in here
+we'll have to set working file to be
+working file We'll add a condition that
+says website is to be set to website
+we'll go to software set variable to
+software type convert option framer to
+framer and figma to figma and for link
+we're just going to hit the field here
+and click on resources slug this will
+make sure that it links us to the
+correct resource URL now if we play this
+we can see that everything seems to look
+perfect we have the hover state where we
+show the video we have the titles we
+have the resource type and the software
+icon here what if we have an item that
+doesn't have a video then perhaps we
+don't want to show the play now to fix
+this we have to head back into our card
+and inside of our card we have to go to
+variables and if we go to video here we
+can see that we always have a default
+video in order for us to not always show
+videos we can't always have a default
+video so we'll go out here I'll select
+the video I'll unlink it and then I'll
+remove the default video that we have
+here then I'll go back to the plus hit
+create variable I'll call this one video
+again and I'll just remove the previous
+video one now if we go out here to home
+and we go back to video here we have to
+re-link it to our CMS video and for this
+to be shown we have to create another
+CMS item or just remove a video from one
+of the CMS items so let's remove this
+one we go back
+and we play now we can see that the
+video isn't showing anymore but we can
+still see the play icon let's fix that
+too so I'll head back into the card
+let's select the play icon go to the
+right sidebar and hit plus visibility
+create variable we'll call this one play
+icon then we'll just jump back out to
+home we'll go to the right sidebar here
+we'll hit plus and play icon set
+variable video is set so now whenever a
+video file is added in rcms AKA is set
+the play icon is shown now if we play it
+again you can see that the play icon is
+gone and nothing happens on Hover on the
+flip side for the video ones on Hover we
+show the video
+now an issue that you might run into in
+cases like this where you have
+conditional logic is that you miss
+things between hover States so make sure
+that your image in this case here still
+has the image variable when I was
+testing this I realized that this wasn't
+set to the image variable which then
+results in on Hover that we see nothing
+so once again make sure that your image
+in this instance is set to image and
+that's it I hope the framer CMS feels
+less scary for you now if you want to
+dig deeper into framer check out this
+playlist until the next one have a great
+life

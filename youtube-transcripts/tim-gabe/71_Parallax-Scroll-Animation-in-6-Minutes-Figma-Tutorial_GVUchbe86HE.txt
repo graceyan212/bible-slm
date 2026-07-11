@@ -1,0 +1,148 @@
+Parallax Scroll Animation in 6 Minutes (Figma Tutorial)
+https://www.youtube.com/watch?v=GVUchbe86HE
+
+Parallax scroll animations present one
+of the easiest ways to create websites
+that feel more alive and more
+interesting but how do we recreate these
+effects in a design software like figma
+in this video I will show you the two
+simple steps to do exactly that in under
+seven minutes you can find the figma
+file in the description below now let's
+waste no more time and get straight into
+it okay friends so we are inside of
+figma and before we get into the steps
+of how to do this I just want to quickly
+touch on what The Parallax effect is and
+how you achieve it in any case really
+what you need is two or more objects
+could be a text object could be images
+could be blurs could be rectangles
+circles it doesn't matter two or more
+objects that you change the position of
+while scrolling and you change the
+position of them in in a random way
+relative to each other so in this
+example I have a bunch of images a text
+object and a blur
+so as we scroll this blur is going to go
+from the top to the bottom so that's one
+object this text here is going to go
+from the bottom to the top another
+element changing so the first one is
+going towards the bottom the text is
+going towards the top and then we have
+these Square images here
+that are going to go outside of the
+frame and then we have these circular
+images that are going to come from the
+bottom up into the frame and as you're
+gonna see these objects here if we check
+the position of them they're gonna
+change position
+relative to each other in a random way
+so we're not just going to push these
+outside of the frame like this because
+then they change position together in a
+uniform way we want them to be a bit
+random so let's create a new frame and
+let me show you how it works practically
+so I'll call this Frame I'll take this
+color
+and I'll just copy this text element
+here place that in here I'll take the
+blur
+place the blur like that in the top I
+actually want the text object to be in
+the outermost top because all the other
+elements all the other images are going
+to go beneath the blur though I want to
+go above the images to give it some sort
+of a cool effect where the images kind
+of get faded or blurred out by the blur
+so I'll place the images in here I'll
+increase the height so we can see
+everything
+I'll put this text layer in the top like
+I said
+and then I'll just duplicate this and
+I'll start changing the position of
+elements here so I'll take this blur
+move it towards the bottom let's
+actually put this just below the
+Parallax text here
+so I'll do it the same as sorry I'll do
+the same in this Frame like that so that
+it kind of blurs out these images but
+not the text
+so that's the first thing then I'll take
+these Square images here I'll change the
+position of them a bit so maybe this
+goes towards the top maybe this goes a
+bit towards the bottom maybe this closes
+up on the small image once that's done I
+can move them outside and if I want to
+move them outside of the frame without
+putting them outside of the frame so I
+still want to have them inside of the
+frame if we look here then I can move
+them first start moving them and if you
+want to do it in a uniform matter you
+can hold down shift so first hold down
+shift and then I'll hold down space
+and I can move it outside without them
+actually being pushed outside of the
+frame so that's the first thing then I
+can take this text move it upwards like
+this and then we can do the same with
+these rounded images so I'll change the
+position of this change this to that
+maybe put this up like this and then
+I'll just drag them up towards the top
+of the frame here like this
+then we can take these two frames
+drag them over here to step number two
+which is where we add the drag
+interactions before we do that I'm going
+to change the height of the frames to
+900
+so that they're actually looking like
+desktop frames and I'll go into the
+first one
+hit prototype add a flow starting point
+call this flows
+start
+super random and I just realized I
+forgot something we need our little
+scroll bar here so I'll go back here
+copy the scroll bar
+p is still in here and by the way you
+don't need a scroll bar you can have a
+drag interaction just like this text
+could be the thing you drag this image
+could be the thing you drag but I want
+to add a scroll bar just to make it a
+bit more realistic so I'll copy that
+bring it over here and I'll bring it to
+the bottom and a few pixels up like this
+then I'll go into the scroll bar here
+I'll add a drag interaction over to the
+second frame smart animate ease out is
+just fine then I'll do the same from
+this scroll bar back so that we can
+scroll it up and down and now if I play
+it I hit play
+let it load for a bit
+I'll hit f for full screen
+and I scroll
+and we have this beautiful
+Parallax effect happening
+do you want to explore what other kinds
+of figma animations you can create well
+check out my playlist here where I teach
+everything about figma animations I'm
+sure you will find something that will
+help you
+now until the next one have a great life
+we'll talk soon ciao

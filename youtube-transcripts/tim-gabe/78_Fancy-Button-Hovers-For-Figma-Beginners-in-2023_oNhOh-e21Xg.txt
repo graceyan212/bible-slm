@@ -1,0 +1,147 @@
+Fancy Button Hovers For Figma Beginners in 2023
+https://www.youtube.com/watch?v=oNhOh-e21Xg
+
+in this quick beginner tutorial you will
+learn the right way to create fancy
+hover States in figma now let's waste no
+time and get straight into it so the
+first step here is to create an element
+the element we want to add our hover
+effect to
+so we're going to create a button and
+usually when I create buttons I use
+something called Auto layout now I'll
+create a text here saying not hovered
+just like this button above once that's
+done I'll hit shift a to create an auto
+layout then I'll add some padding to the
+sides some padding vertically up here in
+the auto layout settings I'll change the
+background color I'll change the color
+of the text and I'll add some rounding
+to this Auto layout button so here we
+have a button I call it Button as well
+that's the first step
+I'll then take this element drag it over
+here
+now I want to define the end State and
+once I've defined the end State I want
+to duplicate it again and hide away the
+things that happens in the end State
+you'll get what I mean in just a sec so
+when I hover this button I want two
+things to happen one I want a text to or
+I want the text to be replaced so when I
+hover it I want it to say hovered
+instead of not hovered but I don't just
+want the text to kind of Fade Out and
+fade in I want the text to come from the
+top and replace the current text that
+goes down to the bottom I also want a
+circle to animate in to give us the
+background color
+now how do that is I'll add another text
+layer here
+say sorry I need to add a text layer
+here
+say hovered
+this text layer I'll go up here and say
+I want it to be absolute position
+like this
+I'll Center it then I'll drag it outside
+for now
+I'll also add a circle like I said
+so a circle like this I'll give the
+circle this color here and this circle
+should also have absolute position so
+I'll click here
+and give it absolute Precision put it
+outside of the frame like this and this
+last text here since this is going to be
+replaced and this is going to move
+within the auto layout and usually Auto
+layouts will just force things to kind
+of Stack up inside of them
+so if we want to achieve this moving
+behavior that I'm after here everything
+within the auto layout has to be
+absolute position so that goes for this
+text as well so I'll click here and I'll
+actually replace this right now so this
+should go down so that's the first thing
+that happens in the animation this comes
+in and it's centered and this circle
+here is gonna grow like this now the
+circle should be in the top of the auto
+layout so that it ends up in the bottom
+visually I know that doesn't really make
+sense but that's how it is what we also
+have to do is we have to click this
+button and go to clip content to clip
+everything that goes outside of it now
+we have this hovered end state if I
+duplicate this I can make it go back to
+the default state by just simply putting
+this to the top again
+dragging this to the middle again
+and
+then just decreasing the size of the
+circle like this so there we have our
+end State default State now we're ready
+to go over to number three which is
+about creating the component set
+so I'll drag these over here
+and now I will go to the top here
+click this components and hit create
+component set now this is very important
+because if you don't do this step you
+will have a prototype that isn't going
+to be very scalable you won't be able to
+use it in different contexts I'll take
+this create component set I'll drag it
+over to the next step here now we want
+to add an interaction so this button
+whenever we use it is going to have this
+particular interaction so I click here
+on Prototype I click interactions plus
+and you could do this and just choose
+from here what you want to navigate to
+in this menu you could also just go here
+take this plus and drag it to this other
+component here in the component set
+you get this menu we don't want it to be
+on click we want it to be while hovering
+because this is a hover interaction
+it's going to change to this one and
+it's going to be smart anime usually it
+starts with instant so you would have to
+go to this menu here click it say smart
+animate and in here you can choose
+different options we're going to go with
+ease in and out for now and you can
+tweak the timing here but I think 200
+milliseconds will be fine for this the
+last step here is to add a frame that
+has a prototype flow and copying this
+button here
+so I just take the button I hit command
+C then command V and we have the button
+I will drag it into this Frame
+and now we have it within this desktop
+frame like I said we need to add a flow
+starting point so I'll go here to the
+Prototype settings hit flow starting
+point plus
+and now you can see how you get this
+little button up here and if we click
+this we click the play button
+we'll go into the Prototype now if I
+hover this
+you can see how the circle Moves In and
+the text is Switched now if you want to
+master figma check out this playlist
+here somewhere where I cover most things
+figma all the layouts component
+properties animations you name it
+until the next one have a great life
+we'll talk soon ciao

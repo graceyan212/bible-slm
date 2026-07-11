@@ -1,0 +1,81 @@
+Make Your Figma Scroll Animation Real in 4 Minutes (Using Framer)
+https://www.youtube.com/watch?v=7drmXMS8Jj8
+
+creating animated prototypes in figma is
+great but it's just not the real thing
+it's not a live project that a client or
+a user can actually use it's just a
+prototype so in this video I'll show you
+how to convert a figma parallax
+animation into a real website animation
+using my favorite web design tool framer
+as always working files are linked down
+below now let's jump into it alright so
+when it comes to porting over figma
+animations into framer it's really only
+one thing you need to do and that is
+gathering the assets that you're using
+for your figma animation in this case
+I've created this Parallax animation
+that you can see here I have a tutorial
+on it in the top right corner if you
+want to learn how to create it
+now
+from this animation I've gathered this
+desktop frame or actually it's really
+the Discover frame that I have here I'm
+just going to select this desktop frame
+I will click up here on the resources
+tab go to plugins and search for framer
+then I will run the framer plugin you
+can see that it's copying the layers
+here and once that's done I will move
+over into framer
+so I'll go here I'll paste it command V
+or Ctrl V if you're using a Windows
+machine once that's done I'll Target my
+outermost frame change the width so that
+it maps to my figma export here
+I'll change the height to be fit content
+and now if I hit command P we have a
+website this is ready to be published
+but it's quite static at this point if I
+want to make this into the same kind of
+Animation that we had in figma it's
+actually super simple I will first just
+Target all of the images that we have
+here and once they're targeted or
+selected I will go to the effects panel
+here to the right go to scroll speed 100
+is the normal scrolling speed so if I
+set this to 140 the images are going to
+scroll faster than the actual scroll
+movement that I have that is 100
+naturally so if I play this now
+you can see how the images
+move upwards it seems but actually
+they're just scrolling faster than my
+normal scroll with that we almost have
+the full effect now I also want to add
+faster scroll speed to this light effect
+or this background blur I guess maybe we
+can set this to 250 and maybe The
+Parallax text here should be a bit
+slower so maybe I'll set this to 50 or
+40 percent
+I'll even move it up a bit and now as I
+play it
+let's see how it looks
+yes the Shimmer or the background blur
+comes there and the images move upwards
+in the same way that the figma animation
+did now if we would want this to be more
+Dynamic we could change the scroll
+speeds of each individual image we could
+do a bunch of things but this is how
+easy it is to create a super simple
+Parallax animation inside a framer now
+if you want to dig deeper into framer I
+have a full playlist on it here until
+the next one have a great life we'll
+talk soon ciao

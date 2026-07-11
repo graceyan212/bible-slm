@@ -1,0 +1,149 @@
+The UI/UX Wireframe Hack Schools Don’t Teach
+https://www.youtube.com/watch?v=40UAK-LKheA
+
+I know it's controversial but I'm just
+gonna say it traditional wireframing is
+overrated especially for landing page
+design where complexity usually is very
+low
+so in this video I will show you how you
+can save time by replacing traditional
+wireframing when creating landing pages
+but before I show you exactly how to do
+it in figma let's do a speed lesson on
+wireframes the job of wireframes is to
+give us a sense of what content is
+needed what elements are needed and what
+will the visual structure look like it's
+basically a designer's version of an
+architect's blueprint the problem with
+the traditional way for landing pages is
+that wireframes are usually too low in
+Fidelity to yield me a realistic design
+structure and in most cases I will have
+to change the design down the line
+anyways so enter Frankenstein wireframes
+a high fidelity Visual and structural
+reference of what we want a super fast
+workflow and responsive design
+references for free now let's jump into
+figma so that I can show you exactly how
+I use the technique okay so the first
+thing that I do when it comes to
+Frankenstein wireframing is that I
+collect screen dumps so I go into my
+favorite inspiration sources it could be
+lapa.ninga for example I pick the sites
+I like I add them into new tabs then I
+go into the actual websites and I go
+into the inspector tool and choose the
+dimensions I want so 1440 pixels usually
+for desktop 375 pixels for mobile and
+then I just take screenshots and the
+screenshots would look something like
+this you can see that I have the URL if
+I want to go back and see what kind of
+website it was it might not be as easy
+if we don't have the nav in the
+screenshots so I want to be able to go
+back and reference it and then I choose
+the dimensions in the inspector tool so
+I would change the dimensions to be
+responsive then I would choose my
+Dimensions here in this field and I
+would choose 75 in Zoom instead of 50
+because I want to make sure that we can
+actually see all the details in the
+screenshots I would do the same thing
+for mobile but I would choose 375 pixels
+in Dimensions instead but still 75 zoom
+and still showing the URL once that's
+done I move over to the Second Step
+which is basically just cropping the
+images and then resizing them and this
+is super easily done in figma so let me
+try to do it live here for you guys I
+take the image I go to the image fill
+here I go to this option that now says
+crop usually it says fill we change from
+fill to crop and then we can crop it by
+just moving these handles I would do the
+same for the mobile version change to
+crop
+crop it like this I'm not gonna be super
+super specific or detail here
+then I would take these change them to
+the correct Dimensions so 375 for mobile
+and 1440 for desktop
+and that's what I do for every single
+section
+so once I've done that for every single
+section
+I would place them like this I would
+take every single section so let's say
+we've done it for a bunch of sections
+I would
+take them place them like this
+Target them and create auto layouts for
+them call this desktop for the desktop
+version I would do the same for the
+mobile version
+so create an auto layout with this call
+it mobile
+like that
+and then we would end up with something
+like this
+other layouts with all of the sections
+and now this looks like a real website
+right
+and this is what we want to achieve
+there's a visual representation of what
+we want our website to look like
+so the next step
+drag them over here and now it's time to
+start designing
+so what I usually do is I take this
+desktop Auto layout I Target it
+I create a frame on top of it and I call
+that frame desktop again
+you can call it desktop container if you
+want to separate the naming
+then I would take the desktop Auto
+layout I would lock it and I would
+decrease the opacity of it why do I do
+that well because when we start
+designing on top of these landing pages
+we don't want to be distracted by the
+screenshots we want to use them as a
+reference but we don't want them to
+distract us so we lock it so we won't
+move it by accident and we decrease the
+opacity so that they don't distract us
+and then I would just start designing
+now I've already designed the nav here
+but as you can see and this is an
+important Point as well I'm not just
+taking the exact design and copying it
+straight up
+I'm doing my own version of it so in
+this case with the nav here maybe what I
+like is this just a structure of having
+the logo type here and then having the
+menu but my implementation is different
+I'm using different colors I'm using a
+different font
+etc etc so we don't steal but we take
+inspiration from these things the same
+with the mobile version of course we
+would decrease the opacity first of all
+we would create the frame call It Mobile
+container
+do the exact same thing go in here lock
+this
+decrease the opacity and do the exact
+same thing for the mobile version now if
+you're using figma to design I suggest
+you check out my master figma playlist
+where I cover anything and everything on
+figma now until the next one have a
+great life we'll talk soon ciao

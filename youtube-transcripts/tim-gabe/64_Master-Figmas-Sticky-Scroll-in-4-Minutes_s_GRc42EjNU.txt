@@ -1,0 +1,87 @@
+Master Figma’s Sticky Scroll in 4 Minutes
+https://www.youtube.com/watch?v=s_GRc42EjNU
+
+sticky scroll has been a common design
+pattern in the web and mobile design
+world for years but how do we recreate
+this great effect inside of figma well
+in this video you'll see exactly how
+it's done in under four minutes now
+let's go alright so the first thing we
+want to do as we set up sticky scroll
+inside of figma is to configure our
+parent frame and when I say parent frame
+I mean the outermost frame that you have
+it could be a desktop frame it could be
+a mobile frame whatever you have as a
+prototype the outermost frame in my case
+this Frame is the one we Target so I go
+to this Frame I click prototype in the
+top right I go to overflow here and
+change it to vertical
+from the beginning by default it's going
+to be no scrolling but we change it to
+vertical
+so that's the first step
+then as that's done
+I grab this Frame again
+like this and I go to the second step
+now it's time to configure our sticky
+frame so the things we actually want to
+be sticky within this prototype
+so what I do is I Target the layers I
+want to be sticky and we can go one by
+one here so for example this text here I
+want to be sticky so I would Target this
+and I make sure that I have an auto
+layout wrapped around it and inside of
+my auto layout I can either set a
+padding in the top here
+like this
+now this distance here is going to act
+as the buffer to the top of my frame so
+as I scroll we'll have this distance to
+the top when it locks in and starts
+scrolling with the frame I could do it
+this way adding padding I could also
+remove the padding click here
+do fixed height and set a fixed number
+and then I would place my text in the
+bottom here and now I have a fixed
+number instead and I kind of like this
+option more because I have more control
+over the pixels
+so I would do this for the text here I
+would do the same for this button here
+so let's go here change the height to
+560 place it in the bottom
+and the reason I'm using 560 instead of
+400 as I did for the text here is
+because I want the button to end up
+below the text so I set 160 pixels more
+for this I will do the same for this
+image to 560.
+place it in the bottom
+and that's it for the padding now the
+last and the most important step of
+course is to go into each and every one
+of these so the button the text and the
+image here go to prototype settings
+and change the position here from scroll
+to Sticky
+now as I duplicate this Frame again take
+it over here
+I change the height of it
+to 900. now if I go to prototype and add
+a flow starting point
+I click play
+as I scroll you can see this sticks
+to the screen it has the padding that we
+added
+and as we come to the bottom this sticks
+and it has the padding to the top as we
+set it if you want to enrich your figma
+prototypes with even more cool tricks
+and animations check out this playlist
+now until the next one have a great life
+we'll talk soon ciao

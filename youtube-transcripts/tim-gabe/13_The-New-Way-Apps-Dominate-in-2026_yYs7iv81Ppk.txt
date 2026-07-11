@@ -1,0 +1,290 @@
+The New Way Apps Dominate in 2026
+https://www.youtube.com/watch?v=yYs7iv81Ppk
+
+Every founder I talk to is obsessing
+over the same thing, engagement,
+dopamine loops, addictive micro
+interactions, hooking animations. And
+they should be. Those things matter a
+lot. But here's what's keeping me up at
+night. The apps dominating 2026 aren't
+winning just because they're more
+engaging. They're winning because
+they've turned your usage into an
+intelligence that you literally cannot
+export. Your sleep patterns, your
+creative tastes, your company's
+financial logic living inside products
+that get smarter about you every single
+day. And no regulation, no competitor
+can give you that back. Now, before I
+show you how they're doing it, I'm Tim
+and I've worked as a product designer
+for over a decade designing software for
+tech giants like Spotify and countless
+multi-million-dollar startups along the
+way. So, I obsess over these things all
+the freaking time. Now, in 2026, the
+best products don't just solve problems.
+They learn you. Over time, they build an
+understanding so deep that switching
+feels less like changing tools and more
+like starting over with a stranger.
+That's a design pattern. And today I'm
+breaking it down using three companies
+that have mastered it. Lots of founders
+are building engaging products now.
+Smooth onboarding, satisfying
+interactions, habit-forming loops.
+That's what I call layer one. And you
+absolutely need it in today's
+AI-slopified
+world. But engagement alone is like a
+treadmill. It keeps users running, but
+it doesn't stop them from jumping off
+and onto a new one. The apps people
+genuinely can't quit have figured out a
+second layer where every session
+deposits something irreplaceable,
+something that compounds, something you
+can't take with you. In 2014, Nir Eyal
+introduced stored value in his book
+Hooked. Users deposit value into
+products and that investment makes them
+stick around. Powerful idea, but in
+2026, AI has supercharged it into
+something Eyal couldn't have predicted.
+I call this evolution the intelligence
+trap. Every session doesn't just store
+data anymore. It trains an intelligence,
+one that can't be transferred, exported,
+or rebuilt overnight. This is more
+powerful than any growth hack you can
+implement. And by the end of this video,
+you'll understand exactly why. Before we
+dig into the three companies that have
+mastered this, if you want help applying
+principles like this to your own product
+or website, we open up free design
+strategy calls monthly at Zipsnap. You
+can grab your spot in the link below.
+All right, let's start with the example
+that surprised me the most personally,
+Midjourney. $500 million in revenue in
+2025, $0 in VC funding, no traditional
+marketing budget to speak of, roughly
+150 employees. That's over $3 million in
+revenue per employee. Midjourney started
+as a Discord bot. No website, no native
+app, no polished onboarding flow. It
+grew entirely through word of mouth. And
+even today, competitors like Adobe
+Firefly or DALL-E have billion-dollar
+backing, massive distribution, and years
+of brand recognition. By every
+conventional measure, Midjourney should
+not even be competing with these guys.
+So, why is it? Because after you go
+through their image pair ranking,
+Midjourney builds what they call a
+personalization
+profile. We're not talking about a
+settings page here. We're talking about
+a trained sub-model of your visual
+taste. It learns whether you prefer warm
+or cool tones, maximalist or minimal
+composition, photorealism or painterly
+style. In version 7, personalization is
+on by default and over 70% of active
+users adopted it within 3 months. Every
+image you generate, every variation you
+select, every mood board you curate
+trains this sub-model further. Switch to
+DALL-E and you're starting with a
+stranger's eyes. No profile, no mood
+boards, no creative history. Your
+creative fingerprint lives on
+Midjourney's servers. And the more you
+use it, the more it understands what
+beautiful means to you specifically.
+Norton, Mochon, and Ariely proved this
+with their IKEA effect study. People
+assign 63% more value to things they
+helped create. Now, here's how to apply
+this to your product. First, map your
+product's investment loop. For every
+core action a user takes, ask, "Does
+this make the product better for them
+specifically or just better in general?"
+If it's just general, you're building
+features, not stored value. Second,
+design for cumulative personalization.
+Midjourney's aesthetic profile gets
+better with every ranking. So, what's
+your product's equivalent of their
+ranking system? Find that compounding
+action and make it frictionless. Third,
+measure the compounding. Track how much
+better your product performs for a
+6-month user versus a 10-day user. If
+there is no measurable difference, the
+intelligence trap isn't tightening. Can
+your product show that a long-term user
+get measurably better results? That's
+the question you want to ask. So,
+Midjourney built an intelligence around
+your creative eye. Now, the next example
+might seem different because it's a
+physical product, not a software app.
+But stick with me because the way they
+built intelligence lock-in around your
+body contains maybe the most
+transferable lesson in this entire
+video. I'm talking about Oura Ring.
+Millions of rings sold, on track for a
+billion dollars in revenue, and the US
+Department of Defense just gave them a
+$97 million contract. That's a health
+wearable, not a defense contractor.
+After 3 years of wearing one, Oura has
+1,095 nights of your sleep architecture
+data, heart rate variability trends,
+respiratory rate patterns, temperature
+baselines. And their AI advisor uses all
+of it to give you personalized health
+recommendations. Not generic sleep more
+advice, advice calibrated to your
+specific physiology. The problem isn't
+whether Oura is a good product. It
+clearly is. The problem is what happens
+when you try to leave. The EU Data Act
+mandates that Oura lets you export your
+data. So, technically, you can leave.
+Download your sleep CSVs. But that CSV
+doesn't contain the AI model that
+learned your body's rhythms over 3
+years. You get the numbers, you don't
+get the intelligence. The regulation
+freed the container, but it couldn't
+free the intelligence. We've gone from
+data lock-in to intelligence lock-in,
+where a model trained on you lives
+inside the product. Oura maintains
+retention rates in the high 80s even
+behind a $5.99 monthly subscription on
+data your own body generated. So, ask
+yourself, "Does my product get
+measurably smarter about this specific
+user over time?" If session 1,000 is
+functionally identical to session 10,
+you've built a great engagement product,
+but you haven't added the investment
+layer that makes the exit door heavier
+with every session. So, do this. First,
+identify what data your product is
+collecting that could compound into
+personalized intelligence. Not just
+storing it, but learning from it.
+Second, make the intelligence visible.
+Oura shows, "Your body has been tracked
+for 1,095 nights." When users can see
+their investment growing, retention
+feels like partnership, not like being
+trapped. And third, ask yourself the
+exit question. If a user left today and
+went to a competitor, what would they
+have to rebuild from scratch? If the
+answer is nothing much, you don't have
+an intelligence layer yet. Now,
+Midjourney built an intelligence around
+your creative eye. Oura built one around
+your body. And if you're looking at your
+own product wondering how to build this
+kind of investment layer, at Zipsnap, we
+run a select few free strategy calls
+with companies every month. Link's down
+below if you want to grab a spot before
+they fill up. So, we covered creative
+intelligence and body intelligence. But
+the final example shows this principle
+working in a place you might not expect,
+corporate spending. Ramp is a spend
+management platform used by over 50,000
+companies, including Shopify, Figma, and
+Notion. Their AI agents made millions of
+autonomous decisions on company spend in
+a single month. Every automation rule
+your team configured, every card policy,
+every vendor categorization, every
+integration with your accounting
+software, that's your company's
+financial logic encoded. And it took
+years to accumulate. This might sound
+like a B2B enterprise story that doesn't
+really apply to you. But the principle
+is universal. Every product accumulates
+decision intelligence. For Ramp, it's
+spending rules. For a project management
+tool, it's workflow patterns. For a CRM,
+it's sales playbooks. The question is
+whether your product is actively
+learning from those decisions or just
+storing them. Ramp's biggest competitor,
+Brex, was acquired by Capital One in
+January 2026 for less than half its peak
+valuation. Both companies had great
+product design and strong engagement,
+but Ramp layered investment loops on
+top. Intelligence that compounds with
+every transaction. Great designs got
+users in the door for both, but only
+Ramp made the exit door heavier. Here's
+how to apply it in practice. First,
+identify the decisions your users make
+repeatedly and ask whether your product
+is learning from them to make the next
+one easier. If every decision starts
+from zero, you're leaving stored value
+on the table. Second, count your
+integration routes. Every external
+system that depends on your product is
+another reason switching is painful.
+Ramp embeds itself into accounting, HR,
+Slack, everything. What systems does
+your product plug into? Third, automate
+the deposit. The reason Ramp's
+intelligence trap is so powerful is that
+users don't have to consciously invest.
+Every transaction automatically trains
+the AI. Find ways to make your users
+deposit value without even thinking
+about it. Now, let's recap. Three
+companies, three completely different
+categories, one identical mechanism. The
+first lesson, build personalized
+intelligence, not just features.
+Midjourney didn't out-design Adobe. It
+built an aesthetic profile that gets
+smarter with every image. The second
+lesson, engagement gets users in the
+door, but investment keeps them there
+long-term.
+users stay when the intelligence feels
+irreplaceable. And the third lesson, the
+question isn't whether users can export
+their data. It's whether they can export
+the intelligence your product built from
+it. That gap is where the intelligence
+trap lives. Now, if you found this
+breakdown helpful and you're wondering
+how this might apply to your product or
+your business, for the last time, we do
+open up a couple of free design strategy
+calls each month. Just check the link
+down below. Also, if you liked this
+video, you'll probably love this one
+where I break down the emotional design
+layer, aka the first half of this
+equation. It's here somewhere.
+Anyways, until the next one, have a
+great life.

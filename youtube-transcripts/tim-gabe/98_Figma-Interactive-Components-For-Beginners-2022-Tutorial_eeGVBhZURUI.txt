@@ -1,0 +1,240 @@
+Figma Interactive Components For Beginners (2022 Tutorial)
+https://www.youtube.com/watch?v=eeGVBhZURUI
+
+in this video you will learn how to
+create interactive components like a pro
+make sure you stay till the end to see
+how we can nest these interactive
+components and create even more
+realistic prototypes now
+let's get into it okay so before we get
+into the tutorial i just want to suggest
+two videos for you to watch first my
+video on smart app because we'll be
+using smart animate in this tutorial
+also my video on
+component properties will be very
+helpful for this video so go check those
+out and then come back to this video
+yeah now let's get started so first of
+all why do we use interactive components
+and the argument is pretty simple you'll
+be able to go from something like this
+to
+something like this so from this hot
+mess of i don't know how many artboards
+or frames for
+like 16 24 bunch of frames
+to just one frame and then what you can
+do is you create things like buttons
+accordions dropdowns whatever you want
+in the form of an interactive component
+once you've created them in one page you
+can take those components so regardless
+if it's your buttons or tabs or whatever
+it is you can take those and then reuse
+them all over so you can reuse them in
+your file in different pages even within
+different files you can search in your
+assets panel and find the button or the
+accordion or the drop down whatever it
+is take it drag it onto the canvas and
+start making your magic first of all
+let's start by creating a button create
+a button call it button i'll add all the
+layout to it and by the way if you want
+to know how to use all the layouts i
+have a video on that as well
+i'll add a fill color
+maybe something like that
+give it some rounding
+even give it a stroke
+maybe something like this
+all right so we have a button i'll call
+it button and for the sake of having
+this tutorial short and sweet i will
+just have two different states for this
+button so we have the default state so
+that's what it looks like when it's just
+in its original state and then we have
+the hover state which is just going to
+be maybe
+an opacity
+so i'll take these two i'll create a
+component set and i don't create a
+component out of these because if i do
+that and then i go to my assets panel
+and i search for a component because
+it's called that right now i'll get both
+of these when i drag it out we want just
+one instance right so we're not gonna
+have this be one single component we're
+gonna have it be a component set right
+now we have the two different states but
+we want interactivity when we hover this
+it should become this
+so i'll go here
+i'll add an interaction while hovering
+change to
+property default so now both of them are
+called default so let's change that it's
+going to be state this one is default
+and this one is hover
+so now if we look at the interaction
+again it says while hovering change to
+state hover and we have smart animate
+150 milliseconds
+sounds good and then while we're not
+covering it we're going to go back to
+this so not on click on mouse lead we're
+going to go back to default smart
+animate 150 milliseconds let's try it
+out
+drag it out the component i could also
+go up here
+search for button drag it out here
+i'll add a frame
+and maybe we'll add a fill color to that
+frame and we'll add
+prototype
+flow starting point
+click play
+zoom in a bit
+hover and it works awesome so this is
+our first interactive component now
+we're going to create a tab item
+component so once again i'll add a text
+saying tab
+then we'll have some sort of a
+underline
+i'll add another layout
+tab
+set this to fill container and this to
+white so we're gonna have
+one state where it's hover and one state
+where it's default obviously and one
+state where it's active so actually this
+is the active state but we can duplicate
+this three times create a component set
+once again so this will be the default
+state right so state default and we have
+state hover
+and state
+inactive so the first state default i
+don't want this to
+be visible
+so i'll set that to zero opacity and i
+want this to
+be
+maybe a bit faded out and then we have
+the hover state which is gonna be
+we see this underline but it's not as
+evident as the active state and this is
+also still going to be faded out and
+then we have the active state that looks
+correct
+all right so let's add some
+interactivity to it again
+so when we hover it i want it to go to
+this on
+while hovering change to hover smart
+animate then on click
+i want it to go oh sorry this should be
+called active
+and this should be
+inactive
+so inactive hover and active let's go
+back to the prototyping settings so
+while hovering change to hover for this
+one and here on click
+change to active smart animate
+that looks about right so if we drag
+this out here we can go to the assets
+again what is it called
+it is called tab
+search for it
+drag it out and we'll add it to
+a frame
+give it a full starting point play it
+all right so when we hover it we get
+that thing when we click it it's active
+so that works awesome this by itself
+will not be enough for the example that
+i want to make here i want to be able to
+click one of these tabs and when i click
+that tab i want all other tabs to become
+inactive so how do we do that
+i'll actually take
+this tab component but we can go to the
+assets tab or assets panel i'll drag it
+out i'll duplicate this component three
+times
+i'll add an auto layout to this and call
+it tabs plural this will be tab one this
+will be tab two and this will be tab
+three i want one of these to
+be active and the other ones should be
+inactive
+when we click this tab 2
+this should be inactive when we click
+tab 3 both of these should be inactive
+so i need to create a flow for that so
+what i'll do is i'll create a component
+out of this
+and in this component i will add some
+variants so let's add a variant in here
+we have the variant where tab 2 is
+active then tab 1 is inactive we also
+have the variant where tab 3 is active
+and all of the others are inactive so
+when we click tab two prototype on click
+on this one i want it to go to this
+variant so on click change to variant
+two and to make it a bit simpler to read
+this stuff let's say state
+or not state maybe let's say
+variant
+this is going to be tab 1
+tab 2
+tab 3.
+once again when we click tab two it's
+gonna go to this one
+when we click tab three it's gonna go
+to tab three tab two
+from this one it's gonna take us back to
+tab two
+tab one from this one it's gonna take us
+back to tab one tab three from the first
+one you get it
+so we need to reconnect all of these
+so that makes sense and that it works
+now if we
+go to assets search for tabs
+find the tabs one create a frame give it
+a color
+play the flow
+we can see that works
+which is pretty amazing now let's go
+into
+our explorations file here
+which is a different page
+and
+actually use it in
+practice
+so we search for tabs we'll drag that in
+here and i'll search for button we'll
+drag that in here place it outside here
+let's take this frame
+let's add a flow starting point let's
+play it
+and just see how it works like magic
+i'm just astonished
+like i mentioned before you can check
+out my videos on smart animate and
+component properties over here if you
+want to help out subscribing commenting
+liking hitting the bell notification
+button all of these things really help
+guys now until the next one have a great
+freaking life and we'll talk soon
+ciao

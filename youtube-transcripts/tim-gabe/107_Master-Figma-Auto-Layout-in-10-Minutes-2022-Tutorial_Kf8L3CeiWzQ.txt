@@ -1,0 +1,282 @@
+Master Figma Auto Layout in 10 Minutes (2022 Tutorial)
+https://www.youtube.com/watch?v=Kf8L3CeiWzQ
+
+hello everyone i'm tim and a warm
+welcome to you to my channel today we're
+going to talk about auto layouts and how
+we use them in 2022 to create
+professional designs faster and easier
+we'll touch on things like what auto
+layout is why we even use auto layout
+and also how we use it in practice
+so what is auto layout it's actually
+very very very simple when you look at
+the web world you have something called
+the flexbox model that's how you
+structure content on the web when you
+look at figma you have auto layout
+that's our equivalent of the flexbox
+model it's a way to structure content
+now why use auto layout
+three things
+the first being scalability so let's say
+you have a table or let's say you have a
+table row and you wrap that table row
+into an auto layout now if you duplicate
+the table row it's going to be super
+easy to make that into a table
+which brings us to the next point which
+is about
+consistency
+if we want to change the spacing between
+these row items
+we can do that in one place super easily
+which also brings us to the third point
+about control
+if we want to have 12 pixels 16 pixels
+eight pixels it doesn't matter you can
+do it in one place it's gonna be
+consistently controlled across the board
+okay so we're in figma let's see what we
+can do with this
+first of all we're gonna start by just
+creating another layout shift a
+there you have your auto layout
+shift a or right click and add auto
+layout next up alignment
+in the right sidebar we'll see this auto
+layout section
+here we can change the alignment of the
+items within our bottle layout
+item spacing
+we have two or more items we can change
+the spacing over here
+with this spacing between items option
+direction
+if you want to change from vertical to
+horizontal of the items within our auto
+layout
+paddings
+we can change just the horizontal axis
+or the vertical
+or individually
+like this
+also a little hack if you click command
+and then click on an input field and you
+can change everything at once
+like that
+spacing mode
+here we go into the advanced layout
+settings
+we have the first option called spacing
+mode right now it's packed if we set it
+to space between it's gonna space things
+in the layout like this
+next is strokes inclusion versus
+exclusion
+once again advanced settings
+now it's included which means that the
+strokes so if we have 8 pixel stroke
+width here
+it's going to be included in the layout
+it's going to push the content if we
+exclude it it's not going to push the
+content so you can see how the circle
+went
+to the sides and now it's pushed by this
+ropes again
+canvas stacking
+so once again advanced layout
+you can show the first on top
+or the last on top
+just like this
+text base alignment
+so if we have different text sizes
+this is a very neat thing quick advanced
+again
+we can check this to get them to be on
+the same baseline like this
+then we have resizing
+so right now if we set this
+and by the way we need to look in the
+top right corner here
+so we have
+horizontal resizing and we have vertical
+resizing if we change to fixed width
+here
+and we resize this
+all the way up
+it's not going to be responsive
+if we change it to
+fill
+it is
+same with text
+now it's fixed
+if we
+resize it
+it's not going to work we set it to fill
+it's going to work
+we also have
+hug here which means that
+text just spans for as long as we write
+if we set it to fill again
+as you can see it's once again
+responsive
+okay and the last one
+absolute position
+so here we have another layout with a
+title a body text and
+a rectangle let's say i want this in the
+top right corner
+well then we can just use what's called
+absolute position so click that then i
+can drag it
+up to the top and it's no longer
+adhering to the auto layout constraints
+okay so i just have to chime in here
+real quick for me the most exciting
+feature is the one we just talked about
+absolute positioning
+before in my layouts i would have to
+create a frame
+in that frame i would be able to place
+things so if i wanted something in the
+top right corner of a card for example
+i would create a frame and place it in
+there and then drag it to the top with
+position absolute i just click one
+button and then put in the top right now
+i'm excited to hear what you guys think
+are the best or most exciting features
+please comment below i'll be super happy
+to read and see what you guys think
+okay
+so
+let's recreate this card
+i've prepared the things down here we
+have a tag we have an image we have
+title the body and other title avatars
+and then we have a button
+so first step
+add another layout to this
+add a fill so that we can see what we're
+doing
+so we have this
+all the way out
+now we're gonna start adding auto
+layouts to things that belong together
+so you have the proposal title here and
+the body they belong together
+we have the avatars they belong together
+avatars plus their title belong together
+you can change the positioning here
+starts to make sense
+you have the
+tag up here which is going to be in the
+top left corner so we can add
+position absolute or absolute position
+to that
+then also we know that this button is
+going to be in the same row as the
+avatars and their
+uh title so let's add
+a bounding box to them as well or an
+auto way out to those as well
+like that
+and then let's place it in the bottom
+[Music]
+and we have pretty much the structure we
+need now
+the next step is to start adding fill to
+everything so
+not adding fill as in fill color
+but the resizing option fill
+so
+i'll start here fill container
+fill container
+fill container even though some things
+might not need it i'll just add it
+everywhere to make sure that it's
+responsive
+fill
+fill
+fill
+fill
+now let's see how it works
+okay so it's responsive
+everything seems to move the way we want
+it to
+now it's just about styling so let's add
+the white fill color
+let's change the corner radius
+we need to
+have clip content so that it shows
+because the image otherwise doesn't clip
+let's actually add a padding
+to these
+but since
+or if we want to
+keep it as minimal as possible i would
+add an auto layout to these two
+so
+combine them into one other layout then
+i'll add padding to just
+this one
+and now you can see that it's
+no longer
+behaving the way we want to because now
+we have hug here instead of fill for
+example and the things within because of
+this because we added another auto
+layout are going to be screwed up a bit
+so let's see if we can fix it
+like that
+does it work now
+yes it does
+and in this container the bottom part of
+the card we might want to
+add a little
+something like that
+and
+here for the creators
+we might
+we we might want to add some spacing as
+well as well maybe looks good i think
+here this is a bit too tight maybe eight
+pixels
+let's go for that
+let's see
+yes
+yes looks good okay so just add
+the last shadow here bomb
+like
+that
+and here it is the card layout people
+and that's it
+that is really it auto layout is super
+simple when you just kind of grasp the
+concept of it it's just a way to
+structure things it makes your workflow
+so much easier
+so much easier now before you leave
+please consider helping out by either
+giving me a subscribe
+that would
+help a lot with this tiny tiny little
+channel it would be would be so
+appreciated you could comment in the
+comment section below tell me what you
+want to see next what
+like what do you want me to cover liking
+this video would
+be super helpful as well and if you want
+to know when i
+do create new videos the bell
+notification is a great way to do it
+that's it for this time thank you for
+watching people have a great day night
+or whatever it is where you're at right
+now we'll talk
+[Music]
+[Music]
+you

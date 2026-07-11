@@ -1,0 +1,215 @@
+Easy Scroll Animation For Beginners (Framer Tutorial)
+https://www.youtube.com/watch?v=zsxcr7aP2yo
+
+in this beginner tutorial you will learn
+how to create this simple but awesome
+scroll animation inside a framer as
+always if you want to follow along the
+working file is linked down below so as
+we scroll the whole section kind of
+Fades
+in revealing a crazy Bane flying past
+the screen here while the landscape is
+kind of getting zoomed in in the
+background here and the content is faded
+in with some kind of a rotation so there
+are four different groups of animations
+in this sequence but before we get into
+each and every one of them let's set up
+the structure we'll create a frame and
+we'll call it
+section and inside of this section we're
+going to add all the elements that we
+need so I'll throw in this little
+Banshee I'll throw in the background
+image I'm even going to center it going
+to throw in the T
+text and I'm going to throw in this blur
+that is going to be behind the text so
+I'll move the text on top of the blur
+I'll make sure that every single layer
+here is separate that nothing is nested
+inside of another layer because if it's
+nested and we add animations to a layer
+that has more layers within it we're
+going to add that animation to every
+single layer now with everything inside
+of the section we just have to do a
+couple of tweaks to the layout so first
+of all the background image I'm going to
+pin it to all of the sides here so0 0 Z
+and zero now if we change the size of
+this it scales
+responsibly I'm going to take the text
+stack I'm going to unpin it from the
+left and I'm going to pin it to the
+right instead and I'm going to set 56
+pixels from the right and I'm going to
+add a little pin from the top maybe 120
+pixels I'm going to increase the height
+of this so that it doesn't break the
+layout then I'll go to the blur and do
+the same thing but with the blur I'm
+going to go with -
+112 and from the top maybe
+256 something like that and then we have
+this po little Banshee and I'll just
+Place him or her down here to the left
+now if we try resizing again we can see
+that everything is responsive it works
+great and the reason this works great is
+because we pinned everything like real
+framer Role Models now let's take this
+section and throw it into our view here
+if it doesn't work like it didn't work
+here you can just grab it and throw it
+in like this in the side panel with the
+section selected I'm going to go to
+width set it to fill and now an
+important note before we animate since
+the animations are triggered on scroll
+you need space that you can scroll
+through for the animations to work if
+you don't and we remove
+these and we play it it's going to look
+something like this a half animation so
+let's have avoid that now let's get to
+animations already so let's start with
+the banshee and as we scroll we wanted
+to travel up into the right of our
+viewport so I'll select the Banshee I'll
+go to effects scroll transform then I'm
+going to change from onscroll here as a
+trigger to section and view so I wanted
+to trigger as our viewport hits this
+section and we can change if it should
+be when the top of our viewport hits the
+section if it's the middle or if it's
+the end let's start with the end then
+we're going to actually pick the section
+and in here you can see that we have
+only one section and this section is for
+my example here so we haven't added one
+for this yet so I'll go to the new
+section that we created I'll highlight
+it or select it I'll go to the right
+sidebar hit plus and scroll section and
+give it a name like amazing
+bansi that is suiting for our little
+Banshee here I'll select the Banshee
+again go back to transform go to section
+and select amazing
+Bess so now it's going to trigger when
+we get to this section I'm going to
+change the from State um we want it to
+be one in opacity it's not going to fade
+in
+and we want it to be one in scale
+because it's not going to change size
+then I'm going to change the two State
+because it's going to be one in opacity
+one in scale but it's also going to
+change in a yeah it's going to change a
+bit we're going to have an offset here
+so on the x- axis we're going to have a
+700 pixel change it's going to go from
+the left to the right and the y- axis
+maybe a Min -700 so that it flies up
+into the sky here I'll even give it some
+rotation so it kind of slides a bit go
+back here and as a final little piece we
+can hit this transition here add a
+spring animation and now if we give this
+a test run we scroll down our Banshee is
+flying looks amazing and the trigger is
+now the bottom remember that we picked
+the bottom so as soon as my viewport
+hits the section here it starts
+triggering if we want it to trigger when
+we are in the middle of the screen I can
+go back to it so my Banshee and the
+transform go back and set viewport
+middle now if I play it it's not going
+to start playing until I hit the middle
+so it's going to be a bit delayed like
+this and of course if we change it to
+the top it's going to start triggering
+as soon as we hit the top of the section
+so the bansi won't fly until now now
+next up is the background image let's
+just select the image let's go to
+effects and let's go to scroll transform
+once again I'm going to change the
+trigger to section and view change the
+section to amazing
+bz and from once again from one one but
+two one and maybe 1.2 so it scales a bit
+in size and we can add the transition
+now when we play it we're going to have
+it both increase in
+size while the Banshee is a bit slow
+here so I forgot to go back to the
+banshee and say hey dude you should
+actually fly when the middle of my
+viewport hits the screen or hits the
+section so something like that awesome
+now third thing is the text animation so
+let's click on chapter one here I'm
+going to go to effects and hit scroll
+animation this time I'll say that this
+starts triggering when not layer in view
+but section in View and once again
+amazing bans is is in the top of the
+viewport so it will wait a bit longer
+until the text is actually triggered
+I'll leave it on replay then I'm going
+to head into our Interstate I'm going to
+leave it at zero in opacity going to
+have one in scale but I'm going to add a
+little rotation here so 3° should be
+enough and then I'll have it travel 20
+pixels from the bottom for the
+transition we can go with this builtin
+spring transition the default
+value I'll go back or hit exit I'll go
+here to the animation hit copy by just
+right clicking copy then I'm going to
+select all of the other elements here in
+this stack right click paste effects to
+make it a bit cooler I'll take each one
+of these go into the effects hit enter
+on the transition I'll click on
+Spring and I'm going to add a slight
+DeLay So for this one I'm going to add
+0.1
+for the next one and by the way a little
+hack you can just stay in this animation
+model click on the next element you want
+to add it to and you're going to get to
+that next element but with its own
+animation settings so this one will be
+0.2 so 0.1 more in delay and the third
+one will be
+0.3 now if we play it and I scroll down
+whoops something crazy happened there
+some kind of bug not my problem and we
+scroll in and it fades in and we scroll
+out Fades out and this is once again
+when the top of our viewport hits the
+section now the last thing is just the
+section fade in so I can select the
+whole section I'll go to effects go to
+scroll transform section in
+view amazing Bans
+leave it at bottom and it's going to be
+from zero in opacity one in
+scale two one in opacity one in scale
+and we can add a little cool transition
+and
+voila there we have our amazing thing
+smooth as butter now if you want to
+learn how I created the animation for
+the hero section of this site check out
+this video until the next one have a
+great
+life

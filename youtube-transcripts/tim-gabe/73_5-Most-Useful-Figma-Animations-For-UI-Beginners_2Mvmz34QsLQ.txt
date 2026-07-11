@@ -1,0 +1,416 @@
+5 Most Useful Figma Animations For UI Beginners
+https://www.youtube.com/watch?v=2Mvmz34QsLQ
+
+cool animations on both websites and web
+apps has become the standard and that's
+partly because with tools like figma we
+designers can now easily create these
+animations right in the tool we're using
+daily so not only can we experiment to
+find the perfect animations we can wow
+our clients and communicate with our
+developers without ever leaving our
+design tool so in this video we'll look
+at the five most useful figma animation
+techniques that you as a beginner really
+should have in your back pocket for your
+next project
+I'm pretty sure some of these will
+really open up your mind to what's
+possible with figma animations so make
+sure you stick around till the end so
+you don't miss any of them if you want
+to follow along I have the figma file in
+the description below now let's waste no
+more time and get straight into it
+alright everyone so we are inside of
+figma in this tutorial we will first
+look at the animations together and then
+we will dissect them and see how we
+achieve the cool effects that you'll be
+seeing here
+let's start with the first one which is
+a simple click interaction and this is
+something you will probably be using the
+most as a designer in a software like
+figma when you want to prototype and
+create animations
+so in this case I'm using it for a
+standard navigation animation so if I go
+here into my prototype flow and I click
+number one here because that's the first
+animation
+we can see that if I click page 2 here
+we go to page two we get this
+interaction on this click if I click on
+page one again we go back
+and how do we achieve this well we can
+check here that in my frame I have a
+couple of things we have the knob in the
+top here but we also have these two
+frames we have one frame called page two
+one frame called page one
+inside of these frames we have a text
+object like the page 2 text here and we
+have another text object in the other
+one that is page one
+we have an image that is the second
+image and we have an image that is the
+first image
+so when I click here
+I click on this
+link here we go to this Frame so you can
+see what happens on click here we're
+going to navigate to this Frame we're
+going to use Smart animate animation and
+it's going to have a general type of
+animation and it's going to go on for
+800 milliseconds
+and what happens inside of the frame is
+that I'm just swapping the position of
+these frames here
+so on the first click we have page one
+here in the center and page two is
+outside of the frame
+when we go to this one you can see what
+happens we have page two in the center
+and page one is outside of the frame and
+it really is that simple
+when we click back from here we click
+page one we're going to go back here and
+they're going to be swapped again
+so that's the only thing that's
+happening and that's the first
+interaction we're going to cover click
+interactions
+the second one is hover interactions
+this one is a bit more complex but I
+think you'll get it pretty quickly
+so if we go to the animation first off
+go to the second one here here we have a
+card with a button in it and hover
+interactions are usually used for things
+like buttons and links and cards as in
+this case
+when we hover this card
+you can see that we have this reveal
+animation happening now when I go down
+to the button we have a different hover
+interaction here so two interactions
+happening in the same component
+how do we achieve this
+well if we go back here and we check out
+what I've done I've done two things I've
+taken this button I've created a button
+so if we drag this out just to show real
+quick I've created a button
+I've duplicated the button and I changed
+the style of it so that it looks
+different
+then once I have the two Styles I'm
+going for so my hovered State and my
+default State I Target both of them I go
+here and I create a component set
+well this now allows me to do is I can
+create a separate animation for just
+this button and then I can reuse that in
+different frames in different components
+you basically gain a lot of flexibility
+so I can remove this again and show in
+here instead so we can see that when we
+hover click me here
+we have this interaction so while
+hovering we're going to change to this
+hovered State we're going to have a
+smart animate animation it's going to be
+easy in 300 milliseconds pretty basic
+but the cool thing here like I like I
+just touched on is that I can take this
+button and put it inside of my card here
+so that this interaction is still intact
+so we will still have this hover
+interaction for the button while it's in
+this new component while it's inside of
+this new card
+so you can see in the card here what's
+happening is we have this image clip you
+can see in the first state this image
+clip is
+see here this image clip is just one
+pixel in height you can see that it's
+one pixel it's outside of the frame and
+that's the only difference so we have
+clip content on this Frame
+when we hover it we go to the second one
+here and what happens in the second one
+well the image clip the height of it is
+going to cover the full card here so
+when I change the height like this you
+can see how the animation kind of shows
+itself this is the exact animation
+happening I'm just changing the height
+of this image clip
+and the way we're doing it is with a
+prototype interaction so while hovering
+we're changing to this state two here
+and it's doing a smart animate animation
+and I've added this custom spring and
+this is something you can play around
+with and change the settings to make it
+look the exact way you want it to
+but that's the only thing happening on
+Hover we're changing the height of this
+image clip
+so if we go back here again you can see
+I hover it and it changes the height of
+the image clip the image is just there
+it doesn't happen anything to the image
+we're just masking it and then I can
+hover The Click me here as well
+so that's while hovering
+third one
+drag interactions this one is pretty fun
+and usually you will use this to create
+carousels to create sliders those are
+the most common use cases so if we go
+into the Prototype number three here
+we'll let it load you can see that we
+have this Carousel that if I drag the
+cards
+I'm dragging the carousel like this we
+have this slider the party slider so
+when I drag it up and down you can see
+how this progress or I guess no progress
+bar but you can see how the thing gets
+filled with white color instead
+how do we achieve these things well we
+go down here once again we're using
+component sets in this case for the
+carousel I have three different states
+so you can see I have one state where
+this Carousel here is centered so we see
+the center card I have one state where
+it's to the right so we see only the
+right card and I have one state where
+it's to the left we see only the left
+card and what is happening here is I
+have a drag interaction on this Auto
+layout this Auto layout containing these
+different cards
+so when I drag this Auto layout we're
+going to the second frame here so on
+drag we're changing to this view on drag
+change to this smart anime Esau 300
+milliseconds nothing fancy Happening
+Here
+we also have a second dragon interaction
+from this that goes down to this one
+same kind of Animation but the reason we
+have two of them is because we can drag
+them in both directions if I would only
+have this we could only go from the
+middle state to the right State now we
+can go from the middle state to the
+right State and the left state but for
+these so the second and the third the
+right State and the left state
+we can only go back because from this
+state you can't really reach this state
+you have to first go to the middle State
+and then you can reach this
+so we have only one drag interaction
+from this one you can see back to the
+middle and only one drag interaction
+from this one back to the middle
+so that's the carousel so we can do
+these things because we set up the
+interactions like that
+then we have the party slider here
+this is just two different states with a
+drag interaction so the first state
+there is no progress this is not filled
+with white
+and when I grab this
+so I have the drag interaction in this
+emoji
+on drag we're gonna change to this smart
+animate Esa 300 milliseconds and this
+thing is growing so you can see we have
+this
+progress bar growing
+and this thing is changing position from
+the left to the right
+and that's really all that's happening
+so this progress thing is within this
+Frame that is clipping content once
+again so this is the frame that we
+rounded we're clipping the content
+inside of the frame we have the progress
+in the first state it's no progress in
+this state we've taken it the full width
+but that's really all that's happening
+so if we go back here you can see this
+simple animation is made with those
+simple interactions once again though
+using component sets that's a key thing
+here
+but that's drag interactions
+over to the fourth one which is delayed
+interactions
+if I go into the Prototype
+click number four here
+if I click this we're going to get this
+loading State and then it goes back to
+Quick me again
+click it loading State and then it goes
+back
+so this is a cool feature to use for
+these kinds of use cases like the button
+loading States so when you click
+something or when you do something we
+want something to happen with a delay
+and then maybe we wanted to go back
+in this case how I achieved this
+particular thing is I created two
+component sets once again
+the first one is this loading animation
+or this loading icon or whatever you
+want to call it and what we do here is
+we have three dots three ellipses and we
+just change the position of the dots in
+each of these variants
+and when we look at the interaction
+between the variants you can see that
+the first one here is connected to the
+second one and it says after delay one
+millisecond we're gonna smart animate
+and ease out animation that goes on for
+300 milliseconds so after one
+millisecond we go here it takes 300
+milliseconds
+then
+this one to the last one
+gonna be after a delay of one
+millisecond we're gonna use the smart
+animate ease out 300 milliseconds to go
+to the last one and then from the last
+one back to the first one with the exact
+same settings so this thing if we just
+added it to a frame it would just go on
+dancing like that all day all night
+now we don't just want to add it to a
+frame so we added it to a button to
+create a more interesting animation so
+you can see here we have this button
+component this is different than the
+first one in this button component we
+have
+three things we have two text fields so
+we have the click me text field we have
+this loading text field that is
+currently outside of the frame and we
+have this loading component here
+when we click it
+you can see how the loading here the
+loading text comes up from the bottom
+The Click me text goes from the center
+to the top and the loading
+component here you can see
+goes a few pixels up and is faded in so
+here it has zero opacity here it has
+25 opacity and that's the only thing
+that's happening so an auto layout an
+auto layout button with position
+absolute items that we can change within
+the auto layout change position of and
+we're basically just changing position
+of things and showing and hiding things
+between those
+the Prototype settings we're using is
+after a delay sorry on click first when
+I click this button
+we want to change to this loading state
+with a smart animate animation once
+again ease out 300 milliseconds then it
+goes back after a delay so if I click
+here on this we can see that after the
+layout 2 000 milliseconds it does
+another smart anime ease out 300
+milliseconds back to this state
+and that's it so now we can grab this
+component put it into a frame and
+whenever we click it we're going to get
+that loading animation that we can see
+here
+okay so over to the last one then and
+this is overlay interactions
+and this is something you can use for
+things like pop over modal Windows drop
+downs etc those would be the most common
+use cases for an interaction like this
+if we go into the Prototype again and we
+check number five here
+if we click pop over you can see that we
+get this overly pop over sliding from
+the bottom into the screen and you can
+see how it fades everything out
+if we click on drop down we get this
+drop down like this
+so how do we achieve this let's start
+with the overlay one so if I drag it
+here you can see that we have this
+interaction so on click on this button
+instead of having navigate to or change
+to we have open overlay and we're
+targeting this overlay here it has to be
+a frame or an auto layout so we're
+targeting this
+and when we click that we want it to
+show up in the center of the screen you
+can change different positions here you
+can even take manual so you can change
+the position like this yourself
+but it's going to be in the center and
+we want it to be
+closed when clicking outside and we're
+going to add a background behind the
+overlay so we can add this opacity
+without us having to do anything else we
+just check this box
+and then we specify the animation and
+it's going to move in from the bottom to
+the top you can see the preview here and
+what kind of Animation we want again
+that's really it for these overly
+animations they're very simple
+when it comes to the drop down here it's
+the same thing on click we're going to
+open the overlay but this time it's
+going to be manual and we're not going
+to add a background behind the overlay
+and instead of a smart anime animation
+we're just using a dissolve with an ease
+out
+150 milliseconds the one difference here
+though is that I wanted an interaction
+or hover state for these links in here
+so I created a separate component set
+with links where I added interactions so
+you can see here inside of this
+I added while hovering change to smart
+anime ESAT 150 milliseconds to this one
+and this one is a bit faded we have 50
+in opacity
+so once I created that I just took it
+and I put it inside of my drop down like
+this
+and now when we click on the drop down
+we have the hover State for the drop
+down items as well
+so using these component sets is a great
+way for you to create more complex
+animations inside of figma are you
+looking to dig even deeper into figma
+animations well check out any of these
+videos now until the next one have a
+great life we'll talk soon ciao

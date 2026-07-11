@@ -1,0 +1,150 @@
+Figma to Website in MINUTES with this INSANE tool…
+https://www.youtube.com/watch?v=0SzJOMS0RPA
+
+forget about clunking no code tools
+forget about website Builders with big
+learning curves forget about code
+framework sites is here to steal
+everybody's lunch a free tool that lets
+you import your figma designs straight
+onto the canvas and then just hit
+publish I genuinely think that this tool
+framer site has to be on every
+designer's radar because not only can
+you take your figma designs import them
+into framer and then publish but you can
+design straight from framer itself now
+it might not be as flexible in terms of
+straight up design as figma is today but
+imagine a future where you do it all in
+one app you design you publish you
+change the content with the framer CMS
+I'm just saying don't blink now before
+we jump in if you would care to just
+like or subscribe that really helps
+alright so we're in figma and today we
+only have one slide because this is
+gonna go real quick because that's how
+easy frame recites is and by the way I'm
+not Affiliated at all with framer yeah
+I'm just blown away by this tool so if
+we zoom in here all you have to do is
+take your frame copy it and then paste
+it into for your sites so let me go to
+the plugins here I'll search for framer
+I'll click run
+but before I do that I'll Target my
+frame
+click run
+you can see in the bottom here copying
+layers
+so let's jump over to the framer app
+I'll just customize the canvas first to
+make it a bit wider because my frame was
+1440 pixels and that should be enough so
+I'll paste it in here
+there we have it and one thing that we
+have to fix is the fonts so I'll just go
+in here and I'll search for the correct
+font Satoshi bold I think yes same here
+Satoshi bold and Satoshi bold
+so that's done just gonna customize some
+things because depending on how you've
+set up your figma file the import is
+going to be better or worse so you have
+to make sure that you do your auto
+layouts you do everything correctly so
+that it plays nicely with how a real
+website would be structured let's see
+what's wrong with the import thus far
+I'll go to layers I'll change this from
+being locked in terms of aspect ratio
+I'll unlock it and I'll increase the
+size so that it covers the full frame
+and yes it touches all of the sides so
+as you can see here as well things look
+very similar to figma in terms of the UI
+I'll go and increase the size of this as
+well
+increase the size of the frame so that
+it covers everything now let's just make
+sure that our stuff is responsive as we
+want it to be
+so I have everything it's lined up let's
+just see like I said I'll even lock this
+in the background and let's see what
+happens when we decrease the size okay
+so almost everything is responsive we
+just need to fix this text that is
+correct but this one shouldn't be fixed
+with it will fill instead now if I try
+to decrease this eyes again okay that
+looks better now the only thing I have
+to do to make this responsive is I add a
+breakpoint for tablet
+and it gives me the brick point just
+like that I'll change the margins so
+that it covers the full screen almost
+I'll change the size of the font I'll
+add another breakpoint for the phone so
+I'll change the font size again
+to maybe 72 this stack this Auto layout
+I want to Stack vertically instead of
+horizontally change a line to align left
+and we'll change from space between to
+end and then I'll give it some
+Gap there and GAP is just like the
+margin between the items and maybe we'll
+decrease the Gap here as well and I
+forgot to change the font of this Arrow
+so let me do that sorry the arrow
+Satoshi gold
+done for all the frames and for this I'm
+just gonna maybe first off we'll give
+the container a 16 pixel margin to the
+sides so getting some more space this
+should also be with fill like figma and
+maybe I'll change the copy in this
+button to just be joined so that we have
+some space maybe I'll even change the
+height of this just to 96. I think that
+looks fine now if we play it
+foreign
+just works
+I mean this is
+totally blown away just by doing this
+tutorial to be honest now another thing
+I just have to show you because this is
+also super powerful we can create
+components in framer you can basically
+create your whole design system with
+text styles with buttons input Fields
+everything within framer so I'll hit
+option command K oh that's right I have
+to go to the main desktop component here
+so option command K and I'll name it
+button create and from here we get to a
+separate canvas that is like the
+component canvas for this button from
+here I can add a hover state so let's
+click here let's go crazy here with a
+hover State I'll change maybe the
+paddings so increase the size of the
+button maybe we'll see this is 24
+actually we have a fixed height so I'll
+change that instead 64. I'll bump up the
+rounding maybe we'll change the color a
+bit maybe even the outline color like
+this bump bit up maybe even the shadow
+bump that up to 32 16 give it a darker
+opacity so if we jump back and we hit
+play again
+and we try it out
+boom I mean it's too simple it feels
+like cheating now if you want me to
+cover more in-depth things on framer
+sites let me know in the comments below
+because I'd happily cover tutorial stuff
+on framework sites as well now until the
+next one have a great life we'll talk
+soon ciao

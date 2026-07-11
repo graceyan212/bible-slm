@@ -1,0 +1,191 @@
+How To Recreate AMAZING Text Animations in Figma
+https://www.youtube.com/watch?v=0Lhu6kYOCx0
+
+one of the most commonly animated
+elements on the web is text and when
+scrolling through inspiration websites
+you'll find hundreds of creative
+examples of this but as a designer in
+figma how do we recreate these effects
+in this short video I'll show you three
+examples and one technique that will
+help you create so many different
+creative animations inside of figma and
+before we start the figma file is linked
+in the description below if you want to
+follow along now let's waste no more
+time and get straight into it alright
+everyone so we're inside of figma and
+let's get started with the first
+animation here the first animation is
+what I call a domino text animation and
+you can see how each letter here is
+revealed in a sequence and that's why
+it's a domino effect it kind of reveals
+itself or it falls in a sequence
+so that's the first one
+the second one is what I call an
+elevator effect so you can see how we go
+from this elevator text here to another
+elevator but a upside down text and it
+goes up and down like an elevator
+the third one is this masked effect
+where we get this block this white block
+block block blocking the text and then
+it is swapped out from masked to hello
+we're going to recreate all of these so
+let's start with the Domino effects and
+if you've seen any of my animation
+tutorials before
+you'll know that I like using component
+sets when I create animations so we'll
+do the same thing today
+but let's grab this variant here from
+the component set let's take it and
+let's detach the instance so that we can
+look at what we have here how it's built
+so this is the first frame in the Domino
+animation the second frame is just a
+duplicate of this so I'll take it I'll
+paste it again
+I'll take all of these letters
+I'll align them like this I'll drag them
+down into the container
+and that's all you don't have anything
+else to this animation so now if I
+select both of these and I click here I
+click create component set
+and then I go into my component set here
+I click on the first one on the
+container and
+I'm almost forgetting to tell you
+something here one of the most important
+things in this is to first of all use a
+frame so let me go back real quick
+so you can see here that we have frames
+containing the text here
+the most important point with these
+kinds of animations is that we add clip
+content where we check clip content here
+so that we don't see the text when it's
+outside of the frame now that I've
+clicked the content I can go back here
+create the component set
+then I can go to the first one here so
+the first container I'll go to the
+Prototype settings then I'll connect
+this to the second one I'll have it be
+after delay so that we don't have to
+click or hover and I'll change to Smart
+animate so if it's instant we change to
+Smart animate and then I've chosen
+channel here and that's quite a nice
+animation I like that one and I've
+changed this to 500 milliseconds so the
+duration of the animation is 500
+milliseconds right now it's just gonna
+animate into this but it won't go back
+so if we wanted to go back I'll take
+this and I'll say the same thing after
+delay one millisecond and then the same
+kind of smart anime animation
+now if I take this drag it up into my
+frame where I have the actual flow so
+the interaction flow when I play it
+again you'll see that we have the exact
+same animation or actually not the exact
+same because the timing is a bit
+different here you can see but that's
+how easy it is to create this Domino
+reveal effect animation
+so that one is done let's move over to
+the next one the elevator effects which
+is also quite easy so I'll grab this
+I'll detach it again to show you guys
+and we'll go to the layer here
+you can see that we have a container
+once again with click content then we
+have this Auto layout with two text
+fields in it you don't have to use
+another layout I use it because I think
+it's easier because you have just one
+object that you need to move so if I
+click here and click content you can see
+that the auto layout here is outside of
+the frame so the top of it with the
+upside down text is outside of the frame
+so in my second state here
+I want to duplicate this
+I want to take the auto layout I want to
+move it so that we see the upside down
+text instead
+and that's all there is to it I click
+prototype oh sorry first we create
+a component set
+then I go here I create a prototype
+I click after delay
+one millisecond and then we can have the
+same thing happening so 500 milliseconds
+in a general
+kind of Animation Way so let's grab this
+put it into this Frame again and let's
+go to elevator
+and you can see that it is replicated
+so that's the second one the third one
+has
+two more steps than the previous ones so
+let's grab this
+and let's dissect it so detach and we
+have the container you can see here in
+this one so I go in here once again
+frame clip content you can see that we
+have this block this masking block and
+we have the second text
+now the first thing that happens in this
+animation is that the block just covers
+the previous text
+so the block covers the previous text
+like this
+okay and that's the only thing happening
+the second step is where we exchange the
+text so I'll take this mask text I'll
+move it outside of the frame and we'll
+take this hello text and move it inside
+of the frame
+and then the last step is just that oh
+by the way we need to remove this block
+as well that's also part of the third
+step
+the last step is just that this block is
+again masking the text
+so
+from here we can go back and Target all
+of them
+click create component set once again
+then we'll go in here
+and now I can see that these were inside
+of the frame the same with this text
+and we make sure that everything is
+clipped content
+like that and we go into the Prototype
+settings once again we connect to each
+and every one of these so after delay
+one millisecond
+and from this one to the third one same
+settings
+and this one to the fourth one same
+settings
+and there's one back to the first one
+same settings
+then I'll just take this one again the
+first one place it inside of here
+then we'll go back in here and see how
+it works
+and you can see that it works in the
+same way
+if you like this I really think you
+should check out my master figma
+animations playlist where I dive deep
+into everything animations
+now until the next one have a great life
+we'll talk soon ciao

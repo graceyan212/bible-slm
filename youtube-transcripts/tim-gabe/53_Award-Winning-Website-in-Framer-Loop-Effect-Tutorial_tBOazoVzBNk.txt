@@ -1,0 +1,116 @@
+Award Winning Website in Framer (Loop Effect Tutorial)
+https://www.youtube.com/watch?v=tBOazoVzBNk
+
+in this video I'm going to make a
+complete ripoff of this award-winning
+portfolio website and I'm going to make
+it look easy because as you'll see with
+framer it is easy we will focus on the
+top section and if we watch this section
+closely on film we will see that it's
+mainly a bunch of image elements
+floating around so the first thing I'll
+do is I'll go to Hannah's website and I
+will start ripping it apart I'm sorry
+Hannah I'm going to try to find find all
+the elements oh here we see an element
+I'm going to click that up so we have
+the head I'm going to do this for every
+single
+element all right so now I've collected
+all this stuff now we're going to start
+putting together just the graphics of
+the website I'm going to take this
+grainy background maybe increase the
+size a bit going to create this Yellow
+Frame that Hannah had remove the white
+add a border try to pick the correct
+color for the border and I'm going to
+take the logo piece here place it in the
+top going to take this little flower
+place the flower in the bottom text goes
+in the bottom left now I'm going to just
+decrease the height of bit placing the
+head in the middle we cannot forget the
+mushrooms place the head above the
+mushrooms place this circle in here put
+it behind the stuff and the flower goes
+here holy darn I realized I forgot
+something we forgot this snail there he
+is maybe something like this time for
+the fun stuff let's see what happens
+here first of all we have the butterfly
+so the butterfly flies across the screen
+and it flaps its wings so how do we
+achieve that in frame you have this cool
+loop animation that we can add by just
+going to effects Loop now with this Loop
+animation we can achieve exactly what
+Hannah does on her website check this
+out hit mirror we will go to 3D here and
+we'll change not the cais but the Y AIS
+you can see how it just FL flaps like
+this A happy butterfly let's see how it
+looks ooh it's flapping copy effects
+paste effects to the right wing but for
+this one we're going to have plus 40 now
+let's play it beautiful we have a
+flapping butterfly now a flapping
+butterfly is nothing without the ability
+to
+fly so let's see if we can make it Fly
+too so here we're going to use the same
+effect Loop we once again mirror it
+because remember from the video it goes
+up into the right and then goes back
+down the same way so mirror we're going
+to make sure that it flies across the
+screen so I'll just bump this up and
+then bump it outside now here we need to
+change the transition though because if
+we just have it for one second that is
+one fast butterfly if you ask me so
+let's change it from 1 second to 10
+seconds and there we have our fin flying
+butterfly now let's take a look at our
+tape again so we have the head spinning
+back and forth like this let's fix that
+go to effects loop we're going to change
+it from 360 to 20 no minus 20 no Min -
+10 change the time a bit maybe 2 seconds
+let's see oh we forgot something the
+mirror now it goes back and forth
+smoothly so we have the head we have the
+butterfly let's take the snail snail
+just rotates to so we add another loop
+effect to the snail we'll grab the
+mushrooms and once again Loop those
+suckers and there we have it now you
+might be asking yourself didn't you
+forget something and yes I did the text
+in the middle like the heading so let's
+add the text hi I'm Hannah and another
+one that we bump up in size I make
+things change the font push them both up
+a bit going to push down the size of
+this text again because I'm never
+satisfied now this looks fine but we
+don't have the appear animation for the
+text effects appear fade in transition
+ease maybe a bit of a delay that looks
+fine I guess now if we just revisit the
+video quickly here we'll see that hi I'm
+Hannah kind of gets masked from the
+bottom how do we achieve that let me
+show you we put this in a box we make
+sure that the Box hides everything that
+is outside of the box we go to the text
+hit effects on up slide in bottom give
+it a bit bit of a delay and voila not
+too bad considering we did it in a
+couple of minutes and it's a real live
+website now if you want to create
+websites like this check out my framer
+playlist where I teach everything I know
+about the tool until the next one have a
+great life

@@ -1,0 +1,276 @@
+Steal This Landing Page Hero Workflow (Figma Tutorial)
+https://www.youtube.com/watch?v=m3NjcBDqFnA
+
+a hero section is your first sales pitch
+it's your first opportunity to grab
+someone's attention to speak to them and
+to make them convert but why should the
+user care why should they stay on your
+website how do we as designers make our
+hero section so that they are
+interesting communicates or sells while
+also being unique and our own well in
+this video we'll cover a workflow that
+lets you create stunning effective and
+unique hero sections to your landing
+pages so we'll break this down into four
+steps first we have the message what is
+it that we're trying to say to the user
+and how do we say it in an effective way
+the second point is the desired outcome
+what do we want the user to do what's
+the action then we have the third which
+is about finding inspiration what will
+the structure of the website or the hero
+look like what will this style be which
+leads us to the fourth point which is
+about the design and this is a as
+important as the previous steps well we
+do the designs here but all these
+previous steps allows us to create a
+very thought out and well-designed hero
+now let me jump into figma and we'll
+take a closer look okay so we're in
+figma first off if you would like to
+subscribe to the channel really really
+appreciate it now the first thing here
+the message the first thing when it
+comes to the message is going to be the
+heading then we're going to have the
+body text and we're going to have the
+visuals but let's start with the heading
+when it comes to The Heading we want to
+use only what's needed to convey the
+message and this applies to all design
+Ruby only add what's needed it shouldn't
+be too short an abstract but it should
+definitely not be too long and drawn out
+either I usually try to stay between 40
+and 60 characters and for this video I
+have a case I'm basing my design on
+which is Tim's personal website with
+weekly UI design tips on figma and
+framer so if we're gonna craft a heading
+for this then we might think about the
+keywords here so it's going to be a
+personal website and it's going to be
+about weekly UI design tips on figma and
+framer so either we can focus on the UI
+design tips part or we could focus on
+the figma and framer part but I
+definitely think we should have a weekly
+in here because that's a pretty
+important thing I think to this value
+proposition we're doing weekly design
+tips so let's say weekly UI design tips
+and tricks let's go for that then we
+have the body
+so how can we support the heading in
+delivering the message how can we add
+the additional context here with a body
+text that really supports this heading
+that makes our Point come through to the
+user and once again it shouldn't be too
+short it shouldn't be too long I'm
+usually aiming for a maximum of 140 to
+170 characters I'm usually doing it a
+lot shorter so once again based on our
+test case or example case here let's say
+that every Wednesday
+you will get every Wednesday you will
+get figma and framer tips and tricks
+into
+figma framer tips and tricks and tricks
+to your inbox very simple very clear
+nothing fancy straight to the point then
+we have visuals so what kind of graphic
+or animation or video or other asset can
+we work with here we'll have equal more
+or less weight than the text and what I
+mean by that is is it going to take up
+the full screen is it going to be super
+big and the text is going to be small
+like what is going to be the balance
+between the text and the visuals in my
+case I think the text is going to be the
+prominent thing here we have a couple of
+examples you could be using real
+photographs so if you're doing like HR
+or something maybe where you want to
+show people then it might be an idea to
+use actual photos if you're doing
+something techy maybe you're using 3D
+illustrations like this and you could be
+using just regular illustrations and
+even animations in this case I've
+created an asset that is just two simple
+logos so we have the figma logo and the
+framer logo a pretty simple asset but I
+think it's enough to get my point across
+with this message now let's jump over to
+the desired outcome what user action are
+we looking for here are we looking to
+book a call are we looking to purchase a
+product immediately are we just looking
+for them to browse the website it might
+be a bunch of different things in our
+case since this is a weekly UI design
+tips newsletter it seems like we're
+probably going to go for some kind of
+input field and a button so a sign up
+flow so we decide upon that it's going
+to be a sign up flow that's the main
+action then we go over to the
+inspiration so in this case I start with
+a structural inspiration we want to keep
+in mind our message and the desired
+outcome of course so we make sure that
+the hero sections that we choose
+everything we print screen or screen
+dump we make sure that they fit with our
+context so we make sure that they have
+enough space for our heading our body
+our call to action and and the visuals
+were using I usually use a lot of ninja
+to do this kind of structural
+inspiration research you can use
+whatever resource you find the best but
+that's my tip and I've already done this
+research so I found a couple of
+different things so for this one I
+really like this narrow grid I think
+that's something that is becoming more
+trendy and more popular now I think it's
+it looks good so that's something I want
+to implement for this website and we can
+see the same thing here I like this
+example where we have the visual above
+the text like this this length of the
+heading seems very similar to what we
+had also this one having the sign up
+form here and then having the call to
+action where we clear in the top right
+that's a common pattern but I want to do
+that as well and this text this body
+text is a bit too long and this heading
+is a bit too short but it doesn't have
+to be exact I just want guiding
+Direction really so that's the straw
+structural Lanesville then we have this
+stylistic or the stylings bow once again
+keep in mind our message and the desired
+outcome what should be the tone should
+it be lots of color should it be simple
+and clear now for me since this is a
+personal website and I like the
+minimalistic and chill look I want to
+have a dark mode I want to use gradients
+of different swords play with colors a
+bit I really do like this linear
+gradient in the background here I'll
+probably have something like that but
+this is it from my stylistic inspo now
+it's time to move over to the design
+part here is the place where we mix and
+match so we tweak sizes and positions
+based on our structural inspo we play
+around with everything until we find
+something that works and if we have a
+pre-existing style guide or design
+system we can use that of course so I
+have some things here I have headings
+and body texts I have colors I have a
+logo which is just my face and then I
+have the illustration
+so if we put it here into the hero so
+let's start by actually creating the
+grid so I'll create a rectangle just to
+have something to base it off I want it
+to be let's say 640 so it's very narrow
+at the grid
+12 columns
+and I'll increase the margin so that it
+Maps like this
+cool okay so we have the grid now I'll
+grab my
+face here I'll grab the smallest body
+text these will be links so maybe we
+have videos
+maybe we have about and maybe courses
+something like that I'll add an auto
+layout to those
+24 Maybe
+two pixels I'll duplicate this and I'll
+create a button in the top right like we
+talked about
+I'll give it a background color so that
+we can see what we're doing
+I'll give it a fixed height
+I'll give this a bolded look for the
+buttons
+around it actually we grab this color
+and add it here okay so let's round it
+again
+decrease the opacity of this one so that
+it gets this glassy look I think that
+looks nice I'll have a call to action
+which is join the newsletter
+something like that then we'll add an
+auto layout to these we'll call it NAB
+maybe we'll just capitalize these I'm
+not set up fixed width to it oh
+mixed with
+and inside of here it should be packed
+should be spaced between and we'll
+position it 24 pixels from the top like
+that okay so we have the knob now let's
+go over and grab our copy
+so we have this and this copy that go
+over here paste it in
+so oh it didn't end up in the frame
+map it to the grid map this to the grid
+I'll give it an auto layout as well
+say text maybe 32 this is very big at
+the moment let's maybe bump it down a
+bit it doesn't have to be exactly what I
+had in this style guide we could do that
+as well so if we'll try to add that
+style
+now the text is very small Center
+everything
+and we'll grab our illustration
+have maybe a
+72
+so divisible by eight what are we
+missing here we're missing the input
+Fields but we're also missing that
+linear gradient style in the background
+I wanted to go for
+so I'll grab this line here fill that to
+the background
+this yes okay and then we wanted an
+input field with a call to action so
+I'll duplicate this twice or Not
+Duplicate it twice I'll just duplicate
+it once Center it this should say enter
+or maybe it just says
+jane.com and that's the way we indicate
+that it's an input field with the mail
+address to 80 or maybe 320 and we'll
+change this color to this
+neat linear gradient the white I'll just
+grab a dark color and then I'll reduce
+the opacity because I'm lazy and maybe
+this says join for free
+we add an arrow
+Center it and maybe this button here
+should actually be bigger
+have some more padding the same with
+this 64.
+32 and Center center now if you want to
+learn how to use these techniques more
+in depth I have a video series on how to
+create landing pages so check that out
+here now until the next one I want you
+to have a great life we'll talk soon
+ciao

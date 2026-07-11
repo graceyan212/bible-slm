@@ -1,0 +1,166 @@
+Framer Breakpoints in 7 Minutes (Beginner Tutorial)
+https://www.youtube.com/watch?v=rEjd7QRxtDY
+
+in this video we will learn how to make
+any layout responsive inside of
+framework if you want to follow along
+the working file will be linked down
+below now the first thing we want to do
+when creating any kind of responsive
+layout is to utilize Stacks if you don't
+know how to use Stacks check out the
+video in the top right because in this
+video I will be utilizing that concept
+like a maniac so I will start by taking
+my text items right click add stack
+I will take my images
+right click add stack I will take this
+top
+video and this text
+right click and add a frame the reason
+I'm using a frame here instead is
+because one this text is going to be on
+top of the video so using a stack in
+this case doesn't really make sense
+because a stack will try to push that
+text below the video the second reason
+is because I want the text to scale in
+size with the device width so after
+adding the stacks I will go to my
+individual items here I will change the
+width from fixed to fill I will do the
+same for these images here I'm going to
+go to the image stack and change the Gap
+a bit now I'm going to go to the text
+here make sure that it's pinned to the
+bottom because I want it to be in the
+bottom of the video container I will
+change this to 24 pixels I'm then gonna
+go and make sure that it's set to with
+relative with a hundred percent in width
+and see what happens when we play it
+you see how this text here scales down
+with the device size exactly as I want
+it now if I decrease the size of the
+frame here you can see that it's still
+pinned to the bottom also exactly how we
+want it to however as you saw the text
+here
+and the images
+go outside of the frame when we scale it
+downwards now how do we fix that well
+we're going to go back here and see if
+we missed anything frame stack stack
+frame so the desktop here is still set
+to be a frame and when I do responsive
+design I like to have even the desktop
+frame as a stack so I'll go to layout
+here hit Plus
+now everything here is said to be a
+stack now if we decrease the size here
+you can see that it's still not being
+responsive if we go to the text
+container we can see that the width is
+still set to fixed so what we could do
+in this case is we could change it to
+fill we could then go to the height and
+make sure that this is set to fit so
+whatever height we have on this content
+it's gonna still fit the text now if we
+decrease the size again
+we can see that it works however the
+images are still not really responsive
+we can go to the image container here
+and we can set it to wrap
+we can also go to the height and say fit
+content we can say that the width is
+going to be fill and now if we decrease
+the size
+it wraps accordingly but content is
+still being pushed outside of the
+desktop frame here so I can go to the
+desktop frame and change it from being
+fixed in height to fit content now we
+can go in here and we can see that when
+we resize it
+everything is behaving accordingly
+now remember that wrap only works if we
+have a fixed value for our width so if
+we set these images to just fill
+and we play it again
+you can see that they behave in the same
+way as the text where they just decrease
+in size
+so instead we could go to our items
+and say that they're gonna have a fixed
+width let's say 400 pixels for these we
+could say they're going to have a fixed
+width of 250 pixels and we'll have to go
+to this text container here make sure
+that it says wrapped now if we play it
+again
+it wraps like this uh another
+alternative way would be to go back to
+our items set them to fill so they fill
+the container I'll do the same for my
+images fill container and now if we
+create a tablet breakpoint
+for this tablet breakpoint we could
+change the behavior of our items so for
+the images here I could change the
+direction to be vertical maybe we even
+want to give it some padding in this
+case and as you can see here when I
+change the padding and when I change it
+to vertical
+that is not reflected in the desktop
+that's because the desktop acts as the
+parent here so whatever changes I make
+to the desktop
+will be reflected in the tablet if I
+make a change in the tablet nothing
+happens however I could go here make a
+change to an element
+right click and say update primary which
+then updates the desktop frame I could
+also if I make a change that I don't
+want
+right click and say reset overwrites now
+I'll go to my text container here change
+the direction to be vertical I'll even
+give it some padding remove the padding
+from the top and the bottom for these
+images here I'm gonna go
+select them all and I'm gonna set a Max
+width of 500 pixels also I'm gonna go
+back to the desktop containers add some
+padding remove the top and the bottom
+padding so that we have some space now
+I'm gonna go to the tablet here and
+create a phone version and we can see
+that it looks pretty good already maybe
+I want to change the height of this
+video maybe we want to change the
+padding here maybe we want to Target the
+whole container the whole phone
+container and change the gap between the
+items maybe we want to change the gap
+between these items a bit change the
+padding to 24. now if we play this and
+we scale it down we can see that it
+looks good everything works in the way
+we want to but if we scale it upwards
+something happens so I'll go back here
+and immediately when I Target my frame
+here the frame looks good the width is
+set to fill the height is fixed but the
+video here spans outside and if we go to
+the positioning the left pin here
+doesn't look quite right it's not pinned
+to the left so if I set 0 and I play it
+again
+now it scales in the way that we want
+now if you want to see me create a real
+responsive website inside a framer check
+out this video until the next one have a
+great life

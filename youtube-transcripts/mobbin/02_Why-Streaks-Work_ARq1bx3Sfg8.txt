@@ -1,0 +1,221 @@
+Why Streaks Work
+https://www.youtube.com/watch?v=ARq1bx3Sfg8
+
+At some point, keeping my streak alive
+mattered more than actually learning.
+Why does breaking a streak feel so
+terrible? And are streaks actually
+helping us build habits or just making
+us afraid to stop?
+Here's what I found after looking at 859
+streak designs on Mobbin. Every streak
+design revolves around this question.
+What makes us come back tomorrow? Let's
+start with the most obvious pattern,
+fear. Let's say you won $10 today. It
+feels nice. Now, imagine losing $10
+instead. It stings way more.
+This is what we call loss aversion.
+Streak mechanics bet on this.
+The copy becomes more urgent.
+The clock starts counting down.
+And look, an angry owl giving you a
+sense of guilt. Fear-based streaks work
+because we're protecting something we
+could lose.
+Now, some streak systems lean on
+optimism. These designs make us feel
+like we're building towards a better
+version of ourselves.
+Copy is positive and encouraging.
+Even tiny shifts to calls to actions.
+Duolingo's product team tested these
+copy changes. We used to say continue
+and we changed that to commit to my goal
+and it was like a massive win.
+More and more apps are doing this today.
+Reframing a call to action into a
+promise you make to yourself.
+Some apps even turn streaks into
+collectibles, like badges, milestones,
+and tangible proof of progress.
+In Opal, your streak earns you literal
+milestones that you can collect over
+time.
+I noticed I wasn't opening Duolingo
+because I cared about the streak number
+anymore. I opened because I didn't want
+to disappoint Duo. It's just a cartoon
+owl, just pixels, but I still felt it.
+So, I looked into why.
+When we assign human emotions to
+non-human things, it's called
+anthropomorphism.
+That's why we yell at computers, name
+our cars, and apologize [music] to AI.
+Software uses this, too.
+A mascot cheering you on like it
+believes in you.
+A little bird growing alongside you.
+So, back in the '90s, people got
+emotionally attached to these tiny
+virtual pets you had to feed [music] and
+care for. Tamagotchi, the original
+virtual reality pet. Your care
+determines the pets you get from Bandai.
+If you ignored your Tamagotchi, they
+would literally die.
+People carried them everywhere, even
+grieved when they died. This is called
+the Tamagotchi effect. It's the
+attachment that forms when a digital
+thing appears to need you back.
+Duolingo took it further than most.
+It became a personality. I realized that
+mascots aren't just there to make apps
+feel cute. They're designed to create
+attachment.
+The moment you feel something for a
+product, the barrier to leaving feels a
+lot higher. And maybe that's why we care
+so much about a cartoon owl.
+Some streak systems don't rely on fear,
+hope, or attachment. They work through
+visual attention.
+They all turn consistency into a visible
+pattern. Once there's a gap, our brain
+notices it immediately.
+Part of this relates to the Zeigarnik
+effect. Unfinished things stay active in
+our mind longer than completed ones.
+That's why filling one tiny missing
+block feels strangely satisfying, and
+why breaking the chain feels worse than
+it probably should.
+These mechanics are everywhere, even in
+places that have nothing to do with
+self-improvement. Different interfaces
+with the same underlying idea, giving
+[music] people something they don't want
+to break. These patterns keep pulling us
+back, but why? What's actually working
+here?
+We tend to think dopamine is the
+chemical our brain releases after
+something rewarding happens, but
+Professor Schultz found that dopamine
+doesn't just respond to rewards. It
+responds to the prediction of rewards.
+[music]
+The smell of coffee before our first
+sip, the notification chime before we
+even read it. Our brain starts to
+reacting to [music] what it thinks is
+coming next, which means a streak
+doesn't need to feel satisfying every
+single time. It just needs to make our
+brain feel like something satisfying is
+about to happen. And that's exactly what
+the habit loop is built around. Almost
+every habit follows the same four
+stages. The first stage, cue, something
+that triggers the anticipation before we
+even open the app. Then comes craving.
+The Duolingo jingle after each lesson
+makes us want the next one.
+Next, response. Make it easy so we'll do
+it, like auto progressing to the next
+step. Finally, the reward. [music]
+It's that satisfying feeling our brain
+spent the last minute anticipating.
+Studies found that when people are
+reminded of their streak, just seeing
+the number, they're more likely to keep
+going. We haven't even opened the app
+yet, but the cue already triggered the
+loop. That's what makes us want to come
+back tomorrow, not the lesson, not even
+the streak, but the habit loop itself.
+But if just seeing the streak is enough
+to pull us back in, why do people give
+up entirely after breaking a streak? The
+longer the streak, the more our identity
+gets wrapped up in it.
+The obvious solution to this would be
+making your streaks stricter, adding
+more pressure and accountability, but
+Duolingo found the opposite worked
+better. They implemented a feature
+called streak freeze that lets you miss
+a day without losing everything. And
+when Duolingo allowed users to equip up
+to two streak freezes at a time, daily
+active learners increased by 0.38%.
+That's over 200,000 more people coming
+back every day. People were more likely
+to keep going after failure when goals
+included a little built-in flexibility.
+Duolingo tested two variants. First,
+users must hit their full daily goal in
+order to preserve the streak.
+The second variant is where users could
+keep their streak alive by just
+completing one lesson on Duolingo.
+This variant won.
+Over 40% more people maintained their
+7-day streak. More and more apps are
+designing streaks around recovery
+instead of perfection. Repairs, freezing
+your streaks, pauses, and giving people
+grace days. But that raises a bigger
+question. Do streaks actually help
+people build long-term habits or are
+they just really good at making people
+come back? [music]
+On hindsight, streaks seem like the
+perfect habit-building system. All we
+need to do is to show up every day and
+eventually the behavior became
+automatic. But the more I research, the
+more I notice that most evidence around
+streaks focuses on engagement and
+retention, not necessarily lasting
+behavioral change.
+We know that dopamine responds to the
+prediction or the anticipation of
+reward. But once the streak becomes
+routine, when things become predictable,
+that dopamine signal actually weakens.
+So, apps keep layering in new surprises.
+Animations,
+milestone celebrations,
+bonus XP.
+They're all manufacturing
+unpredictability to keep the loop alive.
+But, optimizing for engagement and
+optimizing for long-term habit formation
+is not the same thing. So, what actually
+makes habits stick?
+Most streak systems are designed around
+never missing a day, right? We got to
+show up every single day to keep our
+streak moving.
+A study tracked people building real
+habits over months and found that
+missing a day had almost no effect on
+whether the behavior eventually became
+automatic. People simply resumed and the
+[music] habit continued, which is the
+opposite of how most streak systems are
+designed.
+Maybe what matters isn't how long you
+keep your streak. It's whether you come
+back even after breaking it. And that's
+[music] good news to me. Now I know that
+one bad day doesn't erase everything.
+Next, watch what we learned from
+analyzing a thousand onboarding flows
+and what separates intuitive dashboards
+from overwhelming ones across 2,000
+dashboard designs. Be sure to subscribe
+for our next deep dive on paywalls.

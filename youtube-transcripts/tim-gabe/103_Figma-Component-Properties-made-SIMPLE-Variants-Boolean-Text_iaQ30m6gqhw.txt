@@ -1,0 +1,256 @@
+Figma Component Properties made SIMPLE (Variants, Boolean, Text, Instance)
+https://www.youtube.com/watch?v=iaQ30m6gqhw
+
+today we will break down figma component
+properties as quickly and as thoroughly
+as humanly possible so that you don't
+have to spend any more time on youtube
+trying to get this concept
+let's get into it so when it comes to
+components you have four different
+properties the first being variance then
+you have instances you have text and you
+have boolean i'll go through these one
+by one real quick then we'll create some
+buttons together so bear with me
+variance is exactly what it sounds like
+it's a variant of something in this case
+we have variance of a button
+so we have button large we have button
+medium and we have button small if i
+drag this out you can see that in the
+sidebar we can change between these
+large small
+medium different variants of a button
+second we have instances
+instances are instances of something who
+would have guessed so
+in this case we have an icon and this
+icon has instances so if we duplicate
+this
+you can see in the sidebar here once
+again we have the ability to click this
+drop down
+that says check
+and change it to chevron right or
+to
+x across
+so that's instances for icons
+then we have text
+we duplicate this
+in the sidebar now we have the ability
+to change the text from here so i can
+say changed text
+that's what it does you can change text
+from the sidebar instead of having to go
+into
+the actual text and do it from there the
+last one being boolean here if we
+duplicate it once again you can see in
+the right sidebar here that we have has
+icon
+and we have has text
+and these are just toggles i can toggle
+icons i can toggle text on and off
+now with that small little context
+let's create some buttons so what i'll
+do at first is i'll write a text saying
+button large
+like that i'll wrap it in an auto layout
+and if you want to learn more about auto
+layouts
+video somewhere here
+fill
+add a fill to it i'll add some rounding
+i'll change the color of the fill
+change the text color
+now we have something like this
+so i'll create a component out of this
+in the top you'll find create component
+so i'll click that
+now this is a button component i'll
+rename it
+to button
+and once that's done i'll go down here
+because now i want to add an icon to it
+so i'll go into my design system i'll
+copy
+an icon and i'll paste it in our button
+now from here we'll go down one step
+further and now we want to add some size
+variants because we have the button
+large but i want about a medium and a
+button small as well so this is where
+variants come into play
+so once again at the top if we look here
+we have add variant
+i'll click that i'll go back and i'll
+click it again
+so that we have three different variants
+called this blood and medium
+this is button small
+now the first thing i want to do here is
+go and look in the sidebar and look at
+this properties section we can see that
+it's called property one and we have
+default and variant two if we go into
+this edit it
+we can see that the name and the values
+they don't really make sense right now
+for me this should probably be called
+size because it's going to be button
+large to button small
+so i'll click enter and then go back to
+it then we'll change from default to
+button large
+button medium for the second one and
+button small for the last one
+so now if we drag out one of these we
+can see in the sidebar that we have our
+different values here
+on a medium bottom small
+right so we added some size variants
+i'll drag it down here
+where we're gonna apply some instances
+but before
+we do that maybe we want to change the
+sizing of it now we want to apply some
+instances here and when we do that we
+have to click into the icon again so
+it's icon instances in this case so i
+want to change this icon instance
+if you look
+in the right sidebar here we can see
+that we have check
+and to the right of check we have apply
+instance swap property if we click that
+we get the opportunity to add an
+instance here so i will call this
+instance icon and then i can set the
+icon i want to be the default icon i
+want it to be check in this case so i'll
+create that property now i need to do
+this for all of our different variants
+because otherwise it will just be
+applied to the button large
+so if we would drag this out you can see
+we have the icon
+here so we can change it nice works
+super
+but then if we go to button small for
+example
+we don't have that capability anymore so
+we need to add that to all
+our variants
+and now we have the icon here because we
+already created it so we don't have to
+create it again
+icon
+icon
+now if we drag it out we can see that
+regardless of which
+variant we're on it has
+the same icon instance
+property here
+sorry before we continue do you have any
+suggestions on what type of content you
+want to see
+what kinds of tutorials or whatever it
+is
+comment in the comment section below so
+that i can create the content you want
+to see
+cool
+let's go down to apply text
+all right so this works very similarly
+if we click the text in our button
+we can see
+down here by content
+that we have that same button
+but this time it says apply text
+property so if i click that we get a
+name that says text i think that makes
+sense but the
+default value here maybe should just be
+button
+so i create this property
+once again i want it to be applied to
+all of these
+so for the bottom medium
+or the bottom small as well if i drag
+this out
+we can see that we got this added
+property here
+so if we go into this input field and we
+say changed text
+the text changes
+we can swap it to bottom medium and we
+can swap it to show right it all works
+together perfectly
+cool
+so the last thing
+applying boolean all right boolean
+that's such a strange word i always
+follow
+anyways boolean works in the same way
+if we go to the text we can see that the
+layers section here has this same button
+that says apply boolean property
+the reason it's here is because this is
+the show and hide place
+so what does the boolean do it lets you
+show and hide stuff
+so if i click here i'll call this
+has
+text
+and
+the default value is going to be true
+because we want to show the text as a
+default so create that once again we get
+this purple thing showing us that we
+have added this
+boolean property and that's the same for
+everything by the way
+for icon here for the has text for the
+content text down here that's the way
+you see it in the sidebar i'll add that
+to all of our button sizes all of our
+bottom variants now if i drag this out
+you can see that we can toggle the text
+on and off like this
+this can also be applied to the icon
+so i just do the same thing
+but i don't use the has text because we
+want to be able to toggle these on and
+off separately
+so i create a new property i say has
+icon
+and maybe we don't want to show the icon
+as a default so i'll set it to false as
+a default value
+create
+add it to
+all of our buttons
+like that
+now if i drag this button up here
+we have four different properties we can
+use i can toggle the icon
+i can change text change text i can
+change the
+icon
+i can remove the text i can change it to
+bottom small
+all within this same area
+now that you have the tools to handle
+component properties like a pro
+would you consider giving me a subscribe
+or like or hitting the bell notification
+or maybe adding a comment it would
+really help but if you don't want to i
+totally get it we'll talk in the next
+one
+have a good day great evening
+awesome morning whatever it is at your
+place and we'll talk soon
+ciao
+you

@@ -1,0 +1,81 @@
+Glassmorphism Effect in Figma (3 Min Tutorial)
+https://www.youtube.com/watch?v=NDF834BAeK0
+
+in this quick tutorial we'll cover how
+you can add the glass morphism effect to
+a current component in figma and to be
+honest you can add it to anything really
+it doesn't have to be just cards now
+let's waste no more time and jump
+straight in creating glass morphism in
+figma is really about two or three
+things the first thing is to create a
+background and a background that has a
+lot of color that is maybe pattern that
+just looks interesting the second thing
+being classifying an object the thing
+that you want to have the glass Morpheus
+effect that you put on top of the
+background and the third thing which is
+an optional but this really adds that
+little Flair to it which is to add a
+texture of some sort or some details
+let's jump to the first one like I've
+said here the effect is Amplified by
+having colorful objects in the
+background so here I have this card that
+has a very nice looking image so we take
+that we move over to the Second Step
+which is actually glassify stuff so here
+I have the final result you can see how
+it looks you see the background it has
+this glass effect four thins here that
+we need to remember
+background blur drop shadow linear
+gradients and opacity let me show you
+how it works I'll go through this card
+I'll Target the background of the card
+here the first thing is to add a linear
+gradient so I add the linear gradient to
+the card background like this then we'll
+add the same thing to the stroke so I'll
+add a linear gradient to this stroke and
+I'll actually flip it so that it covers
+the opposite side so the faded out
+version or the faded out end is in the
+top for the stroke and for the
+background it's the opposite it's in the
+bottom oh
+change the opacity for this one as well
+maybe to 50 and for this one I'll go
+maybe 50 here as well that's something
+you'll have to play around with after
+that we'll add a background blur to the
+card background once again I'll add an
+effect hit background blur
+bump it up and this is also going for
+what you think looks the best so maybe
+something like 12 and then we'll add a
+drop shadow and here we also will play
+around to see what looks the best bump
+up the blur a bit so that's really how
+easy it is to create this effect now
+let's jump over here and see what we can
+do to add some more detail what you can
+do is you search for noise or Texture in
+the figma community and you just grab
+something that you think looks good I
+found this one looks like a bunch of
+ants just having a war find something
+like that and then you can add it to
+your layout and get this kind of result
+so I'll Target this I'll go to the fill
+here I'll Target so that I get this blue
+indicator then I'll hit command C or
+control C on Windows then I'll go over
+here I'll paste it on top and then I'll
+just play with the opacity so maybe
+twenty percent now if you like effects
+like these check out this video as well
+until the next one have a great life
+we'll talk soon and ciao

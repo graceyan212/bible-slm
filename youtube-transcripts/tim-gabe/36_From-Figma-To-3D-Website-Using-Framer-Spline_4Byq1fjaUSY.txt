@@ -1,0 +1,452 @@
+From Figma To 3D Website (Using Framer & Spline)
+https://www.youtube.com/watch?v=4Byq1fjaUSY
+
+in this beginner tutorial we will turn a
+figma design into this fully interactive
+3D website by using a super easy 3d tool
+called spline together with my favorite
+web design tool framer you'll find all
+the working files down below now let's
+go before we get to the fun 3D stuff we
+have to first convert our figma designs
+to a framer website now in order to
+export this I'm just going to select
+structure and details I'm I'm going to
+go to the resources menu and search for
+framer and then I'm going to run the
+framer plugin and once I run it in the
+web browser I get this model I'll just
+hit copy to clipboard now if you do this
+outside of the web version in the figma
+app it will just copy automatically when
+you run the plugin now I'll jump over to
+framer I will go to my canvas here paste
+it in on the side you can see that it's
+uploading figma images now once it's
+uploaded I'm going to select the
+navigation I'm going to put it inside of
+the hero I'm going to change its
+position to Absolute I'm going to pin it
+to the left the top and the right 0 0 0
+now I'm going to go to my details here
+to the right I'm going to take this blur
+copy it and paste it into the hero here
+I'm going to change the position to
+Absolute then while moving it and
+holding down space I'll just move it to
+the top like this so it's in the top
+then I go to the next one copy this
+paste it in here position absolute move
+it while holding space and the third one
+copy paste absolute move it while
+holding space and then the last images I
+can even drag them just into the frame
+like this absolute and change the
+positioning now I can zoom out I'm going
+to select the structure here go down in
+the right side bar I'm going to copy
+this color copy and I'm going to paste
+it into this desktop frame now I'm going
+to select the structure copy select
+desktop and paste if desktop doesn't
+become a layout automatically you can
+just hit plus here to make it into a
+layout then we're going to go to height
+and set it to fit content now we're not
+going to make it fully responsive in
+this tutorial but what we can do is set
+max width so that it at least doesn't
+grow infinitely large so I'll just go to
+the left sidebar here and select all the
+sections by holding down shift I'm going
+to go to size Max width I'm going to set
+it to 1200 PX now I'm going to go and
+select the structure and change the
+alignment to Center and that's it for
+the initial export if I hit publish this
+is now literally already a website we'll
+dive deeper into framer later in the
+tutorial but if you want to become a
+certified Pro in the tool and create
+websites in minutes sign up for the
+weight list to my upcoming Ser to Hero
+frame course below now however it's time
+to create our 3D object so let's pop up
+a new tab and go to spline dodes now if
+you're not familiar with spline it's
+basically like figma or framer but for
+3D super powerful super easy to use so
+what you do is if you don't have an
+account you just create a new account
+and if you have an account you just log
+in of course and you create a new
+project once inside of the project
+you'll end up in a view like this we're
+going to remove the rectangle so hit
+backspace then we'll go back to figma
+I'll take this little rectangle here
+we're going to hit Plus on export and
+just export it as a rectangle and this
+goes for any kind of shape you want to
+export from figma it doesn't have to be
+just a rectangle as long as it's an SVG
+you're good once exported you can go
+back to spline pop up your finder window
+and just drag it onto the canvas now
+while holding down option and just using
+my trackpad you can see that I can
+change the angle here before we do
+anything else I'm just going to remove
+the group here so I'll right click in
+the left side barar and say ungroup then
+I'm going to remove the rectangle here
+for the actual group I'm going to take
+this shape ape here and rename it to
+cube now we can go to the right sidebar
+and use the Extrusion option here
+extrude it by 300 because the size of
+the cube is 300 by 300 so I want to have
+the Extrusion as big so it becomes a
+cube I'm going to go to the corner here
+and set eight same for bevel and same
+for bevel sides it will round out the
+cube a bit then we're going to scroll
+down a bit and go to material here for
+color we're going to go in here and
+change it to a nice blue and I found one
+that I really like that is
+000000 FF it doesn't look very nice
+right now but believe me it's going to
+be better so just stick with me here
+we're then going to go to lighting click
+on this sh eye icon and Open the Eyes
+we're going to change this to 80 which
+is the opacity of the light then we're
+going to go to the plus here hit plus
+which gives us a new material for this
+one we're going to click the drop down
+and go down to mat cap I'm going to
+change the mat cap to 75 I'm also going
+to click here to change the actual image
+that's used for the Mac cap so I'm going
+to go from this green one to the blue
+one going to go out here going to place
+it below the lighting going to once
+again use option and trackpad to change
+the perspective a bit then I'll go to
+directional light here which is our
+light source for the scene I'll go to
+the right sidebar hit four here in the
+the intensity of the lighting going to
+disable Shadows so nope we don't want it
+then from here you can either use these
+handles to change the lighting however
+you want it you can also go to the
+position here and change it from here so
+let's say minus 150 750 450 maybe
+something like that but again if you
+zoom out and you take this handle you
+can just do it however you want to and
+yeah you can spend a full day just
+tweaking lights believe me I've done
+that in the
+past now if you click on the canvas you
+will get these menus here to the right
+we're going to click on effects enable
+it then we're going to click this little
+I icon again on Bloom so open our eyes
+to bloom wow that looks amazing I'm also
+going to go to the background color here
+change to0 70 934 now if we hit play
+here you can see that we have our
+amazing Cube now now it's time to create
+all the different states for our Cube
+because remember it's going to be
+animated so I'll select the cube I'll go
+to States and add a new state going to
+call this multiply for this one we're
+going to scroll down and enable cloner
+we're going to scroll down a bit more
+change the count to eight going to
+change the position to
+305 which squeezes them together and
+again I'm going to zoom out a bit and
+use the option key to kind of tilt it a
+bit so maybe something like this going
+to go back to the right sidebar and
+right click on multiply and duplicate it
+going to rename it to grow and for this
+one we're going to scroll down back to
+the cloner we're going to go to scale y
+AIS and set this to 1.5 now you can see
+what happened here we kind of increased
+the size of all of these clones to make
+them go in the other direction I'm going
+to change the position y AIS to one 50
+now I'm going to go back up to the base
+State and for the base State we're going
+to have a count of one if we zoom out a
+bit and go back to the top you can now
+see that all our different states look
+different base just a cube multiply
+multiple cubes and grow cubes that have
+grown but now it's time to animate so
+I'm going to go to events hit plus I'm
+going to change from start here to
+scroll we're going to change the type
+from steps to scroll Start From Page
+start at we're just going to leave at
+zero but end after we're going to change
+to 1,500 and the reason here is that
+after some trial and error I think that
+around 500 represents the full height of
+one section and we have three sections
+that we want to scroll through so
+1,500 now I'm going to add a transition
+we're going to click it up we're going
+to change the first first one to be base
+the second one is going to be multiply
+then I'm going to hit plus to add
+another one that is going to be grow now
+we're going to hit export and we're
+going to go to the play settings and
+disable logo we're going to have no page
+scroll no orbit no pan No Zoom no soft
+orbit we're going to have no Zoom when
+pinching and no page scroll if I hit
+play and I scroll it works don't live in
+an amazing time so that's the
+but now we need to add some Hollywood
+cameras so I'm going to go back I'm
+going to hit plus and scroll down to
+camera click it then we're going to
+double click it and rename it to
+Hollywood cam then we're going to go all
+the way to the right sidebar change from
+personal camera to Hollywood cam now
+we're going to start adding States again
+so I hit plus going to rename this to be
+multiply I'm going to add another state
+called grow and for the base State here
+so if I go back to the base State we
+only want a cube remember the animation
+I had just a cube so what we can do is
+go back to the cube select it and click
+base State then we'll see just the cube
+now if we go back to the Hollywood cam
+we can zoom in here and find something
+that works I think
+0.7 is a good zoom going to tweak it a
+bit so that it's kind of centered maybe
+we changed the camera angle a bit by
+holding down option again something like
+this perfect now we're going to change
+to the multiply State and again we're
+going to go back to the cube and change
+to multiply back to the Hollywood Cam
+and we can zoom out a bit maybe change
+the Tilt change the position something
+like this maybe 0.35 sounds good maybe
+here now we're going to select the grow
+State going to go go back to the cube
+going to change the state to grow go
+back to the Hollywood cam zoom out a bit
+change the position again something
+like this maybe maybe a bit more up now
+if we change between states you can see
+that we have our amazing animations
+maybe this one is not exactly how we
+want it
+maybe a bit more tilted like that and a
+bit more up like this but here you you
+can see the different Hollywood cams now
+we're going to add another event we're
+going to change it to scroll again
+scroll Start From Page end after 1500
+going to add a transition open it up
+start from base go to multiply add
+another one for grow and if we hit play
+there is our scroll interaction but
+before we get back to framer to
+implement it let's add some more life to
+it it go back I'm going to select the
+cube right click and group selection
+we're going to rename it to levitate
+going to add another state and I'm going
+to call it levitate and for this state
+we're going to say minus1 130 we're
+going to add an event at transition and
+this time on start it's going to go from
+base to levitate and it's going to Loop
+infinitely in a cycle of pingpong now if
+we play it we have this amazing
+levitation in every state but I still
+feel that something's missing I think we
+want it to slide up as well so let's fix
+it with levitate selected um again going
+to right click and group The Selection
+going to rename it to slide up now I
+personally like using separate groups
+for separate animations like this but
+you could also just add multiple
+interaction
+in the events panel and we're going to
+add another state here going to call it
+slide up going to go back to the
+Hollywood Cam and change to the base
+State go back to slide up actually we're
+going to open up levitate go back to
+Cube and change that to base as well
+then a back to slide up now we're going
+to go to the right sidebar again I'm
+going to change the Y position here to
+minus 1,000 so that it ends up in the
+bottom of the screen going to hit this
+lock icon and change the size or the
+scale to zero and going to change the
+rotation here to 45 and here to 45 going
+to right click on slide up and just push
+these changes to base State then I can
+just go back to the original state so
+minus 150 1 in scale zero in rotation
+and zero in rotation here too going to
+hit Plus on events it's going to be a
+start event going to have a transition
+position open it up it's going to go
+from base to slide up and now if we hit
+play it slides up like that how magic is
+that well it is pretty magic but now
+it's time to get framer ready for this
+export so back in the framer document
+first of all this thing gives me OCD so
+let's just move that a bit to the left
+like that looks much better already now
+on the side here we're going to create a
+new frame so I'll hit f and create a new
+frame going to remove the background
+fill of this Frame going to go to the
+insert menu and search for embed and
+grab the embed and drag it in there
+we're going to select the frame again
+hit Plus on layout to make it into a
+stack I'm going to grab this stack right
+here and drag it onto our desktop frame
+let's see I dragged it onto the wrong
+one did I let's see here drag it onto
+the desktop frame there we go we can
+actually remove remove these other ones
+here so details and structure remove now
+we're going to rename this to scroll
+container and this will be our scroll
+area for the scroll animation I'm going
+to change its width to fill it's height
+is going to be set to 300 VH I'm going
+to set it to be position absolute and
+I'm going to pin it to all the sides
+except for the bottom going to scroll
+down a bit and change distribution to
+start you can see that once we did that
+this embed component ended up in the top
+of the scroll container now we're going
+to select the embed or embed oh potato
+potato we're going to go to position
+type set it to Sticky we're going to set
+the width to fill we're going to set the
+height to 100 VH this will make sure it
+covers the whole height of a user screen
+so let's do it for all of our SE
+sections actually so I'll go to
+structure open it up I'll select all of
+the sections I'll set the height to 100
+VH now one super important thing is to
+go into our scroll container and change
+the Overflow here to visible the same
+thing for the desktop scroll down
+overflow visible if you don't do this
+the scroll animation will not work so
+super important now for the structure
+container I'm going to scroll down and
+remove the fill because we already have
+the fill on the desktop I'm going to go
+to Styles here hit plus add c Index and
+we're going to set this to two this will
+make sure that our content is always
+above the embed element I'm also going
+to go and open up all our sections I'm
+going to highlight our blurs I'm going
+to go to Styles here and set c Index to
+minus one if you don't see c Index you
+have to go to to plus and add it I'm
+going to go and do the same for the
+images here so c Index minus one now
+with all of these settings the scroll
+effect is ready for our grand finale the
+3D element but the whole page is looking
+a bit static you see if we publish it we
+open it up again it's visually nice but
+it doesn't feel alive enough so before
+the grand finale let's just add some
+quick animation to the text Fields so
+we're going to go back we're going to
+select our heading go to effects hit
+plus scroll animation layer and View
+Center replay yes then we're going to
+click on enter here we're going to make
+a custom animation so I'll set it to
+opacity one just so that we can see what
+we're doing going to change it to 3D
+then we have 24 on the x-axis minus 24
+on the y- axis and a 24 in the offset on
+the y- axis so it kind of slides up in
+this 3D manner I'm going to change it
+back to opacity zero then we're change
+the spring curve here the spring
+transition to 240 24 in damping 2.4 in
+mass and 0.1 in delay I'm going to go to
+the effect here in the right copy it by
+right clicking then I'll select this and
+this element right click paste paste
+effects now if we play it we have this
+cool looking animation going to go back
+going to select just one of these copy
+the effect again and now I can just take
+every one of our elements here so just
+select the elements in our other section
+paste effects do the same for this one
+paste effects do the same for this one
+going to Target all of these paste
+effects and for the last one target all
+of them right click p paste effects and
+now if we play it as we scroll into the
+sections we get this amazing thing but I
+think I forgot something here let's try
+to Target the images as well and paste
+the effect here too so now if we scroll
+it looks amazing looks amazing and it
+looks amazing so with that done with
+this smoothness let's wrap it all up by
+jumping into spline again and getting
+our 3D animation so now back in spline
+I'll go to export in these settings here
+I'm going to change to viewer I'm going
+to change Mouse events to be on global
+full window we're not going to have any
+logo now I'll update the viewer can even
+scroll down a bit here and run a test to
+see if it's performant and yes it is it
+looks very green and nice back to export
+and just copy the embed head back to
+framer go out of the Prototype view
+scroll back up select our embed element
+scroll to the bottom click on HTML and
+just paste the code in here and hit
+enter now if we go to publish here
+update it click on the link we have our
+animation working smooth like butter
+again if you want to learn all the
+tricks I personally use to create
+websites like this in framer consider
+signing up to the wait list for my
+upcoming Z to Hero course on framer in
+the link down below until the next one
+have a great life

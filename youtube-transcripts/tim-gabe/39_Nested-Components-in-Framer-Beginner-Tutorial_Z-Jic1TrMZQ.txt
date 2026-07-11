@@ -1,0 +1,401 @@
+Nested Components in Framer (Beginner Tutorial)
+https://www.youtube.com/watch?v=Z-Jic1TrMZQ
+
+in this beginner tutorial we're creating
+a Next Level nested component inside a
+framer if you want to work in the same
+file as me you'll find it in the
+description below so this animation is
+created by combining two components but
+first why do we combine components well
+in order for us to have these micro
+interactions on multiple elements so for
+example this shine here on the image
+and this hover State on these buttons we
+have to have multiple components so by
+combining this little tab component here
+with this image component
+here we can create something like this
+what we just saw but this is a tutorial
+so let's do it together so first of all
+let's recreate this tab component so
+I'll hit t for text field I'll say tab
+one
+maybe we decrease it a bit in size and
+bump it up a bit in
+thickness that looks pretty good I'll
+then right click it and hit add stack if
+we want to be pretty we can name it tab
+then I'll go to the right sidebar here
+and make sure that it's set to fit
+content on both width and height then
+we'll add some padding something like
+that I'll scroll down and give it a
+bunch of round in we even go to shadows
+and add a little Shadow to it maybe bump
+it up a bit in blur maybe even eight and
+then four here and for this state it's
+going to be set to 0% in opacity the
+same goes for this little background
+here that's going to be set to 0% in
+opacity now I'm going to right click
+here and create a component out of this
+tab let's just call it tab hit create
+now we're going to create a hover state
+by hitting plus hover and for this hover
+State we're going to go back to fill set
+it to
+100% And for the shadow I'm going to set
+the color to be 15% in opacity and now
+if we play it we have a cute little
+power State we're going to click on the
+primary variant one here again and hit
+Plus on the right here instead to create
+another
+variant and we're going to do the same
+for this variant we're going to increase
+the fill to 100% in opacity and we're
+going to set the shadow to be 15% here
+this variant I'm going to rename to
+active because this will be our active
+State and this instead of being variant
+one maybe we call it
+default and that's it for now I'm going
+to jump out to home again and here here
+we have our tab component I'm going to
+steal this little image here I'm going
+to do the same thing with the images
+have this as a reference so I'm going to
+create a frame like this let's actually
+check how big is this 960 by
+538 960 by
+538 and we're going to call this image
+and inside of image I'm going to create
+another frame and this will be the image
+container and for this image
+container I am actually going to go to
+fill here hit image here on the right
+side and pick an
+image there we have our image now with
+the image selected I'm going to create
+another frame something like this maybe
+we're going to increase the size a bit
+while holding down option so it
+increases in both both directions I'm
+going to rotate
+it and then we're going to go to
+Styles filters and
+blur going to give it a bit of a more
+blur maybe
+24 and we're going to fade it out a bit
+maybe something like
+that and uh that's actually it for now
+except for the fact I'm going to rename
+it so let's rename this shine I'm going
+to go to image here right click create
+component and this is going to be called
+image image create now with the
+component created I'm going to go to
+hover slpress click plus
+hover and once we hover this I want the
+image so I'm going to select the image
+container in here I want that to
+increase in size so I'm going to grab it
+I'm going to hold down shift option and
+increase the
+size and the shine here I don't want
+that to be present in the primary or the
+yeah default state so I'm going to just
+drag it out to the left side like this
+but for the hover state I'm going to
+grab the shine again and we're going to
+move it slowly but surely we can
+actually grab it and hold down space
+just drag it like this then the last
+bits and pieces we do shift and right
+arrow
+key now if we play this command
+P we get this cool effect as we hover
+and for the original we don't have this
+quick of a transition maybe this is a
+bit too aggressive so we can go into our
+primary State here go to transition and
+just change the damping to maybe 140 now
+if we play again it's a bit smoother and
+that's the image so let's head back now
+we have the tab we have the
+image what do we need now well now it's
+time to create this nested component
+so I'm going to take the image here I'm
+going to take the tabs I'm actually
+going to start this whole nested
+component by recreating the tabs we had
+at the top so I'm going to take this tab
+hit command C command V and then another
+time command C command
+V and there we have our
+tabs I'm going to grab all of them right
+click add stack maybe 16 pixels in gap
+going to change width to fit height to
+fit going to add some padding Maybe 16
+there as well we going to add a bunch of
+rounding and we're going to change the
+background color a bit
+maybe something like that going to put
+it here we can rename it to tabs now
+let's select each one of these tabs and
+change the name of them so maybe the
+first one is Witcher the second one is
+Harry Potter
+let's change again fit content for all
+of these so that it actually fits the
+content inside just reposition it a bit
+hit the last tab and this one will be
+Batman looking good for now so there we
+have the tabs and here we have the image
+now we're going to wrap both of these
+into another stack and this stack we can
+call something original like nested
+component I'm going to go to the right
+sidebar remove the
+fill going to add some more Gap maybe
+56 once again make sure that width is
+set to fit and height is set to fit I am
+going to take this image component here
+I'm going to right click and add a stack
+once again it's Stacks upon Stacks in
+this game people remove the Gap from
+this new stack we can call it image
+container and we're going to go down
+here to radius increase the radius a bit
+maybe 56 here too going to go to
+shadows and
+realistic here we can play around with
+values as we please maybe some more
+diffusion Maybe something like that now
+for the shadow to actually show we have
+to go to Nest component here and set
+overflow to visible now with that done
+we are almost done lie lie lie lie just
+a tiny a little bit more so we're going
+to take this image here you can see we
+have an image inside of this image
+container I'm actually going to
+duplicate this image two times
+then I'm going to go to image container
+select it change the direction to
+Vertical so it's going to stack
+downwards now if I increase the size of
+it you can see that we have all the
+images stacked inside here so I'm going
+decrease the size again so it we just
+see one of them now I'm going to go to
+the images here select them all and
+right click and add another stack I know
+crazy right this can be called inner
+container because I don't have any more
+ideas for names now we can go to this
+inner container and change the type to
+be absolute and now we can change the
+position of this inside of the stack
+going to change the position like that
+going to remove the Gap so the white
+disappears in the bottom there and
+that's the first part of the last part
+remember the the text field I showed in
+the beginning well we need to create
+that one too so so I'm going to go here
+hit t for text say
+Wier maybe increase that size a bit
+maybe have white
+text maybe even increase it a bit more
+like that going to hit command C command
+V so we duplicate it and decrease the
+size a bit maybe something like that
+going to change it to be medium
+instead maybe we decrease it a bit more
+maybe that that will be fine let's
+populate it with some text like this is
+some amazing text
+about this movie you should read it you
+know with it selected we're going to
+change the width to
+fixed decrease the size
+boom and and there we have our text
+Fields I'm going to wrap them into a
+stack going to remove the background
+fill going to make sure that it's
+aligned to the
+left and that looks pretty good I'm
+going to take this hit command C command
+V duplicate it once and again duplicate
+it twice going to take all of them and
+wrap them into another
+stack once again again remove the fill
+here we're going to change width to fit
+and height to fit now with them all
+stacked I'm just going to change the
+headings so here will be Harry Potter
+and here will be Batman then I'm going
+to select the outer row here so we can
+call this text container so I'm going to
+select the text container and I'm going
+to change the height again here so it's
+going to be fix
+so that I can change the height to just
+cover one text item one text stack I'm
+going to change the distribution to be
+start so that if we select all of these
+text items we can see that the top item
+is in the start of the text container
+here with that done I'm going to select
+the text container again I'm going to
+drag it in here and if it doesn't paste
+we can just paste it in here we're going
+to change the absolute positioning here
+and then we can drag it around as we
+want so maybe somewhere around here
+we'll have the text and that's it now we
+have the full setup it's time to create
+the component for this so I'll right
+click here create component Nest
+component sounds like an amazing name
+I'll create and with this created the
+thing we're going to do is we're going
+to create two more variants so I'll hit
+Plus on variant so we get variant two
+and then plus again for variant
+three now what you might see here is
+that these items like they feel a bit
+squeezed maybe I mean it becomes even
+more evident if I change this from
+default so the first variant here I just
+selected that one and I change it to
+active it feels a bit squeezed what I
+can do here since we have these nested
+components aside from you know going
+here into the tab and just changing
+states like this I can actually double
+click my way into this component again
+go to the primary and change the padding
+so maybe I double it or I make it into
+20 instead and increase the radius a bit
+so that it still looks r it and nice
+then in the breadcrumb menu here I just
+go back to nested component and there we
+have it less squeezed now from here we
+can just select each and every one of
+these tabs so let's take Harry Potter
+when we click Harry Potter it should go
+to variant number two on top when we
+click Batman it should go to variant
+number three and when we click Witcher
+it goes back to number one
+now when you do this you can see that
+everything is connected here except for
+the one that you are currently on so
+this is the Harry Potter one and we need
+to reconnect this one to itself same for
+this one this is going to be the Batman
+one we need to reconnect that one to
+itself but Tim they all still look the
+same why is
+that why well let me tell you why that
+is and let me help you fix it so for for
+Harry Potter here we want Harry Potter
+to be the item right it's going to be
+the active item so I'm just going to go
+to the tab that is Harry Potter and
+change it to active I'm going to go to
+Witcher here and change that to default
+I'm going to do the same thing for
+Batman from default to active and
+Witcher is going to go from active to
+default if we want to make it even more
+apparent maybe we take
+these so the inactive ones and we
+decrease their opacity to I don't know
+0.5 then we do the same
+here
+0.5 this one should be
+one same here
+0.5
+0.5 and this should be one and the
+reason they changed is because every
+change we make to the primary kind of
+affects these ones so keep that in
+mind okay so the the tabs are right they
+are correct now but what about the
+images and the text right now since we
+were very smart with our structure here
+we can just take this inner container
+here for the image and slide it upwards
+like this and we get another Witcher
+image which we don't want right so what
+we do is we go back to the prime primary
+we select the second image and since
+this once again is another component you
+can see that we have this cool image
+connected to it and if I click this
+image I can actually change the image so
+the second one should be Harry Potter
+and there we go the second one is Harry
+Potter we can do the same for the third
+one so choose the image and we change to
+Batman
+now if we go
+here and we slide it upwards slide
+in and five years later let's see there
+we go we have Batman Harry Potter and
+Witcher images so now it's just one more
+thing we need to change the text inside
+of the containers right like this
+shouldn't be Witcher and this shouldn't
+be
+Witcher well I forgot one thing along
+the way we should do the same thing we
+did with the images for these text
+Fields so I'm going to grab all of the
+text stacks and wrap them into another
+stack we're going to make sure the stack
+is set to fit on width and height and
+now we're going to make this stack be
+type absolute just as with the images so
+that once we go to Harry Potter here we
+can just grab our inner stack and slide
+it upwards like this we're going to do
+the same for this once we go to Batman
+it's going to slide upwards like this if
+we want to be extra fancy we can even go
+to the other Alternatives or the
+nonvisible text stacks and make them 0%
+in opacity so that we get a little fade
+animation
+as it happens which means also that we
+have to give back some opacity to the
+ones that disappeared the poor ones that
+disappeared and since Witcher here was
+one or 100% in opacity in the second one
+since this is the primary it desdes
+everything we need to take that from one
+in opacity to zero and for Batman we
+need to do a similar thing so Batman in
+this case the text is zero so that needs
+to be
+one this one Harry Potter is zero which
+is good that's what we want but The
+Witcher one also needs to be
+zero
+now if we hit
+play and we go here and we click Harry
+Potter or we click
+Batman we have this amazingness
+happening and as I hover over it we have
+this amazingness
+happening can you believe it it's like
+we're magicians out
+here now if you're interested in making
+other cool animations in framer these
+two videos might be something for you to
+look into until the next one have a
+great life

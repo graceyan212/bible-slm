@@ -1,0 +1,107 @@
+Designers Are Leaving Webflow... Here's Why
+https://www.youtube.com/watch?v=NT8w5ZS13ao
+
+if you're a designer looking to take the
+next step with your designs making them
+into real beautiful and functional
+websites you might be asking yourself
+what tool should I pick and
+traditionally the answer to that
+question would be pretty simple webflow
+nowadays though not that simple and in
+this video I will present the four main
+reasons designers of making the
+transition over to framer and why this
+incredible tool is being touted as the
+future of web design but before we start
+I just want to highlight that framer is
+not paying me to do this these are
+unbiased observations made by myself and
+other designers in the community the
+first reason the learning curve while
+webflow has been the standard among
+designers who do web design for many
+years it's always had one big issue a
+rather steep learning curve to be truly
+efficient in webflow you have to really
+under stand the fundamentals of web
+development including things like proper
+HTML structure and CSS I'm not gonna
+think about that now with framer all it
+takes for you to get started is some
+previous experience with a design tool
+like sketch or figma and you're good to
+go after a couple of hours inside of
+framer it will feel like you're in one
+of those tools you're so used to but the
+main difference being that you now have
+the superpower of actually publishing
+your designs making them into a real
+website in one click the second reason
+who the tool was designed for in webflow
+you have the ability to do anything but
+with the ability to do anything you end
+up adding complexity and I honestly
+always felt that webflow wasn't really
+made with a designer's workflow in mind
+this of course impacts the user
+experience for you as a designer making
+it harder to achieve your Creative
+Vision quickly and easily in framer on
+the other hand
+things like scroll interactions Parallax
+effects hover effects drag and drop
+functionality you name it everything is
+literally at your fingertips built in as
+native features in the tool making web
+design a game of creativity instead of
+technical ability the third reason the
+power of community while webflow has a
+great Forum where people gladly help out
+with all kinds of questions we can't
+deny the fact that there's just a
+difference between an online Forum with
+nice people and a passionate community
+and I'm willing to argue that one of
+framer's biggest strengths is the
+community of passionate people who truly
+love the tool you'll be able to step
+into the Discord server ask your
+question and get multiple solutions to
+your problem in no time you can imagine
+what a relief this is if you're on a
+tight end line and need to get something
+fixed quickly and by the way this is not
+just for individuals the framer team has
+even helped companies get set up in the
+tool free of charge with a recent
+example being dribble and their
+migration to framer Pro tip even if you
+don't have any issues I would suggest
+you head into the community to get
+inspired by all the cool stuff people
+are designing it really is a magical
+place for creatives the fourth and last
+reason is product Evolution webflow is
+definitely not known to ship slowly but
+they're also not known to ship super
+fast and who can blame them they're a
+huge corporation now which naturally
+makes them less agile so I feel it's
+kind of unfair to compare them to framer
+in this aspect because not only is
+framer a much smaller company and
+therefore they've got that inherent Edge
+even compared to small comp Japanese the
+speed at which framer ships new features
+is unreal don't believe me last month
+they shipped seven updates seven big
+updates it's crazy and the best part
+they listen to the community when
+prioritizing what to ship they build the
+tool for you and with you now if framer
+does sound like the web design tool for
+you then I suggest you check out this
+playlist that I update constantly with
+framer tutorials now until the next one
+have a great life we'll talk soon ciao

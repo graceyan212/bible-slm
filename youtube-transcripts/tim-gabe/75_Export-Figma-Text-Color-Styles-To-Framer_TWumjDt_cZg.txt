@@ -1,0 +1,216 @@
+Export Figma Text & Color Styles To Framer
+https://www.youtube.com/watch?v=TWumjDt_cZg
+
+one of the easiest ways to speed up your
+workflow inside a framer is to use color
+and text Styles because just as in figma
+with Styles we can define a color or a
+text once and then reuse it all over our
+project and have one single source of
+Truth so in this video I'll show my
+workflow for porting over figma Styles
+into framer in a clean way now let's get
+straight into it let's go to the first
+point here which is about collecting all
+the Styles you have in your figma
+document
+so the first thing we want to do is to
+collect text from all the breakpoints we
+have
+I have three breakpoints I have desktop
+I have tablet I have mobile
+I would go into these and I would grab
+all the different text sizes for all the
+different sizes or all the different
+devices that I have
+so I would take this heading here I
+would do the same for this card heading
+and just copy
+paste it outside of my frame like this
+and do this for all of the text sizes
+don't skip one single text size like
+even these links here text within
+buttons body text every single text
+I would do something similar with colors
+I would create maybe a circle like this
+I would use my Color Picker to get the
+colors that I'll be using for different
+elements so for example for card
+backgrounds or for text colors or for
+buttons I would collect them like this
+we have the white we have this black
+color we have this linear gradient for
+this button here so I would collect all
+of these as well
+and once that's done I would move over
+to number two here which is to set up a
+style guide so I would grab all the text
+Styles like this
+like you saw me doing I would rename
+them so that we have a hero key so going
+from display to headings to body text
+here once I've collected all of this all
+of the colors all of the textiles for
+all the different sizes I would create
+an auto layout like this so just grab it
+all and create another layout I would
+separate it with these lines just to
+make it more visually clear and then I
+would be ready to export this over into
+framer
+so I would Target my frame I would
+launch the framer plugin
+copy the layers and then move over into
+framer and
+in framer you might have exported all
+your designs beforehand or you might
+wait to export the designs till after it
+doesn't really matter I've already
+exported the designs in this example but
+that's totally up to you what we want to
+do however is to create a new page
+this page will be called style guide
+and I'll change the desktop frame here
+to be 1440 in width because that's what
+we're using for our other Pages here
+and I'll just paste my style guide
+change the color of the background here
+so that we can see it
+change the height of this to be fit
+so that it fits all of this Auto layout
+that I exported I'll go to this Auto
+layout and change the width to be fill
+and then I'll add our different break
+points so plus tablet
+and plus bone
+so now we have all the different
+breakpoints but the text is still not
+responsive this is because we haven't
+yet added our text Styles we just have
+the figma references here so I would go
+to assets here in this panel
+and we get this Styles panel here
+and we have some pre-made styles from
+framer
+we're not going to use those we're gonna
+create our own so I go to the plus sign
+here I click plus and text Style
+the first textile I want to create is
+for this display font here
+say that it's a hitting one
+let's call it display one
+and then we get this display one font
+added to this list I'll click it to get
+this menu
+the first thing I want to do is to
+change the font you can see that in the
+reference material here from figma we're
+using Satoshi
+so I'll go into font here
+click it go from web which is just a
+Google font library to custom and if you
+haven't uploaded your font you would
+just click upload here I've uploaded
+mine so I'll take Satoshi bold you can
+see that it gets updated here I go back
+I'll change the default color to white
+and I'll go down here to break points
+and this is very very important you need
+to make sure that the Min width here
+corresponds to the width of your desktop
+frame so 1440 here then we should have
+1440 here if you don't do that for
+example if we go in here and click play
+when you start changing the size here
+and you don't map this value here to
+this value you're going to see that the
+font changes sizes a bit weirdly so just
+make sure to map this to this so 1440 in
+both places and when it comes to tablet
+here medium is tablet we want to map to
+this value so 810 cool and for mobile or
+phone you don't have to care about it
+now it's time to add the sizes so if we
+look at the reference here again display
+one is 300 in size so we change to 300
+it's minus 15 in letter spacing and it's
+1.2 in line height if we go to the
+second one
+still using the same style here but we
+change to medium we're gonna change to
+200 in size
+I'm Gonna Change to -10 and still have
+1.2
+for the last one which would be mobile
+or small
+we're going to change to 96 and minus
+1.92 wheat will then go on to do this
+for every single size every single text
+size now as I've mentioned a couple of
+times these are just references here
+these two
+so I'll remove these
+I'll go into our main one
+I'll go to Styles here click Styles and
+add the display 1 Style
+and you can see how these change to be
+responsive I'll fast forward here while
+I add some more styles
+okay so I added a style for display two
+and one for heading one as well it works
+in the exact same way and you would do
+this for all the text Styles and then
+once that's done I would move over to
+the color styles and these are much
+easier you just go to the colors here
+you would go to the fill option click
+here go from presets in this drop down
+to Shared colors and then hit create and
+from here you would just give it a name
+lack and create and you have your shared
+style you would do this for all the
+colors as well now if we go into display
+one here I could go to color and from
+here in shared colors I could choose
+black and whatever changes we make to
+Black so if I go in here
+and I edit and you could edit this from
+any place where you reach the shared
+style so you can do it from here you
+could do it from here it doesn't matter
+click edit and when you change it it
+changes in all the places where that
+style is applied
+so we're moving from here now let's
+apply this in a real context let's go to
+home and we'll take this desktop screen
+We'll add a tablet version and we'll add
+a mobile version
+now as you can see the responsive
+designs are on point here but that
+doesn't matter because we want to see
+the textiles and the color styles so
+I'll click this heading
+and I'll change the style here from
+nothing to display 2.
+and voila just like magic we have it
+applied on all the screen sizes I will
+change this which is heading 1 to
+heading 1 and voila changed across the
+board
+for colors I could do the same I could
+go into this color here change it now we
+only added black here so this will be
+black but as you can see it applies to
+all the places
+if I change it here as well
+to Black
+and then we go into edit black you can
+see
+how this is very powerful when you build
+bigger projects once I've got my Styles
+created I usually start creating
+components and if you want to learn
+exactly how I do that then check out
+this video now until the next one have a
+great life we'll talk soon ciao

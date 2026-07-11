@@ -1,0 +1,2409 @@
+Learn Framer For Beginners: Mini Course (2024)
+https://www.youtube.com/watch?v=wgMgje60Ovw
+
+in this framer mini course you will
+learn the best practices for designing a
+fully responsive website from scratch
+we'll Begin by learning how to think
+about web design layouts in framer and
+on the web in general and then we'll
+create a so-called style guide to make
+sure that our website has a consistent
+visual language so that when we move
+over to the next step of creating the
+structure of the website we have a great
+base then as a final step will make it
+look amazing on all device sizes by
+diving deep into responsiveness this is
+Alpha Beta Delta Eagle what's the issue
+oh so I should mention since this is a
+collection of free lessons taken from my
+23 plus hour framer Z2 hero course this
+will be focused on only one section of
+the whole website so if you want to
+learn the full thing and become a framer
+hero check out the link Link in the
+description below also whenever you hear
+me mention resources in the course
+companion just know that the same
+resources will be linked down below as
+well lastly the working file we'll be
+using here is also going to be linked
+down below now if you don't yet have a
+framer account just head to framer decom
+sign up and then either create a new
+project or click on the working file
+again link down below and remix that
+project project now with that we're
+ready so let's get started with layout
+basics in web design and in
+framer in this video you will learn how
+to think about designing things on the
+web and this is important because to
+build well structured websites we need
+to have a web-based mental model I'm
+going to start by talking about the
+general logic by diving into the red
+rectangles on the page you can see here
+and then towards the end of the video
+we're going to get our hands a little
+bit dirty and build it out from scratch
+together everything is based on a box
+and if you're coming from figma you
+might have already got somewhat of a
+grasp of this fact because everything we
+do is basically boxes but on the web we
+treat boxes in a particular way to
+create
+structure so for example for this na
+here you can see our nav bar for the
+paste app which is a website I'm using
+here very nice
+website in this example I've added one
+box for this whole nav
+section and inside of this box going to
+fade it out a bit we have another box
+that is kind of containing all of the
+content we have here this box in the web
+world would probably have a maximum
+width so that it doesn't span too long
+so the reason that the logo stays here
+and the button stays here and that they
+don't go onto the edges is probably
+because we have another box in here
+saying that the maximum width is X or Y
+the button here
+itself this button is a box just a
+stylized box
+and the links in here while the links
+themselves could
+be text elements with an
+icon something like this would probably
+be contained in a box itself and then
+all of these
+elements
+here would be contained in another box
+so that we can structure our content in
+a nice
+way the logo you guessed it it would be
+within a
+box and it goes on like that now if we
+move on to the hero section here it is
+the same concept this outer container
+section is a box then here we could do
+this in a couple of different ways but
+since one of the rules here is to we
+want to use as few boxes as possible for
+the sake of performance we could
+probably remove this outer box here and
+then we see we have this image which in
+itself is a
+box and we have this bottom part of text
+fields and a button which are wrapped in
+a box and then each of these are boxes
+themselves and as you can see here this
+text field is cut off here so this box
+again probably has some kind of Maximum
+width this button itself is just styled
+in a specific way but the overall
+concept the overall thing here is that
+everything is a box and then the boxes
+we manipulate in different ways we use
+different settings to structure the
+content that they hold now let's create
+this whole thing together from scratch
+so the first thing I'm going to do is I
+am going to create the outermost box so
+like the outer container here that we
+can see that holds everything I'm not
+going to be super specific with like
+specific sizes and things like that I'm
+just going to show you this box model
+concept so we have the outer box if we
+want we could even go here and double
+click click and just rename it let's say
+container or maybe section and inside of
+section we're going to have another box
+so we going to have the navigation bar
+that we can see in the top here so this
+could maybe then be called
+navigation and then inside of the
+navigation we have a bunch of different
+items so in this case I would probably
+because something I want to do for our
+whole web page is I want to constrain it
+when it comes to the width I want to
+have a Max width for all of the items
+that we're going to use so I'm probably
+going to create an outer box inside of
+the navigation that is going to be this
+constrainer so the constrainer Box this
+would be something like uh what could we
+call it let's just call it container for
+now so we have this outer box the red
+one that we see here here then we have a
+box for
+the uh logo type so another box this one
+I would probably call left because it's
+on the left side then we're going to
+have a box in the middle here that is
+going to be the center
+whoops
+Center and then on the right side we
+have another box that I would call right
+so we have left Center and
+right now inside of the left box we're
+going to have a logo type so I'm just
+going to hit t for text and write logo
+type maybe I make it maybe we make it be
+like
+bold maybe we even draw another box in
+here like that and this box I will just
+give a color and we will pretend end
+that this is a logo type the logo type
+itself I am actually going to make into
+a box and instead of just hitting F and
+creating a box like that I'm just going
+to right click and I'm going to make it
+into a stack we're going to go more into
+Stacks so don't you worry we're going to
+go into that no rush at this moment
+though because again it's the Box model
+that is the focus so I created a another
+box but a stack box for the logo type
+there we can name that logo type and
+what the stack does essentially in the
+simplest terms is that it makur that
+makees it makes sure that these uh like
+the symbol of the logo and the logo type
+text that they are stacked together like
+this so that is done we have the logo
+type in there we don't need anything
+else
+on our left side right we only have the
+logo type there then we have the items
+in the middle or the link items so I'm
+going to go in here I'm going to hit t
+for text again and say link
+one like that or not replace it but
+reposition it maybe change to medium for
+that and then I'm going to copy that one
+paste it say link to
+copy and paste again link
+three and then we also had this we
+actually had two of them that have this
+Arrow now in order for us to not have to
+create this graphic from scratch I'm
+just again going to create a box like
+this to show you the logic and we're
+going to give the Box a color so this
+would be the drop- down
+arrow and we can close this I'm going to
+select them both and add stack again so
+same logic as with the logo type so
+there we have our link with the drop-
+down
+arrow cool now you can see that none of
+these items are centered in here and to
+get them centered really easily I am
+again going to go to layout here or we
+haven't really explored this but this is
+the same as making it into a stack from
+this right click but I'm going to go to
+layout hit plus and now you can see that
+it got centered automatically I know it
+is kind of magic and again we're going
+to get more into it later but as you can
+see it's still a box it has all the all
+of the items but things are just
+centered inside of the center container
+there then we have the button right
+inside of the right container so I'm
+going to hit F and create a button
+container ER maybe we give it a blue
+color like this so there we have our
+button maybe we call this button and
+maybe we call this
+link um drop
+down the names aren't super cute at this
+point but it doesn't really matter at
+this point naming can be pretty good for
+you if you want to stay if you want to
+stay very consistent and clear about
+what everything is on your canvas but at
+this point again we're just going to go
+through the basics of the Box model so
+you don't really have to be that strict
+now I'm creating another text field
+inside of the button let's say just
+button placing it in the center but I
+could also go to the overall button here
+and just add layout and it's going to
+center it automatically like that but
+now we're starting to get our structure
+going here you can see we have
+everything placed in its boxes so that
+is cool I think we have the nav ready at
+this point obviously it doesn't look as
+pretty but this is the basic structure
+this is probably exactly how this
+structure is set up on the paste web
+page just that again it looks a bit more
+pretty now let's move on to these here
+so we have an image so I'm going to
+create a container for that image we can
+call this image container and another
+thing here um usually if you have a
+navigation here I mean this would
+probably in web terms be considered the
+hero so the hero itself is going to have
+a container so I'm going to create this
+overarching container that I'm going to
+call the hero and then inside of the
+hero we have the image
+container so now
+order is restored this thing here we can
+go and let's see go to fill image we
+could go to unsplash Maybe and Just Add
+a random image so we have the image
+there cool so this could be the way
+they've set this up um an alternative
+way because we can see here they have
+three elements right they have this iPad
+they have this MacBook and they have
+this uh mobile device an iPhone I think
+it's called so what they might be doing
+here is they might be having three
+different images so one for the MacBook
+one for the iPad whoops sorry one for
+the iPad like that and then one for the
+mobile device here the so-called
+iPhone and then en caps ating these we
+would have maybe a container we could
+have a
+container like kind of containing all of
+these images um let's go back so it
+doesn't look as messy but that's up to
+you how you want to do that now if we
+want to do it that way then I would
+create another frame inside of here so
+this maybe would be the left image or if
+we want to be specific maybe this even
+says um
+iPad and we can give this a different
+color maybe some opacity like that so
+this here will contain the
+iPad and or yeah I guess we could even
+go in and skip the opacity and just
+choose oops not choose an image but go
+to
+unsplash and search for let's see if we
+search for iPad I don't think we're
+going to have mockups but we can
+get something that just represent an
+iPad so there we have the iPad then we
+would have
+the iPhone here so let's see
+iPhone let's take this
+one and
+then this image container is let's just
+rename this too
+iPhone something like that we have the
+iPad iPad iPhone and the image container
+this would actually be the
+Macbook so I'm going to go into the
+image settings here see m
+c whoa I am clicking a bunch of things
+on my keyboard let's see here
+MacBook there we
+go something like that looks almost as
+pretty as this one right I not really
+but again concept
+so now we have all of the images here we
+could select them and add another frame
+and this Frame would be the image
+container so you kind of see the logic
+here everything on our canvas that is an
+individual item an element gets its own
+container basically let's move on to the
+text here so the text itself would be
+wrapped in a container that we could
+call text container
+and then we would have a title so t for
+text and this is a
+title I could increase the size of it
+like
+that and below it I'm going to copy and
+paste another one and drag down the
+size let's say this is some super cool
+body text that
+shouldn't be this
+regarded and for this one we could just
+place it like that and then we have
+another button we could create it from
+scratch you can see here that it's
+actually bigger than the top button what
+we could do we could cheat a bit we
+could go into our already created button
+copy and paste it in here and we could
+increase the size like this and the same
+with the Buton text like that
+now the magic here is we can take our
+text container go to layout again hit
+plus and it gets centered and we can
+change the Gap in between here so let's
+say
+24 isn't this amazingly beautiful all of
+this I mean this one looks a lot better
+than the paste website I must say joking
+but yeah this is essentially it this is
+how you create pages on the web it's not
+rocket science it's just boxes upon
+boxes upon boxes so with that
+congratulations now you understand the
+basics of how to create a website in
+fact you actually just created your
+first website so feel proud feel
+energized and let's move on to the next
+one with this box model knowledge you're
+not ready to dive even deeper into
+layouts in framer and this is really
+important knowledge to have for the
+later parts of this mini course where we
+will create the base structure of our
+section so let's jump into
+it in this video you will learn all the
+basics of layout settings in framer this
+includes positioning options like sticky
+fixed relative and absolute sizing
+options like fill fit fixed and relative
+and of course frames versus Stacks or as
+we call them in figma Auto layouts and
+in webflow flickbox remember this will
+be the basics of these settings so don't
+get scared if you don't feel fully
+confident after this video we're going
+to use all of the settings again and
+again throughout the whole course so
+don't worry you won't leave this course
+without kn knowing it like the back of
+your hand now let's start by looking at
+frames I'll hit F on my keyboard and
+just create a frame inside of here I'm
+going to go down here I'm going to give
+it a background color so that we can see
+it
+better and close that model now with
+frames here as you can see we can move
+it
+freely inside of here so this desktop
+here is currently just what we call call
+a frame this is also a frame in itself
+and as you can see we can just move it
+around like this free flow if we go to
+the top you will see these positioning
+options and you will see that it's
+pinned here to the top that's why we
+have this blue indicator so it's pinned
+323 pixels from the top if I change this
+to like 24 you will see that it gets
+pinned 24 pixels from the top
+if I enable this and I hit 24 here too
+now it's pinned 24 pixels from the right
+and 24 pixels from the top so whenever I
+resize stuff it's just going to stick
+there same goes if I start creating
+frames inside of here so let's give this
+maybe a dark light 100 let's go with
+that and I'm going to create another one
+and another one
+and you can see here the bottom one is
+pinned to the bottom 35 this one is
+pinned to the top left and the top so
+200 from the top left and the top and
+this one is also pinned to the top left
+and the top so if I now start changing
+the size of this in theory this should
+be pinned here and
+here this two and this is only pinned to
+the bottom which means that as I drag
+this towards the left this should
+actually just stay in position while
+these two should act in accordance to
+the left side so let's
+see okay now something crazy happened
+here you can see how they all kind of
+move in different
+ways if if we go back to the main frame
+here we can see that this little lock
+icon here is blue and that's because
+that's activated now if I inactivate it
+now I can resize it just in the
+horizontal axis so if we try
+again you can see that this stays put
+here while these stay in their position
+in accordance to this left
+side okay so now if we start going from
+the left side instead what happens
+then okay then they get pushed on the
+outside
+there if I continue here it's the same
+effect just in the
+reverse if we go from the
+bottom you can see these are pinned to
+the top so they don't really care about
+me shrinking it like this while this is
+pinned to the bottom so that's going to
+stick to the bottom as a resize if I
+resize from the top they're going to
+stick to the top because they're pinned
+to the top so that's the basics of
+frames and
+pins now what if we make this thing into
+a stack instead so I'll go to the right
+sidebar hit Plus on
+layout and something happens here you
+can see that they all got structured
+like this now we got some other options
+here so we have something called Gap so
+I can increase the Gap and then I
+increase the gap between these items I
+can also use these handles that is
+probably a pretty cool workflow I never
+use it myself but you can change it from
+here and you can change it from here now
+we also have something called padding
+here but but since we have fixed on both
+height and width when I change the
+padding nothing happens if I change this
+to be fit
+instead so let's go to width fit you can
+see how it now
+fits the content inside and the padding
+remains here so if I change the padding
+again you can see that now the padding
+works on the horizontal axis
+but why doesn't it work in the vertical
+axis that is because the height is still
+fixed so the height is still determined
+by this fixed pixel value if I change
+this to width sorry to fit content as
+well you barely saw anything happening
+but now as I change the
+padding you can see how it changes in
+all directions
+instead we also have some other options
+like Direction so if you if we now
+change it to
+horizontal all our items in here are
+stacked horizontally if I change back to
+Vertical they're stacked
+vertically this distribution option
+here is going to determine where in the
+Box are items are going to be placed so
+if we change this to start nothing
+happens if we change it to end nothing
+happens why is
+that well right now since we have fit on
+all sides and we have a set padding we
+can't really use the distribution option
+in this way if I take the width again
+set it to fixed and do this I do the
+same with the height set it to fixed and
+do this now you can see that they're
+placed in the
+bottom and in the distribute option you
+can see that it's set to
+end and this just means that they're
+distributed in the end right now so if I
+change it to start what will happen well
+then they're going to go to the top
+instead if I change it to Center what is
+going to happen they're going to go to
+the
+center now the three last options here
+are a bit different so space between is
+going to space the items in a certain
+way so if I click here you can see that
+it's spacing the items evenly like this
+or actually not evenly it just adds a
+even space in between the items then you
+have something called space
+around where it's going to have an even
+space around the items so here
+and then evenly is going to space it all
+evenly like this now the distribute
+option is based on the direction so if
+we change the direction like this it
+just changes to horizontally here but
+now if we take
+start you will see that it places it in
+the left corner instead so this is the
+start over here is the end and here is
+the center so if I go
+end Center you can see how it changes
+depending on our Direction option there
+is another option here called
+align this allows us to align our items
+now you can see that we have the
+direction horizontal and Center here if
+we take start it is Distributing the
+items on the horizontal
+axis if we use the Align here we can
+again distribute them vertically so you
+can see I can put it in the top in the
+bottom in the center so we still have
+the ability to align our items in
+different corners of the box for example
+it's not just
+the horizontal axis that we have control
+over we can control it both vertically
+and horizontally now if we jump over to
+wrap here and you can see that at the
+moment this is set to no but if we set
+this to
+yes nothing
+happens but if I decrease the size of
+this and as soon as I reach the padding
+threshold here maybe it's easier to see
+if we reduce the padding so now it's
+just 16 in padding so as soon as we get
+within 16 pixels of reach
+here is going to wrap the items and
+throw it into a new row which kind of
+gives us this responsive Behavior as you
+can
+see so you could imagine this being
+cards for example in a layout and if you
+give the container of the cards a wrap
+it's going to wrap the items so you get
+this responsive behavior for free now
+let's go back a bit to our sizing
+options we were looking at fit and fixed
+but there are two more options I'm going
+to resize this a bit and I'm going to go
+into this one
+here this is currently set to width
+fixed and height fixed I'm going to
+unlock the
+uniform aspect ratio
+here now if I set this width here to
+fill you can see that this
+covers the
+remaining empty space of this container
+box
+these two here are still their fixed
+widths so what happen if
+I so what happens if I go here unlock
+this and change this to fill as well you
+can see that they now space evenly and
+if I go to this unlock and set this to
+fill the same thing happens now they are
+all spaced evenly I can even go into the
+FI option here and you can see that it's
+now one fraction so this here stands for
+fraction if I change this to
+0.5 you can see that this becomes half
+the space of one fraction
+0.25 a fourth of this one fraction space
+to double the fraction space we also
+have an option that is called relative
+if I change to relative you can see that
+we get a percentage value
+instead so here I can play with
+percentages so I can change the sizes
+like
+this you can see how the percentage
+changes with it now if we go back to one
+of these and set this to fixed again for
+example you can see that now with this
+in fill and this in
+fixed you can see how the the fill one
+gets squashed now to use fit we need
+content inside our box so you can see
+that for these boxes here we don't have
+the option to use fit content and that's
+because we don't have anything inside of
+here so if I add another frame inside of
+this box and I make this to a layout
+because if I check it you can also just
+make it into fit content from here which
+is going to make it into an auto layout
+so if I hit fit content here you will
+see that it now wraps the Box inside if
+I give this a color it's easier to see
+maybe something lighter like that and
+now this box in itself can have its own
+padding like
+this but you can see that a height is
+still set to fixed so if I change that
+to fit it's now going to be uniform like
+that now let's look a bit at POS
+positioning absolute lets us pin
+something anywhere so if I go here to
+position
+absolute you can see that this is no
+longer a part of this stack I mean it's
+inside of the stack but it's not
+adhering to the stack rules this is now
+just floating in space and these or this
+one takes up the full fill width this
+one still has its fixed value if we
+target this whole box here go to type
+and set this to
+fixed and we play this you can see that
+as I scroll here it just stays fixed on
+the screen and that's exactly what it
+does it just fixates your box to this
+position so you could imagine like a
+Navar for example that could use this
+kind of feature we also have relative
+positioning but again you can see that
+that's not an OP option here right now
+is great
+out the reason for that is that relative
+only works when it's a layout so I have
+to go in here and click plus and again
+layout here is basically the same as
+Stacks the reason that we don't call it
+a stack here is because you also have
+the grid feature which we're going to
+get into in another video so think of
+layout as the parent name within layout
+we have the stack
+and the grid feature but now back to the
+box if we set this to relative you can
+see that it now pushed itself to the top
+now this parent here this desktop frame
+is the one in charge so you can see that
+it's distribution is set to start if I
+change the direction now to horizontal
+where do you think it will end
+up probably in the left corner right so
+let's click yes ends up in the left and
+if we take end here where does it end up
+in the
+right center if we change the direction
+again nothing happens because it's
+centered but now if we go to the
+start
+top end bottom change direction so
+relative positioning only works in
+stacks and it makes the parent in charge
+of the positioning the last option is
+called
+sticky so if we go here and we check we
+have something called sticky if I press
+this you can see that we get this top
+option this top option is going to allow
+us to set a specific pixel value or a
+specific pixel distance to the top from
+which we want our element to stick so
+right now it's going to stick to the top
+because there is no distance set so if I
+take this Frame here and I increase
+this so if I take this Frame here
+increase the size change the
+distribution to
+start and the direction to
+vertical and we play it and I scroll you
+can see that it's sticking to the top
+but as of now we can't really see a
+difference from fixed
+so if I take this sorry if I go into
+this one into the parent frame again and
+I change it to
+Center and we
+play now as we scroll it's staying you
+can see it's not fixed but as we reach
+the top here it stays so it sticks to
+the Top If we go back in here and we
+change this Top Value to like say
+64 and we play again now as we reach a
+distance of 64
+pixels it's going to stick to the top
+like this and that's it for the basics
+hey you've made great progress now
+you're kind of warmed up to framer that
+cavas feels more familiar and you know
+how to create layouts but before we jump
+into actually creating our section
+layout there's one more thing remember
+the style guide we talked but you know
+the one that helps us make things look
+consistent on the web well now it's time
+to create that style guide so that we
+have a great base once we start building
+the structure of the
+website a style guide is actually just a
+collection of colors
+typography and other kinds of styling
+that makes up your website or that makes
+up your brand basically a style guide
+could be something that a client we're
+working with already have or something
+we create for a client it could be
+something we create ourselves for our
+own website there really are no rules it
+is just a helper for us to stay
+consistent with our styling for the
+website now in our case when it comes to
+Pand icons we have an e-commerce brand
+that sells digital icons and when I
+created it I wanted it to be clean and
+modern I wanted it to have like this
+edgy cool feel to it with a lot of
+colors but still
+maintain some kind of respectable not
+overly eccentric uh feel to it so the
+font I decided to use is a font called
+Oswald and if we just Google Oswald
+we're probably not going to get it
+because it's a pretty common name so
+Oswalt font might be better and then
+we'll get to Google Google fonts so this
+is a free font that you can use for your
+projects as well and I think this font
+has that Edy cool but still respectable
+feel that I'm going after for or going
+after with Pand icons for this website
+we'll be using it for main headings and
+for call to actions and in web design
+usually you will have six types of
+headings or at least if you look at the
+SEO tags you have a H1 to H6 and usually
+you will cover that for your website as
+well well maybe not if it's a very small
+website and you only need three headings
+but in this case we're going to have six
+of them so now let's teleport into
+framer to get this party going so first
+off I'll create a new
+page I will call this page style guide
+maybe bunch of numbers with a dash in
+between the reason we name it like this
+is because we don't really want want the
+public to go into this page this page is
+going to be for us for our website for
+internal use basically now with this
+page created I can just hit t for text
+and I'm going to say heading 200 this
+name is just to indicate the pixel size
+I'm going to have on this heading then
+I'm going to head to the text size
+settings here and I'm going to change
+this to 200 and here as you could see we
+could find oswal inside of this native
+framer fonts panel and that's because
+framer supports Google fonts natively
+now I am going to copy this and paste
+it going to do the same here but this is
+going to be 164 in size I'm going to
+rename this to 164 too now before we
+continue before you freak out and you're
+like how do I even decide my text sizes
+at this stage don't worry there are a
+bunch of different different type scale
+tools online that you can use to get the
+tech sizes here and I've linked
+resources for this in the course
+companion and after hitting 164 here I'm
+going to continue all the way down to
+heading 32 so we're going to Speed it
+through and there they are our headings
+heading 200 164 96 64 48 40 and 32 now
+to complement our headings here I'm
+going to use another Google font called
+Merryweather and this will be used for
+the body text and in this case I'm going
+to go for four sizes so let's go here
+hit t for text I'm going to call this
+body let's say just body for now then we
+are going to go in here and we're going
+to search for Merryweather there we go
+going to call this one body 24 body 20
+and body 16 and body
+[Music]
+12 go in and switch the sizes 20 this is
+actually going to be
+24 this one will be
+16 and this one will be 12 almost done
+with the the body text we are also going
+to have Oswalt among the body text elit
+so
+let's take those bodies
+here and actually we can just copy and
+paste these put them up here going to
+bring those down a little bit like that
+now I'm going to go into all of these
+and we're going to change them to be
+oswal and we're going to change the
+sizes here a little bit instead of body
+12 we're going to have body
+14 so going to go here change that to
+body
+14 and there we have it now before we
+move on there are some small tweaks I
+want to do first of all I'm going to
+make this
+whole uh desktop container here into a
+layout like like that going to align it
+to the left going to change the height
+to be fit and like that that is good now
+what I want to do is to change the text
+settings a tiny little bit so for
+heading 200 here I am going to go to the
+right side bar I am going to go to text
+transform add it and we are going to say
+that it's going to be uppercase and as
+you can see this will make sure that the
+text is always uppercase then we're
+going to go to letter here here and say
+minus
+0.03 and this will make the letters here
+be tighter I'm going to go to line and
+set
+110% and I'm going to change the weight
+to semi bold maybe or medium or maybe
+even
+bold I Think Bold I'm going to do these
+small tweaks to the text for all of the
+text elements that we have here
+basically
+now to save you time I'm not going to go
+through it all in this tutorial I've
+left the working file with all of these
+values nicely set up for you in the
+course companion so that you don't have
+to do this tedious work so let's fast
+forward now while we're fast forwarding
+I'm going to take the moment to try to
+sell stuff and now you're thinking I
+knew it it was too good to be true but
+seriously though if you want to dig even
+deeper into framer and have me hold your
+hand just like this for 23 Plus hours
+while creating a full website with
+everything from animations to components
+and the framer CMS you can check out my
+framer Zero to Hero course in the
+description below so there are the text
+Fields now before we round this off we
+have to create the colors as well and if
+you want to create colors easily you can
+go to coolers
+doco and you can start generating colors
+inside of here it's pretty awesome you
+can just hit like space bar while you're
+in here you can even remove colors or
+you could blck in color so if we like
+this one but we want to keep generating
+new ones I could keep hitting space and
+then I can lock this one in and keep
+hitting space and you can play around
+with that until you find a pallet that
+you really like now since I've already
+created a color palette I'm not going to
+do it again in coolers I'm going to go
+back to our little project here I am
+going to create a
+frame inside of here paste it in here
+going to make sure that it covers the
+full width um we can we don't need a
+fixed height but that is fine for now
+going to call this color container oops
+colors container and I am going to cheat
+a little bit I'm going to show you how I
+would create the colors I'm going to
+paste sorry copy these from my other
+projects over here but I'm going to
+create them from scratch so I'm going to
+create a new
+frame and this Frame is it already has a
+color but I'm going to give it a little
+bit more of a color like that so we can
+see it now I'm going to go to this one
+and see okay that is just pure black so
+like that going to increase the radius a
+bit so that it's rounded and nice then
+this colors container here I'm going to
+make into a layout like that I'm going
+to align it to the top like this and
+we're going to create the different
+colors here so maybe we name this
+color and going to copy and paste so
+there we have the other color now what
+is that that is dark or sorry black
+again but
+75% instead going to do it again but
+this time
+50% then copy paste again
+25% again
+20% again 10% and again 5% and one last
+time three
+represent so those are all our different
+shades of black I guess they become gray
+kind of now I'll do the same for white
+as well I'm just going to copy this one
+and maybe we actually do this I'm going
+to select all of these since these can
+be considered one family so the these
+will be one stack I mean it can just be
+named stack but inside of this little
+container I'm going to tell them to wrap
+so this one ends up below and this one
+like I said is going to be white going
+to give it a border so that we can see
+that it's white it's going to be
+100% so that's our white um then we have
+another one that is a white with a 50%
+opacity so 50% opacity of our whes and
+just for quick context the reason I'm
+adding all of these different shades and
+stuff is because on a website you
+usually want to work with different yeah
+different shades of things you don't
+want it to be just black and white you
+have want to have like subtle Grays and
+things that just make things look a bit
+better to be honest and it's also
+something that you will see on most
+websites in a lot of uh UI design
+projects you're working with a lot
+different Grays so it's a standard it
+helps you create a website that has more
+layers to it I am going to wrap these
+white ones into a stack as well like
+that and I guess we can just copy this
+stack and we can say actually that the
+direction is vertical instead of just
+wrapping and for this one I'm going to
+remove
+that and we can see that this one is
+going to be be fill we are going to put
+it to be start in
+distribution I am going to select that
+color itself go to the border and then I
+am going to cheat a bit I'm going to use
+the Color Picker and just pick these
+colors
+here so I'm going to pick the different
+colors that we have
+boom
+and boom
+and boom now with that done I'm going to
+go back to this colors container I'm
+going to click this little icon here and
+make sure that it's fit content uh
+basically I just don't want it to span
+all the way down like this because it
+doesn't look aesthetic I'm going to
+remove these accent colors and for these
+colors here and I guess for all of the
+colors for all of this essentially I
+have included it all in the course
+companion so you can steal it thank me
+later now the last step here to make
+this into an actual style guide within
+framer we need to make these things into
+Styles and for that I actually have
+another video that I created I then
+created this video in hindsight because
+I realized I need to add some context
+but now we're going to cut to that other
+video
+so see you in the other video so now we
+can see that we have all of our text
+Styles here if we go back to our work
+file just to see that we're doing it in
+the right sequence we're going to start
+by applying all desktop text Styles so
+I'm going to go back here to the style
+guide and I'm going to select my heading
+200 and then we can go to assets
+here and you will see that I've already
+actually this body text here we can
+delete but I've already created some
+color styles and these are the color
+styles I'm using just for again I'm
+going to go jump between back and forth
+here but here you can see that I am
+using if I select this I'm using color
+styles for the coar cards here and and
+the reason I'm doing that is because
+it's much more scalable and you're going
+to see how your websites become really
+scalable when you start utilizing style
+guides and color styles and text Styles
+and even components as you can see here
+I've even created a check component here
+that I can check and uncheck all of
+these things we're going to cover and
+you're going to see how they can make
+your projects super scalable but that
+was a tangent let's just see here here
+okay we're going to apply all desktop
+Styles so I'm going in here I'm going to
+assets and under Styles we can see that
+we currently don't have any text Styles
+we only have the colors so I'm going to
+go to text
+Styles click here and go to heading
+one now we created a heading one text
+style this is one way to do it the other
+way is to click on this text style here
+go here to
+Styles and click new style and then
+heading One the good thing about doing
+it this way is that we don't have to
+redefine the text style so now we have
+this heading one here and it is already
+defined as you can see here so
+everything is filled in we have the
+letter spacing the line Heights and
+everything and if you want to change
+these things which I do sometimes
+because in some cases my figma Styles
+aren't super optimized maybe and then I
+will tweak it inside of framer so then
+you can just go in here in the settings
+and you can see that it changes in real
+time even letter spacing like this
+sizing but that's the first heading
+second one we do the same I would select
+this one go to Styles new style heading
+to
+third one new style heading three fourth
+one new style heading four heading five
+and heading six and if you then have
+more
+headings you can go and do heading six
+again and it's automatically going to
+become heading 6B you could rename this
+if you want to but let's go with heading
+6B for now then we're going to go and do
+the same for the body so new style
+paragraph in this case plus paragraph we
+have our biggest body text but now the
+body is just going to be called body for
+every new body text that we add so I'm
+going to go to edit
+here
+and actually I'm not going to go to edit
+I'm going to right click this instead
+and say rename this one can be body
+XL and then the next one that we add
+let's go back to styles new style
+paragraph This one can be
+body sorry I always do that rename right
+click
+rename
+LG then we have the next one and now
+from here you could either do it from
+from this panel the cool thing with this
+panel is that you can change the
+position of your text Styles so if you
+have a so if you want to have a nice
+hierarchy here then this is nice for
+changing the positioning of the textiles
+but generally just using this panel um
+here to the right is what I do so
+paragraph body
+16
+14 I'll just add these like
+this paragraph paragraph paragraph and
+paragraph and now we go in here instead
+and see 12 is the
+smallest 16
+20 14 in between there I think we will
+see if that's the correct one and let's
+see 24 I think this is that one and
+16 let's see if this is correct so if we
+click in here body XEL oswal so what I
+want to do here is I want to have my
+assal headings in the top so I'm just
+going to make sure that these are all
+oswal
+yes oswal and then this should be
+Merryweather this body three here yes
+good just going to rename
+this sorry
+rename this body
+MD click here this is the biggest
+Merryweather so let's call this body XL
+Mary and we have body
+LG
+Mary then we have another Oswald so this
+one I will move
+up going to rename that see body
+SM let's see merry wither
+rename body MD
+Mary and the last one
+12 body smm marry and there we have all
+of our text Styles even more progress
+we've got text Styles but there's a
+problem they currently only work on
+desktop so in the next part of the mini
+course we'll make them work for every
+device in this video we will make our
+text Styles responsive and how we do
+that is pretty simple we just click back
+into our text Styles we go to the right
+sidebar here I'll click on this heading
+one then edit and once we're inside of
+here you will see here under breakpoints
+that we have a type setting if we click
+here on ADD breakpoints framer is
+automatically going to add breakpoints
+for us team the captain speaking as
+mentioned in a previous video you can
+dive really deep into the science of
+creating type scales if you want to so
+I've linked a resource in the course
+companion for that now let's continue
+now there are different ways for you to
+calculate what sizes your break points
+should be but what I usually do just
+because it's easier is I will go based
+on my hierarchy here so for heading one
+that is 200 in size for the large
+version It's 200 then for the medium
+version I would do what my heading two
+is in size so I would do
+164 and for the small version we're
+going to do
+96 as I said this is just my personal
+way of doing it you can do it in
+whatever way you want to maybe you have
+already defined your text Styles inside
+of figma or you have another way but
+this is quite simple and fast so I'm
+going to go to this
+one heading to
+edit add bre points large is
+164 let's see so 164 then
+96 96 then 64 for the small one then we
+go
+back heading three so this
+one go to heading three edit this
+one go to add break points we have large
+which is
+96 then medium
+64 small
+48 then I would just do this for all of
+the Styles so
+now when this method changes at least
+for me is when I get down to sizes that
+are very small so in this case for body
+XL when you add your break points here
+in this case I would probably go for
+something different than 24 and let's
+see here then 20 and 16 let's actually
+go to the Pand icon site and see what we
+did here so we have body 24
+here body
+XL large is 24 2016 okay so the forth
+this one I am actually talking out of my
+butt but if we go to body 20
+instead let's check it large is 20
+medium is 18 and then small is 16 and as
+you can see we don't have an 18 size
+here for body six 16 or body
+medium if I go here and I check large
+medium and small are all the same so
+when we go to smaller sizes this
+technique or this structure that I'm
+using kind of falls apart team the
+captain speaking again now the reason it
+falls apart here is because we want to
+still maintain a hierarchy for our text
+fields so body small should be smaller
+than body medium body medium should be
+smaller than body large but we don't
+want either of them to become too small
+so what I usually do and this is me
+personally is I set anything that is at
+18 pixels or below I set it to stay at
+the same size for all devices so 18
+pixels is 18 pixels for desktop tablet
+and mobile six 16 pixels is 16 pixels
+for desktop tablet and mobile 14 pixels
+is you guessed it 14 pixels for desktop
+tablet and mobile Etc this is not an
+official way of doing it it's kind of a
+shortcut but it works in most cases and
+is a bit easier to handle now let's
+continue with the video so here for this
+one it can work we will say 20 and then
+16 but here
+for body
+20 changes so we add break points medium
+will be 18 small will be 16 body 16 or
+body
+medium a lot of different names here
+body
+medium large 16 medium 16 small 16 so it
+stays the same same for this one body
+small and break points
+14 14 and 14 then we go to this
+one this has the same scale as my other
+Excel One see 20 and 16 and we have this
+one 20 18 and then
+16 medium 16 16 16 and the smallest one
+bre points 12 12 and 12 and now we
+should have all of them applied so let's
+see what happens if I go to the plus
+here and I click
+tablet we can see here that first of all
+we have a problem with the layout setup
+if we align to the left instead we can
+now see all of it but we can see that
+it's decreasing in size so that's good
+it's working as we want let's see if it
+works for
+mobile boom it works for mobile as well
+so this is a good way for you to set it
+up to see how your types scale structure
+is going to work across devices now the
+last thing we want to do though is to
+make sure that our sizes or our Tex
+styles are actually responsive at the
+right break points hey it's Tim the
+captain doing a cameo so when it comes
+to choosing the right Min and Max widths
+guess what there is no right or wrong it
+all depends on what you think looks best
+for your layout what matters is that you
+one make sure your men widths for your
+text break points correspond to the
+device sizes you have on your canvas so
+that's number one number two is that the
+width of your text fields in the case
+that you choose to have a really wide
+minwidth doesn't span wider than 600
+pixels I included a YouTube video where
+I talk about this specific point about
+text widths in the course companion so
+check that out if you want to dive
+deeper into the reasoning behind that
+now let's continue for the website that
+I've created and that we're going to
+create together 1,200 is not the minimum
+width I want for for large and 810 is is
+not the minimum width I want for medium
+so we will have to change these for each
+and every style that we have so for
+large for example I want this to be 960
+and the reason it says minwidth here is
+because this is going to apply when the
+device has a minimum width of 960 pixels
+so for medium this is going to be
+applied for the device when it has a
+minimum width of 560 pixels for small
+it's everything from 560 to zero and
+we're going to get more into the
+responsive Behavior we're going to get a
+lot more into the responsive behavior in
+later videos but what we want to do now
+with the Tex style is just to change
+these settings for all of our Tex Styles
+so I will have to jump in here and do
+this for each and everyone hey it's me
+again and this time I'm not going to
+sell you anything I just want to say
+that you're doing awesome keep pushing
+through until the end of the mini course
+and your future self and your future web
+designer self will thank you so now with
+that
+done we've changed all of these to 960
+and 560 large 960 and medium 560 and now
+with this done I am going to change the
+size of this to 560 and phone version
+can be
+at let's see what do we have for this
+project 320 so we do 320 here too and
+these are the sizes that we're going to
+have for the different break points okay
+text Styles checked off now to round off
+our style guide we just have to create
+color styles and this one is going to be
+really quick and super helpful if you
+want to have a truly professional
+workflow inside of fr and a fast one at
+that because it really helps with the
+speed so check it
+out in this video you will learn the
+easiest way to set up your color styles
+and in the previous one we applied all
+our desktop Tex Styles and all our
+responsive Tex Styles so again now it's
+time to create the color styles so I'm
+going to jump over to the style guide
+page again the first thing we want to do
+is to just select one of the colors so
+I'll take the first one here the
+black
+and here instead we go to the fill
+option click here and inside of this
+fill model we can start creating our
+magic the way to create our magic is by
+going to this plus here so I can go and
+click plus and now we're creating a new
+color style based on the color here that
+we've selected so for this one we can
+call it
+black I'm just going to create this say
+black we can move it up here if we want
+to because all of these colors are the
+ones I created just for the course
+lesson again so we have black then we
+also have black
+75% here so I'm going to go to the plus
+so I just switched over to this one just
+click that one so you can do it like
+this and it's going to be much quicker
+switch between them while the modal is
+open switch to color 75 sorry black 75
+click plus black 75
+create drag it up here switch over to
+this
+one let's see plus black
+50 do the same here drag it up
+plus black
+25 drag it up and then I'll just do this
+for all the colors but before I do that
+I'm going to go to this Auto layout or
+stack as we call it inside a framer I'm
+going to change the width here from fit
+to
+fill
+and from here we're going to have a wrap
+property so that the colors are wrap so
+I can see all the
+colors let's see are all the colors
+present yes but this color
+here why do we have two of
+them let's see this one is white 50 okay
+I see so maybe for these ones we're just
+going to create a border so that we can
+see
+them and that should be good so let's
+continue we have black 25 we have black
+20 so plus again black 20 create drag it
+up
+here oh sorry we don't have to do black
+five twice we have to switch to the new
+one go back up here plus black three
+then we
+have white 100 and just for consistency
+we can go back to our black here and
+when you go back to a color like here
+just make sure that you select the new
+one so that you don't go here and click
+black now because then you're going to
+make the color you've selected into that
+one so first go to the color that we're
+going to change so we have the black one
+I'm going to edit this and say black 100
+or maybe we even call this dark 100
+which makes it a bit more maybe scalable
+because then it doesn't have to be black
+it could be some other color but it's a
+dark color so dark
+50 dark
+25 dark 20
+sorry dark
+10 dark
+five and dark three and yeah again this
+is totally up to you how you want to
+name name your things and I'll click on
+dark 100 here again so that we get the
+original color back and we go back to
+White maybe we change this to light 100
+and then we're going to create sorry
+we're going to select this one we're
+going to create another one called
+light
+50 and drag that one
+up now let's jump over to these
+ones this one we can call
+teal like
+that then we have this one what do we
+call this one
+orange sorry for my poor color
+naming purple
+purple and
+red and there we have all of our colors
+now one other thing I would want to do
+with my colors is to make sure that they
+are applied to our text Styles and the
+way to do that is to go back into our
+text Styles and click here heading one
+edit and inside of here you can see that
+we have a color option as well so for
+this one we're going to set it to be
+dark
+100 heading two edit dark 100
+again do the same for
+this dark
+100 dark
+100 so basically for all the headings
+setting dark
+100 for this body text I will actually
+go and check out my previous project
+here because I don't remember what exact
+colors we had so for the body Excel
+let's see is it black 75 and as you can
+see here I'm using black instead of dark
+so this is again very much up to you
+what mood are you in today how do you
+want to do this black 75 which would be
+in this project let's see dark
+75 and if we check this one I think it's
+the same dark
+75 how about this
+one dark
+75 dark
+75 let's see dark 75 so every one of
+these bodies except the last one which
+seems a bit more faded
+out
+50 okay so let's say that one is
+75 this one is going to be 75 and just
+so we don't forget maybe take the
+smallest one first here this is going to
+be dark
+50 then we can continue with the other
+ones dark 75
+dark
+75 sorry this is
+repetitive
+[Music]
+75 and 75 and the last little puzzle
+piece 75 so there we have our color
+styles also applied to our
+textiles which is going to be quite nice
+because now we we're going to make sure
+that everything stays consistent
+throughout the site as we build it now
+there is one style that I didn't quite
+cover that is the link Styles so if we
+go to our assets here you can see that
+we have our text Styles set up it's
+looking nice we have our color styles
+set up it's looking nice too but we
+didn't set up a link Style
+so that's what we're going to do I'm
+going to click here set up a link
+style it was created here so if we click
+on this under
+links you can see that we have three
+color options now again we're going to
+be a bit of a cheating little sneaky
+fell here and we're going to go into my
+previous project and we're going to see
+what I have been using so if I click
+link you can see that the default color
+we're using here is black or dark so the
+link when nothing is happening to the
+link it's going to be black or dark then
+as we hover over it it's going to be
+faded out so dark 50 or black 50 and
+when it's the current color or the
+current link if it's in a navbar for
+example then we don't actually have any
+difference so it's just just going to
+stay black so I'm going to go back here
+going to change this one to dark
+100 and then change the hover to what
+was it 50 I think dark 50 and then as a
+nice little thing a nice little touch we
+can go into transition click add twe and
+we get this ease in out animation to our
+links we can also add decoration to it
+so by default it's going to have a an
+underline or a strike through and then
+on Hover is going to have an underline
+or a strike through for me I think
+nothing just the color
+change might not be the most accessible
+option but at least it looks amazing
+right we we have to think about the
+Aesthetics as well current I'm just
+going to remove and decoration just
+maybe current we could have an underline
+but you know what for now we're not
+going to care about that fine finally
+it's time to set up the structure of the
+website and by the end of this part of
+the mini course you'll have something
+like this now let's
+continue so in this video we're going to
+start creating the header or the hero
+section so let's go back to the figma
+file and let's check out this hero so we
+have this big text we have some 3D
+assets we have this little body text
+here here and then a
+button
+now let's quickly also go to the actual
+website that I created just to check out
+what
+happens so as you can see these things
+here kind of slide up like these things
+aka the text going to replay it it
+slides up how we make it slide up like
+this is because the text Fields so the
+top field and the bottom field are right
+wed into their own boxes so let's watch
+it
+again this text comes up out of a box
+that is hiding hiding it and this is
+doing the same thing and in the figma
+file I just have the text Fields like
+this so that's going to be a difference
+um something that we do
+differently now I'm going to create a
+frame here again frames upon frames as
+we as we usually do here in this little
+tool going to give it dark five so we
+can see where we're working we can call
+it
+hero like
+that okay so the first thing
+is next level the text so let's write
+Next
+Level bump it up
+inze and as you probably can see here
+this site
+is a lot bigger than our
+biggest style our biggest text style
+that we added and the reason I didn't
+add this specific style is
+because it is
+dynamic uh it resizes based you can see
+that like
+resizes exactly based on the device
+width so with some um like with our
+other
+text it will resize on specific break
+points like
+this but with this text it goes along
+with the screen like this so it fits the
+screen and when it fits the screen like
+that we can't have a defined text size
+we have to set a different value that
+we'll get into in a little bit but let's
+just write the text for an hour like
+this and I'm going to add a frame around
+this let's say uh
+top and I'm going to do like maybe we
+decrease the size a little
+bit maybe something like this for
+now and I'm going to do this I'm just
+going to duplicate this by holding down
+shift and
+option and I think 3D assets yes is what
+what we say 3D assets Let's uh go to
+these text fields and decrease the
+letter spacing a bit just so that we can
+see all the letters
+um top this bottom one should be called
+botm or
+bot so we have those text Fields what
+else do we have we have the images Okay
+so let's create a frame here so again
+coming back coming back to the boxes
+upon boxes thing the image is just a box
+right so we're going to go to this
+choose an image uh what did we have I
+always forget I might be coming a bit
+scile but this is going to be a car what
+card do we want do we want let's do card
+car blue
+uh it's not the same one but this one
+will work
+too so a car there let's see what size
+we have
+350 so it's going to be a bit bigger too
+maybe uh 350 might be too big here let's
+say
+240 so again 4 Points grid system
+based uh and this is going to be image
+like that going to duplicate it and
+while I'm dragging here I'm holding down
+uh space bar as you can see down here
+and when I do that so I start dragging
+and then I hold down space because
+otherwise if I don't do that this might
+end up being nested or going outside of
+things so I want to hold down space so I
+just keep this in the same layer that I
+want so let's do this let's see yeah
+here we have this tilt and this is going
+to be a
+bike so let's see
+bike like that and we have a feather so
+copy
+paste and drag it
+here uh
+feather feather where are you at where
+are you
+at I don't have the feather in
+here maybe
+I decided not to include the feather so
+we can take something else let's take a
+brush we have the brush looks cool um
+okay so we have and this is easy to
+change so we can switch between
+different assets I usually get tired
+with assets so I will just switch it mid
+through Midway through uh a project
+anyways okay so what else we have have
+the
+assets we're going to have a text field
+here not this big though let's say text
+and we decrease the
+size like
+that um 20 this is 20 merry weather so
+we might as well go to our Styles and
+look for 20 merry body
+large and I'm going to copy this text
+paste it
+in like like
+that um what else do we have we have
+this
+button so let's increase the height a
+little bit here drag this
+up and maybe we increase the width a
+little bit for now um put this a bit
+higher going to create another frame
+here for the button going to call it
+button and inside of the button we have
+some text that says
+something something what does it say it
+says explore categories explore
+[Music]
+categories and I'm going to go to
+Styles before I do that I need to check
+what it is 20
+hosal okay 20 so body
+large again going to go to Color here to
+make sure it's dark
+100 in here here we're going to have a
+little
+pulsing pulse asset you can see here if
+I zoom in it's pulsing like
+that and that is going to be a component
+in itself so for
+now um we're just going to keep it as a
+container I think let's
+see what size
+20 so 20 going to make this into a
+layout
+like
+that see what Gap do we
+have 12 okay that was I guessed right
+for once that was was a nice nice thing
+for a change border um we're going to
+have a border of five I
+think let's see button stroke 5%
+yes uh
+what 20
+in
+radius not
+padding uh radius
+20 that looks a bit too rounded though
+because it's not high enough so let's
+see here let's first put them to be fit
+content like this then let's check 34 34
+and 56 on the sides 56 okay
+okay so let's say 56 and then do 34 top
+34 no 34 top
+30 uh
+32 you see my muscle memory even goes
+for four point grid should we stick with
+that or should we have a fixed height
+usually what I do is a fixed height and
+I think 34 was possi
+to get it to be 88 which is 4o grid so
+instead of having to double with the
+height paddings what I will do is use a
+fixed height instead to make sure it
+sticks uh adheres to the fourpoint grid
+always it's just easier to read to you
+will see okay it's 88 in height instead
+of like 34
+34 okay good I
+will let's see I will remove this
+background and we will now go into the
+text settings here let's see if we take
+the first one let's see let's say
+324 just
+for consistency here so I'm going to
+increase the
+size to
+324 and then I'm going to change to a
+maybe we even do this to get it for free
+so I choose heading one first and then
+we just remove it and we increase the
+size a bit 216 maybe we want even more
+and right now you can see how like the
+text pushes out of these boxes it's
+getting messy so what I would do here
+instead is to go to E each box so this
+one I will go and set it to layout
+and
+fit content so now it fits all of the
+text inside
+fit content
+everywhere so now we can place them like
+this we can take this let's see the
+whole button we can push down a bit
+let's push this oh sorry push this down
+as well push this up a bit let's push
+the text down um
+okay let's see um what we're also going
+to do is we're going to go and check our
+website here I'm going to just see what
+I actually did so I have a text
+container containing these
+because I mean on one hand it adds more
+containers on the other and it gives me
+more control over these text Clipper
+items another reason I do that is
+because when we make this responsive
+later I want these images to be adhering
+to this box so I want it all to
+be based on the same parent element
+because if they are outside of this box
+their parent is going to be the hero
+section so when we make it super wide
+these images are going to span out into
+the sides so if you have a very wide um
+screen they're going to be in like the
+edges of the screen if you don't pin it
+correctly so it's easier to wrap it all
+into this container
+so let's do that I'm going to take these
+both and add a stack call this uh um I
+mean it's going to include the images as
+well so maybe text container isn't the
+right word let's just call it wrapper
+for now let's make it
+identityless identity lless I'm going to
+put these images inside of here and you
+can see that now it really goes bananas
+so what I will do is I will go not to
+the wrapper but I will go to these
+images t Target or select them all and
+change their position from relative to
+Absolute so that they are no longer part
+of the
+flow and let's see this one was here
+this one I will H hit option V option H
+which will place it first uh vertically
+so it's these options v h vertically and
+then horizontally oh and then I will
+reposition it like this oh this was here
+actually and this one goes up
+here um that is better but this whole
+wrapper is clipping content right now so
+the Overflow is said to Hidden I do not
+want
+that um it has a little bit of a gap 10
+which we don't want either but it's
+still too much distance between these so
+we have a couple of options and again
+I'm just going to remove the gap Gap
+from here because I don't want any Gap
+in these we have a couple of options
+here I guess um since we want these to
+be
+closer but they are inside of a stack
+and there is no ability right now to do
+minus gaps like minus
+values we will need to be a bit creative
+here and what we can do in this case
+actually is to make these text Fields
+themselves either into absolute
+positioned
+items um this will allow us to so I will
+give you an example I could make this
+position absolute and then I can place
+it further down so it's like right by
+the edge here I could do the same with
+this let's see position absolute and
+place it like in the top here so it's
+right by the edge there is
+well that is one way but I don't think
+that was the way I was using here though
+let's see uh so the text nope is still
+relative so what I did here
+instead is what we see here I was using
+a smaller line height for the text so if
+we do command
+C and command C back to
+relative relative can do that as well um
+as you can see here the line height is
+currently 110 so if I drag that down to
+95 instead the whole box changes its
+size if I do the same here D dine down
+to 95 sorry I need to select the text
+down to
+95 it all of a sudden looks much better
+let's see see are we having the same
+text size no we don't this says 100%
+what the Hedge is that let me explain to
+you what that is that is what gives us
+the ability to have the text scale like
+I showed you so instead of having a
+specific size here which makes it
+impossible to have it scale in that way
+I'm going to set it to be
+100% so now this next level thing is
+100% but the container is very small
+right now so the text becomes
+tiny so what we'll have to do is to set
+this to fill and we're back we're back
+in the
+game and I'm going to do the same for
+this so so we're going to set this to be
+100% and we're going to take the bottom
+container set it to
+fill and we're back in the game but as
+you can see here now these both fill up
+the full width which is nice in some
+cases but in this case I want the text
+to be the same size or I want it to look
+as it's the same size at
+least and I'll will hack to do that that
+is to just go to your text here and add
+a little bit of spacing so add space in
+the in the front and a space in the back
+and all of a sudden we have text that
+looks more similar in size now it's not
+exactly the same size but it looks
+better at least let's see if we can make
+it a bit tighter maybe what are we Sorry
+here what are we
+using minus
+0.5 so now it looks better
+um and I think we can even increase the
+size of these actually let's say
+320 320 and this is also something we
+might change throughout but let's do 320
+for now 320 320
+320 okay good um
+um why is this
+ah yes because this has no this doesn't
+have a background ah so the hero here is
+clipping content and we actually want
+this hero to clip content so I'm not
+going to change that but I am going to
+make this into
+an a
+stack I always want to say all the
+layout because I'm so used to figma but
+it's is going to be a stack I'm going to
+give it some
+Gap I'm going to give it a height
+of fit content for
+now and we're also going to give it
+a Max
+height Max height or maybe even a Min
+height let's see of 100 VH and VH is
+just a way for you to
+specify or to say to a section in this
+case you're saying to the section I want
+you to take up the full viewport height
+so 100 is the full viewport height so if
+you um take my website here for example
+and we play
+it this section takes up exactly one
+full height of my screen so regardless
+of your screen size it's going to take
+up this whole screen
+size so I have this this on Max in this
+I don't know if I use max or Min in this
+case let's
+see height I actually just use 100 VH in
+height so let's not complicate it and
+let's make it always 100 VH in
+height so now we have that we have the
+images here we have the
+text how is the
+oh sorry I'm jumping between Windows
+here so 32 32 so the distance we have is
+32 in other
+words okay I'm going to place this a bit
+like
+this I'm going to put this figma window
+here because I want to check out our
+real website
+instead okay so obviously have different
+assets and they're placed differently
+but it doesn't really matter you can
+place them however you want so let's go
+with this placement for now if you want
+to you can place them like this as well
+in the end it's not going to matter
+something I see as a difference is that
+I'm using uh dark color on this text
+here for the
+hero um what
+else this text seems to be bigger in
+here
+so maybe I didn't fully follow the figma
+file in this case let's play and
+see again though that is easy to change
+so we if we want we could have this
+bbody Xcel instead if we like that more
+this Frame is going to be pulse but I'm
+just going to call it pulse for now and
+I'm going to give it a little dark
+background like
+that what else are we missing are we
+missing something else um um no I think
+we have most things right now obviously
+there are a bunch of components and
+effects again but we're going to get to
+that
+later um but other than that let's see
+this width is going to be Phil in the
+end
+um so let's actually take this moment to
+make this whole desktop into a layout so
+I'm going to hit plus here and nothing
+happens right now but the cool thing
+when we do this is that now I can switch
+my sections really easily like this just
+select one and then throw them around
+and that is pretty cool I think that
+helps your workflow makes it faster so I
+always do that when I create websites in
+framer and now automatically this hero
+section was set to fill so let's see
+what it looks like now when we decrease
+the
+size mhm it's not really working right
+so we have to go in here and check
+what's the issue so the wrapper
+here seems to be set to fixed values so
+it's just going to stay fixed it has set
+its mind to be fixed but we're going to
+change its mind and we're going to make
+it fill
+instead and we can can make it fit
+content height-wise uh no we cannot do
+that I take it back because if we do
+that I mean we can do it um but you
+could see how these images then um
+became or actually I might be talking
+out of my butt again let's change it to
+fit the only thing that happened here I
+think is that the size changed and since
+these are pinned to different places on
+the screen
+uh when the size changes they're going
+to change position because the size
+increases and this is going to go higher
+this is going to go lower because it's
+pinned to the bottom and this is pinned
+to the
+top so no worries
+there um but now if we resize it you can
+see that okay the text is now
+flexible that's quite cool but you can
+see that our 3D acids
+move I don't know if this is the optimal
+movement for
+us and the way for us to make this
+movement better is just to change the
+pinning so maybe let's say that this is
+going to be first of all pinned a bit
+lower can change it maybe it's closer to
+the edge here let's say
+96 let's put it down like that let's see
+how that works let's see minus 96 again
+I'm using the Four Points grid system uh
+minus
+32 let's check
+again mhm but when we go above a certain
+size like this car goes outside here
+that's not super good so maybe we have
+to give it a bit more padding from the
+top top sorry distance from the top and
+you can play around with this like to
+try and find something that that looks
+good when you do this the most important
+thing of course is that it sticks
+um like that it looks good from
+960 pixels which is going to be our
+first break point actually and up to
+like our Max
+width
+and with that said we haven't really set
+a Max width yet you can see this text
+just goes into Infinity right now I
+think we want to make sure that this
+doesn't go beyond a specific width which
+is going to make our assets um be more
+predictable and it's also just going to
+make our life easier overall because the
+layout is going to look better on bigger
+screens so let's go to Wi here to size
+and let's add a Max width to the wrapper
+so not to the hero because the hero can
+span however far it wants um or however
+wide it wants but the wrapper is going
+to be fixed to a Max a specific Max wi
+uh and here we can play around with
+stuff so let's say 200 pixels sorry 1200
+pixels and maybe we increase the size so
+we can see so now you can see that it
+stops at that break point and all of a
+sudden the size or the pinning of these
+items needs to be changed again because
+it stops growing at a point and then we
+don't need to like worry about these
+bigger sizes now we need to worry about
+anything from like 1 12200 and down here
+instead so 1,200 I think that's the same
+that I was using here let's see oh look
+at me I even used the max with on the
+hero section and in this case it doesn't
+really matter because we don't have any
+content that um that is going to be
+impacted by this in some cases you might
+not want to do it but in this case it
+works let's see if we find a different
+case later down the line where we might
+want to set the max with on a different
+container but in this case it's no
+worries so we can actually just to make
+it exactly the same let's remove it from
+here and let's put it here instead so
+1200
+pixels um and that looks
+good let's see okay yeah I think this is
+starting to look quite
+nice and here will be later when we make
+this responsive here will be the break
+point you can see how the text text
+changes and that's because the Styles
+have been set to be
+responsive so that's
+done um let's see does it behave similar
+to this
+yep it's just that the pinnings uh let's
+make this 960 again it's just that the
+pins are um of these items here a bit
+are a bit different and maybe the size
+yeah they are a bit smaller so let's go
+down to 240 again 240 I got a bit cocky
+with the sizing
+there let's see how does it look
+boom it looks good
+and again you can play around with this
+forever if you want to like find your
+perfect
+sizing uh for everything the perfect
+pinning
+um but I think this is good for now time
+for the final step making this Beauty
+look beautiful on every device
+responsiveness is a thing that a lot of
+people struggle with and in this part of
+the mini course we're going to dive deep
+de into it first though let's start with
+a little change to the structure that we
+just
+created because what I realized is if we
+set the height here to 100 VH and then
+we just call it a day it's going to be
+fine in cases where we have like a
+screen that isn't super wide and maybe
+pretty short like in this case you can
+see how things just get caught on off
+this isn't looking super good so to fix
+that we're going to take the hero here
+instead and say that the height is
+actually going to be fit so it's always
+going to fit the content so it doesn't
+get cut off now if I scroll here you can
+see nothing is cut off that's good
+that's a good start and also we might
+want to add some bottom padding like I
+don't know 64 maybe if we play or check
+the prototype this looks a bit
+better so we added our paddings we
+changed the height of the section to be
+fit but that's not all I actually want
+the height to have or to be a Min height
+I want it to have a Min height as well
+that is the way you say it in English
+sometimes I just lose my English I feel
+Min height should be set to 100 VH so a
+minimum of 100 in viewport Heights
+because otherwise if someone has a
+really big screen and this section here
+let's actually remove it just to
+examplify let's take this and publish it
+update there we go and here is our
+website let's see so in this case it's
+fine but what if I zoom out here and
+let's say we have a really big screen
+then if you have a really big screen you
+can see how now we're going to see more
+stuff on the page like this I want this
+to be the only thing anyone sees um when
+they go into the page I don't want this
+stuff to be seen regardless of what
+screen size you have or what device size
+you have to fix that that we can use the
+Min height of 100 VH sorry Min height
+not Min width Min height of 100 VH and
+now if I publish an
+update this should work so I in no sorry
+not inspect but I zoom
+out
+Senor 100 VH okay sorry it doesn't work
+like like that I will have to change to
+viewport here and now it's 100
+VH so if I
+update this should
+work so now if I zoom
+out you can see that it's always taking
+up 100 VH whatever size we
+have so that's good now it's going to
+work in the way we want this section
+here is always going to be at least 100
+uh in viewport
+Heights so that's another thing we had
+to
+fix the third thing is that I've been
+using Max with 960 for the whole website
+and I thought that let's use that here
+two so I'm going to change the max width
+to 960
+pixels so if we publish an update and
+check it out out here we can see that
+now the text fits in here as well for
+this uh device
+size and as you can see what I'm doing
+here as well is that I'm checking I'm
+not checking just in here in this mode
+here I'm actually checking how it looks
+when I am on the website itself I think
+that's a pretty good best practice for
+for you to have when you check how your
+sections actually look or how your
+websites actually look in the wild use
+the publish feature and update and go
+into your website whenever you make
+changes to make sure that it looks good
+in the browser now with those tweaks out
+of the way we can start actually going
+into the breakpoints themselves so let's
+go to our little plus sign here and hit
+tab
+and I mean right from the GetGo we get a
+pretty
+nice pretty nice structure because we
+were responsible with our stacks and
+we've been setting up a pretty good yeah
+good structure for the whole website but
+there are still some tweaks that we need
+to do to this website for example I'm
+just going to take this nav bar here and
+hide those links for the sake of um OCD
+I just want to get rid of that maybe
+decrease the height of this as well
+which we do here 96 could be a good one
+and again this navbar is going to become
+a component later on so I'm not going to
+create the
+actual responsive versions of this
+nowbar right now we're going to do that
+later in the component segment of the
+course but for the visuals I want to
+just do some
+tweaks so what else do we have we have
+these images probably we want to change
+the size of these images as we go down
+in device width so maybe
+184 this car maybe I want it to be a bit
+closer to the edge here maybe all the
+way here and maybe a bit more down
+because we still want to be able to see
+what the text says same with this uh
+bike here maybe change the position to
+more of a center position and as we
+change it to the
+center look here now if we start
+changing the
+size you can see that these this one
+oops that was not what I wanted to do
+sorry about that this one is pinned to
+the right as you can see here it's
+pinned to the right this one is pinned
+to the left and the top so when we
+decrease or increase the width these
+look good they are pinned like they
+should actually this one we might even
+want to remove the PIN to the top so
+when we resize that looks quite good but
+the bike is kind of biking around here
+which I mean kind of looks cool as we as
+we change the size here it's it's
+literally biking but I don't want that
+as the user is decreasing the size of
+their browser so what we can do what I
+just did with this one remove the pin in
+the top we can do the same with this one
+but I'm going to remove this left pin so
+it's just going to stay in the center
+instead so now that we change sizes it's
+staying in the center so that's a pretty
+good thing to keep with
+you okay we have have the sizes here
+they they look good image
+sizes um and another thing I mean this
+button as well as was as well as every
+other button on this whole website is
+going to be a component so we're going
+to componentize all of these things the
+nav is going to be a component because
+we're going to reuse it the button here
+is going to become a component this is
+going to become a component
+but for the sake of visuals again and
+just to touch on this concept that I've
+talked about before that we scale down
+for every device with I just want to
+quickly show how I would do that so
+probably for this button when we create
+a component out of it I will scale it
+down in height so let's say
+72 I would probably decrease the padding
+to the left and the right so that it
+becomes comes a bit tidier um even the
+radius I would probably change so 16
+here
+maybe um and all of a sudden I think it
+looks better it looks more in line with
+this device
+with so I think I really think this is
+it for the tablet quick changes um then
+we're going to add a phone one as well
+so plus phone
+and for the phone we can see that again
+these things here are a bit too big so I
+am going to take all of these and not
+remove them but reduce the size of them
+and maybe 120 might be a bit too big
+let's say
+112 and maybe this will be a bit further
+up like that and this one
+maybe- 40 might work minus 40 here too
+let's see how it looks as we scale it
+towards
+560 h i mean at this size they look very
+small even a bit too small at this size
+and what we could do if we really wanted
+to be super specific about like in
+between sizes is that we could add
+another custom size here so let's name
+this like tablet uh or what do you name
+this tablet
+mini and let's say that the size is
+559 let's see tablet
+mini or let's say that this size is
+actually is going to be down to like
+wherever we want the cut off cut off to
+be here so when do we want it to become
+this smaller mobile size maybe it's at
+487 maybe it's something else but the
+lesson I want to give you here is that
+you could create an in between State
+like this and do even more tweaks now in
+most cases I don't think this is
+necessary I think it just adds a bunch
+of headache so we're not going to do
+that but we might just increase the size
+of these images to like one 28 maybe
+let's see how it looks maybe it becomes
+too big at this small size no I mean
+this could work I guess it does block a
+bit too much of the text so maybe 120 is
+the best we have and maybe we move it
+closer to the edge and a bit more
+up so it goes outside of the screen this
+bike where do we put the bike
+where do we put the bike maybe here so
+we can still see that it says assets I
+think that's good
+enough yeah that looks pretty good back
+to
+320 now another thing that could happen
+here is if this text here is set to fit
+for example or fixed so it has a fixed
+value as we go down and size in tablet
+it's fine but as we come to the mobile
+size you can see that all of a sudden
+this is breaking out of everything and
+as we add more text it's it's just going
+to add more breakage to the whole deal
+so to fix that what I will usually do is
+I will go to the master so the desktop
+frame and change the fill to sorry the
+width to fill and in many cases you're
+text Styles will be left aligned by
+default so you would have to Center
+align it and then you get this so all of
+a sudden it works which is nice because
+now it works just according to the
+paddings for every device here so you
+can see as we scale works well
+awesome and yeah that's another little
+lesson there with the text sizes now
+let's add or decrease the buttons size
+here again so maybe 64 and maybe 32 left
+and
+right and that looks pretty good and 12
+in radius canot forget that so we have
+our little
+increments what is
+missing I think the paddings so since
+we're using 16 which is already a pretty
+low number for the hero I don't think we
+necessarily have to reduce this for
+the uh sorry for the tablet but maybe
+for the phone now if we would use
+something bigger like 64 here for the uh
+for the
+desktop I say it was 64 here and 64 here
+then maybe for the tablet I would go
+down to at least
+32 and then for the mobile maybe like we
+would have
+12 but now since we're doing
+16 here let's go back we're doing 16
+here I think for tablet we can stay the
+same but for mobile I usually like to
+use something like 12 so that we utilize
+as much as possible of the screen so
+let's go in here to the nav as well and
+change from 16 to not to
+12 so something like
+this and there we go again if you want
+to become a truly dangerous framer Pro
+and also gain access to the rest of the
+20 plus hours of content that this
+course offers then check the link down
+below anyways enough with a Salesman
+we'll talk later another time another
+video have a great life talk soon
+CIA

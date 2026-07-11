@@ -1,0 +1,250 @@
+Master Responsive Grids (Rows & Columns) in Figma
+https://www.youtube.com/watch?v=sybtdc4dYzE
+
+after watching this figma tutorial on
+grids you will know exactly how to use
+columns and rows in your designs to make
+them more structured and Pixel Perfect
+also make sure you stick till the end to
+see how I personally set it up for
+responsive design now let's go alright
+so we're in figma let's talk about grids
+and in particular rows and columns I'll
+start with the rows then we'll go over
+to columns and then we'll see how
+columns are treated when we're doing
+responsive design so rows are what we
+use for the vertical axis and why do we
+use rows well because of vertical
+consistency and the Snapping help we get
+for our eight point grade system and if
+you don't know what I'm talking about
+when I'm saying eight point print system
+check this video because I could highly
+recommend you actually starting to use
+the eight point grid system when
+designing it's super helpful for
+consistency but so the vertical
+consistency here you can see we have 16
+pixels 16 pixels this really helps us
+when we want our designs to look like
+they're built with purpose so 1616 it
+could be 24 it can be 32 it could be any
+number really that you want to use I'm
+sticking to the eight point grade system
+like I said but any number you want to
+use but you're sticking to the Bruce
+you've set up that's the first one
+vertical consistency and the second
+Point kind of is about the same thing it
+helps you snap according to the row
+system you set up as you can see here
+when I move my items they're snapping to
+this 8.3 so 16 snapping to 24 snapping
+to 32 which is really helpful if you
+want to make sure that you're not
+missing by pixel or two here and there
+let's talk about how we set it up and
+what the settings generally would be so
+when I set it up or when anybody sets it
+up in figma this is how it works but my
+settings might differ from others you do
+it how you want to but the first thing
+you do is you you go to the right
+sidebar click layout grid hit the plus
+change to rows you choose account the
+count is really just for you to make
+sure that you cover the full height of
+your frame I'll pick 100 and it
+disappeared and that's because we need
+to change the type to top so that it
+aligns to the top I'll change the height
+of our rows to 8 pixel once again
+because of the eight point print system
+then we have the gutter I'll change that
+to 8 pixel as well and now if we create
+something in here so let's create
+something
+this and see how it helps us snap
+according to this new row grid we've set
+up so that's quite handy
+what we do as a last thing is we create
+a style out of it because then we don't
+have to recreate it every single time so
+I would take this grid I'll just copy it
+over here for the sake of it you could
+do that as well you could just copy it
+to every single frame but it's easier to
+have one single style because then you
+can go to just that style and change it
+if you want to change it across the
+board I'll go into the Four Points here
+or the four dots that says style we're
+going to hover over it click that hit
+the plus and then I'll just say 8 pixel
+row grid create style and there we have
+it now we can apply it to any new frame
+that we create I'll go to the four dots
+click it and boom it's there then we
+have the 12 column layout and this is on
+the horizontal axis why do we use a 12
+column system or a 12 column layout
+pretty simple in this case as well first
+of all it's the web standard it's what
+we use on the web in 99 of the cases and
+the second thing being that the number
+12 is very easily divisible so we can
+divide it by two by three by four by six
+two main reasons for using it now what
+type setting do we use for our columns
+and when I say type setting that's where
+we in the previous row example chose top
+instead of stretch what do we typically
+use for columns well it depends a bit I
+would say that we only have to focus on
+two in this tutorial and in general I'm
+only using one and I'll get to that so
+type Center is generally how the web
+World works for desktop screens and what
+type Center does is that it locks in our
+container so the container kind of being
+this 12 column grid layout it locks it
+in so it doesn't stretch or Shrink or
+increase in size or decrease in size as
+we change the size of our frame you can
+see here just stays put the same size
+now there's a problem with using type
+Center you can see here that the
+container says 1144 pixels here the
+standard would be 1140 pixels with the
+center setting
+you can't use half pixels and you don't
+use that anywhere in the real web World
+either so it makes sense that you can't
+use it but you also can't set the entire
+width for all these columns combined so
+we can't set the exact container size
+here and we lose some pixel accuracy so
+that's why I typically and we'll get to
+this I typically don't use the center
+option even though that's how the web
+World works for everything desktop and
+above not everything but in most cases
+now type stretch is generally how the
+web World works for tablet and Below how
+that works is just like you see here the
+container becomes fluid and it goes with
+the size of your frame but like I said
+in figma I usually use stretch
+regardless of device for the pixel
+accuracy so that I can get to 1140
+pixels or whatever I want for my
+container size without having it be off
+by a pixel or two here and there if we
+set it up how do we set it up it is
+basically the same as for rows we go in
+here hit the plus but we choose columns
+instead
+when we've done that
+it all depends on the container you want
+to have so now we're talking about this
+cop here again usually you can stick to
+the 20 pixel cutter that you get from
+the start the count in this case we're
+going to use 12 like we talked about and
+the type like I also said stretch but
+the margin depends on the size of your
+container so do you want your container
+to be 1140 pixels well then the margin
+is going to be 30. so if we check here
+margin is 30. if we're using a 960 pixel
+container then the margin is going to be
+120 instead
+120. so the margin really depends on
+your container when it comes to desktop
+and here we can also make a style out of
+it
+same process we go to the four dots hit
+plus and then we name it how we want you
+can be really specific like you can take
+this name here say all the setting
+details so 12 call 150 pixel margin and
+it's going to be then 1140 pixel
+container in a 1440 pixel frame so we
+could go here add that copy and paste it
+in now we have that style so that we can
+reuse it one thing I want to go into
+before we go over to the responsive
+layouts is to keep in mind that columns
+are guides generally you don't want to
+break them but if you do you should do
+it with intent what I mean by that first
+of all as you can see here we're using
+the columns to structure our content so
+this column with or sorry this element
+here with text and buttons covers six
+columns this image here covers five
+columns and there's a column in between
+those if you go down a bit
+see that these cards here or these items
+cover four columns each but here we
+break it so this text that goes here
+breaks the whole column system and
+that's by Design because it adds a nice
+look to it but it is by Design we're
+thinking about it we're doing it by
+purpose or on purpose same with this
+this is a Carousel and here the carousel
+goes outside of the column system by
+Design same here we have an image that
+goes outside of the column system by
+Design so when you're doing that do it
+by Design not randomly and don't ever
+design things doing like half columns so
+like I did this container which covers
+five and a half columns your developers
+are gonna cry if you do that so please
+don't do that now the last thing we're
+going to cover is making columns
+responsive so the standard here is 1284
+which means that that we're using 12
+columns for desktop 8 columns for
+tablets and four columns for mobile you
+can go and check out material designs
+documentation you can see that that's
+what they're using so it's pretty safe
+to go that route for desktop you're
+using your standard margin and gutter
+but for tablet we usually go down we
+decrease the margin a bit and the gutter
+a bit the same for mobile we decrease
+the margin and gutter even more because
+the content is going to be smaller so we
+don't need as much spacing to work with
+so the desktop settings would typically
+be a gutter of 20 pixels a count of 12
+and then the type stretch like we talked
+about and the margin really once again
+depends on your container in this case
+is it 1140 is it 960 or something else
+when it comes to tablet settings this we
+can do together
+set it up so add columns so a count of
+eight a gutter of 16 pixels a margin of
+32 pixels that would be like the
+standard that's usually what I'm using
+for landing pages and things like that
+so now if we change the size of this
+it's gonna be responsive and work in the
+way that we wish it to work same goes
+for mobile we decrease it even more like
+we said I'll add a layup grid and
+columns the count is going to be four
+the gutter is going to be 12 and the
+margin is going to be 12 also same thing
+here now it's responsive and it's going
+to stretch according to how we widen or
+tighten our frame if you found this
+valuable a like a sub a comment
+everything helps now until Linux one
+take care we'll talk soon ciao

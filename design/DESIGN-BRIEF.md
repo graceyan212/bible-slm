@@ -1,4 +1,4 @@
-# TREASURE TRAIL — Design Brief
+# TRUE NORTH — Design Brief
 
 *North-star design system for the SBC Kids' Bible Guide (ages 7–9).*
 **Tagline: "Follow your true North."**
