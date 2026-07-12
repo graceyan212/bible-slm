@@ -1,0 +1,30 @@
+{
+  "_comment": "Treasures (collection) screen data. Gamification layer — earned by completing stories/milestones — kept separate from the un-gamified sacred story. Grace-not-guilt: locked items invite ('keep exploring'), never shame. Earned state mirrors map progress (Creation + Red Sea done).",
+  "found": 4,
+  "total": 10,
+  "streak": 3,
+  "gems": 7,
+  "hero": "ui/treasure_chest.png",
+  "sections": [
+    {
+      "title": "Story Treasures",
+      "items": [
+        {"name": "Golden Compass Rose", "from": "Creation", "emblem": "compass", "earned": true},
+        {"name": "Parted Waters", "from": "The Red Sea", "emblem": "waves", "earned": true},
+        {"name": "Shepherd's Heart", "from": "Jesus & the Children", "emblem": "heart", "earned": false, "hint": "Finish this story"},
+        {"name": "The Promise Dove", "from": "The Promise", "emblem": "dove", "earned": false, "hint": "Unlock this story"}
+      ]
+    },
+    {
+      "title": "Adventure Badges",
+      "items": [
+        {"name": "First Steps", "from": "First story done", "emblem": "boot", "earned": true},
+        {"name": "3-Day Streak", "from": "3 days in a row", "emblem": "flame", "earned": true},
+        {"name": "Explorer", "from": "Finish 5 stories", "emblem": "map", "earned": false, "hint": "1 of 5"},
+        {"name": "Gem Collector", "from": "Find 10 gems", "emblem": "gem", "earned": false, "hint": "7 of 10"},
+        {"name": "Early Bird", "from": "Read in the morning", "emblem": "sun", "earned": false, "hint": "Keep exploring"},
+        {"name": "Region Complete", "from": "Finish The Expedition", "emblem": "crown", "earned": false, "hint": "Keep exploring"}
+      ]
+    }
+  ]
+}
