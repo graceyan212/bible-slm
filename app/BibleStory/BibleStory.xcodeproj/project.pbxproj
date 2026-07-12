@@ -352,6 +352,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4DMP5UV5S6;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "True North";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Confirm you're a grown-up to open the parent area.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Poli listens so you can ask questions out loud.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Your words become text on this device so Poli can understand your question.";
@@ -461,6 +462,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4DMP5UV5S6;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "True North";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Confirm you're a grown-up to open the parent area.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Poli listens so you can ask questions out loud.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Your words become text on this device so Poli can understand your question.";

@@ -77,10 +77,6 @@ struct HomeView: View {
                     .frame(width: w, height: h)
                     .clipped()
 
-                ExpeditionBanner(title: "THE EXPEDITION")
-                    .frame(width: w * 0.92)
-                    .position(x: w * 0.5, y: h * 0.075)
-
                 // Four story stops, staggered down the map (positions from
                 // build_map_mockup.py LAYOUT). Only the current story glows; done
                 // stops carry a ✓, the not-yet story a lock.

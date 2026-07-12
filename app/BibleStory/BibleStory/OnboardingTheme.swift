@@ -1,7 +1,7 @@
 import SwiftUI
 
 // =============================================================================
-//  Treasure Trail — Onboarding-local design system.
+//  True North — Onboarding-local design system.
 //
 //  These are the SAME tokens as design/tokens.css + design/onboarding.html
 //  (parchment palette, brass/gold candy buttons, storybook serif headings,

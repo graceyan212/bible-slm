@@ -2,7 +2,7 @@ import SwiftUI
 import UIKit
 import BibleStoryCore
 
-// MARK: - Theme (ported from design/tokens.css — "Treasure Trail" explorer's-journal world)
+// MARK: - Theme (ported from design/tokens.css — the "True North" explorer's-journal world)
 
 /// Warm treasure-map palette + fonts. Raw hex sampled from the design board:
 /// 60% aged parchment · 30% sand/caramel paper · 10% brass-gold + sage.
@@ -974,8 +974,25 @@ struct MapTabBar: View {
         HStack(spacing: 0) {
             ForEach(MapTab.allCases, id: \.self) { tab in tabButton(for: tab) }
         }
-        .padding(.horizontal, 12).padding(.top, 12).padding(.bottom, 6)
-        .background { if !transparent { barBackground } }
+        .padding(.horizontal, 12).padding(.top, transparent ? 30 : 12).padding(.bottom, 6)
+        .background { navBacking }
+    }
+
+    /// Backing for the bar. On the Map tab, extend the map's painted cream strip
+    /// (#F1DCB2) up behind the whole nav — feathered at the top so it blends into
+    /// the map rather than reading as a separate bar — so the icons sit on a clean
+    /// band, not on the busy map art. Other tabs keep the parchment bar.
+    @ViewBuilder private var navBacking: some View {
+        if transparent {
+            LinearGradient(stops: [
+                .init(color: Color(hex: 0xF1DCB2, opacity: 0), location: 0.0),
+                .init(color: Color(hex: 0xF1DCB2), location: 0.32),
+                .init(color: Color(hex: 0xF1DCB2), location: 1.0),
+            ], startPoint: .top, endPoint: .bottom)
+            .ignoresSafeArea(edges: .bottom)
+        } else {
+            barBackground
+        }
     }
     private func tabButton(for tab: MapTab) -> some View {
         let isSelected = selection == tab

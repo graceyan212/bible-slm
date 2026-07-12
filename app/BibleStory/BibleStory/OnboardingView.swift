@@ -2,7 +2,7 @@ import SwiftUI
 import UserNotifications
 import BibleStoryCore
 
-/// First-run onboarding, in the Treasure Trail storybook/treasure-map aesthetic.
+/// First-run onboarding, in the True North storybook/treasure-map aesthetic.
 ///
 /// Flow (designed with the `onboarding-architect` skill; see
 /// docs/research/12-onboarding-flow-spec.md + 13-onboarding-copy-deck.md):
@@ -338,49 +338,52 @@ struct OnboardingView: View {
     }
 
     private var ageStep: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 18) {
             OnbPoli(height: 84)
             Text("How old is \(name)?")
                 .font(OnbFont.title(30)).foregroundStyle(OnbColors.ink)
                 .multilineTextAlignment(.center)
-            Text("Built for ages 7–9. Older or younger is welcome — we'll pitch the stories to fit.")
-                .font(OnbFont.body(16)).foregroundStyle(OnbColors.inkSoft)
-                .multilineTextAlignment(.center).frame(maxWidth: 320)
-            let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 4)
-            LazyVGrid(columns: columns, spacing: 12) {
-                ForEach(5...12, id: \.self) { n in ageChip(n) }
+            VStack(spacing: 12) {
+                ageRow([4, 5, 6])
+                // The suggested band — a dotted, labeled box around ages 7–9. Any age
+                // is still selectable; the box just signals what we designed for.
+                VStack(spacing: 8) {
+                    Text("Designed for ages 7–9")
+                        .font(OnbFont.caps(12)).tracking(2)
+                        .foregroundStyle(OnbColors.brassDeep)
+                    ageRow([7, 8, 9])
+                }
+                .padding(12)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 18)
+                        .stroke(OnbColors.brass, style: StrokeStyle(lineWidth: 2, dash: [5, 4]))
+                )
+                ageRow([10, 11, 12])
             }
             .frame(maxWidth: 300)
-            HStack(spacing: 7) {
-                RoundedRectangle(cornerRadius: 5).fill(OnbColors.parchmentDeep)
-                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(OnbColors.brass, lineWidth: 2))
-                    .frame(width: 16, height: 16)
-                Text("Designed for these ages")
-                    .font(OnbFont.body(13)).foregroundStyle(OnbColors.inkSoft)
-            }
-            .padding(.top, 2)
         }
     }
 
-    /// An age chip. Ages 7–9 (the designed-for band) carry a brass ring even when
-    /// unselected, so the recommended range reads at a glance; any age is selectable.
+    private func ageRow(_ ns: [Int]) -> some View {
+        HStack(spacing: 12) { ForEach(ns, id: \.self) { ageChip($0) } }
+    }
+
+    /// A uniform age chip — no "recommended" tint (the dotted box marks the suggested
+    /// band instead). Selected fills brass; any age is selectable.
     private func ageChip(_ n: Int) -> some View {
         let selected = age == n
-        let recommended = (7...9).contains(n)
         return Button { age = n } label: {
             Text("\(n)")
                 .font(OnbFont.body(20, .bold))
                 .foregroundStyle(selected ? OnbColors.ctaInk : OnbColors.ink)
-                .frame(width: 58, height: 54)
-                .background(RoundedRectangle(cornerRadius: 16)
-                    .fill(selected ? OnbColors.brass : (recommended ? OnbColors.parchmentDeep : OnbColors.surface)))
+                .frame(width: 62, height: 54)
+                .background(RoundedRectangle(cornerRadius: 16).fill(selected ? OnbColors.brass : OnbColors.surface))
                 .overlay(RoundedRectangle(cornerRadius: 16)
-                    .stroke(selected ? OnbColors.outline : (recommended ? OnbColors.brass : OnbColors.sepiaLine),
-                            lineWidth: (selected || recommended) ? 3 : 2))
+                    .stroke(selected ? OnbColors.outline : OnbColors.sepiaLine, lineWidth: selected ? 3 : 2))
         }
         .buttonStyle(.plain)
         .animation(.spring(response: 0.25, dampingFraction: 0.7), value: selected)
-        .accessibilityLabel("Age \(n)\(recommended ? ", designed for this age" : "")")
+        .accessibilityLabel("Age \(n)")
         .accessibilityAddTraits(selected ? [.isSelected, .isButton] : .isButton)
     }
 
