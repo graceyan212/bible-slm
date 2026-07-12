@@ -23,8 +23,7 @@ import BibleStoryCore
 ///  14. Social proof ....... loved by Christian families
 ///  15. Notification prime .. custom screen before the OS prompt
 ///  16. Paywall ............ honest free-trial (annual default, "Most Popular", timeline)
-///  17. Explorer ........... the child picks an avatar
-///  18. Finale ............. celebrate → **Enter the trail map**
+///  17. Finale ............. celebrate → **Enter the trail map**
 ///
 /// The final CTA calls the SAME completion contract as before —
 /// `env.completeOnboarding(child:translation:)` — now with the REAL name + age
@@ -36,7 +35,7 @@ struct OnboardingView: View {
         case welcome, founder, storyIntro, gate,
              name, age, bible, habit, hope, worry,
              building, plan, promise, social, notify,
-             paywall, explorer, finale
+             paywall, finale
     }
 
     /// The quiz steps that show the "filling map path" progress dots.
@@ -50,7 +49,6 @@ struct OnboardingView: View {
     @State private var hopes: Set<String> = []
     @State private var worry: String? = nil        // the concern they last opened (pins on the Promise)
     @State private var expandedWorry: String? = nil
-    @State private var avatar: String? = nil
     @State private var annualPlan = true
     @State private var showStory = false
     @State private var gateHeld = false
@@ -73,17 +71,6 @@ struct OnboardingView: View {
         default: return items.dropLast().joined(separator: ", ") + ", and " + items.last!
         }
     }
-
-    /// The explorer's kit — on-theme gear emblems (not animals). Stored on the
-    /// profile as an SF Symbol name and rendered as a brass emblem everywhere.
-    private let explorerGear: [(symbol: String, label: String, accent: Color)] = [
-        ("binoculars.fill", "Spyglass", OnbColors.custom(0x37E0C8)),
-        ("map.fill",        "Map",      OnbColors.custom(0xFF9E5A)),
-        ("key.fill",        "Key",      OnbColors.custom(0xFFD25E)),
-        ("flag.fill",       "Flag",     OnbColors.custom(0xFF83C0)),
-        ("star.fill",       "Star",     OnbColors.custom(0xFFE08A)),
-        ("backpack.fill",   "Pack",     OnbColors.custom(0x8B6BFF)),
-    ]
 
     private let habitOptions = [
         "We're just getting started",
@@ -203,10 +190,8 @@ struct OnboardingView: View {
                 primary("Yes, a gentle reminder") { requestNotifications(); go(to: .paywall) }
                 ghost("Not now") { go(to: .paywall) }
             case .paywall:
-                primary("Start \(possessive) free week") { go(to: .explorer) }
-                ghost("Maybe later") { go(to: .explorer) }
-            case .explorer:
-                primary("That's me! ✦") { go(to: .finale) }.disabled(avatar == nil)
+                primary("Start \(possessive) free week") { go(to: .finale) }
+                ghost("Maybe later") { go(to: .finale) }
             case .finale:
                 EmptyView()
             }
@@ -248,7 +233,6 @@ struct OnboardingView: View {
         case .social:     socialStep
         case .notify:     notifyStep
         case .paywall:    paywallStep
-        case .explorer:   explorerStep
         case .finale:     EmptyView()
         }
     }
@@ -708,69 +692,6 @@ struct OnboardingView: View {
         }
     }
 
-    private var explorerStep: some View {
-        VStack(spacing: 14) {
-            OnbPoli(height: 84, pose: .pointing)
-            Text("Every explorer needs a trusty tool —")
-                .font(OnbFont.hand(20)).foregroundStyle(OnbColors.inkSoft)
-                .multilineTextAlignment(.center)
-            Text("Pick your emblem")
-                .font(OnbFont.title(26)).foregroundStyle(OnbColors.ink)
-            let columns = [GridItem(.flexible(), spacing: 12),
-                           GridItem(.flexible(), spacing: 12),
-                           GridItem(.flexible(), spacing: 12)]
-            LazyVGrid(columns: columns, spacing: 12) {
-                ForEach(explorerGear, id: \.symbol) { g in gearTile(g) }
-            }
-            .padding(.top, 4)
-        }
-    }
-
-    /// One explorer-gear emblem tile: a brass SF-Symbol on a parchment card, with
-    /// a brass check when chosen. On-theme replacement for the emoji animals.
-    private func gearTile(_ g: (symbol: String, label: String, accent: Color)) -> some View {
-        let selected = avatar == g.symbol
-        return Button { avatar = g.symbol } label: {
-            VStack(spacing: 8) {
-                Image(systemName: g.symbol)
-                    .font(.system(size: 28, weight: .semibold))
-                    .foregroundStyle(OnbColors.brassDeep)
-                    .frame(width: 60, height: 60)
-                    .background(
-                        Circle().fill(RadialGradient(
-                            colors: [Color.white.opacity(0.9), g.accent],
-                            center: UnitPoint(x: 0.5, y: 0.35), startRadius: 2, endRadius: 40))
-                    )
-                    .overlay(Circle().stroke(OnbColors.outline, lineWidth: 3))
-                Text(g.label)
-                    .font(OnbFont.body(15, .bold))
-                    .foregroundStyle(selected ? OnbColors.brassDeep : OnbColors.ink)
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 16)
-            .background(RoundedRectangle(cornerRadius: 22).fill(selected ? OnbColors.sand : OnbColors.surface))
-            .overlay(RoundedRectangle(cornerRadius: 22)
-                .stroke(selected ? OnbColors.brass : OnbColors.outline, lineWidth: selected ? 4 : 3))
-            .overlay(alignment: .topTrailing) {
-                if selected {
-                    Image(systemName: "checkmark")
-                        .font(.system(size: 13, weight: .black))
-                        .foregroundStyle(OnbColors.ctaInk)
-                        .frame(width: 26, height: 26)
-                        .background(Circle().fill(OnbColors.brass))
-                        .overlay(Circle().stroke(OnbColors.outline, lineWidth: 3))
-                        .offset(x: 8, y: -8)
-                        .transition(.scale)
-                }
-            }
-            .shadow(color: OnbColors.outline, radius: 0, x: 0, y: 4)
-        }
-        .buttonStyle(.plain)
-        .animation(.spring(response: 0.25, dampingFraction: 0.7), value: selected)
-        .accessibilityLabel(g.label)
-        .accessibilityAddTraits(selected ? [.isSelected, .isButton] : .isButton)
-    }
-
     // MARK: Finale
 
     private var finale: some View {
@@ -783,24 +704,13 @@ struct OnboardingView: View {
                 .font(OnbFont.body(17)).foregroundStyle(OnbColors.ink)
                 .multilineTextAlignment(.center).lineSpacing(4).frame(maxWidth: 320)
 
-            HStack(spacing: 18) {
-                VStack(spacing: 4) {
-                    Image(systemName: avatar ?? "star.fill").font(.system(size: 28, weight: .semibold))
-                        .foregroundStyle(OnbColors.brassDeep)
-                        .frame(width: 60, height: 60)
-                        .background(Circle().fill(OnbColors.surface))
-                        .overlay(Circle().stroke(OnbColors.outline, lineWidth: 3))
-                    Text("your explorer").font(OnbFont.body(13)).foregroundStyle(OnbColors.inkSoft)
-                }
-                Text("✦").font(.system(size: 26)).foregroundStyle(OnbColors.brass)
-                VStack(spacing: 4) {
-                    Image(systemName: "book.fill").font(.system(size: 26))
-                        .foregroundStyle(OnbColors.caramel)
-                        .frame(width: 60, height: 60)
-                        .background(Circle().fill(OnbColors.surface))
-                        .overlay(Circle().stroke(OnbColors.outline, lineWidth: 3))
-                    Text(translation.displayName).font(OnbFont.body(13)).foregroundStyle(OnbColors.inkSoft)
-                }
+            VStack(spacing: 4) {
+                Image(systemName: "book.fill").font(.system(size: 26))
+                    .foregroundStyle(OnbColors.caramel)
+                    .frame(width: 60, height: 60)
+                    .background(Circle().fill(OnbColors.surface))
+                    .overlay(Circle().stroke(OnbColors.outline, lineWidth: 3))
+                Text("Your Bible · \(translation.displayName)").font(OnbFont.body(13)).foregroundStyle(OnbColors.inkSoft)
             }
             .padding(.vertical, 16).padding(.horizontal, 24)
             .background(RoundedRectangle(cornerRadius: 24).fill(OnbColors.caramel.opacity(0.14)))
@@ -954,7 +864,7 @@ struct OnboardingView: View {
     }
 
     private func resetFlow() {
-        childName = ""; age = nil; habit = nil; hopes = []; worry = nil; expandedWorry = nil; avatar = nil
+        childName = ""; age = nil; habit = nil; hopes = []; worry = nil; expandedWorry = nil
         go(to: .welcome)
     }
 
@@ -969,8 +879,7 @@ struct OnboardingView: View {
         let finalName = childName.trimmingCharacters(in: .whitespaces)
         env.completeOnboarding(
             child: ChildProfile(name: finalName.isEmpty ? "Explorer" : finalName,
-                                age: age ?? 8,
-                                avatar: avatar ?? "star.fill"),
+                                age: age ?? 8),
             translation: translation
         )
     }
