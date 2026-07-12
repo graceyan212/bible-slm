@@ -61,7 +61,7 @@ struct StoriesView: View {
 
     var body: some View {
         ZStack {
-            MapBackdrop()
+            PaintedMapBackdrop(muted: true).ignoresSafeArea()
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 22) {
                     header

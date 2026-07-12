@@ -17,7 +17,7 @@ struct ParentZoneView: View {
 
     var body: some View {
         ZStack(alignment: .top) {
-            Theme.parchment.ignoresSafeArea()
+            PaintedMapBackdrop(muted: true).ignoresSafeArea()
 
             ScrollViewReader { proxy in
             ScrollView {

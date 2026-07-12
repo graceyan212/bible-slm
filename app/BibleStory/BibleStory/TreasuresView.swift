@@ -45,7 +45,7 @@ struct TreasuresView: View {
 
     var body: some View {
         ZStack {
-            Theme.parchment.ignoresSafeArea()
+            PaintedMapBackdrop(muted: true).ignoresSafeArea()
             if let data {
                 ScrollView {
                     VStack(spacing: 16) {
