@@ -263,7 +263,7 @@ struct OnboardingView: View {
                 .font(OnbFont.body(21))
                 .foregroundStyle(OnbColors.ink)
                 .multilineTextAlignment(.center)
-            Text("Reviewed by pastors · No ads · No chat")
+            Text("Built on the Baptist Faith & Message · No ads · No chat")
                 .font(OnbFont.body(15))
                 .foregroundStyle(OnbColors.inkSoft)
                 .multilineTextAlignment(.center)
@@ -528,7 +528,7 @@ struct OnboardingView: View {
 
     private func worryAnswer(_ w: String) -> String {
         switch w {
-        case worryOptions[0]: return "Poli retells in its own words and never quotes Scripture wrong — exact verses come from your family's Bible. Reviewed by pastors, aligned with the Baptist Faith & Message."
+        case worryOptions[0]: return "Poli retells in its own words and never quotes Scripture wrong — exact verses come from your family's Bible. Aligned with the Baptist Faith & Message (2000)."
         case worryOptions[1]: return "About 10 calm minutes a night. No autoplay, no endless feed, no ads — it ends when the story ends."
         case worryOptions[2]: return "No ads, no chat, no strangers. Nothing is collected about your child, and nothing is used to train any AI."
         case worryOptions[3]: return "Never. When your child asks a big question, Poli hands it back to you — you're the one who answers."
@@ -624,7 +624,7 @@ struct OnboardingView: View {
                     OnbPromiseRow(icon: "book.closed.fill", title: "Told faithfully.",
                                   detail: "Poli retells in its own words and never quotes Scripture wrong — real verses come from your \(translation.displayName).")
                     OnbPromiseRow(icon: "checkmark.seal.fill", title: "Sound doctrine.",
-                                  detail: "Reviewed by pastors; aligned with the Baptist Faith & Message (2000).")
+                                  detail: "Written to align with the Baptist Faith & Message (2000).")
                     OnbPromiseRow(icon: "figure.wave", title: "Never your child's pastor.",
                                   detail: "Poli gives no spiritual advice — the big questions come home to you.")
                     OnbPromiseRow(icon: "lock.fill", title: "A walled garden.",

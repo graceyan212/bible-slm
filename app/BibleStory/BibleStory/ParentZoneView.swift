@@ -145,8 +145,11 @@ private struct ProgressCard: View {
     private let storiesDone = 2
     private let storiesTotal = 4
     private let currentStop = "Jesus & the Children"
-    private let stars = 6
-    private let streakDays = 3
+    // Stars = the cumulative number of DAYS explored (one lit per visit, never lost) —
+    // deliberately not a streak, so there is nothing to break. Mirrors the Treasures tab.
+    private let daysExplored = 12
+    private let treasuresEarned = 3
+    private let treasuresTotal = 8
 
     var body: some View {
         DashCard(icon: "figure.child", title: "Explorer's Progress") {
@@ -189,14 +192,14 @@ private struct ProgressCard: View {
             .padding(.top, 2)
 
             HStack(spacing: 12) {
-                StatChip(icon: "star.fill", tint: Theme.brass, value: "\(stars)", label: "stars")
-                StatChip(icon: "flame.fill", tint: Theme.terracotta, value: "\(streakDays)", label: "day streak")
+                StatChip(icon: "star.fill", tint: Theme.brass, value: "\(daysExplored)", label: "days explored")
+                StatChip(icon: "shippingbox.fill", tint: Theme.brassDeep, value: "\(treasuresEarned) of \(treasuresTotal)", label: "treasures")
             }
 
             SampleNote()
         }
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(child?.name ?? "Explorer")'s progress. \(storiesDone) of \(storiesTotal) stories done. Now exploring \(currentStop). \(stars) stars, \(streakDays) day streak. Sample values.")
+        .accessibilityLabel("\(child?.name ?? "Explorer")'s progress. \(storiesDone) of \(storiesTotal) stories done. Now exploring \(currentStop). \(daysExplored) days explored, one star for each. \(treasuresEarned) of \(treasuresTotal) treasures found. Sample values.")
     }
 }
 
@@ -210,8 +213,11 @@ private struct StatChip: View {
         HStack(spacing: 8) {
             Image(systemName: icon).foregroundStyle(tint)
             Text(value).font(Theme.display(20, weight: .bold)).foregroundStyle(Theme.ink)
+                .lineLimit(1)
             Text(label).font(Theme.body(14)).foregroundStyle(Theme.inkSoft)
+                .lineLimit(1).minimumScaleFactor(0.7)
         }
+        .frame(maxWidth: .infinity)
         .padding(.horizontal, 14).padding(.vertical, 9)
         .background(Capsule().fill(tint.opacity(0.12)))
         .overlay(Capsule().strokeBorder(tint.opacity(0.35), lineWidth: 1))
