@@ -24,6 +24,7 @@
 		8EB78790C19F2630DFFBE49F /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D09CF65C46A2745498362 /* Components.swift */; };
 		92EEBA5C1726EE9189463031 /* BackNavigationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7AEC3F07C2C3263EB11D82 /* BackNavigationUITests.swift */; };
 		9F36C2EC0642332243F0E1F8 /* BiometricParentGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9489C61C969D52CE9194B5 /* BiometricParentGate.swift */; };
+		A06B0DA3743F2E10FB0BA4AA /* NightsProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBAB105025E606861E5DEB0 /* NightsProgress.swift */; };
 		A33757F59849B9B3C1D78D14 /* IMFeENrm28P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42D818FDAB0393844B4B8CC6 /* IMFeENrm28P.ttf */; };
 		AC94CFB7F6D6AC26E816CD78 /* jesus_children.json in Resources */ = {isa = PBXBuildFile; fileRef = 79880DB536C50E71DAE25C39 /* jesus_children.json */; };
 		B1A1DB742759EF66E4D167F2 /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4DDAD15B1D838153F05E77 /* CompassView.swift */; };
@@ -52,6 +53,7 @@
 		25E25D3197F54C81B9A51FAA /* BibleStoryCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BibleStoryCore; path = ../BibleStoryCore; sourceTree = SOURCE_ROOT; };
 		2751716D2F7BE556DE63630E /* AskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskView.swift; sourceTree = "<group>"; };
 		2ACD8865EE27F31EE9A9B0A8 /* IMFeENsc28P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMFeENsc28P.ttf; sourceTree = "<group>"; };
+		2EBAB105025E606861E5DEB0 /* NightsProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightsProgress.swift; sourceTree = "<group>"; };
 		42D818FDAB0393844B4B8CC6 /* IMFeENrm28P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMFeENrm28P.ttf; sourceTree = "<group>"; };
 		431CDD2300DDB5E98060AE76 /* PaintedMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintedMap.swift; sourceTree = "<group>"; };
 		677BBFB221A67495FEB6017F /* BibleStoryUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BibleStoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,7 @@
 				B78D09CF65C46A2745498362 /* Components.swift */,
 				F9779E94CB9D658872118D8C /* Fonts.swift */,
 				99E7509E9BB780ED4DCCEEA5 /* HomeView.swift */,
+				2EBAB105025E606861E5DEB0 /* NightsProgress.swift */,
 				7F672A6DEAB6F7826A1B0CCF /* OnboardingTheme.swift */,
 				C3042E3E486F721B5F5BF75D /* OnboardingView.swift */,
 				431CDD2300DDB5E98060AE76 /* PaintedMap.swift */,
@@ -301,6 +304,7 @@
 				8EB78790C19F2630DFFBE49F /* Components.swift in Sources */,
 				7F86FCAB21DE4ED6F0015761 /* Fonts.swift in Sources */,
 				C9921D36E97033329AF0AB60 /* HomeView.swift in Sources */,
+				A06B0DA3743F2E10FB0BA4AA /* NightsProgress.swift in Sources */,
 				20E2EED34BE22EB0B9F310F3 /* OnboardingTheme.swift in Sources */,
 				2935EB127A0B8B271F8DE6B3 /* OnboardingView.swift in Sources */,
 				BDE21FF6D1A42D23BDDF98BD /* PaintedMap.swift in Sources */,

@@ -39,24 +39,26 @@ prompt (the same one used at eval/serve). Loss is masked to assistant turns.
   notes gathered during scale-up (distill-our-own, harvest-questions-not-answers).
 - **Doctrine source of truth:** Baptist Faith & Message 2000 (bfm.sbc.net; Art. VI amended 2023).
 
-## Size & composition (v2 — frozen, judge-verified: 1,095)
-**1,095 verified records** in `train_v2.jsonl` (pre-judge gated corpus = 1,097 in `train_v2.raw.jsonl`;
-LLM-judge cut 2 + regenerated 4 stories — see `JUDGE-REPORT.md`). **44% multi-turn.** Generated via the
-pipeline (`datagen_prompt.md` + `story_pedagogy.md` → parallel teacher agents → `filter.py` → LLM-judge pass).
+## Size & composition (v3 — 1,192: judge-verified core + targeted top-up)
+**1,192 records** in `train_v2.jsonl` = the **1,095 judge-verified** set **+ 97 new records targeting the
+weakest eval cells** (deflect, gospel-centered stories, more never-cave pushback), each deterministically
+gated (schema, verse-regex, dedup, train/eval-disjoint). Provenance: `train_v2.raw.jsonl` = 1,097 pre-judge
+corpus; `JUDGE-REPORT.md` = the judge pass that cut 2 + regenerated 4 stories.
 
 | behavior_class | tier | count |
 |---|---|---|
-| hold | closed | 354 |
-| safe_core | na | 220 |
-| deflect | deflect | 177 |
+| hold | closed | 368 |
+| safe_core | na | 252 |
+| deflect | deflect | 215 |
 | acknowledge | open | 128 |
 | adversarial | na | 94 |
-| benign_offtopic | na | 72 |
+| benign_offtopic | na | 85 |
 | danger | na | 50 (all human-review) |
 
-The demo distinctives are the deepest hold cells (baptism ~105, eternal_security ~100). The graded
-3-tier behavior spine (hold/deflect/acknowledge/danger/adversarial) **passed the judge 100%**. Frozen at
-~1.1k by choice (quality-over-quantity / LIMA); the pipeline scales further by re-running if needed.
+**Held-out eval expanded 52 → 106 scenarios** (`../eval/scenarios.json`) so gains are measurable and less
+noisy. Demo distinctives remain the deepest hold cells; the graded 3-tier spine passed the v2 judge 100%.
+The new top-up records are deterministically gated (a fresh LLM-judge pass over just the additions is the
+next optional refinement). Scales further by re-running the pipeline.
 
 ## Quality gate (`filter.py` + judges)
 1. Deterministic: schema, verse-regex (auto-cut any verbatim verse/chapter:verse), PII scrub.

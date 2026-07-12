@@ -2,7 +2,7 @@ import SwiftUI
 import UIKit
 import BibleStoryCore
 
-// MARK: - Theme (ported from design/tokens.css — the "True North" explorer's-journal world)
+// MARK: - Theme (ported from design/tokens.css — "Treasure Trail" explorer's-journal world)
 
 /// Warm treasure-map palette + fonts. Raw hex sampled from the design board:
 /// 60% aged parchment · 30% sand/caramel paper · 10% brass-gold + sage.
@@ -104,8 +104,6 @@ enum PoliPose: String {
     case praying     = "PoliPraying"
     case celebrating = "PoliCelebrating"
     case thumbsUp    = "PoliThumbsUp"
-    case bible       = "PoliBible"      // holding Scripture — "read it in your Bible"
-    case thinking    = "PoliThinking"   // pondering / subdued — for tender, serious questions
 }
 
 /// The mascot, rendered from the illustrated pose art. Session-agnostic, so it can
@@ -148,8 +146,8 @@ struct PoliMascotView: View {
         switch state {
         case .idle: .waving
         case .listening: .pointing
-        case .thinking: .thinking          // pondering the question
-        case .answering: .bible            // presenting Scripture as it answers
+        case .thinking: .praying
+        case .answering: .thumbsUp
         }
     }
     private var glow: Color {
@@ -953,13 +951,11 @@ private struct GroundShape: Shape {
 enum MapTab: String, CaseIterable, Hashable {
     case map = "Map"
     case stories = "Stories"
-    case ask = "Ask"
     case treasures = "Treasures"
     var systemImage: String {
         switch self {
         case .map:       return "map"
         case .stories:   return "book.pages"
-        case .ask:       return "questionmark.circle"
         case .treasures: return "shippingbox.fill"
         }
     }
@@ -967,52 +963,111 @@ enum MapTab: String, CaseIterable, Hashable {
 
 struct MapTabBar: View {
     @Binding var selection: MapTab
-    /// When true, no parchment backing is drawn — the bar rides directly on the
-    /// painted map's own tan strip (Map tab).
+    /// When true (the Map tab) the bar renders as a distinct carved-WOOD plank so it
+    /// reads as a clear "shelf" separate from the parchment map above it. Other tabs
+    /// keep the light parchment backing.
     var transparent: Bool = false
+    /// Center action — opens Ask-Poli. Grown-ups action — the (gated) parent area.
+    var onPoli: () -> Void = {}
+    var onGrownUps: () -> Void = {}
+    private var onWood: Bool { transparent }
+
     var body: some View {
-        HStack(spacing: 0) {
-            ForEach(MapTab.allCases, id: \.self) { tab in tabButton(for: tab) }
+        HStack(alignment: .bottom, spacing: 0) {
+            tabButton(for: .map)
+            tabButton(for: .stories)
+            poliButton
+            tabButton(for: .treasures)
+            grownUpsButton
         }
-        .padding(.horizontal, 12).padding(.top, transparent ? 30 : 12).padding(.bottom, 6)
-        .background { navBacking }
+        .padding(.horizontal, 8).padding(.top, 18).padding(.bottom, 6)
+        .background { if onWood { woodBackground } else { barBackground } }
     }
 
-    /// Backing for the bar. On the Map tab, extend the map's painted cream strip
-    /// (#F1DCB2) up behind the whole nav — feathered at the top so it blends into
-    /// the map rather than reading as a separate bar — so the icons sit on a clean
-    /// band, not on the busy map art. Other tabs keep the parchment bar.
-    @ViewBuilder private var navBacking: some View {
-        if transparent {
-            LinearGradient(stops: [
-                .init(color: Color(hex: 0xF1DCB2, opacity: 0), location: 0.0),
-                .init(color: Color(hex: 0xF1DCB2), location: 0.32),
-                .init(color: Color(hex: 0xF1DCB2), location: 1.0),
-            ], startPoint: .top, endPoint: .bottom)
-            .ignoresSafeArea(edges: .bottom)
-        } else {
-            barBackground
+    /// The prominent center button: Poli's face raised above the bar (TikTok-style),
+    /// opening Ask-Poli. Stands out from the flat side tabs.
+    private var poliButton: some View {
+        Button(action: onPoli) {
+            VStack(spacing: 2) {
+                ZStack {
+                    Circle()
+                        .fill(LinearGradient(colors: [Theme.brassLit, Theme.brass], startPoint: .top, endPoint: .bottom))
+                        .overlay(Circle().strokeBorder(Theme.cream.opacity(0.9), lineWidth: 3))
+                        .frame(width: 64, height: 64)
+                        .shadow(color: Theme.ink.opacity(0.45), radius: 6, x: 0, y: 3)
+                    PoliImage(pose: .waving, size: 52)
+                }
+                .offset(y: -18)
+                Text("Ask Poli")
+                    .font(Theme.body(12, weight: .bold))
+                    .foregroundStyle(iconColor(false))
+                    .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
+                    .offset(y: -14)
+            }
+            .frame(maxWidth: .infinity)
+            .contentShape(Rectangle())
         }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Ask Poli")
     }
+
+    /// The parent dashboard ("Grown-ups") — opens the biometric-gated parent area.
+    private var grownUpsButton: some View {
+        Button(action: onGrownUps) {
+            VStack(spacing: 4) {
+                Image(systemName: "person.crop.circle")
+                    .font(.system(size: 25, weight: .regular))
+                    .foregroundStyle(iconColor(false))
+                    .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
+                    .frame(height: 32)
+                Text("Grown-ups")
+                    .font(Theme.body(14))
+                    .foregroundStyle(iconColor(false))
+                    .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
+            }
+            .frame(maxWidth: .infinity, minHeight: 44)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Grown-ups area")
+    }
+
+    // Wood palette (matches the map's carved wood-frame browns).
+    private static let woodTop  = Color(hex: 0xB07C46)   // lit caramel
+    private static let woodMid  = Color(hex: 0x7C4F2B)   // walnut
+    private static let woodDeep = Color(hex: 0x4A2E17)   // dark brown
+
+    /// Active tab → brass/gold; inactive → light cream (both legible on wood).
+    private func iconColor(_ selected: Bool) -> Color {
+        onWood ? (selected ? Theme.brassLit : Theme.cream)
+               : (selected ? Theme.brass : Theme.inkSoft)
+    }
+
     private func tabButton(for tab: MapTab) -> some View {
         let isSelected = selection == tab
+        let tint = iconColor(isSelected)
         return Button {
             withAnimation(.spring(response: 0.32, dampingFraction: 0.7)) { selection = tab }
         } label: {
             VStack(spacing: 4) {
                 ZStack {
                     if isSelected {
-                        Circle().fill(Theme.brass.opacity(0.16)).frame(width: 40, height: 40).blur(radius: 6)
+                        Circle().fill((onWood ? Theme.brassLit : Theme.brass).opacity(onWood ? 0.22 : 0.16))
+                            .frame(width: 40, height: 40).blur(radius: 6)
                     }
                     Image(systemName: tab.systemImage)
                         .font(.system(size: isSelected ? 27 : 25, weight: isSelected ? .semibold : .regular))
-                        .foregroundStyle(isSelected ? Theme.brass : Theme.inkSoft)
-                        .shadow(color: isSelected ? Theme.brass.opacity(0.5) : .clear, radius: isSelected ? 6 : 0)
+                        .foregroundStyle(tint)
+                        .shadow(color: isSelected ? (onWood ? Theme.brassLit : Theme.brass).opacity(0.6) : .clear,
+                                radius: isSelected ? 6 : 0)
+                        // On wood, a soft dark drop keeps light glyphs crisp against grain.
+                        .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
                 }
                 .frame(height: 32)
                 Text(tab.rawValue)
                     .font(Theme.body(isSelected ? 15 : 14, weight: isSelected ? .bold : .regular))
-                    .foregroundStyle(isSelected ? Theme.brass : Theme.inkSoft)
+                    .foregroundStyle(tint)
+                    .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
             }
             .frame(maxWidth: .infinity, minHeight: 44)
             .scaleEffect(isSelected ? 1.08 : 1.0)
@@ -1022,10 +1077,51 @@ struct MapTabBar: View {
         .accessibilityLabel(tab.rawValue)
         .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
+
+    /// The carved-wood plank: warm brown gradient + subtle vertical grain, a lit
+    /// top bevel for clear separation from the map, extended under the safe area.
+    private var woodBackground: some View {
+        LinearGradient(colors: [Self.woodTop, Self.woodMid, Self.woodDeep],
+                       startPoint: .top, endPoint: .bottom)
+            .overlay(WoodGrain().opacity(0.5))
+            .overlay(alignment: .top) {
+                // Top bevel: bright brass highlight over a thin dark seam.
+                VStack(spacing: 0) {
+                    Rectangle().fill(Theme.brassLit.opacity(0.85)).frame(height: 1.5)
+                    Rectangle().fill(Color(hex: 0xE7C98A, opacity: 0.28)).frame(height: 2)
+                    Rectangle().fill(Color(hex: 0x2A180A, opacity: 0.45)).frame(height: 1)
+                }
+            }
+            .compositingGroup()
+            .shadow(color: Theme.ink.opacity(0.35), radius: 10, x: 0, y: -4)
+            .ignoresSafeArea(edges: .bottom)
+    }
+
     private var barBackground: some View {
         Theme.parchmentLit
             .overlay(alignment: .top) { Rectangle().fill(Theme.sepiaLine).frame(height: 1) }
             .shadow(color: Theme.ink.opacity(0.12), radius: 8, x: 0, y: -3)
             .ignoresSafeArea(edges: .bottom)
+    }
+}
+
+/// Faint vertical wood-grain streaks (a few soft light/dark bands) drawn to fill.
+private struct WoodGrain: View {
+    var body: some View {
+        Canvas { ctx, size in
+            let cols: [(x: CGFloat, w: CGFloat, light: Bool)] = [
+                (0.08, 2, false), (0.16, 1, true), (0.27, 3, false), (0.38, 1, true),
+                (0.46, 2, false), (0.57, 1, true), (0.66, 3, false), (0.74, 1, true),
+                (0.83, 2, false), (0.92, 1, true),
+            ]
+            for c in cols {
+                let rect = CGRect(x: size.width * c.x, y: 0, width: c.w, height: size.height)
+                let color = c.light ? Color(hex: 0xD9AE72, opacity: 0.35)
+                                    : Color(hex: 0x35200F, opacity: 0.35)
+                ctx.fill(Path(rect), with: .color(color))
+            }
+        }
+        .blur(radius: 1.2)
+        .allowsHitTesting(false)
     }
 }

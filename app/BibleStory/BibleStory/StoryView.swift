@@ -262,6 +262,15 @@ struct StoryView: View {
                         .font(Theme.display(26)).foregroundStyle(Color(hex: 0x4A3520))
                     Rectangle().fill(Color(hex: 0xCBB27A)).frame(width: 46, height: 2).padding(.top, 6)
 
+                    // Nights together — a star lit tonight (grace, not guilt: only grows).
+                    NightSkyBadge(count: NightsProgress.count).padding(.top, 10)
+                    if let m = NightsProgress.milestone(NightsProgress.count) {
+                        Text(m)
+                            .font(Theme.body(14, weight: .bold))
+                            .foregroundStyle(Color(hex: 0x8A5F22))
+                            .padding(.top, 2)
+                    }
+
                     Text(s.christConnection.heading)
                         .font(Theme.display(30)).foregroundStyle(heading)
                         .padding(.top, 16)
@@ -304,6 +313,7 @@ struct StoryView: View {
         if page < s.pages.count - 1 {
             withAnimation(.easeInOut(duration: 0.22)) { page += 1 }
         } else {
+            NightsProgress.recordTonight()   // light tonight's star (grace, not guilt — only ever grows)
             withAnimation(.easeInOut(duration: 0.3)) { showComplete = true }
         }
     }

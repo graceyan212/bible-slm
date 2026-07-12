@@ -171,7 +171,7 @@ struct OnboardingView: View {
             case .founder:
                 primary("Sounds good ✦") { go(to: .storyIntro) }
             case .storyIntro:
-                primary("Play a story ▶") { showStory = true }
+                primary("Play a story", icon: "arrow.right") { showStory = true }
                 ghost("Maybe later") { go(to: .gate) }
             case .gate:
                 EmptyView()   // the hold-to-continue control lives in the body
@@ -211,8 +211,15 @@ struct OnboardingView: View {
         .padding(.bottom, 6)
     }
 
-    private func primary(_ title: String, _ action: @escaping () -> Void) -> some View {
-        Button(title, action: action).buttonStyle(OnbPrimaryButtonStyle())
+    private func primary(_ title: String, icon: String? = nil, _ action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            if let icon {
+                HStack(spacing: 8) { Text(title); Image(systemName: icon) }
+            } else {
+                Text(title)
+            }
+        }
+        .buttonStyle(OnbPrimaryButtonStyle())
     }
     private func ghost(_ title: String, _ action: @escaping () -> Void) -> some View {
         Button(title, action: action).buttonStyle(OnbGhostButtonStyle())
@@ -579,11 +586,11 @@ struct OnboardingView: View {
                     planBullet("bubble.left.and.bubble.right.fill", "One \u{201C}wondering question\u{201D} to talk over together each night.")
                     planBullet("book.closed.fill", "Verses shown from your \(translation.displayName).")
                     planBullet("sparkles", "Chosen to help \(name) grow in \(hopesPhrase).")
-                    planBullet("leaf.fill", planStartLine, tint: OnbColors.sage)
+                    planBullet("leaf.fill", planStartLine)
                 }
             }
             HStack(spacing: 8) {
-                Image(systemName: "checkmark.circle.fill").foregroundStyle(OnbColors.sage)
+                Image(systemName: "checkmark.circle.fill").foregroundStyle(OnbColors.brassDeep)
                 Text("First stop: The Storm That Obeyed — you've already seen this one.")
                     .font(OnbFont.body(13)).foregroundStyle(OnbColors.inkSoft)
             }
@@ -612,11 +619,6 @@ struct OnboardingView: View {
         VStack(spacing: 16) {
             eyebrow("Our promise to you")
             OnbPoli(height: 88)
-            if let worry {
-                Text("You told us: \u{201C}\(worry)\u{201D}")
-                    .font(OnbFont.hand(19)).foregroundStyle(OnbColors.brassDeep)
-                    .multilineTextAlignment(.center)
-            }
             card {
                 VStack(alignment: .leading, spacing: 16) {
                     OnbPromiseRow(icon: "book.closed.fill", title: "Told faithfully.",

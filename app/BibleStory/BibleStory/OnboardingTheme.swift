@@ -1,7 +1,7 @@
 import SwiftUI
 
 // =============================================================================
-//  True North — Onboarding-local design system.
+//  Treasure Trail — Onboarding-local design system.
 //
 //  These are the SAME tokens as design/tokens.css + design/onboarding.html
 //  (parchment palette, brass/gold candy buttons, storybook serif headings,
@@ -168,46 +168,53 @@ struct OnbGhostButtonStyle: ButtonStyle {
     }
 }
 
-// MARK: - Progress dots  (constellation route — tokens .dots)
+// MARK: - Progress trail  (slim brass fill bar — replaces the dashed constellation)
 
+/// A slim, rounded "trail" that fills with brass to the current step. Lives in the
+/// onboarding top bar, so it's deliberately compact and quiet: a recessed parchment
+/// track with a warm brass fill and a soft leading glow, no busy connector dots.
 struct OnbDots: View {
     let count: Int
-    /// 1-based index of the current step; `count + 1` marks the finale (all lit).
+    /// 1-based index of the current step; `count + 1` marks the finale (all filled).
     let current: Int
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    private static let trackWidth: CGFloat = 150
+    private static let trackHeight: CGFloat = 7
+
+    /// 0...1 share of the trail that should be filled for the current step.
+    private var progress: CGFloat {
+        guard count > 0 else { return 0 }
+        return min(max(CGFloat(current), 0), CGFloat(count)) / CGFloat(count)
+    }
+
     var body: some View {
-        ZStack {
-            OnbDashLine()
-                .stroke(OnbColors.sepiaLine,
-                        style: StrokeStyle(lineWidth: 3, lineCap: .round, dash: [2, 6]))
-                .frame(height: 3)
-                .padding(.horizontal, 7)
-                .opacity(0.6)
-            HStack(spacing: 20) {
-                ForEach(1...count, id: \.self) { i in
-                    let lit = i <= current
-                    Circle()
-                        .fill(lit ? OnbColors.brass : OnbColors.surface)
-                        .overlay(Circle().stroke(lit ? OnbColors.outline : OnbColors.locked, lineWidth: 2))
-                        .frame(width: 14, height: 14)
-                        .scaleEffect(i == current ? 1.35 : 1)
-                        .shadow(color: lit ? OnbColors.brass.opacity(0.6) : .clear, radius: 6)
-                        .animation(.spring(response: 0.35, dampingFraction: 0.7), value: current)
-                }
-            }
+        ZStack(alignment: .leading) {
+            // Recessed parchment track with a hairline sepia edge.
+            Capsule()
+                .fill(OnbColors.parchmentDeep)
+                .overlay(Capsule().stroke(OnbColors.sepiaLine.opacity(0.55), lineWidth: 1))
+
+            // Warm brass fill, proportional to progress.
+            Capsule()
+                .fill(
+                    LinearGradient(
+                        colors: [OnbColors.brassLit, OnbColors.brass],
+                        startPoint: .top, endPoint: .bottom
+                    )
+                )
+                .overlay(Capsule().stroke(OnbColors.brassDeep.opacity(0.55), lineWidth: 1))
+                .frame(width: max(Self.trackHeight, Self.trackWidth * progress))
+                .shadow(color: OnbColors.brass.opacity(0.55), radius: 4, x: 0, y: 0)
+                .animation(reduceMotion ? nil
+                                        : .spring(response: 0.4, dampingFraction: 0.8),
+                           value: progress)
         }
+        .frame(width: Self.trackWidth, height: Self.trackHeight)
         .accessibilityElement()
         .accessibilityLabel("Setup progress")
         .accessibilityValue("Step \(min(current, count)) of \(count)")
-    }
-}
-
-private struct OnbDashLine: Shape {
-    func path(in rect: CGRect) -> Path {
-        var p = Path()
-        p.move(to: CGPoint(x: rect.minX, y: rect.midY))
-        p.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
-        return p
     }
 }
 
@@ -217,10 +224,10 @@ struct OnbSpeechBubble: View {
     let text: String
     var body: some View {
         Text(text)
-            .font(OnbFont.body(19, .medium))
+            .font(OnbFont.hand(23))
             .foregroundStyle(OnbColors.ink)
             .multilineTextAlignment(.center)
-            .lineSpacing(3)
+            .lineSpacing(2)
             .padding(.vertical, 12)
             .padding(.horizontal, 22)
             .background(

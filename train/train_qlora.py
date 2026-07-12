@@ -22,6 +22,8 @@ DATA   = os.environ.get("TRAIN_DATA", "data/train_v2.jsonl")
 OUT    = os.environ.get("ADAPTER_OUT", "./sbc-lora")
 MAXLEN = 2048
 EPOCHS = int(os.environ.get("EPOCHS", "3"))
+LR     = float(os.environ.get("LR", "2e-4"))    # sweep: try 1e-4 / 2e-4
+LORA_R = int(os.environ.get("LORA_R", "32"))    # sweep: try 16 / 32 / 64 (pick best by EVAL score)
 
 # MUST be byte-identical to eval/run_eval.py SYSTEM_PROMPT (train == serve == eval).
 SYSTEM_PROMPT = (
@@ -62,7 +64,7 @@ def main():
 
     model, tok = FastLanguageModel.from_pretrained(BASE, max_seq_length=MAXLEN, load_in_4bit=True)
     model = FastLanguageModel.get_peft_model(
-        model, r=32, lora_alpha=32, lora_dropout=0.0, bias="none",
+        model, r=LORA_R, lora_alpha=LORA_R, lora_dropout=0.0, bias="none",
         target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
         use_gradient_checkpointing="unsloth", random_state=42,
     )
@@ -75,7 +77,7 @@ def main():
         model=model, tokenizer=tok, train_dataset=ds,
         args=SFTConfig(
             per_device_train_batch_size=2, gradient_accumulation_steps=4,
-            warmup_ratio=0.05, num_train_epochs=EPOCHS, learning_rate=2e-4,
+            warmup_ratio=0.05, num_train_epochs=EPOCHS, learning_rate=LR,
             lr_scheduler_type="cosine", logging_steps=10, optim="adamw_8bit",
             weight_decay=0.01, seed=42, output_dir="outputs", report_to="none",
             max_seq_length=MAXLEN, dataset_text_field="text",
