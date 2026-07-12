@@ -27,28 +27,18 @@ struct HomeView: View {
                     switch tab {
                     case .map:       expeditionMap
                     case .stories:   SectionPanel(title: "Stories", icon: "book.pages", blurb: "Every story you've explored on the trail.").padding(.bottom, 62)
-                    case .ask:       AskPanel { path.append(.compass) }.padding(.bottom, 62)
                     case .treasures: TreasuresView().padding(.bottom, 62)
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-                // On the Map tab the bar rides the map's own painted tan strip
-                // (transparent bg); other tabs give it a parchment backing.
-                MapTabBar(selection: $tab, transparent: tab == .map)
+                // 5-item bar: Map · Stories · [Poli center → Ask] · Treasures · Grown-ups.
+                // On the Map tab it's a carved-wood plank; other tabs a parchment bar.
+                MapTabBar(selection: $tab, transparent: tab == .map,
+                          onPoli: { path.append(.compass) },
+                          onGrownUps: { Task { await env.enterParentZone() } })
             }
             .background(Theme.parchment.ignoresSafeArea())
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        Task { await env.enterParentZone() }
-                    } label: {
-                        Image(systemName: "person.crop.circle")
-                    }
-                    .accessibilityLabel("Parent area")
-                    .disabled(env.isAuthenticating)
-                }
-            }
             .toolbarBackground(.hidden, for: .navigationBar)
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: HomeRoute.self) { route in
