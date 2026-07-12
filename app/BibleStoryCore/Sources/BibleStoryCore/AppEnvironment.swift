@@ -1,6 +1,26 @@
 import Foundation
 import Observation
 
+/// Reader text size (a real accessibility control set from the parent dashboard).
+public enum ReadingSize: String, CaseIterable, Sendable, Codable {
+    case small, medium, large
+    /// Multiplier applied to the reader's narrative + heading fonts.
+    public var scale: Double {
+        switch self {
+        case .small:  0.9
+        case .medium: 1.0
+        case .large:  1.2
+        }
+    }
+    public var label: String {
+        switch self {
+        case .small:  "Small"
+        case .medium: "Medium"
+        case .large:  "Large"
+        }
+    }
+}
+
 /// The single composition root (the "front-door manager").
 /// Owns the app phase, the active child profile, the chosen translation, and the
 /// shared services — and constructs per-session models so every screen keys off
@@ -22,6 +42,10 @@ public final class AppEnvironment {
     /// progress is only ever gained, never lost).
     public private(set) var completedStoryIDs: Set<String> = []
 
+    /// Reading & accessibility (parent dashboard). Persisted; applied in the reader.
+    public private(set) var readingSize: ReadingSize = .medium
+    public private(set) var readAloud: Bool = false
+
     /// The model seam — `StubQuestionResponder` today, `OnDeviceModelResponder` (P5) later.
     public let responder: QuestionResponder
     private let gate: ParentGate
@@ -29,6 +53,8 @@ public final class AppEnvironment {
     private let store = UserDefaults.standard
     private static let completedKey = "tn.completedStoryIDs"
     private static let translationKey = "tn.translation"
+    private static let readingSizeKey = "tn.readingSize"
+    private static let readAloudKey = "tn.readAloud"
 
     public init(responder: QuestionResponder, gate: ParentGate) {
         self.responder = responder
@@ -36,6 +62,9 @@ public final class AppEnvironment {
         completedStoryIDs = Set(store.stringArray(forKey: Self.completedKey) ?? [])
         if let raw = store.string(forKey: Self.translationKey),
            let saved = BibleTranslation(rawValue: raw) { translation = saved }
+        if let raw = store.string(forKey: Self.readingSizeKey),
+           let size = ReadingSize(rawValue: raw) { readingSize = size }
+        readAloud = store.bool(forKey: Self.readAloudKey)
     }
 
     /// Finish first-run setup (parent account + kid onboarding) → enter the child zone.
@@ -76,6 +105,16 @@ public final class AppEnvironment {
     public func selectChild(_ child: ChildProfile) {
         guard children.contains(where: { $0.id == child.id }) else { return }
         activeChild = child
+    }
+
+    public func setReadingSize(_ s: ReadingSize) {
+        readingSize = s
+        store.set(s.rawValue, forKey: Self.readingSizeKey)
+    }
+
+    public func setReadAloud(_ on: Bool) {
+        readAloud = on
+        store.set(on, forKey: Self.readAloudKey)
     }
 
     /// Kid-mode lock: reaching the parent zone requires passing the gate.
