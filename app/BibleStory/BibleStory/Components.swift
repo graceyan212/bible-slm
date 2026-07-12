@@ -980,29 +980,25 @@ struct MapTabBar: View {
             tabButton(for: .treasures)
             grownUpsButton
         }
-        .padding(.horizontal, 8).padding(.top, 18).padding(.bottom, 6)
+        .padding(.horizontal, 8).padding(.top, 6).padding(.bottom, 6)
         .background { if onWood { woodBackground } else { barBackground } }
     }
 
-    /// The prominent center button: Poli's face raised above the bar (TikTok-style),
-    /// opening Ask-Poli. Stands out from the flat side tabs.
+    /// The prominent center button: Poli's face — no disc, just the mascot — raised so
+    /// it breaks ABOVE the plank (the only control that does), TikTok-style. The mascot
+    /// overflows a normal-height tab slot, so it stands tall WITHOUT making the bar taller.
     private var poliButton: some View {
         Button(action: onPoli) {
-            VStack(spacing: 2) {
-                ZStack {
-                    Circle()
-                        .fill(LinearGradient(colors: [Theme.brassLit, Theme.brass], startPoint: .top, endPoint: .bottom))
-                        .overlay(Circle().strokeBorder(Theme.cream.opacity(0.9), lineWidth: 3))
-                        .frame(width: 64, height: 64)
-                        .shadow(color: Theme.ink.opacity(0.45), radius: 6, x: 0, y: 3)
-                    PoliImage(pose: .waving, size: 52)
-                }
-                .offset(y: -18)
+            VStack(spacing: 4) {
+                PoliImage(pose: .waving, size: 82)
+                    .shadow(color: Theme.ink.opacity(0.35), radius: 5, x: 0, y: 3)
+                    .frame(height: 32)          // same layout slot as the side tabs…
+                    .offset(y: -30)             // …but drawn large + lifted above the frame
                 Text("Ask Poli")
                     .font(Theme.body(12, weight: .bold))
                     .foregroundStyle(iconColor(false))
                     .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
-                    .offset(y: -14)
+                    .offset(y: -22)
             }
             .frame(maxWidth: .infinity)
             .contentShape(Rectangle())

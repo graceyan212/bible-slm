@@ -140,9 +140,10 @@ struct StoryView: View {
                 .lineLimit(1).minimumScaleFactor(0.6)
             Spacer()
             // Tap Poli to ask a question out loud (opens the Ask-Poli sheet).
+            // Larger than the other controls so it's easy for young readers to see + hit.
             Button { showAsk = true } label: {
-                PoliImage(pose: .waving, size: 40)
-                    .frame(width: 44, height: 44)
+                PoliImage(pose: .waving, size: 60)
+                    .frame(width: 60, height: 60)
                     .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
@@ -150,7 +151,7 @@ struct StoryView: View {
         }
         .foregroundStyle(topIcon)
         .padding(.horizontal, 12)
-        .frame(height: 54)
+        .frame(height: 48)
     }
 
     private func footer(_ s: StoryContent, isLast: Bool) -> some View {
@@ -178,7 +179,9 @@ struct StoryView: View {
     }
 
     /// Slim treasure-map progress: one refined capsule per page, filled (brass) up
-    /// to the current page, plus a small count. Lives once, under the title.
+    /// to the current page, plus a small count. Sits tight under the top bar. The
+    /// whole strip is tappable to step BACK a page (an alternative to the back
+    /// arrow — either works), so a young reader can just tap the trail to retreat.
     private func progressStrip(total: Int, current: Int) -> some View {
         HStack(spacing: 8) {
             HStack(spacing: 5) {
@@ -201,7 +204,14 @@ struct StoryView: View {
                 .foregroundStyle(Color(hex: 0x8A5F22))
         }
         .padding(.horizontal, 22)
-        .padding(.top, 10)
+        .padding(.vertical, 8)          // taller hit area; strip stays high under the bar
+        .padding(.top, 2)
+        .contentShape(Rectangle())
+        .onTapGesture { back() }
+        .accessibilityElement()
+        .accessibilityLabel("Progress. Page \(current + 1) of \(total)")
+        .accessibilityHint("Tap to go back a page")
+        .accessibilityAddTraits(.isButton)
     }
 
     // MARK: Verse card (visibly distinct from the retell)
@@ -314,6 +324,7 @@ struct StoryView: View {
             withAnimation(.easeInOut(duration: 0.22)) { page += 1 }
         } else {
             NightsProgress.recordTonight()   // light tonight's star (grace, not guilt — only ever grows)
+            env.markStoryComplete(storyID)   // unlock the next stop on the trail
             withAnimation(.easeInOut(duration: 0.3)) { showComplete = true }
         }
     }

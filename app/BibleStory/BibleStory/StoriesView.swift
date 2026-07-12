@@ -31,14 +31,14 @@ enum StoryCatalog {
         TrailStory(id: "zacchaeus",       title: "Zacchaeus",            cover: "StoryZacchaeusP1"),
     ]
 
-    /// The current (in-progress) story: everything before it is done, everything
-    /// after it is still locked. (Wire this to real progress when available.)
-    static let activeIndex = 2
-
-    static func state(for index: Int) -> PaintedStoryFrame.StopState {
-        if index < activeIndex { return .done }
-        if index == activeIndex { return .active }
-        return .locked
+    /// Trail state derived from the child's completed lessons: finished stops are
+    /// `.done`, the FIRST unfinished stop is `.active` (the only new one you can
+    /// open), and everything past it stays `.locked` until you reach it. Completing
+    /// the active lesson therefore unlocks the next stop automatically.
+    static func state(for index: Int, completed: Set<String>) -> PaintedStoryFrame.StopState {
+        if completed.contains(all[index].id) { return .done }
+        let firstIncomplete = all.firstIndex { !completed.contains($0.id) }
+        return index == firstIncomplete ? .active : .locked
     }
 }
 
@@ -51,6 +51,8 @@ enum StoryCatalog {
 struct StoriesView: View {
     /// Open a story's reader by id (only called for done/current stories).
     var onOpen: (String) -> Void
+    /// Lessons the child has finished — drives done/active/locked (see StoryCatalog).
+    var completed: Set<String> = []
 
     private let columns = [
         GridItem(.flexible(), spacing: 20),
@@ -65,7 +67,7 @@ struct StoriesView: View {
                     header
                     LazyVGrid(columns: columns, spacing: 26) {
                         ForEach(Array(StoryCatalog.all.enumerated()), id: \.element.id) { index, story in
-                            let state = StoryCatalog.state(for: index)
+                            let state = StoryCatalog.state(for: index, completed: completed)
                             PaintedStoryFrame(coverAsset: story.cover, title: story.title, state: state) {
                                 if state != .locked { onOpen(story.id) }
                             }

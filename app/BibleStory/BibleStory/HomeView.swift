@@ -30,7 +30,7 @@ struct HomeView: View {
                 Group {
                     switch tab {
                     case .map:       expeditionMap
-                    case .stories:   StoriesView { path.append(.story($0)) }.padding(.bottom, 62)
+                    case .stories:   StoriesView(onOpen: { path.append(.story($0)) }, completed: env.completedStoryIDs).padding(.bottom, 62)
                     case .treasures: TreasuresView().padding(.bottom, 62)
                     }
                 }
@@ -106,7 +106,7 @@ struct HomeView: View {
                         // Story stops, strung down the winding trail (data-driven —
                         // add to StoryCatalog and a new stop appears here).
                         ForEach(Array(stops.enumerated()), id: \.element.id) { index, story in
-                            let state = StoryCatalog.state(for: index)
+                            let state = StoryCatalog.state(for: index, completed: env.completedStoryIDs)
                             PaintedStoryFrame(coverAsset: story.cover, title: story.title, state: state) {
                                 if state != .locked { path.append(.story(story.id)) }
                             }
