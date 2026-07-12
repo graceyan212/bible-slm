@@ -32,6 +32,54 @@
       "title": "The Promise",
       "story": "Genesis 8-9 — after the flood, God's covenant sign of peace (God keeps his promises).",
       "prompt": "A bright dove glides down carrying a green olive branch over a calm landscape after a storm has passed, with a soft rainbow arcing across clearing skies and warm sunlight breaking through gentle clouds. A quiet, hopeful scene of peace and a promise kept."
+    },
+
+    {
+      "id": "redsea_p1",
+      "title": "Red Sea — Trapped by the Water",
+      "prompt": "A crowd of worried robed people stand together at the shore of a vast blue-green sea that blocks their path forward; at the front a calm robed leader holds a tall wooden staff and raises one reassuring hand. Behind the crowd, a faint dusty cloud on the horizon hints at a far-off chasing army. Tense but gentle and hopeful."
+    },
+    {
+      "id": "redsea_p2",
+      "title": "Red Sea — A Path Through the Sea",
+      "prompt": "A wide dry sandy path opens straight down the middle of a great sea, with tall shimmering walls of blue-green water standing on either side. A hopeful crowd of robed people begin to walk across the seabed toward a warm glowing sunrise, a robed figure with a staff leading. Awe and relief."
+    },
+    {
+      "id": "redsea_p3",
+      "title": "Red Sea — Safe on the Other Side",
+      "prompt": "A joyful crowd of robed people stand safely on the far grassy shore and turn to look back at the calm sea behind them, arms lifted in happy thanks, bathed in warm golden light. A feeling of rescue, relief, and gratitude."
+    },
+
+    {
+      "id": "jesus_p1",
+      "title": "Jesus and the Children — Shooed Away",
+      "prompt": "On a sunny grassy hillside, families lead small children toward a kind robed teacher, while one or two well-meaning grown-up helpers gently hold up a hand to wave the children back. Warm and a little wistful, peaceful green countryside behind."
+    },
+    {
+      "id": "jesus_p2",
+      "title": "Jesus and the Children — Let Them Come",
+      "prompt": "A kind robed teacher with a warm smile opens his arms wide and beckons; happy children of different ages run joyfully toward him across the green grass in soft afternoon sunlight. Glad, welcoming, safe."
+    },
+    {
+      "id": "jesus_p3",
+      "title": "Jesus and the Children — Held and Loved",
+      "prompt": "A kind, gentle robed teacher sits on a grassy hillside gently embracing and blessing a small group of happy children gathered close around him, soft warm afternoon light. A feeling of being safe, wanted, and dearly loved."
+    },
+
+    {
+      "id": "promise_p1",
+      "title": "The Promise — A Big Boat",
+      "prompt": "A cheerful old man with a kind face hammers together an enormous wooden ark on dry grassy ground, while pairs of friendly animals — elephants, rabbits, birds, giraffes — walk calmly toward the boat two by two. Busy, warm, and hopeful under a bright sky."
+    },
+    {
+      "id": "promise_p2",
+      "title": "The Promise — Waiting for Dry Land",
+      "prompt": "A large wooden ark floats calmly on a wide, quiet sea under clearing skies; a small white dove flies toward the boat carrying a fresh green olive leaf in its beak. Soft warm light breaking through gentle clouds. A quiet, hopeful moment."
+    },
+    {
+      "id": "promise_p3",
+      "title": "The Promise — The Rainbow",
+      "prompt": "A soft, bright rainbow arcs all the way across clearing skies over a fresh, green, newly-washed landscape, with warm sunlight breaking through gentle clouds and a white dove gliding peacefully. A calm scene of peace and a promise kept."
     }
   ]
 }

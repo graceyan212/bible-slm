@@ -56,6 +56,15 @@ struct StoryContent: Decodable, Equatable {
         case "red_sea":        return "StoryRedSea"
         case "jesus_children": return "StoryJesusChildren"
         case "the_promise":    return "StoryThePromise"
+        case "redsea_p1":      return "StoryRedSeaP1"
+        case "redsea_p2":      return "StoryRedSeaP2"
+        case "redsea_p3":      return "StoryRedSeaP3"
+        case "jesus_p1":       return "StoryJesusChildrenP1"
+        case "jesus_p2":       return "StoryJesusChildrenP2"
+        case "jesus_p3":       return "StoryJesusChildrenP3"
+        case "promise_p1":     return "StoryThePromiseP1"
+        case "promise_p2":     return "StoryThePromiseP2"
+        case "promise_p3":     return "StoryThePromiseP3"
         default:               return "StoryCreationP1"
         }
     }
