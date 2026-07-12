@@ -11,13 +11,17 @@ struct HomeView: View {
     let env: AppEnvironment
     @State private var path: [HomeRoute] = []
     @State private var tab: MapTab = .map
+    /// Dev/screenshot hook: start the map scrolled to the bottom (see `-uiPreviewMapBottom`).
+    private let previewMapBottom: Bool
 
     init(env: AppEnvironment) {
         self.env = env
         // Dev/screenshot deep-links (see BibleStoryApp `-uiPreviewChild`).
         let args = ProcessInfo.processInfo.arguments
         if args.contains("-uiPreviewTreasures") { _tab = State(initialValue: .treasures) }
+        if args.contains("-uiPreviewStories") { _tab = State(initialValue: .stories) }
         if args.contains("-uiPreviewStory") { _path = State(initialValue: [.story("creation")]) }
+        previewMapBottom = args.contains("-uiPreviewMapBottom")
     }
 
     var body: some View {
@@ -26,7 +30,7 @@ struct HomeView: View {
                 Group {
                     switch tab {
                     case .map:       expeditionMap
-                    case .stories:   SectionPanel(title: "Stories", icon: "book.pages", blurb: "Every story you've explored on the trail.").padding(.bottom, 62)
+                    case .stories:   StoriesView { path.append(.story($0)) }.padding(.bottom, 62)
                     case .treasures: TreasuresView().padding(.bottom, 62)
                     }
                 }
@@ -56,44 +60,69 @@ struct HomeView: View {
 
     // MARK: The framed treasure-map screen (the "Map" tab)
 
+    /// Aspect (h / w) of the tall ExpeditionMap art (656 × 3150) — the map canvas
+    /// is this many screens-wide tall, so the trail scrolls vertically.
+    private static let mapAspect: CGFloat = 3150.0 / 656.0
+    /// Story stops ride the winding trail between these vertical fractions of the
+    /// tall map (mountains sit above the first stop; the compass + chest destination
+    /// sits below the last), alternating left/right of centre.
+    private static let trailTopFraction: CGFloat = 0.115
+    private static let trailBottomFraction: CGFloat = 0.74
+
+    /// Centres for each stop down the winding trail. Alternates sides so the rope
+    /// snakes; spreads evenly no matter how many stories the catalog holds.
+    private func trailPoints(count: Int, w: CGFloat, mapH: CGFloat) -> [CGPoint] {
+        (0..<count).map { i in
+            let t = count <= 1
+                ? Self.trailTopFraction
+                : Self.trailTopFraction + (Self.trailBottomFraction - Self.trailTopFraction) * CGFloat(i) / CGFloat(count - 1)
+            let x = i.isMultiple(of: 2) ? w * 0.34 : w * 0.65
+            return CGPoint(x: x, y: mapH * t)
+        }
+    }
+
     private var expeditionMap: some View {
         GeometryReader { geo in
             let w = geo.size.width
-            let h = geo.size.height
-            let stopW = w * 0.45   // frame width (matches expedition-home.html)
+            let mapH = w * Self.mapAspect
+            let stopW = w * 0.45
+            let stops = StoryCatalog.all
+            let points = trailPoints(count: stops.count, w: w, mapH: mapH)
 
-            ZStack {
-                PaintedMapBackdrop()
-                    .frame(width: w, height: h)
-                    .clipped()
+            // Only the map content scrolls; the wood nav bar stays pinned (it is a
+            // sibling overlay in HomeView's bottom-aligned ZStack).
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 0) {
+                    ZStack(alignment: .top) {
+                        PaintedMapBackdrop()
+                            .frame(width: w, height: mapH)
+                            .clipped()
 
-                // Four story stops, staggered down the map (positions from
-                // build_map_mockup.py LAYOUT). Only the current story glows; done
-                // stops carry a ✓, the not-yet story a lock.
-                PaintedStoryFrame(coverAsset: "CoverCreation", title: "Creation", state: .done) {
-                    path.append(.story("creation"))
+                        // Faint rope trail connecting the stops down the map.
+                        RopeTrail(points: points)
+                            .frame(width: w, height: mapH)
+                            .allowsHitTesting(false)
+
+                        // Story stops, strung down the winding trail (data-driven —
+                        // add to StoryCatalog and a new stop appears here).
+                        ForEach(Array(stops.enumerated()), id: \.element.id) { index, story in
+                            let state = StoryCatalog.state(for: index)
+                            PaintedStoryFrame(coverAsset: story.cover, title: story.title, state: state) {
+                                if state != .locked { path.append(.story(story.id)) }
+                            }
+                            .frame(width: stopW)
+                            .position(points[index])
+                        }
+                    }
+                    .frame(width: w, height: mapH)
+
+                    // Bottom breathing room so the last stop / destination clears
+                    // the pinned wood nav bar.
+                    Color.clear.frame(height: 96)
                 }
-                .frame(width: stopW)
-                .position(x: w * 0.33, y: h * 0.22)
-
-                PaintedStoryFrame(coverAsset: "CoverRedSea", title: "The Red Sea", state: .done) {
-                    path.append(.story("red_sea"))
-                }
-                .frame(width: stopW)
-                .position(x: w * 0.66, y: h * 0.40)
-
-                PaintedStoryFrame(coverAsset: "CoverJesusChildren", title: "Jesus & the Children", state: .active) {
-                    path.append(.story("jesus_children"))
-                }
-                .frame(width: stopW)
-                .position(x: w * 0.33, y: h * 0.58)
-
-                PaintedStoryFrame(coverAsset: "CoverThePromise", title: "The Promise", state: .locked)
-                    .frame(width: stopW)
-                    .position(x: w * 0.66, y: h * 0.76)
             }
-            .frame(width: w, height: h)
-            .clipped()
+            .defaultScrollAnchor(previewMapBottom ? .bottom : .top)
+            .ignoresSafeArea()
         }
         .ignoresSafeArea()
     }
