@@ -47,8 +47,9 @@ struct OnboardingView: View {
     @State private var age: Int? = nil
     @State private var translation: BibleTranslation = .nirv
     @State private var habit: String? = nil
-    @State private var hope: String? = nil
-    @State private var worry: String? = nil
+    @State private var hopes: Set<String> = []
+    @State private var worry: String? = nil        // the concern they last opened (pins on the Promise)
+    @State private var expandedWorry: String? = nil
     @State private var avatar: String? = nil
     @State private var annualPlan = true
     @State private var showStory = false
@@ -61,13 +62,27 @@ struct OnboardingView: View {
     }
     private var possessive: String { "\(name)'s" }
 
-    private let explorers: [(emoji: String, label: String, accent: Color)] = [
-        ("🦊", "Fox",   OnbColors.custom(0xFF9E5A)),
-        ("🦉", "Owl",   OnbColors.custom(0x8B6BFF)),
-        ("🐻", "Bear",  OnbColors.custom(0x37E0C8)),
-        ("🦁", "Lion",  OnbColors.custom(0xFFD25E)),
-        ("🐰", "Bunny", OnbColors.custom(0xFF83C0)),
-        ("🐼", "Panda", OnbColors.custom(0xECF1FF)),
+    /// The chosen hopes as a natural phrase ("courage", "courage and kindness",
+    /// "courage, kindness, and wonder at God"). Falls back to "wonder" if none.
+    private var hopesPhrase: String {
+        let items = hopeOptions.filter { hopes.contains($0) }.map { $0.lowercased() }
+        switch items.count {
+        case 0: return "wonder"
+        case 1: return items[0]
+        case 2: return "\(items[0]) and \(items[1])"
+        default: return items.dropLast().joined(separator: ", ") + ", and " + items.last!
+        }
+    }
+
+    /// The explorer's kit — on-theme gear emblems (not animals). Stored on the
+    /// profile as an SF Symbol name and rendered as a brass emblem everywhere.
+    private let explorerGear: [(symbol: String, label: String, accent: Color)] = [
+        ("binoculars.fill", "Spyglass", OnbColors.custom(0x37E0C8)),
+        ("map.fill",        "Map",      OnbColors.custom(0xFF9E5A)),
+        ("key.fill",        "Key",      OnbColors.custom(0xFFD25E)),
+        ("flag.fill",       "Flag",     OnbColors.custom(0xFF83C0)),
+        ("star.fill",       "Star",     OnbColors.custom(0xFFE08A)),
+        ("backpack.fill",   "Pack",     OnbColors.custom(0x8B6BFF)),
     ]
 
     private let habitOptions = [
@@ -173,9 +188,9 @@ struct OnboardingView: View {
             case .habit:
                 primary("Continue ✦") { go(to: .hope) }.disabled(habit == nil)
             case .hope:
-                primary("Continue ✦") { go(to: .worry) }.disabled(hope == nil)
+                primary("Continue ✦") { go(to: .worry) }.disabled(hopes.isEmpty)
             case .worry:
-                primary("Continue ✦") { go(to: .building) }.disabled(worry == nil)
+                primary("Continue ✦") { go(to: .building) }   // informational — no selection required
             case .building:
                 EmptyView()   // auto-advances
             case .plan:
@@ -220,19 +235,13 @@ struct OnboardingView: View {
         case .name:       nameStep
         case .age:        ageStep
         case .bible:      bibleStep
-        case .habit:      selectStep(eyebrowText: "For grown-ups", poli: nil,
-                                     title: "Where are you today?",
-                                     prompt: "How does Bible time look in your home right now? There's no wrong answer — it just sets where \(name)'s path begins.",
+        case .habit:      selectStep(title: "How's Bible time at home now?",
+                                     subtitle: "So we start \(name)'s path in the right place.",
                                      options: habitOptions, selection: $habit)
-        case .hope:       selectStep(eyebrowText: "For grown-ups",
-                                     poli: "I'll weave this through the stories we choose.",
-                                     title: "Your hope for \(name)",
-                                     prompt: "What do you most want \(name) to carry with them?",
-                                     options: hopeOptions, selection: $hope)
-        case .worry:      selectStep(eyebrowText: "For grown-ups", poli: nil,
-                                     title: "Be honest with us",
-                                     prompt: "What makes you a little cautious about a Bible app? Whatever you pick, we'll speak to it in a moment.",
-                                     options: worryOptions, selection: $worry)
+        case .hope:       multiSelectStep(title: "What do you hope \(name) grows in?",
+                                          subtitle: "Pick as many as you like — we'll lean the stories toward these.",
+                                          options: hopeOptions, selection: $hopes)
+        case .worry:      worryStep
         case .building:   buildingStep
         case .plan:       planStep
         case .promise:    promiseStep
@@ -245,24 +254,18 @@ struct OnboardingView: View {
     }
 
     private var welcomeStep: some View {
-        VStack(spacing: 18) {
-            eyebrow("True North")
-            OnbSpeechBubble(text: "Hi there! I'm Poli, your family's compass. ✦")
-                .padding(.bottom, 6)
-            OnbPoli(height: 200, pose: .waving)
-            glowTitle("A gentle path through the Bible", size: 34)
+        VStack(spacing: 20) {
+            OnbPoli(height: 210, pose: .waving)
+            glowTitle("A gentle path\nthrough the Bible", size: 40)
                 .multilineTextAlignment(.center)
-            Text("Reverent story-readings for ages 7–9 — built to hand the big questions back to you.")
-                .font(OnbFont.body(18))
+            Text("Reverent stories for ages 7–9.")
+                .font(OnbFont.body(21))
                 .foregroundStyle(OnbColors.ink)
                 .multilineTextAlignment(.center)
-                .lineSpacing(4)
-                .frame(maxWidth: 330)
-            Text("Reviewed by pastors · No ads · No chat · Nothing collected about your child")
-                .font(OnbFont.body(12))
+            Text("Reviewed by pastors · No ads · No chat")
+                .font(OnbFont.body(15))
                 .foregroundStyle(OnbColors.inkSoft)
                 .multilineTextAlignment(.center)
-                .padding(.top, 2)
         }
     }
 
@@ -271,48 +274,42 @@ struct OnboardingView: View {
             eyebrow("A note from us · just once")
             OnbPoli(height: 92)
             card {
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("We're parents too — and we built True North for our own kids first.")
-                        .font(OnbFont.body(17, .bold)).foregroundStyle(OnbColors.ink)
-                    Text("Every story is told faithfully, in Poli's own warm words. Real verses come straight from your family's Bible. True North will never pretend to be your child's pastor or their friend — when they wonder about the hard, holy things, Poli sends them home to you.")
-                        .font(OnbFont.body(15)).foregroundStyle(OnbColors.inkSoft)
+                VStack(alignment: .leading, spacing: 14) {
+                    Text("We're parents too. We built this for our own kids first.")
+                        .font(OnbFont.body(20, .bold)).foregroundStyle(OnbColors.ink)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Text("When your child wonders about the hard things, Poli sends them to you — never replaces you.")
+                        .font(OnbFont.body(17)).foregroundStyle(OnbColors.inkSoft)
                         .fixedSize(horizontal: false, vertical: true)
                         .lineSpacing(3)
-                    Text("— The True North family · aligned with the Baptist Faith & Message (2000)")
-                        .font(OnbFont.hand(18)).foregroundStyle(OnbColors.brassDeep)
+                    Text("— The True North family")
+                        .font(OnbFont.hand(19)).foregroundStyle(OnbColors.brassDeep)
                 }
             }
         }
     }
 
     private var storyIntroStep: some View {
-        VStack(spacing: 16) {
-            eyebrow("See it for yourself")
-            OnbPoli(height: 120, pose: .pointing)
-            glowTitle("Walk through a story", size: 30)
-            Text("Take two minutes — press play and experience exactly what your explorer will, from the first page to the wondering-question at the end. This is the app.")
-                .font(OnbFont.body(17))
+        VStack(spacing: 20) {
+            OnbPoli(height: 130, pose: .pointing)
+            glowTitle("See a story first", size: 34)
+            Text("Experience exactly what your child will.")
+                .font(OnbFont.body(21))
                 .foregroundStyle(OnbColors.ink)
                 .multilineTextAlignment(.center)
-                .lineSpacing(4)
-                .frame(maxWidth: 330)
+                .frame(maxWidth: 320)
             OnbSpeechBubble(text: "I'll read you \u{201C}The Storm That Obeyed.\u{201D} ✦")
-                .padding(.top, 4)
         }
     }
 
     private var gateStep: some View {
-        VStack(spacing: 18) {
-            OnbPoli(height: 110)
-            glowTitle("Grown-ups, this part's for you", size: 26)
+        VStack(spacing: 20) {
+            OnbPoli(height: 120)
+            glowTitle("Grown-ups only", size: 32)
                 .multilineTextAlignment(.center)
-            Text("Just a quick check so the setup and plan stay in your hands.")
-                .font(OnbFont.body(16)).foregroundStyle(OnbColors.inkSoft)
-                .multilineTextAlignment(.center)
-                .frame(maxWidth: 320)
             holdToContinue.padding(.top, 6)
-            Text("Press and hold the compass to continue.")
-                .font(OnbFont.body(13)).foregroundStyle(OnbColors.inkSoft)
+            Text("Press and hold to continue.")
+                .font(OnbFont.body(16)).foregroundStyle(OnbColors.inkSoft)
         }
     }
 
@@ -340,75 +337,105 @@ struct OnboardingView: View {
     }
 
     private var nameStep: some View {
-        VStack(spacing: 16) {
-            eyebrow("For grown-ups")
-            OnbPoli(height: 84)
+        VStack(spacing: 20) {
+            OnbPoli(height: 96)
             OnbSpeechBubble(text: "Who are we journeying with?")
-            TextField("First name or nickname", text: $childName)
-                .font(OnbFont.title(24))
+            TextField("First name", text: $childName)
+                .font(OnbFont.title(28))
                 .foregroundStyle(OnbColors.ink)
                 .multilineTextAlignment(.center)
                 .textInputAutocapitalization(.words)
-                .padding(.vertical, 14)
+                .padding(.vertical, 16)
                 .padding(.horizontal, 20)
                 .background(RoundedRectangle(cornerRadius: 18).fill(OnbColors.surface))
                 .overlay(RoundedRectangle(cornerRadius: 18).stroke(OnbColors.sepiaLine, lineWidth: 2))
                 .frame(maxWidth: 320)
-            Text("We only use it to make the journey feel like theirs — it never leaves this device.")
-                .font(OnbFont.body(13)).foregroundStyle(OnbColors.inkSoft)
-                .multilineTextAlignment(.center).frame(maxWidth: 320)
         }
     }
 
     private var ageStep: some View {
         VStack(spacing: 16) {
-            eyebrow("For grown-ups")
             OnbPoli(height: 84)
             Text("How old is \(name)?")
-                .font(OnbFont.title(25)).foregroundStyle(OnbColors.ink)
+                .font(OnbFont.title(30)).foregroundStyle(OnbColors.ink)
                 .multilineTextAlignment(.center)
-            HStack(spacing: 12) {
-                ForEach([7, 8, 9], id: \.self) { n in
-                    OnbChip(text: "\(n)", selected: age == n) { age = n }
-                }
+            Text("Built for ages 7–9. Older or younger is welcome — we'll pitch the stories to fit.")
+                .font(OnbFont.body(16)).foregroundStyle(OnbColors.inkSoft)
+                .multilineTextAlignment(.center).frame(maxWidth: 320)
+            let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 4)
+            LazyVGrid(columns: columns, spacing: 12) {
+                ForEach(5...12, id: \.self) { n in ageChip(n) }
             }
-            Text("Sets the reading level and which stories come first.")
-                .font(OnbFont.body(13)).foregroundStyle(OnbColors.inkSoft)
+            .frame(maxWidth: 300)
+            HStack(spacing: 7) {
+                RoundedRectangle(cornerRadius: 5).fill(OnbColors.parchmentDeep)
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(OnbColors.brass, lineWidth: 2))
+                    .frame(width: 16, height: 16)
+                Text("Designed for these ages")
+                    .font(OnbFont.body(13)).foregroundStyle(OnbColors.inkSoft)
+            }
+            .padding(.top, 2)
         }
     }
 
+    /// An age chip. Ages 7–9 (the designed-for band) carry a brass ring even when
+    /// unselected, so the recommended range reads at a glance; any age is selectable.
+    private func ageChip(_ n: Int) -> some View {
+        let selected = age == n
+        let recommended = (7...9).contains(n)
+        return Button { age = n } label: {
+            Text("\(n)")
+                .font(OnbFont.body(20, .bold))
+                .foregroundStyle(selected ? OnbColors.ctaInk : OnbColors.ink)
+                .frame(width: 58, height: 54)
+                .background(RoundedRectangle(cornerRadius: 16)
+                    .fill(selected ? OnbColors.brass : (recommended ? OnbColors.parchmentDeep : OnbColors.surface)))
+                .overlay(RoundedRectangle(cornerRadius: 16)
+                    .stroke(selected ? OnbColors.outline : (recommended ? OnbColors.brass : OnbColors.sepiaLine),
+                            lineWidth: (selected || recommended) ? 3 : 2))
+        }
+        .buttonStyle(.plain)
+        .animation(.spring(response: 0.25, dampingFraction: 0.7), value: selected)
+        .accessibilityLabel("Age \(n)\(recommended ? ", designed for this age" : "")")
+        .accessibilityAddTraits(selected ? [.isSelected, .isButton] : .isButton)
+    }
+
     private var bibleStep: some View {
-        VStack(spacing: 14) {
-            eyebrow("For grown-ups")
+        VStack(spacing: 16) {
             OnbPoli(height: 84)
-            Text("Any verse I point to comes straight from your Bible.")
-                .font(OnbFont.hand(20)).foregroundStyle(OnbColors.inkSoft)
-                .multilineTextAlignment(.center)
             Text("Your family's Bible")
-                .font(OnbFont.title(25)).foregroundStyle(OnbColors.ink)
-            Text("Pick the translation your family reads. Poli always retells stories in its own words — exact verses come from this one.")
-                .font(OnbFont.body(16)).foregroundStyle(OnbColors.inkSoft)
-                .multilineTextAlignment(.center).lineSpacing(3).frame(maxWidth: 340)
+                .font(OnbFont.title(30)).foregroundStyle(OnbColors.ink)
+            Text("Verses come from the one you pick.")
+                .font(OnbFont.body(17)).foregroundStyle(OnbColors.inkSoft)
+                .multilineTextAlignment(.center)
             VStack(spacing: 10) {
                 ForEach(BibleTranslation.allCases, id: \.self) { t in translationRow(t) }
             }
-            .padding(.top, 6)
+            .padding(.top, 4)
             .frame(maxWidth: 360)
         }
     }
 
-    /// A reusable single-select question screen (habit / hope / worry).
-    private func selectStep(eyebrowText: String, poli: String?, title: String,
-                            prompt: String, options: [String],
-                            selection: Binding<String?>) -> some View {
-        VStack(spacing: 14) {
-            eyebrow(eyebrowText)
-            OnbPoli(height: 76)
-            if let poli { OnbSpeechBubble(text: poli) }
-            Text(title).font(OnbFont.title(25)).foregroundStyle(OnbColors.ink)
+    /// A short "why we're asking" line under a question title.
+    private func questionHead(_ title: String, _ subtitle: String) -> some View {
+        VStack(spacing: 8) {
+            Text(title).font(OnbFont.title(29)).foregroundStyle(OnbColors.ink)
                 .multilineTextAlignment(.center)
-            Text(prompt).font(OnbFont.body(15)).foregroundStyle(OnbColors.inkSoft)
-                .multilineTextAlignment(.center).lineSpacing(3).frame(maxWidth: 340)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: 340)
+            Text(subtitle).font(OnbFont.body(16)).foregroundStyle(OnbColors.inkSoft)
+                .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
+                .frame(maxWidth: 320)
+        }
+    }
+
+    /// A single-select question screen (habit / worry): pick exactly one.
+    private func selectStep(title: String, subtitle: String, options: [String],
+                            selection: Binding<String?>) -> some View {
+        VStack(spacing: 18) {
+            OnbPoli(height: 80)
+            questionHead(title, subtitle)
             VStack(spacing: 10) {
                 ForEach(options, id: \.self) { opt in
                     optionRow(opt, selected: selection.wrappedValue == opt) {
@@ -416,23 +443,108 @@ struct OnboardingView: View {
                     }
                 }
             }
-            .padding(.top, 4)
+            .padding(.top, 2)
             .frame(maxWidth: 360)
         }
     }
 
-    private func optionRow(_ label: String, selected: Bool, _ action: @escaping () -> Void) -> some View {
+    /// A multi-select question screen (hope): pick as many as apply (per the skill's
+    /// "allow multi-intent" guidance for goal questions — forcing one felt wrong).
+    private func multiSelectStep(title: String, subtitle: String, options: [String],
+                                 selection: Binding<Set<String>>) -> some View {
+        VStack(spacing: 18) {
+            OnbPoli(height: 80)
+            questionHead(title, subtitle)
+            VStack(spacing: 10) {
+                ForEach(options, id: \.self) { opt in
+                    optionRow(opt, selected: selection.wrappedValue.contains(opt), multi: true) {
+                        if selection.wrappedValue.contains(opt) { selection.wrappedValue.remove(opt) }
+                        else { selection.wrappedValue.insert(opt) }
+                    }
+                }
+            }
+            .padding(.top, 2)
+            .frame(maxWidth: 360)
+        }
+    }
+
+    /// The worry screen is NOT a pick — its job is to *answer* fears (trust is this
+    /// app's bottleneck). So it's an accordion: tap a concern, its answer drops down,
+    /// and the parent can read the answer to every one.
+    private var worryStep: some View {
+        VStack(spacing: 18) {
+            OnbPoli(height: 80)
+            questionHead("Worried about a Bible app?", "Tap any concern to see our answer.")
+            VStack(spacing: 10) {
+                ForEach(worryOptions, id: \.self) { w in worryRow(w) }
+            }
+            .padding(.top, 2)
+            .frame(maxWidth: 360)
+        }
+    }
+
+    private func worryRow(_ w: String) -> some View {
+        let open = expandedWorry == w
+        return VStack(spacing: 0) {
+            Button {
+                withAnimation(.easeInOut(duration: 0.22)) { expandedWorry = open ? nil : w }
+                worry = w   // remember the last concern opened (pins on the Promise)
+            } label: {
+                HStack(spacing: 12) {
+                    Text(w).font(OnbFont.body(18, .bold)).foregroundStyle(OnbColors.ink)
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Spacer(minLength: 8)
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 15, weight: .bold))
+                        .foregroundStyle(OnbColors.brassDeep)
+                        .rotationEffect(.degrees(open ? 180 : 0))
+                }
+                .padding(.vertical, 15).padding(.horizontal, 18)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            if open {
+                Text(worryAnswer(w))
+                    .font(OnbFont.body(16)).foregroundStyle(OnbColors.inkSoft)
+                    .lineSpacing(3)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 18).padding(.bottom, 15)
+                    .transition(.opacity)
+            }
+        }
+        .background(RoundedRectangle(cornerRadius: 16).fill(open ? OnbColors.sand : OnbColors.surface))
+        .overlay(RoundedRectangle(cornerRadius: 16)
+            .stroke(open ? OnbColors.brass : OnbColors.sepiaLine, lineWidth: open ? 3 : 2))
+        .accessibilityElement(children: .combine)
+        .accessibilityHint(open ? "Collapse answer" : "Expand answer")
+    }
+
+    private func worryAnswer(_ w: String) -> String {
+        switch w {
+        case worryOptions[0]: return "Poli retells in its own words and never quotes Scripture wrong — exact verses come from your family's Bible. Reviewed by pastors, aligned with the Baptist Faith & Message."
+        case worryOptions[1]: return "About 10 calm minutes a night. No autoplay, no endless feed, no ads — it ends when the story ends."
+        case worryOptions[2]: return "No ads, no chat, no strangers. Nothing is collected about your child, and nothing is used to train any AI."
+        case worryOptions[3]: return "Never. When your child asks a big question, Poli hands it back to you — you're the one who answers."
+        default: return ""
+        }
+    }
+
+    private func optionRow(_ label: String, selected: Bool, multi: Bool = false, _ action: @escaping () -> Void) -> some View {
         Button(action: action) {
             HStack(spacing: 12) {
-                Image(systemName: selected ? "largecircle.fill.circle" : "circle")
+                Image(systemName: multi ? (selected ? "checkmark.square.fill" : "square")
+                                        : (selected ? "largecircle.fill.circle" : "circle"))
                     .font(.system(size: 20))
                     .foregroundStyle(selected ? OnbColors.brassDeep : OnbColors.sepiaLine)
-                Text(label).font(OnbFont.body(16, selected ? .bold : .regular))
+                Text(label).font(OnbFont.body(19, selected ? .bold : .regular))
                     .foregroundStyle(OnbColors.ink)
                     .fixedSize(horizontal: false, vertical: true)
                 Spacer(minLength: 0)
             }
-            .padding(.vertical, 13).padding(.horizontal, 16)
+            .padding(.vertical, 16).padding(.horizontal, 18)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(RoundedRectangle(cornerRadius: 16).fill(selected ? OnbColors.sand : OnbColors.surface))
             .overlay(RoundedRectangle(cornerRadius: 16).stroke(selected ? OnbColors.brass : OnbColors.sepiaLine, lineWidth: selected ? 3 : 2))
@@ -447,7 +559,7 @@ struct OnboardingView: View {
             OnbPoli(height: 120)
             glowTitle("Charting \(possessive) path…", size: 26)
                 .multilineTextAlignment(.center)
-            Text("Choosing stories for \((hope ?? "wonder").lowercased())… setting a gentle pace…")
+            Text("Choosing stories for \(hopesPhrase)… setting a gentle pace…")
                 .font(OnbFont.hand(19)).foregroundStyle(OnbColors.inkSoft)
                 .multilineTextAlignment(.center).frame(maxWidth: 320)
             ProgressView().tint(OnbColors.brassDeep).scaleEffect(1.2).padding(.top, 4)
@@ -469,7 +581,7 @@ struct OnboardingView: View {
                     planBullet("timer", "About 10 minutes a night, at your pace — no streaks, no pressure.")
                     planBullet("bubble.left.and.bubble.right.fill", "One \u{201C}wondering question\u{201D} to talk over together each night.")
                     planBullet("book.closed.fill", "Verses shown from your \(translation.displayName).")
-                    planBullet("sparkles", "Chosen to help \(name) grow in \((hope ?? "wonder").lowercased()).")
+                    planBullet("sparkles", "Chosen to help \(name) grow in \(hopesPhrase).")
                     planBullet("leaf.fill", planStartLine, tint: OnbColors.sage)
                 }
             }
@@ -491,9 +603,9 @@ struct OnboardingView: View {
 
     private func planBullet(_ icon: String, _ text: String, tint: Color = OnbColors.brassDeep) -> some View {
         HStack(alignment: .top, spacing: 12) {
-            Image(systemName: icon).font(.system(size: 18, weight: .semibold))
-                .foregroundStyle(tint).frame(width: 24)
-            Text(text).font(OnbFont.body(15)).foregroundStyle(OnbColors.ink)
+            Image(systemName: icon).font(.system(size: 20, weight: .semibold))
+                .foregroundStyle(tint).frame(width: 26)
+            Text(text).font(OnbFont.body(17)).foregroundStyle(OnbColors.ink)
                 .fixedSize(horizontal: false, vertical: true)
             Spacer(minLength: 0)
         }
@@ -553,23 +665,22 @@ struct OnboardingView: View {
     }
 
     private var notifyStep: some View {
-        VStack(spacing: 16) {
-            OnbPoli(height: 110)
-            OnbSpeechBubble(text: "Want a gentle nudge at story time?")
-            Text("One quiet evening reminder — the kind that turns a good intention into a habit. No guilt, no streaks. Off anytime.")
-                .font(OnbFont.body(16)).foregroundStyle(OnbColors.ink)
-                .multilineTextAlignment(.center).lineSpacing(3).frame(maxWidth: 330)
+        VStack(spacing: 20) {
+            OnbPoli(height: 120)
+            OnbSpeechBubble(text: "A gentle nudge at story time?")
+            Text("One quiet evening reminder. No guilt, no streaks.")
+                .font(OnbFont.body(19)).foregroundStyle(OnbColors.ink)
+                .multilineTextAlignment(.center).frame(maxWidth: 320)
         }
     }
 
     private var paywallStep: some View {
         VStack(spacing: 14) {
-            eyebrow("For grown-ups")
-            glowTitle("Keep walking with \(name)", size: 25)
+            glowTitle("Keep walking with \(name)", size: 28)
                 .multilineTextAlignment(.center)
-            Text("You've seen the first story. The whole journey — reverent, safe, and yours to guide — is ready when you are.")
-                .font(OnbFont.body(16)).foregroundStyle(OnbColors.inkSoft)
-                .multilineTextAlignment(.center).lineSpacing(3).frame(maxWidth: 330)
+            Text("The whole journey, ready when you are.")
+                .font(OnbFont.body(18)).foregroundStyle(OnbColors.inkSoft)
+                .multilineTextAlignment(.center).frame(maxWidth: 320)
 
             VStack(spacing: 12) {
                 planCard(annual: true,  title: "Family · Yearly",  price: "$39.99 / year",
@@ -600,24 +711,64 @@ struct OnboardingView: View {
     private var explorerStep: some View {
         VStack(spacing: 14) {
             OnbPoli(height: 84, pose: .pointing)
-            Text("Now the fun part — who's exploring today?")
+            Text("Every explorer needs a trusty tool —")
                 .font(OnbFont.hand(20)).foregroundStyle(OnbColors.inkSoft)
                 .multilineTextAlignment(.center)
-            Text("Pick your explorer")
+            Text("Pick your emblem")
                 .font(OnbFont.title(26)).foregroundStyle(OnbColors.ink)
             let columns = [GridItem(.flexible(), spacing: 12),
                            GridItem(.flexible(), spacing: 12),
                            GridItem(.flexible(), spacing: 12)]
             LazyVGrid(columns: columns, spacing: 12) {
-                ForEach(explorers, id: \.emoji) { e in
-                    OnbChoiceTile(emoji: e.emoji, label: e.label, accent: e.accent,
-                                  selected: avatar == e.emoji) {
-                        avatar = e.emoji
-                    }
-                }
+                ForEach(explorerGear, id: \.symbol) { g in gearTile(g) }
             }
             .padding(.top, 4)
         }
+    }
+
+    /// One explorer-gear emblem tile: a brass SF-Symbol on a parchment card, with
+    /// a brass check when chosen. On-theme replacement for the emoji animals.
+    private func gearTile(_ g: (symbol: String, label: String, accent: Color)) -> some View {
+        let selected = avatar == g.symbol
+        return Button { avatar = g.symbol } label: {
+            VStack(spacing: 8) {
+                Image(systemName: g.symbol)
+                    .font(.system(size: 28, weight: .semibold))
+                    .foregroundStyle(OnbColors.brassDeep)
+                    .frame(width: 60, height: 60)
+                    .background(
+                        Circle().fill(RadialGradient(
+                            colors: [Color.white.opacity(0.9), g.accent],
+                            center: UnitPoint(x: 0.5, y: 0.35), startRadius: 2, endRadius: 40))
+                    )
+                    .overlay(Circle().stroke(OnbColors.outline, lineWidth: 3))
+                Text(g.label)
+                    .font(OnbFont.body(15, .bold))
+                    .foregroundStyle(selected ? OnbColors.brassDeep : OnbColors.ink)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 16)
+            .background(RoundedRectangle(cornerRadius: 22).fill(selected ? OnbColors.sand : OnbColors.surface))
+            .overlay(RoundedRectangle(cornerRadius: 22)
+                .stroke(selected ? OnbColors.brass : OnbColors.outline, lineWidth: selected ? 4 : 3))
+            .overlay(alignment: .topTrailing) {
+                if selected {
+                    Image(systemName: "checkmark")
+                        .font(.system(size: 13, weight: .black))
+                        .foregroundStyle(OnbColors.ctaInk)
+                        .frame(width: 26, height: 26)
+                        .background(Circle().fill(OnbColors.brass))
+                        .overlay(Circle().stroke(OnbColors.outline, lineWidth: 3))
+                        .offset(x: 8, y: -8)
+                        .transition(.scale)
+                }
+            }
+            .shadow(color: OnbColors.outline, radius: 0, x: 0, y: 4)
+        }
+        .buttonStyle(.plain)
+        .animation(.spring(response: 0.25, dampingFraction: 0.7), value: selected)
+        .accessibilityLabel(g.label)
+        .accessibilityAddTraits(selected ? [.isSelected, .isButton] : .isButton)
     }
 
     // MARK: Finale
@@ -634,7 +785,8 @@ struct OnboardingView: View {
 
             HStack(spacing: 18) {
                 VStack(spacing: 4) {
-                    Text(avatar ?? "🦊").font(.system(size: 34))
+                    Image(systemName: avatar ?? "star.fill").font(.system(size: 28, weight: .semibold))
+                        .foregroundStyle(OnbColors.brassDeep)
                         .frame(width: 60, height: 60)
                         .background(Circle().fill(OnbColors.surface))
                         .overlay(Circle().stroke(OnbColors.outline, lineWidth: 3))
@@ -762,7 +914,7 @@ struct OnboardingView: View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: icon).font(.system(size: 18, weight: .semibold))
                 .foregroundStyle(tint).frame(width: 24)
-            Text(text).font(OnbFont.body(14)).foregroundStyle(OnbColors.ink)
+            Text(text).font(OnbFont.body(16)).foregroundStyle(OnbColors.ink)
                 .fixedSize(horizontal: false, vertical: true)
             Spacer(minLength: 0)
         }
@@ -802,7 +954,7 @@ struct OnboardingView: View {
     }
 
     private func resetFlow() {
-        childName = ""; age = nil; habit = nil; hope = nil; worry = nil; avatar = nil
+        childName = ""; age = nil; habit = nil; hopes = []; worry = nil; expandedWorry = nil; avatar = nil
         go(to: .welcome)
     }
 
@@ -818,7 +970,7 @@ struct OnboardingView: View {
         env.completeOnboarding(
             child: ChildProfile(name: finalName.isEmpty ? "Explorer" : finalName,
                                 age: age ?? 8,
-                                avatar: avatar ?? "🦊"),
+                                avatar: avatar ?? "star.fill"),
             translation: translation
         )
     }
