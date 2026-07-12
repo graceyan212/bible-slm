@@ -1,0 +1,37 @@
+{
+  "_comment": "The Good Shepherd (lost sheep, Luke 15 / John 10) — warm 7-9 gospel-centered retell. NEVER verbatim Scripture in narrative; verse text is a stand-in to verify against the licensed NIrV before ship.",
+  "id": "good_shepherd",
+  "title": "The Good Shepherd",
+  "subtitle": "Jesus Comes to Find Us",
+  "pages": [
+    {
+      "art": "story_shepherd/shepherd_p1.png",
+      "heading": "The Lost Sheep",
+      "text": "There was once a good shepherd who had a hundred sheep, and he loved every single one. He knew each fluffy face. He knew which sheep liked the shady rocks and which one skipped when it was happy. He counted them each evening — every one safe, every one home.\n\nBut one little sheep saw a patch of green grass and wandered a few steps away. Then a few more. It nibbled and nibbled and did not notice how far it had gone. When it finally looked up, the others were gone. The hills grew big and shadowy. The sky turned pink, then gray. The little sheep was lost, far from home, all alone, and it did not know the way back. It gave a small, frightened cry into the growing dark."
+    },
+    {
+      "art": "story_shepherd/shepherd_p2.png",
+      "heading": "Searching Everywhere",
+      "text": "The good shepherd counted his sheep, the way he always did. Ninety-eight. Ninety-nine. He counted again. One was missing! His heart ached. He would not just shrug and say, \"Well, I still have plenty.\" Every sheep mattered to him — and this little one was lost and afraid.\n\nSo he left the ninety-nine safe and close together, and he went out into the night to find the one. He climbed steep, rocky hills. He pushed through sharp, thorny bushes that scratched his hands. He looked in dark valleys and behind cold gray stones. Over and over he called out, his voice warm and steady in the dark: \"Where are you, little one? I'm coming!\" He was tired, but he did not stop. He would not give up. He searched and searched until he found his lost sheep."
+    },
+    {
+      "art": "story_shepherd/shepherd_p3.png",
+      "heading": "Carried Home with Joy",
+      "text": "At last the good shepherd heard a tiny, tired bleat. There, trembling in the thorns, was his lost little sheep! He did not scold it. He did not frown. He was simply so glad he had found it.\n\nGently, he reached down and lifted the sheep up. He laid it across his strong shoulders and held it close, and he carried it all the way home himself. The little sheep felt safe at last, resting on the one who came to find it.\n\nWhen the shepherd reached home, he was so full of joy that he called to everyone nearby: \"Come and be happy with me! I found my sheep that was lost!\" And they had a wonderful celebration together — all because the one who had been lost was found and safe at home again."
+    }
+  ],
+  "verse": {
+    "ref": "John 10:11",
+    "text": "I am the good shepherd. The good shepherd gives his life for the sheep.",
+    "translation": "NIrV"
+  },
+  "christ_connection": {
+    "heading": "He Comes for You",
+    "text": "Jesus told this story about himself, because he is the Good Shepherd. When we wander away and get lost, he doesn't wait for us to find our own way back — he comes looking for us. Jesus loved us so much that he even gave up his own life to carry us safely home to God. That's how much he treasures every single one of his sheep — including you."
+  },
+  "reward": {
+    "icon": "heart",
+    "name": "The Shepherd's Heart",
+    "text": "You uncovered a treasure! Come back tomorrow to keep exploring the trail."
+  }
+}

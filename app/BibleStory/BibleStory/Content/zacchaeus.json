@@ -1,0 +1,26 @@
+{
+  "_comment": "Zacchaeus (Luke 19) — warm 7-9 gospel-centered retell; JESUS is the hero who seeks out the one everyone ignored. NEVER verbatim Scripture in narrative; verse text is a stand-in to verify against the licensed NIrV before ship.",
+  "id": "zacchaeus",
+  "title": "Zacchaeus",
+  "subtitle": "Jesus Seeks the Lost",
+  "pages": [
+    {
+      "art": "story_zacchaeus/zacchaeus_p1.png",
+      "heading": "The Man in the Tree",
+      "text": "In the town of Jericho lived a little man named Zacchaeus. He was a tax collector — and not a fair one. For years he had taken more money than people owed and kept the extra for himself. So nobody in town liked Zacchaeus. When he walked by, people turned away. He was rich, but he was lonely, like someone lost far from home. One day a wonderful buzz filled the streets. Jesus was coming! Zacchaeus longed to see him, but a huge crowd packed the road, and Zacchaeus was very, very short. He stood on his toes. He hopped. He could not see over one single shoulder. Then he had an idea. He hurried ahead, kicked off the dust, and scrambled up into a leafy sycamore tree. Hidden in the branches, he peeked down at the road and waited, hoping to catch just one glimpse of Jesus as he passed by."
+    },
+    {
+      "art": "story_zacchaeus/zacchaeus_p2.png",
+      "heading": "Jesus Knows His Name",
+      "text": "Closer and closer Jesus came, and Zacchaeus held his breath. Then something happened that Zacchaeus never, ever expected. Right under the sycamore tree, Jesus stopped. He looked up through the leaves, straight at the little man hiding there — and he smiled. \"Zacchaeus,\" Jesus said. He knew his name! \"Come down. I am coming to your house today.\" Zacchaeus could hardly believe it. Of all the people in the whole crowd, Jesus had come looking for him. He climbed down as fast as he could and welcomed Jesus with a heart full of joy. But all around, the crowd began to grumble and frown. \"Why would Jesus go to that man's house?\" they whispered. \"Doesn't he know what Zacchaeus is like? He's a cheater. He's a sinner.\" They could not understand it. But Jesus was not looking for people who thought they were good enough. Jesus had come looking for the one everybody else had given up on."
+    },
+    {
+      "art": "story_zacchaeus/zacchaeus_p3.png",
+      "heading": "A Brand-New Heart",
+      "text": "Being loved by Jesus changed everything inside Zacchaeus. The tight, greedy grip on his money simply melted away, and something warm and new grew in its place. Standing tall, Zacchaeus made a joyful promise. \"Look, Lord! Half of everything I own, I will give to the poor. And anyone I ever cheated, I will pay back four times over!\" He wasn't trying to buy Jesus' love — he already had it. He was giving because his heart had been made brand new. Jesus was glad. He looked at Zacchaeus, the man nobody wanted, and called him a true child of God's family. Then Jesus told them all why he had come. He had not come for the ones who thought they were fine on their own. He had come to search for people who were lost, like a shepherd searching for one missing lamb — to find them, and love them, and bring them safely home."
+    }
+  ],
+  "verse": { "ref": "Luke 19:10", "text": "The Son of Man came to look for the lost and save them.", "translation": "NIrV" },
+  "christ_connection": { "heading": "He Came Looking", "text": "Zacchaeus did not find Jesus that day — Jesus found him. Jesus walked right past the whole crowd to seek out the one person everyone else ignored, and he knew his name. That is what Jesus still loves to do: he came to seek and to save people who are lost, not the ones who think they are good enough. And here is the wonder — he knows your name, too, and he came looking for you." },
+  "reward": { "icon": "star", "name": "The Sycamore Coin", "text": "You uncovered a treasure! Come back tomorrow to keep exploring the trail." }
+}

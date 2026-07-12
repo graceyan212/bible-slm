@@ -1,0 +1,42 @@
+{
+  "_comment": "The Prodigal Son (the loving father, Luke 15) — warm 7-9 gospel-centered retell; the FATHER (God) is the hero who runs to welcome us home. NEVER verbatim Scripture in narrative; verse text is a stand-in to verify against the licensed NIrV before ship.",
+  "id": "prodigal_son",
+  "title": "The Father Who Ran",
+  "subtitle": "God Welcomes Us Home",
+  "pages": [
+    {
+      "art": "story_prodigal/prodigal_p1.png",
+      "heading": "The Son Who Left",
+      "text": "Once there was a father who had two sons, and his heart was full of love for them both. One day the younger son came to him and said, “Father, give me my share now.” It was a hard thing to ask, as if he could not wait for home to feel like home anymore. But the father, so gentle and giving, opened his hands and let him go. He loved him enough to let him choose, even when the choice would hurt. So the young man packed up everything he owned and traveled far, far away to a country he had never seen. Behind him the lights of home grew smaller and smaller, until he could not see them at all. Ahead of him was a whole new land, and he was sure that out there, away from his father, he would finally be happy."
+    },
+    {
+      "art": "story_prodigal/prodigal_p2.png",
+      "heading": "Everything Gone",
+      "text": "In the faraway land the young man spent it all — every last coin — on things that never made him happy for long. Soon his money was gone, and so were his new friends. Then a hungry time came over the whole land, and there was no food to buy anyway. The boy who once had everything now had nothing at all. He took a job feeding pigs, and he was so empty inside that even the pigs’ food began to look good. Sitting in the mud, cold and alone, he started to remember his father’s house — the warm bread, the kind faces, a place saved just for him. “I have done so much wrong,” he whispered. “I don’t deserve to be called his son anymore.” Still, he stood up and turned toward home, hoping his father might at least let him work like one of the helpers."
+    },
+    {
+      "art": "story_prodigal/prodigal_p3.png",
+      "heading": "The Father Ran",
+      "text": "All the long road back, the son practiced what he would say: “Father, I have done wrong. I am not good enough to be called your son. Please, just let me work for you.” He was sure he had lost his place forever. But he did not know what his father had been doing all this time. Every single day, the father had watched the road, hoping and waiting and loving his boy from far away. And while the son was still a long, long way off — just a small shape on the horizon — the father saw him. His heart leaped for joy. He did not wait, and he did not frown. Full of love, the father ran down the road toward his tired, dirty son, threw his arms around him, and wrapped him in the biggest, warmest hug. There was no scolding — only love that had been waiting the whole time."
+    },
+    {
+      "art": "story_prodigal/prodigal_p4.png",
+      "heading": "A Great Big Welcome",
+      "text": "The son started his sorry speech — “Father, I have done wrong…” — but the father was already calling out with joy. “Bring the best robe for him! Put a ring on his finger and shoes on his feet!” There was no long list of the boy’s mistakes. There was only welcome. “Let us have a feast and celebrate!” the father cried, his eyes shining with happy tears. “This son of mine was lost, and now he is found! He was gone, and now he is home!” So music began, and the whole house filled up with laughing and dancing and the smell of a wonderful supper. The son who thought he had lost everything found that his father’s love had been waiting the whole time — bigger and gladder than he ever imagined. He was not a servant. He was a son, welcomed all the way home."
+    }
+  ],
+  "verse": {
+    "ref": "Luke 15:20",
+    "text": "While the son was still a long way off, his father saw him and was filled with tender love. He ran to his son.",
+    "translation": "NIrV"
+  },
+  "christ_connection": {
+    "heading": "What God Is Like",
+    "text": "Jesus told this story to show us what God is really like. God is not a stern king waiting to catch us being bad — he is a Father who watches the road for us and runs to welcome us home the very moment we turn back to him, no matter what we have done. And here is the wonder: we can come home at all because Jesus made the way. He is the one who opened the road back to the Father, so that God’s great big welcome could be ours."
+  },
+  "reward": {
+    "icon": "heart",
+    "name": "The Father's Welcome",
+    "text": "You uncovered a treasure! Come back tomorrow to keep exploring the trail."
+  }
+}

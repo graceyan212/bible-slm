@@ -17,10 +17,18 @@ struct TrailStory: Identifiable, Hashable {
 enum StoryCatalog {
     /// Curriculum order. Append new stories here.
     static let all: [TrailStory] = [
-        TrailStory(id: "creation",       title: "Creation",             cover: "CoverCreation"),
-        TrailStory(id: "red_sea",        title: "The Red Sea",          cover: "CoverRedSea"),
-        TrailStory(id: "jesus_children", title: "Jesus & the Children", cover: "CoverJesusChildren"),
-        TrailStory(id: "the_promise",    title: "The Promise",          cover: "CoverThePromise"),
+        TrailStory(id: "creation",        title: "Creation",             cover: "CoverCreation"),
+        TrailStory(id: "red_sea",         title: "The Red Sea",          cover: "CoverRedSea"),
+        TrailStory(id: "jesus_children",  title: "Jesus & the Children", cover: "CoverJesusChildren"),
+        TrailStory(id: "the_promise",     title: "The Promise",          cover: "CoverThePromise"),
+        TrailStory(id: "jonah",           title: "Jonah & the Big Fish", cover: "StoryJonahP1"),
+        TrailStory(id: "first_christmas", title: "The First Christmas",  cover: "StoryFirstChristmasP1"),
+        TrailStory(id: "daniel_lions",    title: "Daniel & the Lions",   cover: "StoryDanielLionsP1"),
+        TrailStory(id: "good_shepherd",   title: "The Good Shepherd",    cover: "StoryGoodShepherdP1"),
+        TrailStory(id: "david_goliath",   title: "David & Goliath",      cover: "StoryDavidGoliathP1"),
+        TrailStory(id: "easter",          title: "The First Easter",     cover: "StoryEasterP4"),
+        TrailStory(id: "prodigal_son",    title: "The Father Who Ran",   cover: "StoryProdigalSonP3"),
+        TrailStory(id: "zacchaeus",       title: "Zacchaeus",            cover: "StoryZacchaeusP1"),
     ]
 
     /// The current (in-progress) story: everything before it is done, everything

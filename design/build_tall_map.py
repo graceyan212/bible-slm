@@ -12,13 +12,13 @@ pinned to the very bottom (it sits behind the pinned wood nav bar).
 import numpy as np
 from PIL import Image, ImageFilter
 
-SRC = "app/BibleStory/BibleStory/Assets.xcassets/ExpeditionMap.imageset/expedition-map-cropped.png"
+SRC = "docs/design-assets/expedition-map-cropped.png"
 OUT = "app/BibleStory/BibleStory/Assets.xcassets/ExpeditionMap.imageset/expedition-map-tall.png"
 OUT_COPY = "docs/design-assets/expedition-map-tall.png"
 
 src = Image.open(SRC).convert("RGB")
 W, H = src.size                      # 656 x 1291
-TARGET_H = 3150                      # ~2.4 screens tall
+TARGET_H = 5900                      # ~9x wide → fits 12 well-spaced stops
 
 def feather_mask(w, h, pad=55):
     """Soft alpha: opaque center, linear fade to 0 over `pad` px at every edge."""
@@ -69,6 +69,25 @@ paste(canvas, (0, 660, 230, 900),   (0, 1980))       # forest + coastline
 paste(canvas, (420, 660, W, 900),   (400, 2120))     # snowy mountains
 paste(canvas, (290, 760, 520, 920), (120, 2360))     # center forest cluster
 paste(canvas, (0, 100, 220, 340),   (410, 2430), pad=45)  # mountains near the goal
+
+# Extended middle (TARGET_H bumped 3150 → 5900): keep the added length lively by
+# scattering the same hand-drawn crops down y=2560..5300, alternating sides so it
+# never reads as a repeated stamp or a blank parchment stretch.
+paste(canvas, (400, 560, W, 720),   (330, 2560))     # right dunes
+paste(canvas, (0, 590, 250, 880),   (0, 2740))       # left forest belt
+paste(canvas, (290, 760, 520, 920), (200, 2980))     # center forest cluster
+paste(canvas, (420, 660, W, 900),   (400, 3160))     # right snowy mountains
+paste(canvas, (0, 660, 230, 900),   (0, 3400))       # left forest + coastline
+paste(canvas, (430, 200, 640, 330), (430, 3470), pad=45)  # right temple landmark
+paste(canvas, (400, 560, W, 760),   (340, 3660))     # right dunes
+paste(canvas, (290, 760, 540, 930), (110, 3880))     # center forest
+paste(canvas, (420, 660, W, 900),   (400, 4120))     # right snowy mountains
+paste(canvas, (0, 600, 200, 830),   (40, 4300))      # left forest
+paste(canvas, (430, 200, 640, 330), (30, 4520), pad=45)   # left temple landmark
+paste(canvas, (400, 560, W, 720),   (330, 4640))     # right dunes
+paste(canvas, (290, 760, 520, 920), (170, 4860))     # center forest cluster
+paste(canvas, (420, 660, W, 900),   (400, 5040))     # right snowy mountains
+paste(canvas, (0, 660, 230, 900),   (0, 5220))       # left forest + coastline
 
 # Bottom of the map: compass rose + ship + treasure chest (the "destination").
 dest_band = (0, 900, W, 1200)

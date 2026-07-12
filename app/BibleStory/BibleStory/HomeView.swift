@@ -60,9 +60,9 @@ struct HomeView: View {
 
     // MARK: The framed treasure-map screen (the "Map" tab)
 
-    /// Aspect (h / w) of the tall ExpeditionMap art (656 × 3150) — the map canvas
+    /// Aspect (h / w) of the tall ExpeditionMap art (656 × 5900) — the map canvas
     /// is this many screens-wide tall, so the trail scrolls vertically.
-    private static let mapAspect: CGFloat = 3150.0 / 656.0
+    private static let mapAspect: CGFloat = 5900.0 / 656.0
     /// Story stops ride the winding trail between these vertical fractions of the
     /// tall map (mountains sit above the first stop; the compass + chest destination
     /// sits below the last), alternating left/right of centre.

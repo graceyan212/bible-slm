@@ -1,0 +1,29 @@
+{
+  "_comment": "The First Christmas — warm 7-9 gospel-centered retell. NEVER verbatim Scripture in narrative; verse text is a stand-in to verify against the licensed NIrV before ship.",
+  "id": "first_christmas",
+  "title": "The First Christmas",
+  "subtitle": "God Keeps His Promise",
+  "pages": [
+    {
+      "art": "story_christmas/christmas_p1.png",
+      "heading": "A Very Special Promise",
+      "text": "For a long, long time, God had made a promise to his people. One day he would send Someone to rescue them and make everything right. God never forgets a promise. When the perfect moment came, he sent a bright angel to a young woman named Mary. “Do not be afraid,” the angel said gently. “God is very pleased with you. You are going to have a baby, and he will be God’s own Son — the Rescuer God promised long ago.” Mary was amazed. She was just an ordinary girl in a small town. How could this be? But she knew that nothing is too hard for God. So Mary trusted him. “I belong to God,” she said. “Let it happen just as he says.” God was quietly beginning the greatest rescue the world would ever know."
+    },
+    {
+      "art": "story_christmas/christmas_p2.png",
+      "heading": "Born in Bethlehem",
+      "text": "Soon Mary and Joseph had to travel a long, dusty road to a town called Bethlehem. Mary was going to have her baby very soon, and the little town was crowded with people. They knocked on doors, but every room was full. There was no cozy place for them to stay — only a place where the animals were kept. And there, in that humble little shelter, God kept his promise. Baby Jesus was born! Mary wrapped him up warm and safe and laid him in a manger — the wooden box where the animals ate their food. Think of it! The King of everything, the One who made the stars, chose to come as a tiny baby with no soft bed at all. God did not come with crowns and fancy palaces. He came close, small and gentle, to be near the people he loves."
+    },
+    {
+      "art": "story_christmas/christmas_p3.png",
+      "heading": "Good News of Great Joy",
+      "text": "That same night, some shepherds were out in the fields, watching their sheep in the dark. Suddenly the sky burst open with light, and an angel stood before them! The shepherds were terrified. But the angel said, “Don’t be afraid! I bring you wonderful news that will make everyone glad. Today, in Bethlehem, a Savior has been born for you!” Then the whole sky filled with angels, shining and singing praises to God. It was the happiest night the world had ever seen. As soon as the angels were gone, the shepherds hurried off to Bethlehem as fast as they could. And there they found him — Mary, Joseph, and the baby lying in the manger, just as the angel had said. They knelt down and worshiped him, so full of joy they could hardly hold it in. God had kept his promise."
+    }
+  ],
+  "verse": { "ref": "Luke 2:11", "text": "Today a Savior has been born to you. He is the Messiah, the Lord.", "translation": "NIrV" },
+  "christ_connection": {
+    "heading": "The Promise Come True",
+    "text": "For a long, long time, God promised to send Someone to rescue his people — and at the very first Christmas, he kept that promise. The baby in the manger is Jesus, God’s own Son, who came to save us. Christmas is where God’s great rescue plan began to come true. And the same God who kept his promise then still keeps every promise he makes to you."
+  },
+  "reward": { "icon": "star", "name": "The Bethlehem Star", "text": "You uncovered a treasure! Come back tomorrow to keep exploring the trail." }
+}

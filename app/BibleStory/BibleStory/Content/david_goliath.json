@@ -1,0 +1,39 @@
+{
+  "_comment": "David & Goliath — warm 7-9 gospel-centered retell (God is the rescuer, not 'be brave'). NEVER verbatim Scripture in narrative; verse text is a stand-in to verify against the licensed NIrV before ship.",
+  "id": "david_goliath",
+  "title": "David and Goliath",
+  "subtitle": "The Battle Belongs to God",
+  "pages": [
+    {
+      "art": "story_david/david_p1.png",
+      "heading": "The Giant's Challenge",
+      "text": "Down in the valley stood a giant named Goliath. He was taller than any man God's army had ever seen, wrapped in heavy armor that clanked and shone in the sun. Every morning and every evening he stomped out in front of God's people and roared, “Send me your best soldier! Who will dare to fight me?” His voice boomed across the valley like thunder. Day after day the giant strutted back and forth, laughing at God's army and daring them to come out. He seemed too big, too loud, too strong for anyone to beat. And every day, no one had an answer for him. The giant's challenge hung in the air, and God's people felt smaller and smaller each time he shouted."
+    },
+    {
+      "art": "story_david/david_p2.png",
+      "heading": "Everyone Was Afraid",
+      "text": "When the soldiers of God's army heard the giant roaring, they shook with fear. The strongest, bravest men looked down at their feet and would not move. Even the king, who was taller than all the rest, was afraid. Not one soldier dared to step forward and face Goliath. Morning came and evening came, and still no one would go. The whole camp felt heavy and hopeless, as if the battle were already lost. The giant was simply too big for any man to beat. It looked like there was no one, anywhere, who could rescue God's people from the giant in the valley. They needed help that no strong soldier could give — they needed God to fight for them."
+    },
+    {
+      "art": "story_david/david_p3.png",
+      "heading": "The Shepherd Boy",
+      "text": "Then a young shepherd named David arrived at the camp. He was the youngest in his family — not a soldier, not big, not strong. But out on the quiet hills, watching his father's sheep, David had seen God do wonderful things. When a lion and a bear had come to snatch the sheep, God had helped David keep them safe. So David knew that God was faithful and strong. When he heard the giant shouting against God's people, David was not afraid, because he trusted the God who had protected him. He would not wear the king's heavy armor. Instead he picked up his shepherd's sling and gathered five smooth stones from the stream. He was not trusting in his own strength — he was trusting in God to save."
+    },
+    {
+      "art": "story_david/david_p4.png",
+      "heading": "The Battle Is God's",
+      "text": "David walked out toward the giant, and Goliath laughed at the small shepherd boy. But David was not looking at the giant's size — he was remembering how big and faithful God is. “You come with a sword and a spear,” David called out, “but I come in the name of the living God. This battle belongs to him, and he will win it!” Then David began to run straight toward Goliath. He reached into his bag and took out one small, smooth stone. He placed it in his sling and swung it round and round. The stone flew straight and true across the valley. David was not counting on his own arm — he was trusting God to do what no strong soldier could ever do."
+    },
+    {
+      "art": "story_david/david_p5.png",
+      "heading": "God Wins the Day",
+      "text": "Down came the mighty giant, crashing to the ground, and the whole valley went quiet. Then God's people cheered, because they were rescued! Everyone could see the truth: it was not a strong man who won, and it was not even the little stone. It was God. God had saved his people through the least-likely person of all — a young shepherd boy — so that no one could boast, and so everyone would know the victory belonged to him. The giant was beaten, God's people were safe, and they rejoiced together. God had fought for them and won the day. And the God who rescued his people from the giant is still that strong and that faithful today, so his people never have to face their giants alone."
+    }
+  ],
+  "verse": { "ref": "1 Samuel 17:47", "text": "The battle belongs to the Lord.", "translation": "NIrV" },
+  "christ_connection": {
+    "heading": "The True King",
+    "text": "God rescued his people through an unlikely shepherd, so everyone could see the victory was his and not a strong man's. David stood in his people's place and won the battle for them. That is a little picture of Jesus, the true King, who steps in and wins the biggest battle of all — over sin and death — for us. And because God is that strong and that faithful, we never have to face our giants alone."
+  },
+  "reward": { "icon": "crown", "name": "The Shepherd-King's Stone", "text": "You uncovered a treasure! Come back tomorrow to keep exploring the trail." }
+}
