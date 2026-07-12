@@ -141,7 +141,7 @@ struct StoryView: View {
             Spacer()
             // Tap Poli to ask a question out loud (opens the Ask-Poli sheet).
             Button { showAsk = true } label: {
-                PoliCompassView(size: 36)
+                PoliImage(pose: .waving, size: 40)
                     .frame(width: 44, height: 44)
                     .contentShape(Rectangle())
             }
