@@ -217,10 +217,10 @@ struct OnbSpeechBubble: View {
     let text: String
     var body: some View {
         Text(text)
-            .font(OnbFont.hand(23))
+            .font(OnbFont.body(19, .medium))
             .foregroundStyle(OnbColors.ink)
             .multilineTextAlignment(.center)
-            .lineSpacing(2)
+            .lineSpacing(3)
             .padding(.vertical, 12)
             .padding(.horizontal, 22)
             .background(

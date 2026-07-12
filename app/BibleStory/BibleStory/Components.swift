@@ -104,6 +104,8 @@ enum PoliPose: String {
     case praying     = "PoliPraying"
     case celebrating = "PoliCelebrating"
     case thumbsUp    = "PoliThumbsUp"
+    case bible       = "PoliBible"      // holding Scripture — "read it in your Bible"
+    case thinking    = "PoliThinking"   // pondering / subdued — for tender, serious questions
 }
 
 /// The mascot, rendered from the illustrated pose art. Session-agnostic, so it can
@@ -146,8 +148,8 @@ struct PoliMascotView: View {
         switch state {
         case .idle: .waving
         case .listening: .pointing
-        case .thinking: .praying
-        case .answering: .thumbsUp
+        case .thinking: .thinking          // pondering the question
+        case .answering: .bible            // presenting Scripture as it answers
         }
     }
     private var glow: Color {
