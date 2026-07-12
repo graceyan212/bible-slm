@@ -1,41 +1,60 @@
-# ☀️ Morning brief — overnight build (for Grace)
+# Morning Brief — True North overnight build (night of 2026-07-11)
 
-*Autonomous `/loop` ran overnight (2026-07-08 → 09) with full agency, then **stopped when both goals were met: the design panel PASSED and the rubric is prepped end-to-end** — the only thing left is running the fine-tune on your GPU. Here's what happened, what to look at, and what needs you.*
+Good morning! Everything is integrated, building, verified in the simulator, and
+pushed to `onboarding-architect-skill` (synced 0/0, tip `f05250b`). Core tests 20/0.
+The phone was off, so this was verified in the iOS **simulator only** — the physical-device
+white-screen is still open (see bottom).
 
-**✅ MVP status: complete (to the GPU button-press).** Design panel passes (child 9.1 · parent 8.6 · master-UX 8.9). Dataset v1 (358 clean) + full eval + train pipeline ready. 3 GPU/human items remain (below).
+## What shipped tonight (all 5 tabs done + cohesive)
+1. **Map** — now a vertical **scrollable** treasure map. The background was extended to a
+   taller hand-composited canvas (656×5900, `design/build_tall_map.py`, no API — feathered
+   crops of the original art, same sepia-parchment aesthetic). All **12 story stops** ride a
+   winding rope trail, evenly spaced, ending near the compass/ship/treasure-chest destination.
+2. **Stories** — a new **Story Library**: a 2-column shelf of all 12 covers in curriculum
+   order with done/active/locked states. Muted parchment background so the colorful covers pop.
+3. **Ask Poli** — mascot + **voice input** (mic) + text field + "Pick a star" suggestion chips
+   that model the 3-tier stance (hold / acknowledge / deflect-to-parent).
+4. **Treasures** — reframed as **"Your Night Sky"**: stars = the cumulative **number of days**
+   you've explored (one per visit, **never lost — deliberately NOT a streak**, grace-not-guilt),
+   plus a treasure/badge shelf. "Come back any day to light another star — you'll never lose one."
+5. **Grown-ups** — Family Dashboard: explorer progress, Family Bible (NIrV), How Poli Teaches
+   (3-tier), Safe & Private. Numbers now consistent with Treasures (**12 days explored · 3 of 8
+   treasures**; the old "3-day streak" chip is gone).
 
-**🧭 UPDATE — your vibes PDF arrived, and I re-skinned the whole app to it.** "Starlight Trail" (my twilight-sky guess) is now **"Treasure Trail"** — an aged **treasure-map / explorer's-journal** world: warm parchment, a **brass pocket-compass** Poli (now with a soft dusty-blue watercolor face, per your board), an engraved **compass-rose** watermark + a dashed X-marks-the-spot route, storybook type (**Fraunces** + engraved **Cinzel** map-caps + journal **Caveat**), and your exact swatch palette (caramel · sage · wheat-gold · sand). Only the *skin* changed — the panel-approved layout, Poli's behavior states, and every a11y decision are intact. **Open `design/index.html` and tell me what to nudge.**
+Nav is the 5-item wood plank on the map (parchment bar elsewhere) with the raised center Poli.
 
-## ⚡ First, what needs you
-1. **Your vibes PDF is now applied — take a look and tell me what to nudge.** The re-skin (above) is my read of your board: treasure map, parchment, brass compass, storybook lettering, your swatch palette. If the balance is off (too much gold? want the sea bluer? a different storybook font?), say the word — it's all tokenized, so palette/type tweaks are one small edit. *(The illuminated drop-cap alphabet on p2 I read as a "storybook feel" cue, not a literal body font — kept body in the kid-legible Lexend; I can add illuminated drop-caps on story pages if you want that flourish.)*
-2. **The model training needs your Colab.** I can't run a GPU, so the actual QLoRA fine-tune + the real base-vs-tuned numbers are the one thing I couldn't execute. Everything up to the button-press is prepped (dataset, harness, notebook).
+## The 12 stories (one shared `StoryCatalog` drives BOTH map + library)
+Creation · The Red Sea · Jesus & the Children · The Promise · Jonah & the Big Fish ·
+The First Christmas · Daniel & the Lions · The Good Shepherd · David & Goliath ·
+The First Easter · The Father Who Ran (Prodigal) · Zacchaeus.
+Content + per-page art came from the concurrent story-gen effort (branch `app-work`,
+judge-vetted "12/12 PASS"); each story's own art renders in the reader (verified David & Goliath,
+Easter, Zacchaeus, Jonah, Prodigal). Adding a story later = one line in `StoryCatalog.all`.
 
-## 👀 What to look at first
-Open **`design/index.html`** in a browser (then `home.html`, `lesson.html`, `compass.html`). That's the UI MVP.
-- **Vibe:** "TREASURE TRAIL" — a warm treasure-map expedition; you start at a campfire and climb a **winding dotted route**, reaching landmark **stops** that fill in as you go, until a finished unit **uncovers the treasure** on the map (Duolingo-path structure, aged-parchment palette, fat squishy candy buttons, a faint compass-rose watermark).
-- **Mascot:** **Poli**, a warm-brass **pocket-compass with a face** (see `mascot.svg`, now a soft dusty-blue watercolor face per your board) whose North-Star needle is the tap-to-talk button — it *is* the SLM signal, exactly as you asked (compass + mic + character).
-- **SLM wired in (mock):** `compass.html` has the **guided-topic picker** ("not sure? pick a star"), a voice mic, and on-spec replies; `lesson.html` has the in-lesson "Ask Poli" helper. Replies follow the 3-tier behavior (retell + "read it in *your* Bible" chip; deflect tender questions to a grown-up). It's a **stub** (`mockSLM()` with a clear `// TODO: real SLM endpoint`) — swap in the fine-tuned model when it's trained.
+## ⚠️ Please review before shipping (I did NOT change these autonomously)
+1. **Onboarding social-proof step is fabricated.** It shows a "4.8" rating + two invented
+   testimonials ("Rachel, mom of two"; "David, dad"). For an unreleased app that's the same kind
+   of overclaim as the pastor line I removed — but deleting the step reshapes the onboarding
+   Step enum/flow/deep-links, so I left it for you. Decide: remove, or reframe as honest
+   "early access." (File: `OnboardingView.swift`, `socialStep`.)
+2. **Story `verse` fields are PLACEHOLDERS.** Per behavior-spec, exact verses must come from the
+   family's **licensed NIrV**, never model-generated. The JSON verse text must be verified/licensed
+   before ship. I left narrative retells untouched and did not fix verse text.
+3. **Minor cohesion nit:** the Ask Poli screen title uses the system bold font rather than the
+   IM Fell display used on every other tab's title ("Your Night Sky", "Story Library", "Family
+   Dashboard"). Low-risk one-liner in `CompassView.swift` if you want it consistent — I left it
+   because that file carries the new voice logic and I didn't want to destabilize it overnight.
 
-## ✅ Done overnight
-- **Dataset:** `data/train_v2.jsonl` = **358 clean records** (3-tier SBC behavior), all through the deterministic gate (schema, no verbatim Scripture, deduped, disjoint from eval). Pipeline is reproducible (`data/datagen_prompt.md` → teacher → `data/filter.py`); scaling to ~2k is a re-run (see caveat below).
-- **Your review calls applied:** hold-wording polished (no gush / "keep being thankful"); danger rows get "God loves you" + never "God will fix it" + follow-up protection; SAC-01 flatten def tightened so gracious warmth isn't penalized; `hold-bap-0033` reworded.
-- **Eval:** `eval/scenarios.json` (52 scenarios, 4 per demo claim), tier-aware judge (`eval/judge_prompt.md`), and a runnable **base-vs-tuned harness `eval/run_eval.py`** (verse guard + position-swap + metrics table) ready for Colab. Eval leaks reworded to novel wording.
-- **Dataset card:** `data/DATASET_CARD.md`.
-- **Brainlift:** pivoted to SBC (SPOV 2 → "specificity beats neutrality / 3-tier"; Owen flipped to pro-argument; BF&M added).
-- **UI:** design system (`design/tokens.css`), mascot (`design/mascot.svg`), and 5 screens (above).
+## Still open
+- **Physical-device white screen** — DEFERRED. Clean Release install still white; the CLI can't
+  capture the crash (devicectl console hangs, no crash logs sync). Needs an Xcode **Run** to the
+  device to read the actual crash. Simulator is 100% fine.
 
-## 🔧 Design panel — PASSED ✅ (this was the last open goal)
-- **Round 1:** child PASS (8.3); parent + master-UX REVISE (7.7) — a punch-list. I applied **all 5 must-fixes**: (1) fixed the inverted trail (now you climb from the campfire at the bottom UP to the milestone), (2) removed the punitive hearts/lives, (3) added a **grown-up / privacy / parent-gate + trust-story first-run screen** to onboarding, (4) made the tap-to-talk button *be Poli* with listen→think→answer states, (5) a11y: 44px tap targets, dark text on the kid bubble + "?" badge, pinch-zoom re-enabled.
-- **Round 2:** **PANEL PASSES — child 9.1 · parent 8.6 · master-UX 8.9** (`design/PANEL.md`). Also closed the one carry-over item (the Ask-Poli sheet is now a real `role="dialog"` with Escape/backdrop-close/focus + inert background) and minor polish (Poli "it", milestone 💎, dead CSS removed).
-- **Optional (didn't grind overnight — your call):** scale the dataset past 358 toward ~2k (one command: re-run `data/datagen_prompt.md` → `data/filter.py`; I kept batches small because big parallel agent fan-outs kept stalling + burning tokens in this environment). 358 clean is a solid v1.
+## What I did to get here (audit trail)
+Integrated 3 parallel worktree agents (Grown-ups, Treasures, Map+Library) + a 4th for the
+12-story fold-in, each verified in the sim and pushed by explicit paths. Fixed the "Reviewed by
+pastors" overclaim in all 3 onboarding spots → consistent "Built on / aligned with the Baptist
+Faith & Message (2000)". Removed several stray `BibleStory N.xcodeproj` dirs left by concurrent
+xcodegen runs. Commits: 08c73ff → b49dd67 → 3f6814c → 388fbc0 → 26d1b5c → f05250b.
 
-## 🏗️ Training pipeline (added) — your Colab button-press
-`train/train_qlora.py` (Unsloth QLoRA on Qwen3, wired to `data/train_v2.jsonl`, loss masked to assistant turns, system prompt identical to eval) + `train/README.md` runbook: **baseline eval → fine-tune → tuned eval → results table**. The assignment rubric is now prepped end-to-end; the only thing left is running it on your GPU.
-
-## ⚠️ Honest caveats
-- **Big multi-agent workflows stalled twice** in this environment (too many concurrent heavy agents) and burned significant tokens; I switched to building directly + small sequential waves. That's why the UI hero screens are hand-built by me (good — more controlled).
-- **UI is an HTML prototype** (fast to review + iterate), not yet ported to the SwiftUI `app/`.
-- **Still needs humans before any launch:** SBC-literate **theology sign-off** on the claim tiering (`data/bfm_claims.json`, esp. election=open, named-soul=deflect); a **licensed child-safety reviewer** for the danger + complementarian rows (`data/REVIEW-before-scaling.md`).
-
-## Map of key files
-`design/` (index, home, lesson, compass, onboarding, tokens.css, mascot.svg, DESIGN-BRIEF.md) · `data/` (train_v2.jsonl, bfm_claims.json, datagen_prompt.md, input_seeds.jsonl, filter.py, DATASET_CARD.md, REVIEW-before-scaling.md) · `eval/` (scenarios.json, judge_prompt.md, run_eval.py) · `behavior-spec.md` · `brainlift.md` · `LOOP-STATE.md` (loop continuation).
+_(Supersedes the prior 2026-07-08→09 SLM-training brief; that work is complete — see memory.)_
