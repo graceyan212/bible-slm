@@ -17,7 +17,7 @@ import numpy as np
 from PIL import Image
 
 ASSETS = "app/BibleStory/BibleStory/Assets.xcassets"
-PAGE_RE = re.compile(r"/Story[A-Za-z]+P\d+\.imageset/[^/]+\.png$")
+PAGE_RE = re.compile(r"/(Story[A-Za-z]+P\d+|Cover[A-Za-z]+)\.imageset/[^/]+\.png$")
 
 TOL = 42          # RGB distance from the corner cream still counted as "margin"
 MARGIN_FRAC = 0.90  # a line is "margin" if >=90% of its pixels are near-cream

@@ -112,9 +112,14 @@ struct PaintedStoryFrame: View {
                     .frame(width: w, height: h)
                     .shadow(color: Color(hex: 0x32200C, opacity: 0.5), radius: 4, x: 0, y: 4)
 
+                // Zoom the cover slightly so the illustration's own cream sky/margins are
+                // cropped and the scene fills the frame opening (no white outline inside).
                 Image(coverAsset)
                     .resizable()
                     .scaledToFill()
+                    .frame(width: ow, height: oh)
+                    .clipped()
+                    .scaleEffect(1.12)
                     .frame(width: ow, height: oh)
                     .clipped()
                     .offset(x: ox, y: oy)

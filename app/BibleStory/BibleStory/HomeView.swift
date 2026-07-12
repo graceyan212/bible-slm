@@ -66,7 +66,7 @@ struct HomeView: View {
     /// Story stops ride the winding trail between these vertical fractions of the
     /// tall map (mountains sit above the first stop; the compass + chest destination
     /// sits below the last), alternating left/right of centre.
-    private static let trailTopFraction: CGFloat = 0.115
+    private static let trailTopFraction: CGFloat = 0.045
     private static let trailBottomFraction: CGFloat = 0.82
 
     /// Centres for each stop down the winding trail. Alternates sides so the rope

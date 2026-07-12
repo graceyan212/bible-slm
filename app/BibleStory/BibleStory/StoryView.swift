@@ -185,9 +185,9 @@ struct StoryView: View {
     }
 
     /// Slim treasure-map progress: one refined capsule per page, filled (brass) up
-    /// to the current page, plus a small count. Sits tight under the top bar. The
-    /// whole strip is tappable to step BACK a page (an alternative to the back
-    /// arrow — either works), so a young reader can just tap the trail to retreat.
+    /// to the current page, plus a small count. Sits tight under the top bar. Each
+    /// segment is its OWN tap target — tapping a segment jumps straight to that page
+    /// (seek forward or back), alongside the back arrow.
     private func progressStrip(total: Int, current: Int) -> some View {
         HStack(spacing: 8) {
             HStack(spacing: 5) {
@@ -203,6 +203,12 @@ struct StoryView: View {
                                 Capsule().strokeBorder(Color(hex: 0xCBB27A), lineWidth: 1)
                             }
                         }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)          // tall, easy tap target per page
+                        .contentShape(Rectangle())
+                        .onTapGesture { seek(to: i) }
+                        .accessibilityLabel("Go to page \(i + 1) of \(total)")
+                        .accessibilityAddTraits(i == current ? [.isButton, .isSelected] : .isButton)
                 }
             }
             Text("\(current + 1)/\(total)")
@@ -210,14 +216,14 @@ struct StoryView: View {
                 .foregroundStyle(Color(hex: 0x8A5F22))
         }
         .padding(.horizontal, 22)
-        .padding(.vertical, 8)          // taller hit area; strip stays high under the bar
         .padding(.top, 2)
-        .contentShape(Rectangle())
-        .onTapGesture { back() }
-        .accessibilityElement()
-        .accessibilityLabel("Progress. Page \(current + 1) of \(total)")
-        .accessibilityHint("Tap to go back a page")
-        .accessibilityAddTraits(.isButton)
+    }
+
+    /// Jump the reader to a specific page (progress-bar seek).
+    private func seek(to index: Int) {
+        guard index != page else { return }
+        stopSpeaking()
+        withAnimation(.easeInOut(duration: 0.22)) { page = index }
     }
 
     // MARK: Verse card (visibly distinct from the retell)

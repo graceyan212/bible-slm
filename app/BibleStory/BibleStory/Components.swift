@@ -53,26 +53,34 @@ enum Theme {
         switch w { case .semibold, .bold, .heavy, .black: return true; default: return false }
     }
 
+    /// Global type scale. It's a kids' app (ages 7–9), so everything runs a bit larger
+    /// than a typical adult UI — applied uniformly so the visual hierarchy is preserved.
+    static let textScale: CGFloat = 1.15
+
     /// Display serif — IM Fell English (falls back to bold system serif).
     static func display(_ size: CGFloat, weight: Font.Weight = .black) -> Font {
-        available(imFellRoman) ? .custom(imFellRoman, size: size)
-                               : .system(size: size, weight: weight, design: .serif)
+        let s = size * textScale
+        return available(imFellRoman) ? .custom(imFellRoman, size: s)
+                                      : .system(size: s, weight: weight, design: .serif)
     }
     /// Small-caps map/label serif — IM Fell English SC (falls back to system serif).
     static func mapCaps(_ size: CGFloat, weight: Font.Weight = .semibold) -> Font {
-        available(imFellSC) ? .custom(imFellSC, size: size)
-                            : .system(size: size, weight: weight, design: .serif)
+        let s = size * textScale
+        return available(imFellSC) ? .custom(imFellSC, size: s)
+                                   : .system(size: s, weight: weight, design: .serif)
     }
     /// Body / UI — Atkinson Hyperlegible (Regular or Bold; falls back to rounded system).
     static func body(_ size: CGFloat, weight: Font.Weight = .regular) -> Font {
         let name = isBoldish(weight) ? atkinsonBold : atkinson
-        return available(name) ? .custom(name, size: size)
-                               : .system(size: size, weight: weight, design: .rounded)
+        let s = size * textScale
+        return available(name) ? .custom(name, size: s)
+                               : .system(size: s, weight: weight, design: .rounded)
     }
     /// The warm "hand" — IM Fell English Italic (falls back to italic system serif).
     static func hand(_ size: CGFloat) -> Font {
-        available(imFellItalic) ? .custom(imFellItalic, size: size)
-                                : .system(size: size, weight: .semibold, design: .serif).italic()
+        let s = size * textScale
+        return available(imFellItalic) ? .custom(imFellItalic, size: s)
+                                       : .system(size: s, weight: .semibold, design: .serif).italic()
     }
 }
 
@@ -948,6 +956,36 @@ private struct GroundShape: Shape {
 
 // MARK: Bottom map tab bar
 
+/// A small filled treasure-chest glyph (rounded lid + body with a seam gap + clasp),
+/// tinted by the parent's foreground — used for the Treasures tab so the icon matches
+/// the treasure theme instead of a generic box.
+struct TreasureChestGlyph: View {
+    var body: some View {
+        GeometryReader { g in
+            let w = g.size.width, h = g.size.height
+            let lidH = h * 0.42
+            let gap = h * 0.07
+            let bodyH = max(0, h - lidH - gap)
+            let r = w * 0.17
+            ZStack(alignment: .top) {
+                UnevenRoundedRectangle(topLeadingRadius: r, bottomLeadingRadius: 0,
+                                       bottomTrailingRadius: 0, topTrailingRadius: r, style: .continuous)
+                    .frame(width: w, height: lidH)
+                UnevenRoundedRectangle(topLeadingRadius: 0, bottomLeadingRadius: r * 0.6,
+                                       bottomTrailingRadius: r * 0.6, topTrailingRadius: 0, style: .continuous)
+                    .frame(width: w, height: bodyH)
+                    .offset(y: lidH + gap)
+                // clasp straddling the lid/body seam
+                RoundedRectangle(cornerRadius: w * 0.06, style: .continuous)
+                    .frame(width: w * 0.2, height: h * 0.28)
+                    .offset(y: lidH - h * 0.11)
+            }
+            .frame(width: w, height: h)
+        }
+        .aspectRatio(1, contentMode: .fit)
+    }
+}
+
 enum MapTab: String, CaseIterable, Hashable {
     case map = "Map"
     case stories = "Stories"
@@ -1063,13 +1101,21 @@ struct MapTabBar: View {
                         Circle().fill((onWood ? Theme.brassLit : Theme.brass).opacity(onWood ? 0.22 : 0.16))
                             .frame(width: 40, height: 40).blur(radius: 6)
                     }
-                    Image(systemName: tab.systemImage)
-                        .font(.system(size: isSelected ? 27 : 25, weight: isSelected ? .semibold : .regular))
-                        .foregroundStyle(tint)
-                        .shadow(color: isSelected ? (onWood ? Theme.brassLit : Theme.brass).opacity(0.6) : .clear,
-                                radius: isSelected ? 6 : 0)
-                        // On wood, a soft dark drop keeps light glyphs crisp against grain.
-                        .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
+                    Group {
+                        if tab == .treasures {
+                            TreasureChestGlyph()
+                                .frame(width: isSelected ? 30 : 28, height: isSelected ? 30 : 28)
+                                .foregroundStyle(tint)
+                        } else {
+                            Image(systemName: tab.systemImage)
+                                .font(.system(size: isSelected ? 27 : 25, weight: isSelected ? .semibold : .regular))
+                                .foregroundStyle(tint)
+                        }
+                    }
+                    .shadow(color: isSelected ? (onWood ? Theme.brassLit : Theme.brass).opacity(0.6) : .clear,
+                            radius: isSelected ? 6 : 0)
+                    // On wood, a soft dark drop keeps light glyphs crisp against grain.
+                    .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
                 }
                 .frame(height: 32)
                 Text(tab.rawValue)
