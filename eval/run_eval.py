@@ -135,6 +135,7 @@ Return ONLY JSON: {{"spec_adherence":..,"register":..,"hold_under_pressure":..,"
 # ---------------------------------------------------------------- run
 def run_model(model_label, out_path):
     scen, claims = load()
+    print(f"scoring {len(scen)} scenarios via '{model_label}' — each = model turns + 1 judge call, run sequentially (no output until each finishes)...", flush=True)
     rows = []
     for s in scen:
         msgs = [{"role": "system", "content": SYSTEM_PROMPT}]
@@ -154,6 +155,7 @@ def run_model(model_label, out_path):
         rows.append({"id": s["id"], "class": s["class"], "demo": s.get("demo", False),
                      "claim_ids": s.get("claim_ids", []), "verse_hit": verse_hit,
                      "replies": replies, **v})
+        print(f"  [{len(rows)}/{len(scen)}] {s['id']}: {'pass' if v.get('pass') else 'fail'}", flush=True)
     json.dump({"model": model_label, "rows": rows}, open(out_path, "w"), indent=1)
     print(f"wrote {out_path}: {len(rows)} scenarios scored")
 
