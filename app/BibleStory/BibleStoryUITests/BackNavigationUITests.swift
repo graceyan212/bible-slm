@@ -67,26 +67,40 @@ final class BackNavigationUITests: XCTestCase {
         snap(app, "05-map-after-completion-back")
     }
 
-    /// (3) Ask/Compass → tap toolbar back → leaves the compass.
+    /// (3) Center Poli mascot → pushes the Compass → tap toolbar back → leaves it.
+    /// This is the proof that the center Ask-Poli button reliably opens CompassView:
+    /// the whole visible mascot is the tap target (it used to be a small slot below
+    /// the offset art, so taps on the mascot missed).
     func testCompassBackReturns() {
         let app = launch(["-uiPreviewChild"])
 
-        let askTab = app.buttons["Ask"]
-        XCTAssertTrue(askTab.waitForExistence(timeout: 5), "Ask tab should exist")
-        askTab.tap()
-
-        let talk = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Tap to talk")).firstMatch
-        XCTAssertTrue(talk.waitForExistence(timeout: 5), "Ask panel 'Tap to talk' should appear")
-        talk.tap()
+        let poli = app.buttons["Ask Poli"]
+        XCTAssertTrue(poli.waitForExistence(timeout: 5), "Center 'Ask Poli' button should exist on the bar")
+        poli.tap()
 
         let compassBar = app.navigationBars["Ask Poli"]
-        XCTAssertTrue(compassBar.waitForExistence(timeout: 5), "Compass should push with an 'Ask Poli' nav bar")
+        XCTAssertTrue(compassBar.waitForExistence(timeout: 5), "Tapping the Poli mascot should push the 'Ask Poli' compass")
         snap(app, "06-compass-open")
 
         compassBar.buttons["Map"].tap()
 
-        XCTAssertTrue(askTab.waitForExistence(timeout: 5), "Compass back should return to the child zone")
+        XCTAssertTrue(poli.waitForExistence(timeout: 5), "Compass back should return to the child zone")
         XCTAssertFalse(app.navigationBars["Ask Poli"].exists, "Compass should be dismissed after back")
         snap(app, "07-after-compass-back")
+    }
+
+    /// (4) Grown-ups is a real TAB now (the biometric gate is bypassed for this dev
+    /// screenshot arg): the dashboard shows WITH the bottom nav bar still present —
+    /// no more full-screen takeover.
+    func testGrownUpsIsATabWithNavBar() {
+        let app = launch(["-uiPreviewChild", "-uiPreviewGrownUps"])
+
+        XCTAssertTrue(app.staticTexts["Family Dashboard"].waitForExistence(timeout: 5),
+                      "Grown-ups tab should show the parent dashboard")
+        // The bottom bar must still be here (it's a tab, not a full-screen takeover).
+        XCTAssertTrue(app.buttons["Map"].exists, "Bottom nav bar should stay visible on the Grown-ups tab")
+        XCTAssertTrue(app.buttons["Ask Poli"].exists, "Center Ask-Poli should stay visible on the Grown-ups tab")
+        XCTAssertTrue(app.buttons["Grown-ups area"].exists, "Grown-ups tab item should be present")
+        snap(app, "08-grownups-tab")
     }
 }

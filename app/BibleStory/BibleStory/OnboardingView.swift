@@ -34,7 +34,7 @@ struct OnboardingView: View {
     enum Step: Int, CaseIterable {
         case welcome, founder, storyIntro, gate,
              name, age, bible, habit, hope, worry,
-             building, plan, promise, social, notify,
+             building, plan, promise, sendHome, askDemo, social, notify,
              paywall, finale
     }
 
@@ -61,6 +61,8 @@ struct OnboardingView: View {
     @State private var expandedWorry: String? = nil
     @State private var annualPlan = true
     @State private var showStory = false
+    /// Which sample question is expanded in the "Try Ask Poli" demo (nil = none yet).
+    @State private var demoPick: Int? = nil
     @State private var gateHeld = false
 
     /// The child's display name once entered; a warm fallback before then.
@@ -193,7 +195,11 @@ struct OnboardingView: View {
             case .plan:
                 primary("This looks right ✦") { go(to: .promise) }
             case .promise:
-                primary("I trust this — continue ✦") { go(to: .social) }
+                primary("I trust this — continue ✦") { go(to: .sendHome) }
+            case .sendHome:
+                primary("Continue ✦") { go(to: .askDemo) }
+            case .askDemo:
+                primary("Continue ✦") { go(to: .social) }
             case .social:
                 primary("Continue ✦") { go(to: .notify) }
             case .notify:
@@ -247,6 +253,8 @@ struct OnboardingView: View {
         case .building:   buildingStep
         case .plan:       planStep
         case .promise:    promiseStep
+        case .sendHome:   sendHomeStep
+        case .askDemo:    askDemoStep
         case .social:     socialStep
         case .notify:     notifyStep
         case .paywall:    paywallStep
@@ -634,6 +642,148 @@ struct OnboardingView: View {
                     OnbPromiseRow(icon: "house.fill", title: "Yours to leave.",
                                   detail: "Cancel anytime, in two taps.", tint: OnbColors.terracotta)
                 }
+            }
+        }
+    }
+
+    // MARK: Comes home to you (the DEFLECT list)
+
+    /// One kind of tender question Poli gently redirects to the grown-up.
+    private let sendHomeItems: [(icon: String, title: String, detail: String, tint: Color)] = [
+        ("cloud.fill", "\u{201C}Where is grandma now?\u{201D}",
+         "Death, heaven, and grief — held with you, not a screen.", OnbColors.caramel),
+        ("bandage.fill", "\u{201C}Why did someone I love get sick?\u{201D}",
+         "Suffering and loss, in your family's own words.", OnbColors.terracotta),
+        ("figure.child", "Bodies, growing up, and hard family moments",
+         "Tender and personal — yours to walk through together.", OnbColors.sage),
+        ("person.fill.questionmark", "\u{201C}Is my friend saved?\u{201D}",
+         "Where a specific person stands with God is never Poli's to say.", OnbColors.brassDeep),
+        ("building.columns.fill", "The specifics your church teaches",
+         "The details your family and church pass on — kept with you.", OnbColors.brass),
+    ]
+
+    private var sendHomeStep: some View {
+        VStack(spacing: 16) {
+            eyebrow("What comes home to you")
+            OnbPoli(height: 88, pose: .pointing)
+            glowTitle("The big questions stay yours", size: 26)
+                .multilineTextAlignment(.center)
+            Text("Poli answers what it can tell faithfully. But some wonderings belong in your arms, not an app's. Here are the ones Poli will gently hand back to you:")
+                .font(OnbFont.body(15)).foregroundStyle(OnbColors.inkSoft)
+                .multilineTextAlignment(.center).lineSpacing(3).frame(maxWidth: 340)
+            card {
+                VStack(alignment: .leading, spacing: 16) {
+                    ForEach(Array(sendHomeItems.enumerated()), id: \.offset) { _, item in
+                        OnbPromiseRow(icon: item.icon, title: item.title,
+                                      detail: item.detail, tint: item.tint)
+                    }
+                }
+            }
+            OnbSpeechBubble(text: "For these, I'll say: \u{201C}What a wonderful question to bring to your grown-up.\u{201D} \u{2726}")
+                .padding(.top, 4)
+        }
+    }
+
+    // MARK: Try Ask Poli (interactive 3-tier demo)
+
+    /// Scripted sample Q&A — a preview of the three behaviors (hold / acknowledge /
+    /// deflect). NOT the real model; hardcoded to model the stance faithfully.
+    private let demoQAs: [(q: String, tag: String, tagIcon: String, tint: Color, reply: String)] = [
+        ("Is Jesus really God?",
+         "Poli holds this close", "heart.fill", OnbColors.brassDeep,
+         "Yes — with all my heart! The Bible tells us Jesus is God's own Son, fully God and fully man, who loves you more than you can imagine. \u{2726}"),
+        ("When should someone be baptized?",
+         "Faithful families differ", "arrow.triangle.branch", OnbColors.sage,
+         "That's a good one! Christian families who love the Bible answer this a little differently. It's a beautiful thing to talk over with your grown-up and your church."),
+        ("Is my hamster in heaven?",
+         "This comes home to you", "house.fill", OnbColors.terracotta,
+         "Oh, that's a tender question. Let's carry this one to your grown-up — it's exactly the kind of big wondering that's best to share together. \u{1F49B}"),
+    ]
+
+    private var askDemoStep: some View {
+        VStack(spacing: 14) {
+            eyebrow("Try it · a quick preview")
+            OnbPoli(height: 84, pose: .waving)
+            glowTitle("See how Poli answers", size: 26)
+                .multilineTextAlignment(.center)
+            Text("Tap a question to see how Poli would respond. It answers what it can tell faithfully — and sends the tender ones home to you.")
+                .font(OnbFont.body(15)).foregroundStyle(OnbColors.inkSoft)
+                .multilineTextAlignment(.center).lineSpacing(3).frame(maxWidth: 340)
+            VStack(spacing: 12) {
+                ForEach(Array(demoQAs.enumerated()), id: \.offset) { i, qa in
+                    demoQuestionRow(index: i, qa: qa)
+                }
+            }
+            .padding(.top, 4)
+            .frame(maxWidth: 360)
+            Text("This is a preview — not a real chat. It shows how Poli is built to respond.")
+                .font(OnbFont.body(12)).foregroundStyle(OnbColors.inkSoft)
+                .multilineTextAlignment(.center).padding(.top, 2)
+        }
+    }
+
+    @ViewBuilder
+    private func demoQuestionRow(index i: Int,
+                                 qa: (q: String, tag: String, tagIcon: String, tint: Color, reply: String)) -> some View {
+        let open = demoPick == i
+        VStack(spacing: 12) {
+            Button {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                    demoPick = open ? nil : i
+                }
+            } label: {
+                HStack(spacing: 12) {
+                    Image(systemName: "bubble.left.fill")
+                        .font(.system(size: 18))
+                        .foregroundStyle(open ? OnbColors.brassDeep : OnbColors.sepiaLine)
+                    Text("\u{201C}\(qa.q)\u{201D}")
+                        .font(OnbFont.body(16, open ? .bold : .regular))
+                        .foregroundStyle(OnbColors.ink)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Spacer(minLength: 0)
+                    Image(systemName: open ? "chevron.up" : "chevron.down")
+                        .font(.system(size: 13, weight: .bold))
+                        .foregroundStyle(OnbColors.inkSoft)
+                }
+                .padding(.vertical, 13).padding(.horizontal, 16)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(RoundedRectangle(cornerRadius: 16).fill(open ? OnbColors.sand : OnbColors.surface))
+                .overlay(RoundedRectangle(cornerRadius: 16).stroke(open ? OnbColors.brass : OnbColors.sepiaLine, lineWidth: open ? 3 : 2))
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Sample question: \(qa.q)")
+            .accessibilityAddTraits(.isButton)
+
+            if open {
+                VStack(spacing: 10) {
+                    HStack(spacing: 8) {
+                        Image(systemName: qa.tagIcon)
+                            .font(.system(size: 12, weight: .bold))
+                            .foregroundStyle(OnbColors.ctaInk)
+                        Text(qa.tag.uppercased())
+                            .font(OnbFont.caps(11)).tracking(1.5)
+                            .foregroundStyle(OnbColors.ctaInk)
+                    }
+                    .padding(.vertical, 5).padding(.horizontal, 12)
+                    .background(Capsule().fill(qa.tint.opacity(0.9)))
+                    .overlay(Capsule().stroke(OnbColors.outline, lineWidth: 1.5))
+
+                    HStack(alignment: .top, spacing: 10) {
+                        OnbPoli(height: 48, pose: .waving)
+                        Text(qa.reply)
+                            .font(OnbFont.hand(19)).foregroundStyle(OnbColors.ink)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .lineSpacing(2)
+                        Spacer(minLength: 0)
+                    }
+                    .padding(14)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(RoundedRectangle(cornerRadius: 18).fill(OnbColors.surfaceRead))
+                    .overlay(RoundedRectangle(cornerRadius: 18).stroke(qa.tint.opacity(0.55), lineWidth: 2))
+                }
+                .transition(.opacity.combined(with: .move(edge: .top)))
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("Poli, \(qa.tag): \(qa.reply)")
             }
         }
     }

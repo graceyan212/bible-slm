@@ -12,6 +12,10 @@ import BibleStoryCore
 /// the active child + translation come from `AppEnvironment`.
 struct ParentZoneView: View {
     let env: AppEnvironment
+    /// How the top "← Trail" arrow returns. When shown as a TAB inside the child home
+    /// this is `{ select the Map tab }` (the nav bar stays); when nil (legacy
+    /// full-screen `.parent` phase) it falls back to `env.exitToChildZone()`.
+    var onBack: (() -> Void)? = nil
 
     private var child: ChildProfile? { env.activeChild }
 
@@ -61,7 +65,7 @@ struct ParentZoneView: View {
 
     private var topBar: some View {
         HStack {
-            Button { env.exitToChildZone() } label: {
+            Button { if let onBack { onBack() } else { env.exitToChildZone() } } label: {
                 HStack(spacing: 6) {
                     Image(systemName: "arrow.left").font(.system(size: 20, weight: .semibold))
                     Text("Trail").font(Theme.body(17, weight: .bold))

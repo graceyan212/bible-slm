@@ -20,6 +20,9 @@ struct HomeView: View {
         let args = ProcessInfo.processInfo.arguments
         if args.contains("-uiPreviewTreasures") { _tab = State(initialValue: .treasures) }
         if args.contains("-uiPreviewStories") { _tab = State(initialValue: .stories) }
+        // Jump straight to the Grown-ups TAB, bypassing the biometric gate for
+        // screenshots (dev only — the real tap always runs the gate; see enterGrownUps).
+        if args.contains("-uiPreviewGrownUps") { _tab = State(initialValue: .grownUps) }
         if args.contains("-uiPreviewStory") { _path = State(initialValue: [.story("creation")]) }
         previewMapBottom = args.contains("-uiPreviewMapBottom")
     }
@@ -32,15 +35,20 @@ struct HomeView: View {
                     case .map:       expeditionMap
                     case .stories:   StoriesView(onOpen: { path.append(.story($0)) }, completed: env.completedStoryIDs).padding(.bottom, 62)
                     case .treasures: TreasuresView(env: env).padding(.bottom, 62)
+                    // Grown-ups is a real tab now (the bottom nav bar stays visible).
+                    // The gate ran before we got here (enterGrownUps); "back" just
+                    // returns to the Map tab rather than blanking to a phase change.
+                    case .grownUps:  ParentZoneView(env: env, onBack: { selectTab(.map) }).padding(.bottom, 62)
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-                // 5-item bar: Map · Stories · [Poli center → Ask] · Treasures · Grown-ups.
-                // On the Map tab it's a carved-wood plank; other tabs a parchment bar.
+                // 5-slot bar: Map · Stories · [Poli center → Ask] · Treasures · Grown-ups.
+                // Carved-wood plank on every tab. Ask Poli pushes CompassView (no bar);
+                // Grown-ups authenticates, then selects the gated dashboard tab.
                 MapTabBar(selection: $tab, transparent: tab == .map,
                           onPoli: { path.append(.compass) },
-                          onGrownUps: { Task { await env.enterParentZone() } })
+                          onGrownUps: { enterGrownUps() })
             }
             .background(Theme.parchment.ignoresSafeArea())
             .toolbarBackground(.hidden, for: .navigationBar)
@@ -57,6 +65,21 @@ struct HomeView: View {
     /// Pop one level off the navigation path. Explicit path mutation is reliable
     /// even when a pushed screen hides the nav bar (where `dismiss()` can no-op).
     private func pop() { if !path.isEmpty { path.removeLast() } }
+
+    private func selectTab(_ t: MapTab) {
+        withAnimation(.spring(response: 0.32, dampingFraction: 0.7)) { tab = t }
+    }
+
+    /// Tapping the Grown-ups tab: authenticate (biometric / passcode) WITHOUT leaving
+    /// the child phase, then switch to the Grown-ups tab so the nav bar stays visible.
+    /// On cancel/failure we stay on the current tab. Re-tapping while already there is
+    /// a no-op (no re-prompt). This replaces the old phase=.parent full-screen route.
+    private func enterGrownUps() {
+        guard tab != .grownUps else { return }
+        Task {
+            if await env.authenticateForParent() { selectTab(.grownUps) }
+        }
+    }
 
     // MARK: The framed treasure-map screen (the "Map" tab)
 

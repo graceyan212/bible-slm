@@ -76,6 +76,15 @@ enum Theme {
         return available(name) ? .custom(name, size: s)
                                : .system(size: s, weight: weight, design: .rounded)
     }
+    /// Bottom nav-bar labels. These deliberately OPT OUT of the global `textScale`:
+    /// the wood plank is a fixed height and must seat 4 word-labels + the center
+    /// mascot without them touching, so nav labels use an explicit compact point size.
+    static func navLabel(_ size: CGFloat, weight: Font.Weight = .regular) -> Font {
+        let name = isBoldish(weight) ? atkinsonBold : atkinson
+        return available(name) ? .custom(name, size: size)
+                               : .system(size: size, weight: weight, design: .rounded)
+    }
+
     /// The warm "hand" — IM Fell English Italic (falls back to italic system serif).
     static func hand(_ size: CGFloat) -> Font {
         let s = size * textScale
@@ -990,11 +999,13 @@ enum MapTab: String, CaseIterable, Hashable {
     case map = "Map"
     case stories = "Stories"
     case treasures = "Treasures"
+    case grownUps = "Grown-ups"
     var systemImage: String {
         switch self {
         case .map:       return "map"
         case .stories:   return "book.pages"
         case .treasures: return "shippingbox.fill"
+        case .grownUps:  return "person.crop.circle"
         }
     }
 }
@@ -1016,12 +1027,20 @@ struct MapTabBar: View {
         HStack(alignment: .bottom, spacing: 0) {
             tabButton(for: .map)
             tabButton(for: .stories)
-            poliButton
+            // Center column reserves the middle 1/5 slot as empty space; the Poli
+            // mascot is drawn as a top-anchored OVERLAY (below) so it can break above
+            // the plank without making the bar taller AND without the offset-vs-hit-
+            // target mismatch. Height is CAPPED — an uncapped Color.clear is greedy and
+            // would balloon the bar (and its plank background) to full height.
+            Color.clear.frame(maxWidth: .infinity).frame(height: 44)
             tabButton(for: .treasures)
             grownUpsButton
         }
         .padding(.horizontal, 8).padding(.top, 6).padding(.bottom, 6)
         .background { plankBackground }
+        // Poli overlays the center: horizontally centered, lifted above the board.
+        // Overlays don't contribute to the HStack's height, so the bar stays put.
+        .overlay(alignment: .top) { poliButton }
     }
 
     /// Carved-wood plank art (gold-framed) as the bar background. Horizontal caps keep
@@ -1035,47 +1054,68 @@ struct MapTabBar: View {
     }
 
     /// The prominent center button: Poli's face — no disc, just the mascot — raised so
-    /// it breaks ABOVE the plank (the only control that does), TikTok-style. The mascot
-    /// overflows a normal-height tab slot, so it stands tall WITHOUT making the bar taller.
+    /// it breaks ABOVE the plank (the only control that does), TikTok-style.
+    ///
+    /// It's an OVERLAY (see `body`), not an HStack child, which fixes two things:
+    /// (1) it no longer makes the bar taller, and (2) the WHOLE visible mascot + its
+    /// label is the tappable area. The old version drew the mascot with a big negative
+    /// `.offset`, which moves pixels but NOT the hit target — so taps on the visible
+    /// mascot (sitting high above its tiny layout slot) missed. The mascot + label
+    /// VStack is now the real content shape, so any tap on Poli reliably opens Ask-Poli.
     private var poliButton: some View {
         Button(action: onPoli) {
-            VStack(spacing: 4) {
-                PoliImage(pose: .waving, size: 82)
+            VStack(spacing: 2) {
+                PoliImage(pose: .waving, size: 84)
                     .shadow(color: Theme.ink.opacity(0.35), radius: 5, x: 0, y: 3)
-                    .frame(height: 32)          // same layout slot as the side tabs…
-                    .offset(y: -30)             // …but drawn large + lifted above the frame
                 Text("Ask Poli")
-                    .font(Theme.body(12, weight: .bold))
+                    .font(Theme.navLabel(11, weight: .bold))
                     .foregroundStyle(iconColor(false))
-                    .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
-                    .offset(y: -22)
+                    .lineLimit(1)
+                    .shadow(color: Color(hex: 0x2A180A, opacity: 0.5), radius: 1, x: 0, y: 1)
             }
-            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 26)   // generous horizontal tap margin around Poli
+            .padding(.bottom, 4)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .offset(y: -40)                 // lift so the mascot breaks above the plank
         .accessibilityLabel("Ask Poli")
     }
 
-    /// The parent dashboard ("Grown-ups") — opens the biometric-gated parent area.
+    /// The parent dashboard ("Grown-ups") — now a real selectable TAB (it highlights
+    /// when active), but tapping it still runs the biometric gate first (see HomeView's
+    /// `onGrownUps`), so the grown-up must authenticate before the dashboard shows.
     private var grownUpsButton: some View {
-        Button(action: onGrownUps) {
+        let isSelected = selection == .grownUps
+        let tint = iconColor(isSelected)
+        return Button(action: onGrownUps) {
             VStack(spacing: 4) {
-                Image(systemName: "person.crop.circle")
-                    .font(.system(size: 25, weight: .regular))
-                    .foregroundStyle(iconColor(false))
-                    .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
-                    .frame(height: 32)
+                ZStack {
+                    if isSelected {
+                        Circle().fill((onWood ? Theme.brassLit : Theme.brass).opacity(onWood ? 0.22 : 0.16))
+                            .frame(width: 40, height: 40).blur(radius: 6)
+                    }
+                    Image(systemName: "person.crop.circle")
+                        .font(.system(size: isSelected ? 27 : 25, weight: isSelected ? .semibold : .regular))
+                        .foregroundStyle(tint)
+                        .shadow(color: isSelected ? (onWood ? Theme.brassLit : Theme.brass).opacity(0.6) : .clear,
+                                radius: isSelected ? 6 : 0)
+                        .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
+                }
+                .frame(height: 32)
                 Text("Grown-ups")
-                    .font(Theme.body(14))
-                    .foregroundStyle(iconColor(false))
+                    .font(Theme.navLabel(isSelected ? 12.5 : 12, weight: isSelected ? .bold : .regular))
+                    .foregroundStyle(tint)
+                    .lineLimit(1)
                     .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
             }
             .frame(maxWidth: .infinity, minHeight: 44)
+            .scaleEffect(isSelected ? 1.08 : 1.0)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .accessibilityLabel("Grown-ups area")
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 
     // Wood palette (matches the map's carved wood-frame browns).
@@ -1119,8 +1159,9 @@ struct MapTabBar: View {
                 }
                 .frame(height: 32)
                 Text(tab.rawValue)
-                    .font(Theme.body(isSelected ? 15 : 14, weight: isSelected ? .bold : .regular))
+                    .font(Theme.navLabel(isSelected ? 12.5 : 12, weight: isSelected ? .bold : .regular))
                     .foregroundStyle(tint)
+                    .lineLimit(1)
                     .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
             }
             .frame(maxWidth: .infinity, minHeight: 44)

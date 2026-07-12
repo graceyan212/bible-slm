@@ -127,6 +127,18 @@ public final class AppEnvironment {
         }
     }
 
+    /// Run the biometric gate WITHOUT changing `phase`. Used when the parent area is a
+    /// TAB inside the child home (so the bottom nav bar stays visible): the caller keeps
+    /// the user in `.child` and simply switches the selected tab on success. Returns
+    /// whether the grown-up authenticated. The `.parent` phase machinery is left intact
+    /// for the legacy full-screen path.
+    public func authenticateForParent() async -> Bool {
+        guard !isAuthenticating else { return false }
+        isAuthenticating = true
+        defer { isAuthenticating = false }
+        return await gate.authenticate()
+    }
+
     /// Leaving the parent zone needs no gate.
     public func exitToChildZone() {
         if phase == .parent { phase = .child }
