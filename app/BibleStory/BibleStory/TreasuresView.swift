@@ -1,4 +1,5 @@
 import SwiftUI
+import BibleStoryCore
 
 // MARK: - Treasures (collection) screen — the child's STAR sky + treasure shelf
 //
@@ -19,7 +20,7 @@ struct TreasuresData: Decodable {
         let name: String
         let from: String
         let emblem: String
-        let earned: Bool
+        var earned: Bool
         let hint: String?
         var id: String { name }
         /// Earned treasures show where they came from; locked ones show the inviting hint.
@@ -40,20 +41,30 @@ struct TreasuresData: Decodable {
 }
 
 struct TreasuresView: View {
+    let env: AppEnvironment
     private let data = TreasuresData.load()
     private let columns = Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
+
+    // Real, live progress — same sources as the map + parent dashboard (no seeded values).
+    private var days: Int { NightsProgress.count }                        // stars = days explored
+    private var completedCount: Int { StoryCatalog.all.filter { env.isStoryComplete($0.id) }.count }
+    /// Treasures are earned in order as lessons are finished.
+    private func earned(_ d: TreasuresData) -> [TreasuresData.Treasure] {
+        d.treasures.enumerated().map { i, t in var t = t; t.earned = i < completedCount; return t }
+    }
 
     var body: some View {
         ZStack {
             PaintedMapBackdrop(muted: true).ignoresSafeArea()
             if let data {
+                let treasures = earned(data)
                 ScrollView {
                     VStack(spacing: 16) {
                         header
-                        SkyPanel(days: data.daysExplored)
+                        SkyPanel(days: days)
                         journeyInvitation
-                        pills(data)
-                        treasureShelf(data)
+                        pills(found: treasures.filter(\.earned).count, total: treasures.count)
+                        treasureShelf(treasures)
                         Color.clear.frame(height: 16)
                     }
                     .padding(.horizontal, 16)
@@ -104,11 +115,12 @@ struct TreasuresView: View {
 
     // MARK: Secondary tallies — gems + treasures found
 
-    private func pills(_ d: TreasuresData) -> some View {
+    private func pills(found: Int, total: Int) -> some View {
         HStack(spacing: 12) {
-            pill(icon: "diamond.fill", iconColor: Theme.sageDeep, text: "\(d.gems) gems")
+            pill(icon: "book.fill", iconColor: Theme.sageDeep,
+                 text: "\(completedCount) \(completedCount == 1 ? "story" : "stories") done")
             pill(icon: "trophy.fill", iconColor: Theme.brass,
-                 text: "\(d.treasuresFound) of \(d.treasuresTotal) treasures")
+                 text: "\(found) of \(total) treasures")
         }
     }
 
@@ -125,7 +137,7 @@ struct TreasuresView: View {
 
     // MARK: Treasure shelf (story completions + milestones)
 
-    private func treasureShelf(_ d: TreasuresData) -> some View {
+    private func treasureShelf(_ treasures: [TreasuresData.Treasure]) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 7) {
                 Text("Treasures")
@@ -133,7 +145,7 @@ struct TreasuresView: View {
                 Rectangle().fill(Theme.sepiaLine.opacity(0.5)).frame(height: 1)
             }
             LazyVGrid(columns: columns, spacing: 14) {
-                ForEach(d.treasures) { TreasureTile(treasure: $0) }
+                ForEach(treasures) { TreasureTile(treasure: $0) }
             }
         }
     }

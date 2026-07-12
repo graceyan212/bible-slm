@@ -78,7 +78,6 @@ struct StoriesView: View {
                 .padding(.top, 24)
                 .padding(.bottom, 96)   // clear the pinned nav bar
             }
-            MapBorderOverlay()
         }
     }
 

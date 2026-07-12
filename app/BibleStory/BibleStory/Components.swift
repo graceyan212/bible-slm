@@ -970,7 +970,9 @@ struct MapTabBar: View {
     /// Center action — opens Ask-Poli. Grown-ups action — the (gated) parent area.
     var onPoli: () -> Void = {}
     var onGrownUps: () -> Void = {}
-    private var onWood: Bool { transparent }
+    // The carved-wood plank art is the bar on every tab now, so icons always use the
+    // on-wood (cream / brass) treatment.
+    private var onWood: Bool { true }
 
     var body: some View {
         HStack(alignment: .bottom, spacing: 0) {
@@ -981,7 +983,17 @@ struct MapTabBar: View {
             grownUpsButton
         }
         .padding(.horizontal, 8).padding(.top, 6).padding(.bottom, 6)
-        .background { if onWood { woodBackground } else { barBackground } }
+        .background { plankBackground }
+    }
+
+    /// Carved-wood plank art (gold-framed) as the bar background. Horizontal caps keep
+    /// the rounded gold ends crisp while the planks stretch across the width.
+    private var plankBackground: some View {
+        Image("NavPlank")
+            .resizable(capInsets: EdgeInsets(top: 12, leading: 150, bottom: 14, trailing: 150),
+                       resizingMode: .stretch)
+            .shadow(color: Theme.ink.opacity(0.35), radius: 10, x: 0, y: -4)
+            .ignoresSafeArea(edges: .bottom)
     }
 
     /// The prominent center button: Poli's face — no disc, just the mascot — raised so

@@ -31,7 +31,7 @@ struct HomeView: View {
                     switch tab {
                     case .map:       expeditionMap
                     case .stories:   StoriesView(onOpen: { path.append(.story($0)) }, completed: env.completedStoryIDs).padding(.bottom, 62)
-                    case .treasures: TreasuresView().padding(.bottom, 62)
+                    case .treasures: TreasuresView(env: env).padding(.bottom, 62)
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
