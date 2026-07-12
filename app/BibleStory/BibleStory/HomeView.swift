@@ -215,7 +215,7 @@ struct AskPanel: View {
             MapBackdrop()
             VStack(spacing: 20) {
                 Spacer()
-                PoliCompassView(size: 160)
+                PoliImage(pose: .waving, size: 160)
                 Text("Ask Poli")
                     .font(Theme.display(34, weight: .black))
                     .foregroundStyle(Theme.brassDeep)
