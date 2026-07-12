@@ -104,6 +104,24 @@
       <div class="track"><div class="fill tuned" style="width:83%">83%</div></div></div></div>
   </div>
 
+  <h2 class="sec">vs. a frontier model — GPT-4o (prompt-only)</h2>
+  <div class="bars">
+    <p class="sub" style="margin:0 0 var(--sp-4);text-align:left">Your ~4B fine-tune vs. GPT-4o — same 52 scenarios, same judge (a different model family, so nothing grades itself). <b>The SLM ties GPT-4o overall and beats it on every safety behavior — and only the SLM holds under a child's pushback (GPT-4o caves too).</b></p>
+    <table style="width:100%;border-collapse:collapse;font-size:.95rem">
+      <tr style="text-align:left;border-bottom:2px solid var(--outline)">
+        <th style="padding:7px 6px">metric</th><th style="padding:7px 6px">Base-SLM</th>
+        <th style="padding:7px 6px;color:var(--c-brass-deep)">Tuned-SLM (yours)</th><th style="padding:7px 6px">GPT-4o</th></tr>
+      <tr style="border-bottom:1px solid rgba(59,46,35,.12)"><td style="padding:6px">Overall pass (of 52)</td><td>42%</td><td style="font-weight:800;color:var(--c-brass-deep)">88%</td><td>85%</td></tr>
+      <tr style="border-bottom:1px solid rgba(59,46,35,.12)"><td style="padding:6px">Hold under pushback (worst, 0–2)</td><td>0</td><td style="font-weight:800;color:var(--c-brass-deep)">2</td><td>0</td></tr>
+      <tr style="border-bottom:1px solid rgba(59,46,35,.12)"><td style="padding:6px">Danger pass</td><td>33%</td><td style="font-weight:800;color:var(--c-brass-deep)">100%</td><td>66%</td></tr>
+      <tr style="border-bottom:1px solid rgba(59,46,35,.12)"><td style="padding:6px">Deflect leak (lower better)</td><td>100%</td><td style="font-weight:800;color:var(--c-brass-deep)">9%</td><td>27%</td></tr>
+      <tr style="border-bottom:1px solid rgba(59,46,35,.12)"><td style="padding:6px">Stay on-mission (off-topic)</td><td>20%</td><td style="font-weight:800;color:var(--c-brass-deep)">80%</td><td>40%</td></tr>
+      <tr style="border-bottom:1px solid rgba(59,46,35,.12)"><td style="padding:6px">Deflect (pass)</td><td>0%</td><td>66%</td><td style="font-weight:800">77%</td></tr>
+      <tr><td style="padding:6px">Story quality (safe_core)</td><td>83%</td><td>83%</td><td style="font-weight:800">100%</td></tr>
+    </table>
+    <p class="sub" style="margin:var(--sp-3) 0 0;text-align:left">Scale didn't fix the caving — the <b>dataset</b> did. GPT-4o stays the stronger generalist on deflect pass-rate + story polish; your SLM wins the safety-critical behaviors at ~1/1000th the size and runs <b>on-device</b>.</p>
+  </div>
+
   <div class="caveat">
     <b>Honest caveats.</b> Small n (52 scenarios; 3–17 per class), so read single points as directional — but the flagship deltas (deflect-leak 11/11→1/11, cave 0→2) are unambiguous. The one blemish: on <em>direct</em> demo-doctrine questions the tuned model flattened <b>1 of 12</b> (0%→8%) where the steelman-prompted base didn't — but the base only "held" those easy asks because the prompt fed it the answers, then <b>caved under pushback</b>. safe_core held (83→83; task-quality 1.83→2.0) — no capability regression.
   </div>

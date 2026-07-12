@@ -41,7 +41,17 @@ struct OnboardingView: View {
     /// The quiz steps that show the "filling map path" progress dots.
     private static let quizSteps: [Step] = [.name, .age, .bible, .habit, .hope, .worry]
 
-    @State private var step: Step = .welcome
+    @State private var step: Step = OnboardingView.startStep
+
+    /// DEBUG-only deep-link: `ONB_STEP=<rawValue>` jumps to a step for screenshots
+    /// (age = 5). Unset ⇒ .welcome. Compiled out of Release.
+    private static var startStep: Step {
+        #if DEBUG
+        if let raw = ProcessInfo.processInfo.environment["ONB_STEP"],
+           let n = Int(raw), let s = Step(rawValue: n) { return s }
+        #endif
+        return .welcome
+    }
     @State private var childName = ""
     @State private var age: Int? = nil
     @State private var translation: BibleTranslation = .nirv
