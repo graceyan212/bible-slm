@@ -1,0 +1,42 @@
+{
+  "_comment": "Story Reader content for The Red Sea Rescue (Exodus 14). Warm 7-9 retell, gospel-centered. NEVER verbatim Scripture in the narrative — the exact verse is shown in the distinct `verse` card (verify text against the licensed NIrV file before ship).",
+
+  "id": "red_sea",
+  "title": "The Red Sea Rescue",
+  "subtitle": "God Makes a Way",
+
+  "pages": [
+    {
+      "art": "story_redsea/red_sea.png",
+      "heading": "Trapped by the Water",
+      "text": "God's people had been set free, and they were marching toward a brand-new home. But then they stopped — a huge sea stretched out in front of them, too wide to cross. And behind them came the rumble of the king's army, closer and closer. The people were scared. “What will we do?” they cried. But Moses said, “Don't be afraid. Just watch — God will take care of us.”"
+    },
+    {
+      "art": "story_redsea/red_sea.png",
+      "heading": "A Path Through the Sea",
+      "text": "Then God did something no one had ever seen. A strong wind began to blow — whoosh! — all night long. The water pulled back to the left and to the right, and right down the middle lay a wide path of dry ground. God's people walked through the middle of the sea, with walls of water standing tall on both sides. God had made a way where there was no way at all."
+    },
+    {
+      "art": "story_redsea/red_sea.png",
+      "heading": "Safe on the Other Side",
+      "text": "Every single one of them reached the other side — safe. When they looked back, they knew for sure: it was God who saved them. They didn't rescue themselves; they couldn't. God did it. So they sang and danced and thanked him, because their God was strong and good, and he loved them more than they could ever imagine."
+    }
+  ],
+
+  "verse": {
+    "ref": "Exodus 14:14",
+    "text": "The Lord will fight for you. You only need to be still.",
+    "translation": "NIrV"
+  },
+
+  "christ_connection": {
+    "heading": "The Greater Rescue",
+    "text": "God is a Rescuer — that day he opened the sea so his people could go free. But there was a bigger rescue still coming. One day God would send his Son, Jesus, to save people from something even scarier than an army: the wrong inside every heart. Just like at the sea, we can't save ourselves — but Jesus makes a way. That's the best rescue of all, and it's for you."
+  },
+
+  "reward": {
+    "icon": "waves",
+    "name": "The Sea-Path Pearl",
+    "text": "You uncovered a treasure! Come back tomorrow to keep exploring the trail."
+  }
+}

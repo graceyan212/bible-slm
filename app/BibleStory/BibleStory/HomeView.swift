@@ -1,7 +1,7 @@
 import SwiftUI
 import BibleStoryCore
 
-enum HomeRoute: Hashable { case story, compass }
+enum HomeRoute: Hashable { case story(String), compass }
 
 /// The child-zone home — "The Expedition" treasure map. A parchment field ringed
 /// by an ornate rope border, an illuminated banner, and framed story "stops"
@@ -17,7 +17,7 @@ struct HomeView: View {
         // Dev/screenshot deep-links (see BibleStoryApp `-uiPreviewChild`).
         let args = ProcessInfo.processInfo.arguments
         if args.contains("-uiPreviewTreasures") { _tab = State(initialValue: .treasures) }
-        if args.contains("-uiPreviewStory") { _path = State(initialValue: [.story]) }
+        if args.contains("-uiPreviewStory") { _path = State(initialValue: [.story("creation")]) }
     }
 
     var body: some View {
@@ -53,7 +53,7 @@ struct HomeView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: HomeRoute.self) { route in
                 switch route {
-                case .story: StoryView(env: env, onClose: pop)
+                case .story(let id): StoryView(env: env, storyID: id, onClose: pop)
                 case .compass: CompassView(env: env, onClose: pop)
                 }
             }
@@ -85,19 +85,19 @@ struct HomeView: View {
                 // build_map_mockup.py LAYOUT). Only the current story glows; done
                 // stops carry a ✓, the not-yet story a lock.
                 PaintedStoryFrame(coverAsset: "CoverCreation", title: "Creation", state: .done) {
-                    path.append(.story)
+                    path.append(.story("creation"))
                 }
                 .frame(width: stopW)
                 .position(x: w * 0.33, y: h * 0.22)
 
                 PaintedStoryFrame(coverAsset: "CoverRedSea", title: "The Red Sea", state: .done) {
-                    path.append(.story)
+                    path.append(.story("red_sea"))
                 }
                 .frame(width: stopW)
                 .position(x: w * 0.66, y: h * 0.40)
 
                 PaintedStoryFrame(coverAsset: "CoverJesusChildren", title: "Jesus & the Children", state: .active) {
-                    path.append(.story)
+                    path.append(.story("jesus_children"))
                 }
                 .frame(width: stopW)
                 .position(x: w * 0.33, y: h * 0.58)

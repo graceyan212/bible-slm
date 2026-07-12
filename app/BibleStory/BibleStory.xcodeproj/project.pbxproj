@@ -16,6 +16,7 @@
 		409349B5ECF19823AB9C67C2 /* BibleStoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF53E5A1DEA05B865D09C14 /* BibleStoryApp.swift */; };
 		4533045AF6CE2CCA186A77C8 /* AskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751716D2F7BE556DE63630E /* AskView.swift */; };
 		48EB77470806377E4E35E70E /* IMFeENsc28P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2ACD8865EE27F31EE9A9B0A8 /* IMFeENsc28P.ttf */; };
+		5760EFFECB2462D2DAC40744 /* red_sea.json in Resources */ = {isa = PBXBuildFile; fileRef = 73A688B76B048F0AD828CE5C /* red_sea.json */; };
 		57E9ECB7B2CF4A4473A9E8BB /* AtkinsonHyperlegible-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B54ECFAD1E84109C1CCF6355 /* AtkinsonHyperlegible-Bold.ttf */; };
 		6A24D3C523BBC9FD6AB4C0FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122DFAFE7CC62CB06BBEDA94 /* Assets.xcassets */; };
 		7C68C9FDFAE967A3E355F13B /* TreasuresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FB7C3CADA06829CFA450A4 /* TreasuresView.swift */; };
@@ -24,9 +25,11 @@
 		92EEBA5C1726EE9189463031 /* BackNavigationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7AEC3F07C2C3263EB11D82 /* BackNavigationUITests.swift */; };
 		9F36C2EC0642332243F0E1F8 /* BiometricParentGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9489C61C969D52CE9194B5 /* BiometricParentGate.swift */; };
 		A33757F59849B9B3C1D78D14 /* IMFeENrm28P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42D818FDAB0393844B4B8CC6 /* IMFeENrm28P.ttf */; };
+		AC94CFB7F6D6AC26E816CD78 /* jesus_children.json in Resources */ = {isa = PBXBuildFile; fileRef = 79880DB536C50E71DAE25C39 /* jesus_children.json */; };
 		B1A1DB742759EF66E4D167F2 /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4DDAD15B1D838153F05E77 /* CompassView.swift */; };
 		BDE21FF6D1A42D23BDDF98BD /* PaintedMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431CDD2300DDB5E98060AE76 /* PaintedMap.swift */; };
 		C9921D36E97033329AF0AB60 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E7509E9BB780ED4DCCEEA5 /* HomeView.swift */; };
+		CC71A7AAD530F89376C3BE34 /* the_promise.json in Resources */ = {isa = PBXBuildFile; fileRef = EFE881F43FED78140F7A80FF /* the_promise.json */; };
 		D4B032C72A1F094E2F9E0CB3 /* ParentZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6529AA880BF03A87893733D /* ParentZoneView.swift */; };
 		DB2EB7B54413B4D305FBE466 /* IMFeENit28P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CE3DC3A141F6EA9432D61AC /* IMFeENit28P.ttf */; };
 		F24C7CF1A3EDE3263CC9C773 /* treasures.json in Resources */ = {isa = PBXBuildFile; fileRef = D62C8EA955302276982275A5 /* treasures.json */; };
@@ -54,6 +57,8 @@
 		677BBFB221A67495FEB6017F /* BibleStoryUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BibleStoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C7AEC3F07C2C3263EB11D82 /* BackNavigationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavigationUITests.swift; sourceTree = "<group>"; };
 		70FB7C3CADA06829CFA450A4 /* TreasuresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuresView.swift; sourceTree = "<group>"; };
+		73A688B76B048F0AD828CE5C /* red_sea.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = red_sea.json; sourceTree = "<group>"; };
+		79880DB536C50E71DAE25C39 /* jesus_children.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = jesus_children.json; sourceTree = "<group>"; };
 		7C4DDAD15B1D838153F05E77 /* CompassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
 		7F0A3558923D410125D71912 /* creation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = creation.json; sourceTree = "<group>"; };
 		7F672A6DEAB6F7826A1B0CCF /* OnboardingTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTheme.swift; sourceTree = "<group>"; };
@@ -69,6 +74,7 @@
 		DDA76E50371C4F8129ED81B8 /* StoryReaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryReaderModel.swift; sourceTree = "<group>"; };
 		E6529AA880BF03A87893733D /* ParentZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentZoneView.swift; sourceTree = "<group>"; };
 		EBF53E5A1DEA05B865D09C14 /* BibleStoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleStoryApp.swift; sourceTree = "<group>"; };
+		EFE881F43FED78140F7A80FF /* the_promise.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = the_promise.json; sourceTree = "<group>"; };
 		F674FCF04692AD05E7B33F37 /* AtkinsonHyperlegible-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AtkinsonHyperlegible-Regular.ttf"; sourceTree = "<group>"; };
 		F9779E94CB9D658872118D8C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		FEB63D0068BE94A24D6466AD /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -154,6 +160,9 @@
 			isa = PBXGroup;
 			children = (
 				7F0A3558923D410125D71912 /* creation.json */,
+				79880DB536C50E71DAE25C39 /* jesus_children.json */,
+				73A688B76B048F0AD828CE5C /* red_sea.json */,
+				EFE881F43FED78140F7A80FF /* the_promise.json */,
 				D62C8EA955302276982275A5 /* treasures.json */,
 			);
 			path = Content;
@@ -263,6 +272,9 @@
 				A33757F59849B9B3C1D78D14 /* IMFeENrm28P.ttf in Resources */,
 				48EB77470806377E4E35E70E /* IMFeENsc28P.ttf in Resources */,
 				1B7E7A9DFC343CC09A63A2A7 /* creation.json in Resources */,
+				AC94CFB7F6D6AC26E816CD78 /* jesus_children.json in Resources */,
+				5760EFFECB2462D2DAC40744 /* red_sea.json in Resources */,
+				CC71A7AAD530F89376C3BE34 /* the_promise.json in Resources */,
 				F24C7CF1A3EDE3263CC9C773 /* treasures.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

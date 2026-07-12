@@ -1,0 +1,42 @@
+{
+  "_comment": "Story Reader content for The Promise (Noah's rainbow, Genesis 6-9). Warm 7-9 retell, gospel-centered. NEVER verbatim Scripture in the narrative — the exact verse is shown in the distinct `verse` card (verify text against the licensed NIrV file before ship).",
+
+  "id": "the_promise",
+  "title": "The Promise",
+  "subtitle": "God Keeps His Word",
+
+  "pages": [
+    {
+      "art": "story_promise/the_promise.png",
+      "heading": "A Big Boat",
+      "text": "Long ago the world had grown sad and full of wrong. But there was a man named Noah who loved God. God told Noah, “Build a great big boat.” So Noah did — hammer, hammer, hammer — even when it seemed strange. Then, two by two, the animals came: stomping elephants, hopping rabbits, flapping birds. Noah's family and all the animals climbed safely inside."
+    },
+    {
+      "art": "story_promise/the_promise.png",
+      "heading": "Waiting for Dry Land",
+      "text": "Then the rain came down, and the water rose high, but the big boat floated safely on top. For a long time they waited. One day Noah sent out a little dove to look for land. It came back carrying a fresh green leaf — a sign that somewhere, trees were growing again! Soon the ground was dry, and everyone stepped out into a fresh, clean world."
+    },
+    {
+      "art": "story_promise/the_promise.png",
+      "heading": "The Rainbow",
+      "text": "Then God painted something beautiful across the sky — a shining rainbow, curving from one side all the way to the other. It was a promise. “I will always take care of my world,” God said. And every time a rainbow appears, it whispers the same happy truth: God keeps every promise he ever makes."
+    }
+  ],
+
+  "verse": {
+    "ref": "Genesis 9:13",
+    "text": "I have put my rainbow in the clouds. It will be the sign of my promise to the earth.",
+    "translation": "NIrV"
+  },
+
+  "christ_connection": {
+    "heading": "The Promise Keeper",
+    "text": "God always keeps his promises — the rainbow says so. And God made the biggest promise of all: that he would send a Rescuer to make everything right again. He kept that promise when he sent his Son, Jesus. So whenever you see a rainbow, you can remember: the God who never breaks a promise loves you, and he always will."
+  },
+
+  "reward": {
+    "icon": "dove",
+    "name": "The Rainbow Feather",
+    "text": "You uncovered a treasure! Come back tomorrow to keep exploring the trail."
+  }
+}

@@ -50,10 +50,13 @@ struct StoryContent: Decodable, Equatable {
         let stem = (path as NSString).lastPathComponent
             .replacingOccurrences(of: ".png", with: "")
         switch stem {
-        case "p1_light":  return "StoryCreationP1"
-        case "p2_world":  return "StoryCreationP2"
-        case "p3_garden": return "StoryCreationP3"
-        default:          return "StoryCreationP1"
+        case "p1_light":       return "StoryCreationP1"
+        case "p2_world":       return "StoryCreationP2"
+        case "p3_garden":      return "StoryCreationP3"
+        case "red_sea":        return "StoryRedSea"
+        case "jesus_children": return "StoryJesusChildren"
+        case "the_promise":    return "StoryThePromise"
+        default:               return "StoryCreationP1"
         }
     }
 

@@ -1,0 +1,42 @@
+{
+  "_comment": "Story Reader content for Jesus and the Children (Mark 10:13-16). Warm 7-9 retell, gospel-centered. NEVER verbatim Scripture in the narrative — the exact verse is shown in the distinct `verse` card (verify text against the licensed NIrV file before ship).",
+
+  "id": "jesus_children",
+  "title": "Jesus and the Children",
+  "subtitle": "Come Close to Jesus",
+
+  "pages": [
+    {
+      "art": "story_jesus/jesus_children.png",
+      "heading": "Shooed Away",
+      "text": "Everywhere Jesus went, crowds came to see him. One day, some families brought their children close, hoping Jesus would put his hands on them and bless them. But the grown-up helpers frowned. “Not now! Jesus is far too busy for little ones,” they said, and they tried to shoo the children away."
+    },
+    {
+      "art": "story_jesus/jesus_children.png",
+      "heading": "Let Them Come",
+      "text": "When Jesus saw this, he wasn't happy about it at all. “Let the children come to me,” he said gently. “Don't ever keep them away.” The children weren't too little, or too loud, or too unimportant for Jesus. He wanted them close. So they ran to him, and he welcomed every single one."
+    },
+    {
+      "art": "story_jesus/jesus_children.png",
+      "heading": "Held and Loved",
+      "text": "Jesus wrapped his arms around the children and blessed them, one by one. Then he said something surprising: to belong to God, everyone — even grown-ups — needs to come with a simple, trusting heart, just like a child. You are never too small for Jesus. He knows your name, and he is glad when you come close."
+    }
+  ],
+
+  "verse": {
+    "ref": "Mark 10:14",
+    "text": "Let the little children come to me. Don't keep them away. God's kingdom belongs to people like them.",
+    "translation": "NIrV"
+  },
+
+  "christ_connection": {
+    "heading": "Come Just As You Are",
+    "text": "Jesus didn't wait for the children to be big enough, good enough, or quiet enough — he welcomed them right away. It's the same for you. You don't have to earn your way to God. You come to Jesus simply by trusting him, like a child holding a loving hand. That childlike trust is exactly how anyone becomes part of God's family."
+  },
+
+  "reward": {
+    "icon": "heart",
+    "name": "The Welcome Heart",
+    "text": "You uncovered a treasure! Come back tomorrow to keep exploring the trail."
+  }
+}

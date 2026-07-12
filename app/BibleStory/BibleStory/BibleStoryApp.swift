@@ -17,7 +17,9 @@ struct BibleStoryApp: App {
             // Dev/screenshot shortcut: `-uiPreviewReader` shows the Story Reader
             // directly (deterministic; avoids racing the onboarding transition).
             if ProcessInfo.processInfo.arguments.contains("-uiPreviewReader") {
-                NavigationStack { StoryView(env: env) }
+                NavigationStack {
+                    StoryView(env: env, storyID: ProcessInfo.processInfo.environment["STORY_ID"] ?? "creation")
+                }
             } else if ProcessInfo.processInfo.arguments.contains("-uiPreviewAsk") {
                 NavigationStack { CompassView(env: env) }
             } else {
