@@ -36,7 +36,8 @@ echo "▸ xcodegen + build (signed for device)…"
 xcodegen generate >/dev/null
 xcodebuild -scheme BibleStory \
     -destination "platform=iOS,id=$UDID" \
-    -derivedDataPath "$DERIVED" -allowProvisioningUpdates build >/tmp/tn-build.log 2>&1 \
+    -derivedDataPath "$DERIVED" -allowProvisioningUpdates \
+    ENABLE_DEBUG_DYLIB=NO build >/tmp/tn-build.log 2>&1 \
     || { echo "✗ build failed — see /tmp/tn-build.log"; tail -20 /tmp/tn-build.log; exit 1; }
 
 APP="$DERIVED/Build/Products/Debug-iphoneos/BibleStory.app"
