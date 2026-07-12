@@ -16,18 +16,19 @@ import UIKit
 struct PaintedMapBackdrop: View {
     var muted: Bool = false
 
-    private static let fallbackAspect: CGFloat = 1.266
-    private var tileAspect: CGFloat {
+    /// Computed ONCE (the asset is fixed per build) — avoids decoding the map image on
+    /// every layout pass, which was a needless per-frame cost while scrolling.
+    private static let tileAspect: CGFloat = {
         if let img = UIImage(named: "ExpeditionMap"), img.size.width > 0 {
             return img.size.height / img.size.width
         }
-        return Self.fallbackAspect
-    }
+        return 1.266
+    }()
 
     var body: some View {
         GeometryReader { geo in
             let w = geo.size.width
-            let tileH = max(1, w * tileAspect)
+            let tileH = max(1, w * Self.tileAspect)
             let count = max(1, Int(ceil(geo.size.height / tileH)) + 1)
             VStack(spacing: 0) {
                 ForEach(0..<count, id: \.self) { _ in

@@ -90,31 +90,33 @@ struct StoryView: View {
             topBar(s)
             progressStrip(total: s.pages.count, current: page)
 
-            Image(p.assetName)
-                .resizable()
-                .scaledToFill()
-                .frame(height: 220)
-                .frame(maxWidth: .infinity)
+            // Fixed art band. `.id(page)` gives each page's illustration its own view
+            // identity so switching pages SWAPS cleanly instead of interpolating between
+            // two differently-cropped images (which looked like the art resizing/animating
+            // and shifted everything below it). `.allowsHitTesting(false)` keeps the
+            // scaledToFill overflow from stealing taps from the top bar.
+            // Fill the art INSIDE a fixed, width-bounded box. A bare `scaledToFill` image
+            // reports its (aspect-driven) intrinsic width, which is wider than the screen
+            // and pushed the whole reading column past both edges. Color.clear has no
+            // intrinsic width, so it takes exactly the screen width and clips the fill.
+            Color.clear
+                .frame(height: 240)
+                .overlay { Image(p.assetName).resizable().scaledToFill() }
                 .clipped()
                 .overlay(alignment: .top) { Rectangle().fill(hairline).frame(height: 1.5) }
                 .overlay(alignment: .bottom) { Rectangle().fill(hairline).frame(height: 1.5) }
-                // The illustration is decorative. `scaledToFill` overflows its box
-                // and (despite `.clipped()`, which only clips drawing) its hit-test
-                // region bleeds up over the top-bar back button, making the arrow
-                // untappable. Explicitly opting out of hit-testing frees the back
-                // control (and every other top-bar button).
                 .allowsHitTesting(false)
+                .id(page)
 
             ScrollView {
-                VStack(alignment: .leading, spacing: 12) {
+                VStack(alignment: .leading, spacing: 14) {
                     HStack(alignment: .firstTextBaseline) {
                         Text(p.heading)
-                            .font(Theme.display(32 * env.readingSize.scale))
+                            .font(Theme.display(30 * env.readingSize.scale))
                             .foregroundStyle(heading)
                         Spacer(minLength: 8)
                         if env.readAloud { readAloudButton(p.text) }
                     }
-                    .padding(.top, 4)
                     Text(dropCapAttributed(p.text, scale: env.readingSize.scale))
                         .lineSpacing(7 * env.readingSize.scale)
                         .fixedSize(horizontal: false, vertical: true)
@@ -122,8 +124,8 @@ struct StoryView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 22)
-                .padding(.top, 16)
-                .padding(.bottom, 16)
+                .padding(.top, 18)
+                .padding(.bottom, 22)
             }
 
             footer(s, isLast: isLast)
@@ -132,14 +134,19 @@ struct StoryView: View {
 
     private func topBar(_ s: StoryContent) -> some View {
         HStack(spacing: 8) {
-            Button { back() } label: {
-                Image(systemName: "arrow.left")
-                    .font(.system(size: 26, weight: .semibold))
-                    .frame(width: 44, height: 44)      // HIG-min tap target
-                    .contentShape(Rectangle())         // whole 44×44 is tappable
+            // Always returns straight to the map (one tap, from any page or the
+            // finish screen). Page-to-page navigation is the progress bar + NEXT.
+            Button { close() } label: {
+                HStack(spacing: 5) {
+                    Image(systemName: "chevron.left").font(.system(size: 20, weight: .bold))
+                    Text("Map").font(Theme.body(16, weight: .bold))
+                }
+                .padding(.horizontal, 10)
+                .frame(height: 44)
+                .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
-            .accessibilityLabel("Back")
+            .accessibilityLabel("Back to the map")
             Spacer()
             Text(s.title)
                 .font(Theme.display(24)).foregroundStyle(topInk)
@@ -223,7 +230,7 @@ struct StoryView: View {
     private func seek(to index: Int) {
         guard index != page else { return }
         stopSpeaking()
-        withAnimation(.easeInOut(duration: 0.22)) { page = index }
+        page = index        // instant, clean swap
     }
 
     // MARK: Verse card (visibly distinct from the retell)
@@ -334,7 +341,7 @@ struct StoryView: View {
     private func advance(_ s: StoryContent) {
         stopSpeaking()
         if page < s.pages.count - 1 {
-            withAnimation(.easeInOut(duration: 0.22)) { page += 1 }
+            page += 1        // instant, clean swap (no size-morph animation)
         } else {
             NightsProgress.recordTonight()   // light tonight's star (grace, not guilt — only ever grows)
             env.markStoryComplete(storyID)   // unlock the next stop on the trail

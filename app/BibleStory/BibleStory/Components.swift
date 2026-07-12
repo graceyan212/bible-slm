@@ -85,11 +85,14 @@ enum Theme {
                                : .system(size: size, weight: weight, design: .rounded)
     }
 
-    /// The warm "hand" — IM Fell English Italic (falls back to italic system serif).
+    /// Poli's warm "voice" (speech bubbles, verse text, asides). This USED to be the
+    /// decorative IM Fell English Italic script, but that italic is hard for 7–9-year-olds
+    /// to read — so it now uses the same highly legible Atkinson Hyperlegible as body copy
+    /// (a touch bolder for warmth). Readability wins in a kids' app.
     static func hand(_ size: CGFloat) -> Font {
         let s = size * textScale
-        return available(imFellItalic) ? .custom(imFellItalic, size: s)
-                                       : .system(size: s, weight: .semibold, design: .serif).italic()
+        return available(atkinson) ? .custom(atkinson, size: s)
+                                   : .system(size: s, weight: .medium, design: .rounded)
     }
 }
 
