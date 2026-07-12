@@ -1,6 +1,6 @@
 # Flow / Structure / Interaction Model (authoritative)
 
-*The stable skeleton the native SwiftUI app is built against. Skin (color/type/spacing) stays cheap to change via `design/tokens.css`; THIS document is the expensive-to-change part, so it's locked here first. Sources: `design/` "Treasure Trail" prototype (passed its design panel), the PRD (`…-prd-design.md`), `behavior-spec.md` v2 (SBC 3-tier), and `shared-interfaces.md`.*
+*The stable skeleton the native SwiftUI app is built against. Skin (color/type/spacing) stays cheap to change via `design/tokens.css`; THIS document is the expensive-to-change part, so it's locked here first. Sources: `design/` "True North" prototype (passed its design panel), the PRD (`…-prd-design.md`), `behavior-spec.md` v2 (SBC 3-tier), and `shared-interfaces.md`.*
 
 ## Zones
 - **Child zone** (default, locked): the immersive map — Home trail, Story player, Compass/Ask-Poli. Reached only after first-run setup + the grown-up hand-off.

@@ -1,0 +1,37 @@
+{
+  "_comment": "Data-driven scene list for the Expedition map scrolls. `style` is prepended to every scene prompt so all illustrations share one look (consistency across scrolls). Add/edit scenes freely — the generator (generate_scenes.py) reads this file. Keep `id` filename-safe. Design principle: the MAP stays neutral sepia; these scroll scenes are the pops of COLOR ('color only on story stops').",
+
+  "style": "Flat folk-art children's Bible-storybook illustration, hand-drawn. Every shape carries a bold, even, medium-thick ink outline in warm dark espresso-brown — never pure black, never woodcut-heavy — slightly wobbly and clearly hand-inked, with closed contours and only a few simple interior lines. Fills are flat, matte, opaque single-tone color like gouache or marker: no gradients, no blending, no glossy highlights, and minimal shading (at most one flat darker tone per shape). Palette is bright yet warm and slightly earthy, never neon: sunny gold, sky blue and teal, leafy green, warm sand, terracotta red, with pink and purple flower accents — kept identical across all covers. Subtle cream paper grain overall. Shapes are simple, rounded and gently naive; figures have large round heads and kind, gentle faces (dot eyes, small smiles, soft rosy cheeks, calm reverent wonder). Full-bleed horizontal 3:2 composition: the scenery (sky, hills, water, ground) fills the ENTIRE frame all the way to every edge — no empty margins, no cream border, no letterboxing, no vignette — with the single key subject centered and the background simple and uncluttered.",
+
+  "negative": "photorealism, 3D render, CGI, cinematic or volumetric lighting, soft airbrushed gradients, glossy highlights, glowing halos, heavy woodcut/linocut black outlines, thin sketchy pencil lines, muted/washed-out or desaturated colors, neon colors, watercolor bleed, fine intricate detail, busy cluttered backgrounds, empty margins, cream borders, letterboxing, blank space around the scene, text, words, letters, numbers, logos, watermarks, borders, frames, signatures.",
+
+  "aspect_ratio": "3:2",
+  "size": "1024x1024",
+
+  "scenes": [
+    {
+      "id": "creation",
+      "title": "Creation: A Perfect Start",
+      "story": "Genesis 1 — God makes a good world (God is the maker; the world is his gift).",
+      "prompt": "The dawn of a brand-new, perfect world: lush rolling green hills, a clear winding river, leafy trees heavy with fruit, bright wildflowers, a few gentle animals grazing peacefully, and warm golden sunrise light spilling over the horizon. Everything looks fresh, cared-for, and full of life and wonder."
+    },
+    {
+      "id": "red_sea",
+      "title": "The Red Sea Rescue",
+      "story": "Exodus 14 — God rescues his trapped people by opening a way through the sea (the rescue is God's doing).",
+      "prompt": "A wide dry path opening straight through a great sea, with tall shimmering walls of blue-green water standing on either side. A hopeful crowd of robed people walk safely across the seabed toward a glowing sunrise, led by a robed figure holding a tall staff. Dramatic yet gentle and reassuring, full of relief and awe."
+    },
+    {
+      "id": "jesus_children",
+      "title": "Jesus and the Children",
+      "story": "Mark 10:13-16 — Jesus welcomes the children (God draws near, gentle and glad).",
+      "prompt": "A kind, gentle robed teacher with a warm, welcoming smile sits on a grassy hillside in soft afternoon sunlight, arms open toward a small group of happy children of different ages who gather close around him. Peaceful green countryside behind them, a feeling of being safe, wanted, and loved."
+    },
+    {
+      "id": "the_promise",
+      "title": "The Promise",
+      "story": "Genesis 8-9 — after the flood, God's covenant sign of peace (God keeps his promises).",
+      "prompt": "A bright dove glides down carrying a green olive branch over a calm landscape after a storm has passed, with a soft rainbow arcing across clearing skies and warm sunlight breaking through gentle clouds. A quiet, hopeful scene of peace and a promise kept."
+    }
+  ]
+}

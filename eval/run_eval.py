@@ -62,8 +62,24 @@ def load_model(hf, adapter=None):
     FastLanguageModel.for_inference(model)
     _MODEL["m"], _MODEL["t"] = model, tok
 
+def load_gateway(model_id):
+    """Model-UNDER-TEST = a frontier model via an OpenAI-compatible gateway (TrueFoundry etc.).
+    Reuses the judge gateway creds by default; set GEN_* to override. Used for the
+    frontier-vs-SLM benchmark (API-only — no GPU)."""
+    from openai import OpenAI
+    base = os.environ.get("GEN_BASE_URL") or os.environ.get("JUDGE_BASE_URL")
+    key = os.environ.get("GEN_API_KEY") or os.environ.get("JUDGE_API_KEY") or os.environ.get("OPENAI_API_KEY")
+    _MODEL["client"] = OpenAI(api_key=key, base_url=base or None)
+    _MODEL["gen_model"] = model_id
+    _MODEL["backend"] = "gateway"
+
 def generate(messages):
     """Return the assistant reply string for a messages list (system already prepended)."""
+    if _MODEL.get("backend") == "gateway":
+        r = _MODEL["client"].chat.completions.create(
+            model=_MODEL["gen_model"], max_tokens=320, temperature=0.7,
+            messages=messages)
+        return (r.choices[0].message.content or "").strip()
     m, t = _MODEL["m"], _MODEL["t"]
     text = t.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
     ids = t(text, return_tensors="pt").to(m.device)
@@ -206,14 +222,24 @@ def compare(base_path, tuned_path, md_path):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--model", choices=["base", "tuned"])
+    ap.add_argument("--model", default="model")            # free-text label for the output (base/tuned/frontier/…)
     ap.add_argument("--hf"); ap.add_argument("--adapter")
+    ap.add_argument("--backend", choices=["local", "gateway"], default="local")
+    ap.add_argument("--gen-model")                          # gateway model id for the model-under-test (frontier)
     ap.add_argument("--out", default="results.json")
     ap.add_argument("--compare", nargs=2)
+    ap.add_argument("--metrics")                            # print metrics for ONE results file
     ap.add_argument("--md", default="results_table.md")
     a = ap.parse_args()
     if a.compare:
         compare(a.compare[0], a.compare[1], a.md)
+    elif a.metrics:
+        _, claims = load()
+        import pprint
+        pprint.pprint(metrics(json.load(open(a.metrics))["rows"], claims))
     else:
-        load_model(a.hf, a.adapter)
+        if a.backend == "gateway":
+            load_gateway(a.gen_model or os.environ.get("GEN_MODEL"))
+        else:
+            load_model(a.hf, a.adapter)
         run_model(a.model, a.out)

@@ -7,31 +7,70 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B7E7A9DFC343CC09A63A2A7 /* creation.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F0A3558923D410125D71912 /* creation.json */; };
+		20E2EED34BE22EB0B9F310F3 /* OnboardingTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F672A6DEAB6F7826A1B0CCF /* OnboardingTheme.swift */; };
+		278016A5D5971B7B293EA1DE /* AtkinsonHyperlegible-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F674FCF04692AD05E7B33F37 /* AtkinsonHyperlegible-Regular.ttf */; };
 		2935EB127A0B8B271F8DE6B3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3042E3E486F721B5F5BF75D /* OnboardingView.swift */; };
 		2EF3CC82D5197DBDBA691551 /* BibleStoryCore in Frameworks */ = {isa = PBXBuildFile; productRef = A65B3DCF3340364C71A22176 /* BibleStoryCore */; };
+		3EEA02242272E0791FB717D1 /* StoryReaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA76E50371C4F8129ED81B8 /* StoryReaderModel.swift */; };
 		409349B5ECF19823AB9C67C2 /* BibleStoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF53E5A1DEA05B865D09C14 /* BibleStoryApp.swift */; };
 		4533045AF6CE2CCA186A77C8 /* AskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751716D2F7BE556DE63630E /* AskView.swift */; };
+		48EB77470806377E4E35E70E /* IMFeENsc28P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2ACD8865EE27F31EE9A9B0A8 /* IMFeENsc28P.ttf */; };
+		57E9ECB7B2CF4A4473A9E8BB /* AtkinsonHyperlegible-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B54ECFAD1E84109C1CCF6355 /* AtkinsonHyperlegible-Bold.ttf */; };
+		6A24D3C523BBC9FD6AB4C0FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122DFAFE7CC62CB06BBEDA94 /* Assets.xcassets */; };
+		7C68C9FDFAE967A3E355F13B /* TreasuresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FB7C3CADA06829CFA450A4 /* TreasuresView.swift */; };
+		7F86FCAB21DE4ED6F0015761 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9779E94CB9D658872118D8C /* Fonts.swift */; };
 		8EB78790C19F2630DFFBE49F /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D09CF65C46A2745498362 /* Components.swift */; };
+		92EEBA5C1726EE9189463031 /* BackNavigationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7AEC3F07C2C3263EB11D82 /* BackNavigationUITests.swift */; };
 		9F36C2EC0642332243F0E1F8 /* BiometricParentGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9489C61C969D52CE9194B5 /* BiometricParentGate.swift */; };
+		A33757F59849B9B3C1D78D14 /* IMFeENrm28P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42D818FDAB0393844B4B8CC6 /* IMFeENrm28P.ttf */; };
 		B1A1DB742759EF66E4D167F2 /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4DDAD15B1D838153F05E77 /* CompassView.swift */; };
+		BDE21FF6D1A42D23BDDF98BD /* PaintedMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431CDD2300DDB5E98060AE76 /* PaintedMap.swift */; };
 		C9921D36E97033329AF0AB60 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E7509E9BB780ED4DCCEEA5 /* HomeView.swift */; };
 		D4B032C72A1F094E2F9E0CB3 /* ParentZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6529AA880BF03A87893733D /* ParentZoneView.swift */; };
+		DB2EB7B54413B4D305FBE466 /* IMFeENit28P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CE3DC3A141F6EA9432D61AC /* IMFeENit28P.ttf */; };
+		F24C7CF1A3EDE3263CC9C773 /* treasures.json in Resources */ = {isa = PBXBuildFile; fileRef = D62C8EA955302276982275A5 /* treasures.json */; };
 		F2D1F1B7F6AAF20B8EFB7B39 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6459BD007C05B52F1C6D3C2 /* StoryView.swift */; };
 		F522F22DE18162E38534CFE5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB63D0068BE94A24D6466AD /* RootView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6D2BF57DD1D3A00A74EC600C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A60EDF2901573ACE06B8B308 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49CB08B9032956728CD057FA;
+			remoteInfo = BibleStory;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		122DFAFE7CC62CB06BBEDA94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25E25D3197F54C81B9A51FAA /* BibleStoryCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BibleStoryCore; path = ../BibleStoryCore; sourceTree = SOURCE_ROOT; };
 		2751716D2F7BE556DE63630E /* AskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskView.swift; sourceTree = "<group>"; };
+		2ACD8865EE27F31EE9A9B0A8 /* IMFeENsc28P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMFeENsc28P.ttf; sourceTree = "<group>"; };
+		42D818FDAB0393844B4B8CC6 /* IMFeENrm28P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMFeENrm28P.ttf; sourceTree = "<group>"; };
+		431CDD2300DDB5E98060AE76 /* PaintedMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintedMap.swift; sourceTree = "<group>"; };
+		677BBFB221A67495FEB6017F /* BibleStoryUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BibleStoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C7AEC3F07C2C3263EB11D82 /* BackNavigationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavigationUITests.swift; sourceTree = "<group>"; };
+		70FB7C3CADA06829CFA450A4 /* TreasuresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuresView.swift; sourceTree = "<group>"; };
 		7C4DDAD15B1D838153F05E77 /* CompassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassView.swift; sourceTree = "<group>"; };
+		7F0A3558923D410125D71912 /* creation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = creation.json; sourceTree = "<group>"; };
+		7F672A6DEAB6F7826A1B0CCF /* OnboardingTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTheme.swift; sourceTree = "<group>"; };
+		8CE3DC3A141F6EA9432D61AC /* IMFeENit28P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMFeENit28P.ttf; sourceTree = "<group>"; };
 		8E9489C61C969D52CE9194B5 /* BiometricParentGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricParentGate.swift; sourceTree = "<group>"; };
 		99E7509E9BB780ED4DCCEEA5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9C7852791DE394C9C0F83617 /* BibleStory.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BibleStory.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B54ECFAD1E84109C1CCF6355 /* AtkinsonHyperlegible-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AtkinsonHyperlegible-Bold.ttf"; sourceTree = "<group>"; };
 		B78D09CF65C46A2745498362 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		C3042E3E486F721B5F5BF75D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		C6459BD007C05B52F1C6D3C2 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
+		D62C8EA955302276982275A5 /* treasures.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = treasures.json; sourceTree = "<group>"; };
+		DDA76E50371C4F8129ED81B8 /* StoryReaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryReaderModel.swift; sourceTree = "<group>"; };
 		E6529AA880BF03A87893733D /* ParentZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentZoneView.swift; sourceTree = "<group>"; };
 		EBF53E5A1DEA05B865D09C14 /* BibleStoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleStoryApp.swift; sourceTree = "<group>"; };
+		F674FCF04692AD05E7B33F37 /* AtkinsonHyperlegible-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AtkinsonHyperlegible-Regular.ttf"; sourceTree = "<group>"; };
+		F9779E94CB9D658872118D8C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		FEB63D0068BE94A24D6466AD /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				9C7852791DE394C9C0F83617 /* BibleStory.app */,
+				677BBFB221A67495FEB6017F /* BibleStoryUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,26 +99,64 @@
 			isa = PBXGroup;
 			children = (
 				2751716D2F7BE556DE63630E /* AskView.swift */,
+				122DFAFE7CC62CB06BBEDA94 /* Assets.xcassets */,
 				EBF53E5A1DEA05B865D09C14 /* BibleStoryApp.swift */,
 				8E9489C61C969D52CE9194B5 /* BiometricParentGate.swift */,
 				7C4DDAD15B1D838153F05E77 /* CompassView.swift */,
 				B78D09CF65C46A2745498362 /* Components.swift */,
+				F9779E94CB9D658872118D8C /* Fonts.swift */,
 				99E7509E9BB780ED4DCCEEA5 /* HomeView.swift */,
+				7F672A6DEAB6F7826A1B0CCF /* OnboardingTheme.swift */,
 				C3042E3E486F721B5F5BF75D /* OnboardingView.swift */,
+				431CDD2300DDB5E98060AE76 /* PaintedMap.swift */,
 				E6529AA880BF03A87893733D /* ParentZoneView.swift */,
 				FEB63D0068BE94A24D6466AD /* RootView.swift */,
+				DDA76E50371C4F8129ED81B8 /* StoryReaderModel.swift */,
 				C6459BD007C05B52F1C6D3C2 /* StoryView.swift */,
+				70FB7C3CADA06829CFA450A4 /* TreasuresView.swift */,
+				D175ACA5F1745B0060F0BF85 /* Content */,
+				5F4A9AD2BAE4F96696E09CAB /* Fonts */,
 			);
 			path = BibleStory;
+			sourceTree = "<group>";
+		};
+		5F4A9AD2BAE4F96696E09CAB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B54ECFAD1E84109C1CCF6355 /* AtkinsonHyperlegible-Bold.ttf */,
+				F674FCF04692AD05E7B33F37 /* AtkinsonHyperlegible-Regular.ttf */,
+				8CE3DC3A141F6EA9432D61AC /* IMFeENit28P.ttf */,
+				42D818FDAB0393844B4B8CC6 /* IMFeENrm28P.ttf */,
+				2ACD8865EE27F31EE9A9B0A8 /* IMFeENsc28P.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		68273720CC2D15BC95731689 = {
 			isa = PBXGroup;
 			children = (
 				58FB577254BF24FB91CF229A /* BibleStory */,
+				7776C4E001CD9B61A4917843 /* BibleStoryUITests */,
 				DB226542C9295A879B39D1C5 /* Packages */,
 				18CB13CB9DBA7927800FC694 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		7776C4E001CD9B61A4917843 /* BibleStoryUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6C7AEC3F07C2C3263EB11D82 /* BackNavigationUITests.swift */,
+			);
+			path = BibleStoryUITests;
+			sourceTree = "<group>";
+		};
+		D175ACA5F1745B0060F0BF85 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				7F0A3558923D410125D71912 /* creation.json */,
+				D62C8EA955302276982275A5 /* treasures.json */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 		DB226542C9295A879B39D1C5 /* Packages */ = {
@@ -97,6 +175,7 @@
 			buildConfigurationList = 9B3E5D82982AF773F5E9038C /* Build configuration list for PBXNativeTarget "BibleStory" */;
 			buildPhases = (
 				E3D94D73A8914999EC662672 /* Sources */,
+				220A0B055AE495496B585E84 /* Resources */,
 				E3CAD2BB8E728728550EB654 /* Frameworks */,
 			);
 			buildRules = (
@@ -111,6 +190,24 @@
 			productReference = 9C7852791DE394C9C0F83617 /* BibleStory.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D1CFDFAF5BE607037A27EC4E /* BibleStoryUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 851DB5B2DB383559AD0318E5 /* Build configuration list for PBXNativeTarget "BibleStoryUITests" */;
+			buildPhases = (
+				2F062A947051679D6B20222E /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66FD16909F45A1B392027C38 /* PBXTargetDependency */,
+			);
+			name = BibleStoryUITests;
+			packageProductDependencies = (
+			);
+			productName = BibleStoryUITests;
+			productReference = 677BBFB221A67495FEB6017F /* BibleStoryUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -120,6 +217,15 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					49CB08B9032956728CD057FA = {
+						DevelopmentTeam = 4DMP5UV5S6;
+						ProvisioningStyle = Automatic;
+					};
+					D1CFDFAF5BE607037A27EC4E = {
+						DevelopmentTeam = 4DMP5UV5S6;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 49CB08B9032956728CD057FA;
+					};
 				};
 			};
 			buildConfigurationList = 2E5386144E54081C8FD9C667 /* Build configuration list for PBXProject "BibleStory" */;
@@ -140,11 +246,38 @@
 			projectRoot = "";
 			targets = (
 				49CB08B9032956728CD057FA /* BibleStory */,
+				D1CFDFAF5BE607037A27EC4E /* BibleStoryUITests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		220A0B055AE495496B585E84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A24D3C523BBC9FD6AB4C0FB /* Assets.xcassets in Resources */,
+				57E9ECB7B2CF4A4473A9E8BB /* AtkinsonHyperlegible-Bold.ttf in Resources */,
+				278016A5D5971B7B293EA1DE /* AtkinsonHyperlegible-Regular.ttf in Resources */,
+				DB2EB7B54413B4D305FBE466 /* IMFeENit28P.ttf in Resources */,
+				A33757F59849B9B3C1D78D14 /* IMFeENrm28P.ttf in Resources */,
+				48EB77470806377E4E35E70E /* IMFeENsc28P.ttf in Resources */,
+				1B7E7A9DFC343CC09A63A2A7 /* creation.json in Resources */,
+				F24C7CF1A3EDE3263CC9C773 /* treasures.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		2F062A947051679D6B20222E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92EEBA5C1726EE9189463031 /* BackNavigationUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E3D94D73A8914999EC662672 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -154,25 +287,62 @@
 				9F36C2EC0642332243F0E1F8 /* BiometricParentGate.swift in Sources */,
 				B1A1DB742759EF66E4D167F2 /* CompassView.swift in Sources */,
 				8EB78790C19F2630DFFBE49F /* Components.swift in Sources */,
+				7F86FCAB21DE4ED6F0015761 /* Fonts.swift in Sources */,
 				C9921D36E97033329AF0AB60 /* HomeView.swift in Sources */,
+				20E2EED34BE22EB0B9F310F3 /* OnboardingTheme.swift in Sources */,
 				2935EB127A0B8B271F8DE6B3 /* OnboardingView.swift in Sources */,
+				BDE21FF6D1A42D23BDDF98BD /* PaintedMap.swift in Sources */,
 				D4B032C72A1F094E2F9E0CB3 /* ParentZoneView.swift in Sources */,
 				F522F22DE18162E38534CFE5 /* RootView.swift in Sources */,
+				3EEA02242272E0791FB717D1 /* StoryReaderModel.swift in Sources */,
 				F2D1F1B7F6AAF20B8EFB7B39 /* StoryView.swift in Sources */,
+				7C68C9FDFAE967A3E355F13B /* TreasuresView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		66FD16909F45A1B392027C38 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49CB08B9032956728CD057FA /* BibleStory */;
+			targetProxy = 6D2BF57DD1D3A00A74EC600C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		27F61299247960CE0050C354 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4DMP5UV5S6;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.graceyan.treasuretrail.uitests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BibleStory;
+			};
+			name = Release;
+		};
 		29FD3A86F7E706DA696CEA2E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4DMP5UV5S6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Confirm you're a grown-up to open the parent area.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Poli listens so you can ask questions out loud.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Your words become text on this device so Poli can understand your question.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -186,6 +356,26 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
+		};
+		6BD7881BE214458239F2177B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4DMP5UV5S6;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.graceyan.treasuretrail.uitests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BibleStory;
+			};
+			name = Debug;
 		};
 		6CF2A167C141C48026B5DDA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -255,9 +445,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4DMP5UV5S6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Confirm you're a grown-up to open the parent area.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Poli listens so you can ask questions out loud.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Your words become text on this device so Poli can understand your question.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -336,6 +530,15 @@
 			buildConfigurations = (
 				6CF2A167C141C48026B5DDA5 /* Debug */,
 				D303AC4968C7795BDB1DDBF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		851DB5B2DB383559AD0318E5 /* Build configuration list for PBXNativeTarget "BibleStoryUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BD7881BE214458239F2177B /* Debug */,
+				27F61299247960CE0050C354 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

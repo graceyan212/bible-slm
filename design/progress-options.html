@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Story progress — options</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Cinzel:wght@600;700&family=Lexend:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6EDD7; --paper2:#F0E4C4;
+    --heading:#7A4A12; --ink:#4A3520; --inksoft:#8A6A3E;
+    --brass:#D19A34; --brassLit:#F6D062; --brassDeep:#8A5A22; --gold:#B07E2C;
+    --sepia:#B79A6B; --hair:#D8C39A; --track:#E4D3A6;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:32px 16px 64px;
+    background:#3B2E23;
+    font-family:Lexend,system-ui,sans-serif; color:var(--ink);
+    display:flex; flex-direction:column; align-items:center; gap:26px;
+  }
+  h1{font-family:Cinzel,serif; color:#EAD9AE; letter-spacing:2px; font-size:18px; text-transform:uppercase; margin:0 0 4px}
+  .sub{color:#C9B48A; font-size:13px; margin:0 0 14px; text-align:center}
+  .card{
+    width:380px; max-width:94vw; background:var(--paper);
+    border-radius:20px; padding:0 0 18px; overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+    background-image:radial-gradient(120% 80% at 30% 0%, rgba(255,255,255,.45), transparent 60%);
+  }
+  .tag{font-family:Cinzel,serif; font-size:11px; letter-spacing:2px; text-transform:uppercase;
+       color:#fff; background:var(--brassDeep); padding:6px 12px; display:inline-block; border-radius:0 0 12px 0}
+  .note{font-size:12.5px; color:var(--inksoft); padding:2px 18px 0}
+  .art{height:96px; margin:10px 0 0; background:
+        linear-gradient(180deg,#cdbf97,#b6a071);
+        border-top:1.5px solid var(--hair); border-bottom:1.5px solid var(--hair);
+        display:flex; align-items:center; justify-content:center; font-size:40px}
+  .title{font-family:Fraunces,serif; font-weight:800; color:var(--heading); font-size:26px; padding:14px 18px 0}
+  .prog{padding:10px 18px 2px}
+  .lbl{font-family:Cinzel,serif; letter-spacing:1.5px; font-size:11px; color:#8A5F22; text-transform:uppercase; margin-top:8px}
+
+  /* Shared next button (fixed, clean shadow — the corrected version) */
+  .foot{display:flex; justify-content:flex-end; padding:12px 18px 0}
+  .next{font-family:Cinzel,serif; font-weight:700; letter-spacing:1.5px; font-size:15px; color:#5E3A16;
+        border:1.5px solid var(--brassDeep); border-radius:999px; padding:11px 22px;
+        background:linear-gradient(180deg,var(--brassLit),var(--brass));
+        box-shadow:0 3px 6px rgba(90,60,20,.28); display:inline-flex; gap:8px; align-items:center}
+
+  /* A) map route */
+  .route{width:100%; height:34px}
+
+  /* B) underline */
+  .u-title{font-family:Fraunces,serif;font-weight:800;color:var(--heading);font-size:26px;padding:14px 18px 0}
+  .u-bar{height:4px;margin:8px 18px 0;border-radius:2px;
+         background:linear-gradient(90deg,var(--brass) 0 58%, var(--track) 58% 100%)}
+
+  /* C) segments */
+  .segs{display:flex; gap:7px; margin-top:8px}
+  .seg{height:12px; flex:1; border-radius:6px; border:1.5px solid #CBB27A; background:var(--paper2)}
+  .seg.on{background:linear-gradient(180deg,var(--brassLit),var(--brass)); border-color:var(--brassDeep)}
+
+  /* D) footprints */
+  .feet{display:flex; gap:14px; margin-top:8px; font-size:22px}
+  .feet span{filter:grayscale(.1)}
+  .feet .off{opacity:.28}
+
+  /* E) compass dial */
+  .dial{display:flex; align-items:center; gap:12px; margin-top:6px}
+</style>
+</head>
+<body>
+  <div>
+    <h1>Story progress — pick a direction</h1>
+    <p class="sub">Same screen, five ways to show “page 3 of 5.” One place only (top, under the title).</p>
+  </div>
+
+  <!-- A -->
+  <div class="card">
+    <span class="tag">A · Map route + compass</span>
+    <div class="art">🎨</div>
+    <div class="title">The Brave Shepherd Boy</div>
+    <div class="prog">
+      <svg class="route" viewBox="0 0 344 34">
+        <!-- dashed path ahead -->
+        <path d="M12 17 H332" fill="none" stroke="#B79A6B" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 10"/>
+        <!-- solid rope behind (done) -->
+        <path d="M12 17 H206" fill="none" stroke="#3B2E23" stroke-opacity=".45" stroke-width="9" stroke-linecap="round"/>
+        <path d="M12 17 H206" fill="none" stroke="#B0805A" stroke-width="6.5" stroke-linecap="round"/>
+        <!-- compass 'you are here' -->
+        <g transform="translate(206,17)">
+          <circle r="13" fill="#F6D062" stroke="#8A5A22" stroke-width="2"/>
+          <path d="M0,-8 L2.4,0 L0,8 L-2.4,0 Z" fill="#5E3A16"/>
+          <path d="M-8,0 L0,-2.4 L8,0 L0,2.4 Z" fill="#8A5A22"/>
+        </g>
+      </svg>
+      <div class="lbl">Stop 3 of 5</div>
+    </div>
+    <div class="foot"><span class="next">NEXT →</span></div>
+    <div class="note">Echoes the Home trail rope + compass. The one distinctive marker, no dot row.</div>
+  </div>
+
+  <!-- B -->
+  <div class="card">
+    <span class="tag">B · Brass underline</span>
+    <div class="art">🎨</div>
+    <div class="u-title">The Brave Shepherd Boy</div>
+    <div class="u-bar"></div>
+    <div class="prog"><div class="lbl">Page 3 of 5</div></div>
+    <div class="foot"><span class="next">NEXT →</span></div>
+    <div class="note">Minimal &amp; elegant — keeps all the boldness on the art + verse card.</div>
+  </div>
+
+  <!-- C -->
+  <div class="card">
+    <span class="tag">C · Parchment segments</span>
+    <div class="art">🎨</div>
+    <div class="title">The Brave Shepherd Boy</div>
+    <div class="prog">
+      <div class="segs">
+        <div class="seg on"></div><div class="seg on"></div><div class="seg on"></div>
+        <div class="seg"></div><div class="seg"></div>
+      </div>
+      <div class="lbl">3 of 5</div>
+    </div>
+    <div class="foot"><span class="next">NEXT →</span></div>
+    <div class="note">Chunky filled bars — reads as a map bar, not tiny iOS page dots.</div>
+  </div>
+
+  <!-- D -->
+  <div class="card">
+    <span class="tag">D · Footprints</span>
+    <div class="art">🎨</div>
+    <div class="title">The Brave Shepherd Boy</div>
+    <div class="prog">
+      <div class="feet"><span>👣</span><span>👣</span><span>👣</span><span class="off">👣</span><span class="off">👣</span></div>
+      <div class="lbl">3 of 5 steps</div>
+    </div>
+    <div class="foot"><span class="next">NEXT →</span></div>
+    <div class="note">Playful “journey” feel. Fun, but busier than A/B.</div>
+  </div>
+
+  <!-- E -->
+  <div class="card">
+    <span class="tag">E · Compass dial</span>
+    <div class="art">🎨</div>
+    <div class="title">The Brave Shepherd Boy</div>
+    <div class="prog">
+      <div class="dial">
+        <svg width="40" height="40" viewBox="0 0 40 40">
+          <circle cx="20" cy="20" r="16" fill="none" stroke="#E4D3A6" stroke-width="5"/>
+          <circle cx="20" cy="20" r="16" fill="none" stroke="#D19A34" stroke-width="5"
+                  stroke-linecap="round" stroke-dasharray="100.5" stroke-dashoffset="40.2"
+                  transform="rotate(-90 20 20)"/>
+          <path d="M20,12 L23,20 L20,28 L17,20 Z" fill="#8A5A22"/>
+        </svg>
+        <div class="lbl" style="margin-top:0">3 of 5</div>
+      </div>
+    </div>
+    <div class="foot"><span class="next">NEXT →</span></div>
+    <div class="note">A compass that fills as you read. Distinctive; smallest footprint.</div>
+  </div>
+
+</body>
+</html>

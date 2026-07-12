@@ -1,0 +1,42 @@
+{
+  "_comment": "Story Reader content for Creation. Retold in warm 7-9 words (gospel-centered, per data/story_pedagogy.md). NEVER verbatim Scripture in the narrative — the exact verse is app-retrieved from the family's translation and shown in the distinct `verse` card (behavior-spec 'Approach B').",
+
+  "id": "creation",
+  "title": "Creation",
+  "subtitle": "God Makes Everything",
+
+  "pages": [
+    {
+      "art": "story_creation/p1_light.png",
+      "heading": "In the Beginning",
+      "text": "Before there was anything at all — no sky, no sea, no you, no me — there was God. And God was full of life and love. He had a wonderful idea. “Let there be light!” he said. Warm, golden light poured into the dark, like the very first morning. God saw the light, and it was good."
+    },
+    {
+      "art": "story_creation/p2_world.png",
+      "heading": "A World Full of Life",
+      "text": "God kept speaking, and the whole world woke up at the sound of his voice. Blue sky stretched high. Waves rolled and sparkled. Grass, tall trees, and bright flowers pushed up from the ground. He set the warm sun in the day, and the moon and stars for the night. Everywhere he looked, there was more good — because every good thing comes from God."
+    },
+    {
+      "art": "story_creation/p3_garden.png",
+      "heading": "Made with Love",
+      "text": "Then God filled the world with animals — splashing fish, singing birds, big ones and small ones. And last of all, God made people. He didn’t have to. He wanted to! He made them close to his heart — to know him, to be loved by him, and to care for his beautiful world. God looked at everything he had made, and it was very good."
+    }
+  ],
+
+  "verse": {
+    "ref": "Genesis 1:1",
+    "text": "In the beginning, God created the heavens and the earth.",
+    "translation": "NIrV"
+  },
+
+  "christ_connection": {
+    "heading": "The Best News",
+    "text": "The same God who made the whole world is the God who made you — on purpose, and with love. And here is the wonder: the Bible tells us the world was made through God’s Son, Jesus. One day, people would turn away from God and spoil this good world. But God already had a rescue plan — the One who made the first perfect world would come to make everything new again. That’s how much God loves what he made. That’s how much God loves you."
+  },
+
+  "reward": {
+    "icon": "compass",
+    "name": "The Golden Compass Rose",
+    "text": "You discovered your first treasure! Come back tomorrow to continue the adventure."
+  }
+}

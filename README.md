@@ -1,8 +1,8 @@
-# Treasure Trail — SBC Kids' Bible SLM + App
+# True North — SBC Kids' Bible SLM + App
 
 A small, fine-tuned language model that acts as a warm Bible **guide for children (ages 7–9)**,
 faithfully representing **one tradition — the Southern Baptist Convention** — plus an
-adventure-coded app UI ("Treasure Trail" — a warm treasure-map / explorer's-journal world) with a
+adventure-coded app UI ("True North" — a warm treasure-map / explorer's-journal world) with a
 brass compass mascot, **Poli**, as the AI.
 
 **The thesis:** general AI fails at faith not by lack of smarts but by *flattening* every
@@ -28,7 +28,7 @@ The dataset (not the model) is the deliverable; the same flatten-rate is the eva
 | `data/DATASET_CARD.md` | Dataset card |
 | `eval/scenarios.json` · `judge_prompt.md` · `run_eval.py` | Held-out eval (52 scenarios) + tier-aware judge + base-vs-tuned harness |
 | `train/train_qlora.py` · `README.md` | Unsloth QLoRA fine-tune + Colab runbook |
-| `design/` | The app UI (Treasure Trail) + Poli mascot + design panel record |
+| `design/` | The app UI (True North) + Poli mascot + design panel record |
 | `data/REVIEW-before-scaling.md` | Human-review packet (theology + safety rows) |
 
 ## Status

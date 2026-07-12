@@ -15,7 +15,7 @@ They are complementary, not competing: the loop's plan **deliberately deferred**
 - **Data** — `data/train_v2.jsonl` (~358 clean, gated, all classes) + `data/filter.py` pipeline + `data/DATASET_CARD.md`.
 - **Eval** — `eval/scenarios.json` (52), tier-aware `eval/judge_prompt.md`, runnable base-vs-tuned `eval/run_eval.py`.
 - **Train** — `train/train_qlora.py` + runbook (Qwen3 + Unsloth QLoRA, Colab).
-- **Design** — `design/` "Treasure Trail" HTML prototype (5 screens + mascot **Poli**), **design panel PASSED** (child 9.1 / parent 8.6 / UX 8.9). `design/DESIGN-BRIEF.md` §7 already maps Poli's needle to the 3 tiers.
+- **Design** — `design/` "True North" HTML prototype (5 screens + mascot **Poli**), **design panel PASSED** (child 9.1 / parent 8.6 / UX 8.9). `design/DESIGN-BRIEF.md` §7 already maps Poli's needle to the 3 tiers.
 
 **Track A (earlier, committed on `main`):**
 - **P1 app foundation** (SwiftUI) — zone routing + biometric parent gate, 6 tests green, launches.
@@ -38,7 +38,7 @@ They are complementary, not competing: the loop's plan **deliberately deferred**
 2. **Rework P4/P5 plans** to the 3-tier contract (behaviorClass routing, tier/claimIDs, narration+history seams, the CLASS/TIER/CLAIMS/VERSE/REPLY envelope; fix the P5 bugs — resident model, ScriptureGuard false-positives, 5-translation verse files).
 3. **P8 — Integration & Composition (NEW plan)** — `AppEnvironment` root: load `ParentAccount`, own active `childID` + `translation`, construct services once, inject down (Netflix-style profiles), **persist** deflect entries + crisis events via `CloudSyncService`, and **enforce** `SafetySettings` (disabled stories/topics, session time limit) in the child zone.
 4. **Part C bug fixes** — P3 (completion only on real finish; resume-across-launch; narration-finished signal) and the P4↔P7 crisis seam (single path; don't speak the crisis reply; reset on return-to-calm).
-5. **Build the native app P2→P7** to the **Treasure Trail** design + SBC behavior — i.e. port the approved `design/` prototype into SwiftUI (`app/`), skinning with `design/tokens.css` values.
+5. **Build the native app P2→P7** to the **True North** design + SBC behavior — i.e. port the approved `design/` prototype into SwiftUI (`app/`), skinning with `design/tokens.css` values.
 6. **Launch gates & fast-follow** — verifiable parental consent + in-app account deletion; content production (≥12 illustrated + narrated stories, 5 translation verse files + licensing, ship the trained model); the BF&M eval as a ship gate + honest in-app "Privacy & Safety" surfacing; then analytics/thesis-health, accessibility, subscription lifecycle.
 
 ---
