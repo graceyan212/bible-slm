@@ -307,7 +307,7 @@ struct OnboardingView: View {
                 .foregroundStyle(OnbColors.ink)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 320)
-            OnbSpeechBubble(text: "I'll read you \u{201C}The Storm That Obeyed.\u{201D} ✦")
+            OnbSpeechBubble(text: "I'll read you the very first story — \u{201C}Creation.\u{201D} ✦")
         }
     }
 
@@ -599,7 +599,7 @@ struct OnboardingView: View {
             }
             HStack(spacing: 8) {
                 Image(systemName: "checkmark.circle.fill").foregroundStyle(OnbColors.brassDeep)
-                Text("First stop: The Storm That Obeyed — you've already seen this one.")
+                Text("First stop: Creation — you've already seen this one.")
                     .font(OnbFont.body(13)).foregroundStyle(OnbColors.inkSoft)
             }
         }
