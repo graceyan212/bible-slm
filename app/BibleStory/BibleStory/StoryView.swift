@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 import BibleStoryCore
 
 /// The Story Reader (design/story-reader.html): a paged illustrated narrative with
@@ -17,6 +18,7 @@ struct StoryView: View {
     @State private var page = 0
     @State private var showComplete = false
     @State private var showAsk = false
+    @State private var synth = AVSpeechSynthesizer()   // read-aloud (parent setting)
 
     private let story: StoryContent?
     init(env: AppEnvironment, storyID: String = "creation", onClose: (() -> Void)? = nil) {
@@ -105,12 +107,16 @@ struct StoryView: View {
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
-                    Text(p.heading)
-                        .font(Theme.display(32))
-                        .foregroundStyle(heading)
-                        .padding(.top, 4)
-                    Text(dropCapAttributed(p.text))
-                        .lineSpacing(7)
+                    HStack(alignment: .firstTextBaseline) {
+                        Text(p.heading)
+                            .font(Theme.display(32 * env.readingSize.scale))
+                            .foregroundStyle(heading)
+                        Spacer(minLength: 8)
+                        if env.readAloud { readAloudButton(p.text) }
+                    }
+                    .padding(.top, 4)
+                    Text(dropCapAttributed(p.text, scale: env.readingSize.scale))
+                        .lineSpacing(7 * env.readingSize.scale)
                         .fixedSize(horizontal: false, vertical: true)
                     if isLast { verseCard(s.verse) }
                 }
@@ -320,6 +326,7 @@ struct StoryView: View {
     // MARK: Actions
 
     private func advance(_ s: StoryContent) {
+        stopSpeaking()
         if page < s.pages.count - 1 {
             withAnimation(.easeInOut(duration: 0.22)) { page += 1 }
         } else {
@@ -330,6 +337,7 @@ struct StoryView: View {
     }
 
     private func back() {
+        stopSpeaking()
         if showComplete {
             withAnimation { showComplete = false }
         } else if page > 0 {
@@ -341,25 +349,55 @@ struct StoryView: View {
 
     /// Leave the reader (back to the map).
     private func close() {
+        stopSpeaking()
         if let onClose { onClose() } else { dismiss() }
     }
 
     /// Illuminated initial + body: the first glyph in the display serif/gold, the
     /// rest in the body face (a warm stand-in for the CSS drop-cap).
-    private func dropCapAttributed(_ text: String) -> AttributedString {
+    private func dropCapAttributed(_ text: String, scale: Double = 1) -> AttributedString {
         var out = AttributedString()
         if let first = text.first {
             var cap = AttributedString(String(first))
-            cap.font = Theme.display(56)   // illuminated initial
+            cap.font = Theme.display(56 * scale)   // illuminated initial
             cap.foregroundColor = dropCap
             out.append(cap)
         }
         var rest = AttributedString(String(text.dropFirst()))
-        rest.font = Theme.body(22)         // big, kid-legible narrative
+        rest.font = Theme.body(22 * scale)         // big, kid-legible narrative
         rest.foregroundColor = bodyInk
         out.append(rest)
         return out
     }
+
+    // MARK: Read aloud (voice output — enabled from the parent dashboard)
+
+    private func readAloudButton(_ text: String) -> some View {
+        Button { speak(text) } label: {
+            HStack(spacing: 6) {
+                Image(systemName: "speaker.wave.2.fill").font(.system(size: 13, weight: .bold))
+                Text("Read to me").font(Theme.body(14, weight: .bold))
+            }
+            .foregroundStyle(Color(hex: 0x5E3A16))
+            .padding(.horizontal, 12).padding(.vertical, 7)
+            .background(Capsule().fill(Color(hex: 0xE6D4A8)))
+            .overlay(Capsule().strokeBorder(Color(hex: 0xCBB27A), lineWidth: 1))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Read this page aloud")
+    }
+
+    /// Speak the page with a gentle, slightly-slow child-friendly voice.
+    private func speak(_ text: String) {
+        synth.stopSpeaking(at: .immediate)
+        let u = AVSpeechUtterance(string: text)
+        u.rate = 0.44
+        u.pitchMultiplier = 1.05
+        u.postUtteranceDelay = 0.1
+        synth.speak(u)
+    }
+
+    private func stopSpeaking() { synth.stopSpeaking(at: .immediate) }
 }
 
 /// The completion reward token: a gold medallion with a ray-burst and the story's
