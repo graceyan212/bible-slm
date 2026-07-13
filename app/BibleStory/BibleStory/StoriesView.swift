@@ -61,7 +61,7 @@ struct StoriesView: View {
 
     var body: some View {
         ZStack {
-            PaintedMapBackdrop(muted: true).ignoresSafeArea()
+            Theme.parchmentLit.ignoresSafeArea()
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 22) {
                     header
@@ -82,16 +82,8 @@ struct StoriesView: View {
     }
 
     private var header: some View {
-        VStack(spacing: 6) {
-            Text("Story Library")
-                .font(Theme.display(34, weight: .black))
-                .foregroundStyle(Theme.brassDeep)
-            Text("Every story on the trail, in order.")
-                .font(Theme.body(17))
-                .foregroundStyle(Theme.inkSoft)
-                .multilineTextAlignment(.center)
-        }
-        .padding(.horizontal, 30)
-        .accessibilityElement(children: .combine)
+        ScreenTitle("Story Library", subtitle: "Every story on the trail, in order.")
     }
 }
+
+// (Story Library uses a plain light parchment background — see body above.)

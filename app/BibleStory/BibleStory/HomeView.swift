@@ -29,6 +29,7 @@ struct HomeView: View {
 
     var body: some View {
         NavigationStack(path: $path) {
+            GeometryReader { proxy in
             ZStack(alignment: .bottom) {
                 Group {
                     switch tab {
@@ -116,6 +117,8 @@ struct HomeView: View {
             // sibling overlay in HomeView's bottom-aligned ZStack).
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 0) {
+                    // Buffer so the pinned "The Expedition" header never covers the top stop.
+                    Color.clear.frame(height: 88)
                     ZStack(alignment: .top) {
                         PaintedMapBackdrop()
                             .frame(width: w, height: mapH)
@@ -148,6 +151,21 @@ struct HomeView: View {
             .ignoresSafeArea()
         }
         .ignoresSafeArea()
+        // Pinned page title, consistent with the other tabs. It rides ABOVE the
+        // scrolling map (an overlay, so it never scrolls away), with a soft
+        // parchment scrim behind it so it stays legible over the painted art.
+        .overlay(alignment: .top) {
+            ScreenTitle("The Expedition", subtitle: "Follow the trail, stop by stop.")
+                .padding(.bottom, 6)
+                .frame(maxWidth: .infinity)
+                .background(
+                    Theme.parchment.opacity(0.98)
+                        .overlay(alignment: .bottom) {
+                            Rectangle().fill(Theme.sepiaLine.opacity(0.55)).frame(height: 1)
+                        }
+                        .ignoresSafeArea(edges: .top)
+                )
+        }
     }
 }
 

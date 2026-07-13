@@ -60,7 +60,7 @@ struct TreasuresView: View {
                 let treasures = earned(data)
                 ScrollView {
                     VStack(spacing: 16) {
-                        header
+                        ScreenTitle("Treasures", subtitle: "Every star and badge you've earned on the trail.")
                         SkyPanel(days: days)
                         journeyInvitation
                         pills(found: treasures.filter(\.earned).count, total: treasures.count)
@@ -75,21 +75,6 @@ struct TreasuresView: View {
                     .font(Theme.body(16)).foregroundStyle(Theme.inkSoft)
             }
         }
-    }
-
-    // MARK: Header
-
-    private var header: some View {
-        VStack(spacing: 2) {
-            Text("Your Night Sky")
-                .font(Theme.display(32))
-                .foregroundStyle(Theme.brassDeep)
-            Text("A star lights up every day you explore")
-                .font(Theme.body(14))
-                .foregroundStyle(Theme.inkSoft)
-        }
-        .multilineTextAlignment(.center)
-        .accessibilityElement(children: .combine)
     }
 
     // MARK: Calm "continue your journey" invitation (replaces streak pressure)
@@ -140,7 +125,7 @@ struct TreasuresView: View {
     private func treasureShelf(_ treasures: [TreasuresData.Treasure]) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: 7) {
-                Text("Treasures")
+                Text("Your Collection")
                     .font(Theme.display(22)).foregroundStyle(Theme.brassDeep)
                 Rectangle().fill(Theme.sepiaLine.opacity(0.5)).frame(height: 1)
             }

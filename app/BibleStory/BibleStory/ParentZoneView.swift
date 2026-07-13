@@ -29,6 +29,7 @@ struct ParentZoneView: View {
                     header
 
                     ProgressCard(env: env)
+                    TodaysConversationCard(childName: child?.name ?? "your child")
                     ChildProfilesCard(env: env)
                     FamilyBibleCard(env: env).id("familybible")
                     ReadingAccessibilityCard(env: env)
@@ -50,7 +51,6 @@ struct ParentZoneView: View {
                 .frame(maxWidth: 620)
                 .frame(maxWidth: .infinity)
             }
-            .safeAreaInset(edge: .top) { topBar }
             .onAppear {
                 // Dev/screenshot: jump to the Bible picker + accessibility cards.
                 if ProcessInfo.processInfo.arguments.contains("-uiPreviewParentMid") {
@@ -61,48 +61,11 @@ struct ParentZoneView: View {
         }
     }
 
-    // MARK: Top bar — a back arrow (returns to the trail) pinned at the very top.
-
-    private var topBar: some View {
-        HStack {
-            Button { if let onBack { onBack() } else { env.exitToChildZone() } } label: {
-                HStack(spacing: 6) {
-                    Image(systemName: "arrow.left").font(.system(size: 20, weight: .semibold))
-                    Text("Trail").font(Theme.body(17, weight: .bold))
-                }
-                .foregroundStyle(Theme.brassDeep)
-                .padding(.vertical, 8).padding(.horizontal, 12)
-                .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel("Back to the trail")
-            .accessibilityHint("Returns to the child's stories")
-            Spacer()
-        }
-        .padding(.horizontal, 8)
-        .padding(.vertical, 6)
-        .background(Theme.parchment.opacity(0.96))
-    }
-
     // MARK: Header
 
     private var header: some View {
-        VStack(spacing: 6) {
-            Text("GROWN-UPS")
-                .font(Theme.mapCaps(15, weight: .semibold))
-                .tracking(3)
-                .foregroundStyle(Theme.brassDeep)
-            Text("Family Dashboard")
-                .font(Theme.display(34, weight: .black))
-                .foregroundStyle(Theme.ink)
-            Text("A quick look at how things are going — and how Poli teaches.")
-                .font(Theme.body(15))
-                .foregroundStyle(Theme.inkSoft)
-                .multilineTextAlignment(.center)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.top, 4)
-        .accessibilityElement(children: .combine)
+        ScreenTitle("Family Dashboard",
+                    subtitle: "How things are going — and how Poli teaches.")
     }
 }
 
@@ -583,6 +546,35 @@ private struct ReadingAccessibilityCard: View {
 }
 
 // MARK: - Questions your child asked
+
+/// Daily "conversation guide" box: what the child asked today, so the grown-up can pick
+/// the conversation back up at home. Empty for now (the on-device model will log real
+/// questions here); shows a gentle empty state.
+private struct TodaysConversationCard: View {
+    let childName: String
+
+    var body: some View {
+        DashCard(icon: "text.bubble.fill", title: "Here's what \(childName) asked today") {
+            VStack(alignment: .leading, spacing: 12) {
+                Image(systemName: "moon.stars.fill")
+                    .font(.system(size: 22))
+                    .foregroundStyle(Theme.brass.opacity(0.7))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.top, 2)
+                Text("Nothing yet today.")
+                    .font(Theme.body(16, weight: .bold))
+                    .foregroundStyle(Theme.ink)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                Text("When \(childName) explores a story and wonders out loud, the questions Poli sends home will appear here — with a gentle way to talk them through together.")
+                    .font(Theme.body(14))
+                    .foregroundStyle(Theme.inkSoft)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+            }
+            .padding(.vertical, 6)
+        }
+    }
+}
 
 private struct QuestionsAskedCard: View {
     let childName: String

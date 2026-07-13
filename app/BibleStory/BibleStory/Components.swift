@@ -206,6 +206,39 @@ struct PoliFAB: View {
     }
 }
 
+/// The ONE standard page header for every top-level screen (Map, Story Library,
+/// Treasures, Family Dashboard) so titles share the same position, font, and size.
+/// Place it pinned at the top of each screen's content.
+struct ScreenTitle: View {
+    let text: String
+    var subtitle: String? = nil
+    /// Positional init so callers read naturally: `ScreenTitle("Story Library", subtitle: …)`.
+    init(_ text: String, subtitle: String? = nil) {
+        self.text = text
+        self.subtitle = subtitle
+    }
+    var body: some View {
+        VStack(spacing: 2) {
+            Text(text)
+                .font(Theme.display(30, weight: .black))
+                .foregroundStyle(Theme.brassDeep)
+                .shadow(color: Theme.cream.opacity(0.6), radius: 0.5, x: 0, y: -1)
+                .lineLimit(1).minimumScaleFactor(0.6)
+            if let subtitle {
+                Text(subtitle)
+                    .font(Theme.body(14))
+                    .foregroundStyle(Theme.inkSoft)
+                    .multilineTextAlignment(.center)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.top, 12)
+        .padding(.bottom, 8)
+        .padding(.horizontal, 20)
+        .accessibilityAddTraits(.isHeader)
+    }
+}
+
 /// A stop on the treasure-map trail. State = color + icon + size (colorblind-safe).
 struct TrailNodeView: View {
     enum NodeState { case locked, active, done, milestone }
@@ -1022,6 +1055,10 @@ struct MapTabBar: View {
     /// Center action — opens Ask-Poli. Grown-ups action — the (gated) parent area.
     var onPoli: () -> Void = {}
     var onGrownUps: () -> Void = {}
+    /// Bottom safe-area inset (home indicator), passed from HomeView. The plank
+    /// background bleeds down through it to the very screen edge, while the button
+    /// row is padded up by the same amount so it stays clear of the indicator.
+    var bottomSafeInset: CGFloat = 0
     // The carved-wood plank art is the bar on every tab now, so icons always use the
     // on-wood (cream / brass) treatment.
     private var onWood: Bool { true }
@@ -1039,21 +1076,24 @@ struct MapTabBar: View {
             tabButton(for: .treasures)
             grownUpsButton
         }
-        .padding(.horizontal, 8).padding(.top, 6).padding(.bottom, 6)
+        .padding(.horizontal, 8).padding(.top, 6)
+        .padding(.bottom, 6 + bottomSafeInset)   // lift buttons above the home indicator
         .background { plankBackground }
+        .clipped()                               // crop the plank's rounded ends (zoom-to-fill)
+        .shadow(color: Theme.ink.opacity(0.35), radius: 10, x: 0, y: -4)
         // Poli overlays the center: horizontally centered, lifted above the board.
         // Overlays don't contribute to the HStack's height, so the bar stays put.
         .overlay(alignment: .top) { poliButton }
+        .ignoresSafeArea(edges: .bottom)         // bar (plank included) bleeds to the screen edge
     }
 
-    /// Carved-wood plank art (gold-framed) as the bar background. Horizontal caps keep
-    /// the rounded gold ends crisp while the planks stretch across the width.
+    /// The carved-wood plank as a full-bleed bar background — zoomed to FILL the bar
+    /// (`scaledToFill`), so the rounded gold ends are cropped off and only wood shows.
     private var plankBackground: some View {
         Image("NavPlank")
-            .resizable(capInsets: EdgeInsets(top: 12, leading: 150, bottom: 14, trailing: 150),
-                       resizingMode: .stretch)
-            .shadow(color: Theme.ink.opacity(0.35), radius: 10, x: 0, y: -4)
-            .ignoresSafeArea(edges: .bottom)
+            .resizable()
+            .scaledToFill()
+            .frame(maxWidth: .infinity)
     }
 
     /// The prominent center button: Poli's face — no disc, just the mascot — raised so
@@ -1146,9 +1186,17 @@ struct MapTabBar: View {
                     }
                     Group {
                         if tab == .treasures {
-                            TreasureChestGlyph()
-                                .frame(width: isSelected ? 30 : 28, height: isSelected ? 30 : 28)
-                                .foregroundStyle(tint)
+                            // Prefer a bundled icon named "TreasureChest" (drop a Flaticon
+                            // SVG/PNG into Assets.xcassets as a Template image); else the glyph.
+                            Group {
+                                if UIImage(named: "TreasureChest") != nil {
+                                    Image("TreasureChest").renderingMode(.template).resizable().scaledToFit()
+                                } else {
+                                    TreasureChestGlyph()
+                                }
+                            }
+                            .frame(width: isSelected ? 30 : 28, height: isSelected ? 30 : 28)
+                            .foregroundStyle(tint)
                         } else {
                             Image(systemName: tab.systemImage)
                                 .font(.system(size: isSelected ? 27 : 25, weight: isSelected ? .semibold : .regular))
