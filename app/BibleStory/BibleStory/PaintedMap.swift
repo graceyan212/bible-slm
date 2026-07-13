@@ -1,21 +1,49 @@
 import SwiftUI
+import UIKit
 
 // =============================================================================
 // MARK: - Painted Expedition map (real art)
-// Replaces the vector MapBackdrop/emoji scenes with the finished painted assets:
-// `ExpeditionMap` as a full-bleed background and each story stop as the ornate
-// gold `StoryFrame` with its painted cover composited into the frame opening
-// (matches design/build_map_mockup.py — FRAME_OPENING + RIBBON_Y). Layout mirrors
-// design/expedition-home.html.
+// The `ExpeditionMap` asset is now a SEAMLESS, vertically-tiling treasure-map tile
+// (design/build_seamless_map.py): its bottom edge flows into its top edge, so the
+// backdrop repeats forever with no visible join and the trail can be any length.
+// Each story stop is the ornate gold `StoryFrame` with its cover composited in.
 // =============================================================================
 
-/// The painted treasure map, full-bleed. Aspect ≈ 768×1376; filled to cover.
+/// The painted treasure map. Repeats the seamless tile vertically to fill whatever
+/// height it's given (the trail grows with the story catalog). `muted` dims it with a
+/// parchment veil so the colorful story covers pop — used behind the non-map tabs so
+/// every screen shares the map's aesthetic.
 struct PaintedMapBackdrop: View {
+    var muted: Bool = false
+
+    /// Computed ONCE (the asset is fixed per build) — avoids decoding the map image on
+    /// every layout pass, which was a needless per-frame cost while scrolling.
+    private static let tileAspect: CGFloat = {
+        if let img = UIImage(named: "ExpeditionMap"), img.size.width > 0 {
+            return img.size.height / img.size.width
+        }
+        return 1.266
+    }()
+
     var body: some View {
-        Image("ExpeditionMap")
-            .resizable()
-            .scaledToFill()
-            .allowsHitTesting(false)
+        GeometryReader { geo in
+            let w = geo.size.width
+            let tileH = max(1, w * Self.tileAspect)
+            let count = max(1, Int(ceil(geo.size.height / tileH)) + 1)
+            VStack(spacing: 0) {
+                ForEach(0..<count, id: \.self) { _ in
+                    Image("ExpeditionMap")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: w, height: tileH)
+                        .clipped()
+                }
+            }
+            .frame(width: w, height: geo.size.height, alignment: .top)
+            .clipped()
+            .overlay { if muted { Theme.parchment.opacity(0.55) } }
+        }
+        .allowsHitTesting(false)
     }
 }
 
@@ -85,9 +113,14 @@ struct PaintedStoryFrame: View {
                     .frame(width: w, height: h)
                     .shadow(color: Color(hex: 0x32200C, opacity: 0.5), radius: 4, x: 0, y: 4)
 
+                // Zoom the cover slightly so the illustration's own cream sky/margins are
+                // cropped and the scene fills the frame opening (no white outline inside).
                 Image(coverAsset)
                     .resizable()
                     .scaledToFill()
+                    .frame(width: ow, height: oh)
+                    .clipped()
+                    .scaleEffect(1.12)
                     .frame(width: ow, height: oh)
                     .clipped()
                     .offset(x: ox, y: oy)

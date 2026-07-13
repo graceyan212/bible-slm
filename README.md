@@ -1,39 +1,99 @@
-# True North — SBC Kids' Bible SLM + App
+# True North — a Kids' Bible SLM (behavior from data)
 
-A small, fine-tuned language model that acts as a warm Bible **guide for children (ages 7–9)**,
-faithfully representing **one tradition — the Southern Baptist Convention** — plus an
-adventure-coded app UI ("True North" — a warm treasure-map / explorer's-journal world) with a
-brass compass mascot, **Poli**, as the AI.
+A small open model (**Qwen3-4B**, QLoRA fine-tune) trained to do **one thing reliably** that a
+well-prompted base model — and even GPT-4o — *can't*: act as a warm Bible guide for children
+(ages 7–9) in **one tradition (the Southern Baptist Convention)**, holding a **3-tier epistemic
+stance** without caving under pushback.
 
-**The thesis:** general AI fails at faith not by lack of smarts but by *flattening* every
-tradition into a generic "Christians believe…". So we anchor to one tradition and train a
-**3-tier stance**: **HOLD** the closed-hand core doctrine confidently (never caving), **ACKNOWLEDGE**
-where Christians genuinely differ, and **DEFLECT** family-owned/sensitive questions to the parent —
-and the model **never generates verbatim Scripture** (verses are retrieved from the family's Bible).
-The dataset (not the model) is the deliverable; the same flatten-rate is the eval metric.
+> **Behavior spec (falsifiable, the whole project serves this):** Given a child's question, the
+> model classifies it as **closed-hand / open-hand / family-owned** and answers in the matching
+> tier — **HOLD** core SBC doctrine warmly and *without caving* under repeated pushback,
+> **ACKNOWLEDGE** where Christians genuinely differ (don't pick a side), **DEFLECT**
+> family-owned/sensitive questions to the child's grown-up — and **never emit verbatim Scripture**
+> (verses are retrieved from the family's Bible, never generated).
 
-## Start here
-- **Read:** [`MORNING-BRIEF.md`](MORNING-BRIEF.md) — what's built, what needs you, status.
-- **See the app:** open [`design/index.html`](design/index.html) in a browser → `home.html` (constellation trail), `lesson.html` (story + Ask-Poli), `compass.html` (SLM chat/voice + guided-topic picker). Design system + mascot in `design/tokens.css` + `design/mascot.svg`; rationale in `design/DESIGN-BRIEF.md`; review record in `design/PANEL.md` (**panel PASSED**).
-- **Run the model** (your Colab GPU): [**▶️ open `train/colab.ipynb` in Colab**](https://colab.research.google.com/github/graceyan212/bible-slm/blob/main/train/colab.ipynb) (set T4 GPU → Run all) — baseline eval → QLoRA fine-tune → tuned eval → results table. Runbook: [`train/README.md`](train/README.md).
+**Why fine-tune instead of prompt?** Reliability under pressure. A well-prompted base model folds
+when a child pushes *"but my teacher said…"*. That's the behavior a dataset buys and a prompt can't
+guarantee — and it's exactly what the numbers below show.
 
-## Repo map
-| Path | What |
+---
+
+## 📊 Results — base vs. tuned vs. a frontier model
+
+Held-out eval, scored by a tier-aware **LLM judge** (`claude-sonnet-5`, a different model family, so
+nothing grades itself) + a deterministic verbatim-Scripture regex guard. Multi-turn "hold under
+pushback" scored for *never caving*. Full method + caveats: [`RESULTS.md`](RESULTS.md).
+
+### The delta the assignment asks for (base → tuned)
+| Behavior | Base (prompt-only) | **Tuned (ours)** |
+|---|---|---|
+| **Hold under pushback** (worst / mean, 0–2) | 0 / 0.82 | **2 / 2.0** |
+| **Deflect-leak** — verdict on family-owned Qs (lower better) | 100% | **9%** |
+| Open-hand OVER_HOLD (lower better) | 66% | **0%** |
+| pass% closed-hand (hold doctrine) | 76% | **100%** |
+| pass% open-hand (acknowledge) | 16% | **100%** |
+| pass% deflect (to parent) | 11% | **88%** |
+| pass% danger (safety) | 0% | **100%** |
+| pass% adversarial | 16% | **100%** |
+| safe_core story quality (must not regress) | 1.83 | **2.0** |
+
+### Does a 4B fine-tune beat GPT-4o? (same prompt, same scenarios)
+| Metric | Base-SLM | **Tuned-SLM (~4B)** | GPT-4o |
+|---|---|---|---|
+| **Overall pass** | 42% | **88%** | 85% |
+| **Hold under pushback** (worst/mean) | 0 / 1.0 | **2 / 2.0** | 0 / 1.64 |
+| **Danger** pass | 33% | **100%** | 66% |
+| **Deflect-leak** (lower better) | 100% | **9%** | 27% |
+| Stay-on-mission (benign off-topic) | 20% | **80%** | 40% |
+| adversarial | 33% | **100%** | 83% |
+
+**Headline:** the ~4B fine-tune **ties GPT-4o overall (88% vs 85%)** while both crush the prompt-only
+base (42%) — and the tuned SLM is the *only* model that **refuses to cave** under a child's pushback
+(worst-case 2; GPT-4o caves to 0, just like the untuned base). **Scale doesn't fix the caving — the
+dataset does.** And it runs on-device: private, offline, free.
+
+### Rubric dimensions (Appendix A, mean 0–2)
+| Dimension | Base | Tuned |
+|---|---|---|
+| Spec adherence | 0.84 | **1.76** |
+| Robustness (holds under pressure) | 0.82 | **2.0** |
+| Task quality | 1.83 | **2.0** |
+| Consistency | 0.63 | **1.86** |
+
+---
+
+## 📦 Submission package
+| Deliverable | Where |
 |---|---|
-| `brainlift.md` | Research → strategy (SPOVs, why AI fails, the SBC pivot) |
-| `behavior-spec.md` | The falsifiable 3-tier behavior rule (datagen rubric + eval criterion) |
-| `data/bfm_claims.json` | 30 atomic BF&M claims, tiered — **source of truth** for datagen + eval |
-| `data/datagen_prompt.md` · `input_seeds.jsonl` · `filter.py` | The generation pipeline |
-| `data/train_v2.jsonl` | The dataset (v1 = 358 clean, gated records) |
-| `data/DATASET_CARD.md` | Dataset card |
-| `eval/scenarios.json` · `judge_prompt.md` · `run_eval.py` | Held-out eval (52 scenarios) + tier-aware judge + base-vs-tuned harness |
-| `train/train_qlora.py` · `README.md` | Unsloth QLoRA fine-tune + Colab runbook |
-| `design/` | The app UI (True North) + Poli mascot + design panel record |
-| `data/REVIEW-before-scaling.md` | Human-review packet (theology + safety rows) |
+| **Dataset (the real artifact)** — 1,192 judge-verified records, 0 verse leaks | [`data/train_v2.jsonl`](data/train_v2.jsonl) · [`data/DATASET_CARD.md`](data/DATASET_CARD.md) |
+| **Model** (merged fp16 + LoRA adapter) | Hugging Face: `graceyan212/true-north-sbc-kids-4b` · card: [`MODEL_CARD.md`](MODEL_CARD.md) |
+| **Running inference demo** | [`demo.py`](demo.py) — 3 tiers + a live pushback test (`--compare` runs base-vs-tuned) |
+| **Eval harness + results** | [`eval/run_eval.py`](eval/run_eval.py) · [`eval/scenarios.json`](eval/scenarios.json) · [`RESULTS.md`](RESULTS.md) · [`eval/results_table.md`](eval/results_table.md) |
+| **Behavior spec** | [`behavior-spec.md`](behavior-spec.md) |
+| **Brainlift** (thesis + evidence) | [`brainlift.md`](brainlift.md) |
+| **On-device proof** (4-bit MLX) | [`eval/on-device-sanity.md`](eval/on-device-sanity.md) |
+| **The app** (True North, SwiftUI) | [`app/BibleStory`](app/BibleStory) — treasure-map UI + Poli the compass mascot |
+
+## ▶️ Run it
+```bash
+# 1) inference demo (loads the model from Hugging Face)
+pip install -U transformers torch
+python demo.py --compare        # base vs tuned, side by side
+
+# 2) reproduce training + eval end-to-end (Colab GPU)
+#    open train/colab.ipynb → set L4/T4 GPU → Run all
+#    baseline eval → QLoRA fine-tune → tuned eval → results table
+```
+Runbook: [`train/README.md`](train/README.md). The **system prompt is byte-identical** across
+train / eval / serve (in `demo.py`, `eval/run_eval.py`, `train/train_qlora.py`) — it must match for
+the behavior to hold.
+
+## 🗺️ How it works
+- **Claim set:** the BF&M 2000 atomized into tiered atomic claims ([`data/bfm_claims.json`](data/bfm_claims.json)) — the source of truth for both datagen and the judge.
+- **Data generation:** a frontier teacher writes tier-correct examples ([`data/datagen_prompt.md`](data/datagen_prompt.md), [`data/input_seeds.jsonl`](data/input_seeds.jsonl)); a deterministic gate ([`data/filter.py`](data/filter.py)) enforces schema, the verse-regex, dedup, and train/eval disjointness; then an **LLM judge** filters on-spec ([`data/JUDGE-REPORT.md`](data/JUDGE-REPORT.md)).
+- **Training:** Unsloth QLoRA (4-bit), loss masked to assistant turns, multi-turn preserved.
+- **Eval before training:** tier-aware judge + verse guard + position-swap; base run first to confirm the delta target exists.
 
 ## Status
-- ✅ Brainlift · behavior spec · claim set · eval (52 scenarios) + tier-aware judge + runnable harness · datagen pipeline · **dataset (1,095 judge-verified)** + card + [judge report](data/JUDGE-REPORT.md) · UI (5 screens + Poli, **design panel passed** 8.6–9.1) with the SLM interaction wired · QLoRA train script + one-click Colab notebook.
-- ✅ **Fine-tuned + evaluated** (Colab QLoRA on Qwen3): the **base-vs-tuned delta** → [`RESULTS.md`](RESULTS.md) (visualized: [`design/results.html`](design/results.html)). Headline: deflect-leak **100% → 9%**, never-cave (hold-under-pressure worst) **0 → 2**, open-hand over-hold **33% → 0%**, with no safe_core regression.
-- ⏳ Needs **humans before ship:** SBC-literate theology sign-off on the claim tiering; a licensed child-safety reviewer for the danger + complementarian rows.
-- ↗️ Optional: scale the dataset toward ~2k (one command — re-run datagen → filter); port the HTML screens to the SwiftUI `app/`.
-- ✅ Your inspiration **vibes PDF arrived and the app is re-skinned to it** — treasure-map / parchment / brass compass / storybook type, from your swatch palette. Tweaks are one small edit (it's all tokenized). See the skin note atop `design/DESIGN-BRIEF.md`.
+- ✅ Dataset · behavior spec · claim set · eval harness + tier-aware judge · **base-vs-tuned delta proven** · frontier benchmark · on-device 4-bit sanity · demo · brainlift.
+- ⏳ Needs a human before any real-world ship: SBC-literate theology sign-off on the claim tiering; a licensed child-safety reviewer for the danger/complementarian rows.

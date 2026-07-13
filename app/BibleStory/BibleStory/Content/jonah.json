@@ -1,0 +1,31 @@
+{
+  "_comment": "Jonah — warm 7-9 gospel-centered retell. NEVER verbatim Scripture in narrative; verse text is a stand-in to verify against the licensed NIrV before ship.",
+  "id": "jonah",
+  "title": "Jonah and the Big Fish",
+  "subtitle": "God's Great Mercy",
+  "pages": [
+    {
+      "art": "story_jonah/jonah_p1.png",
+      "heading": "Running Away",
+      "text": "One day God spoke to a man named Jonah. “Go to the great city of Nineveh,” God said. “Warn the people there, because I love them and I want them to turn back to me.” But Jonah did not want to go. The people of Nineveh were his enemies, and deep down he was afraid God would be kind to them. So Jonah ran the other way! He hurried to the sea, climbed onto a ship sailing far in the opposite direction, and hoped he could hide from God. Down in the ship, Jonah fell fast asleep. But no one can ever run away from God, and God had not forgotten Jonah for even a moment. Even now, God was watching over the one who tried to run — with a plan to bring him back."
+    },
+    {
+      "art": "story_jonah/jonah_p2.png",
+      "heading": "The Wild Storm",
+      "text": "Out on the deep water, God sent a wild, roaring storm. The wind howled and the waves crashed higher and higher over the little ship. The sailors were terrified. They cried out and threw their heavy cargo into the sea, but nothing helped. Then they found Jonah and woke him. Jonah knew the storm had come because he had run from God. “Lift me up and put me into the sea,” he told them, “and it will grow calm again.” The sailors did not want to. They rowed as hard as they could, but the waves only grew stronger. At last they gently lowered Jonah into the wild water. At once the sea went still and quiet. Down, down Jonah sank into the cold, dark deep — but God was still watching over him."
+    },
+    {
+      "art": "story_jonah/jonah_p3.png",
+      "heading": "Inside the Big Fish",
+      "text": "God was not finished with Jonah — not even close. God sent a great fish, and it opened its huge mouth and swallowed Jonah whole. It did not gobble him up to hurt him. God sent the fish to rescue him! Inside the big fish, in the quiet dark, Jonah was safe and warm. For three whole days he stayed there. And in that dark place Jonah was truly sorry for running away, and he began to pray. “I was sinking in deep, dark trouble, and I called out for help — and you heard me! You reached down and lifted me up. Thank you, God, for rescuing me.” God heard every single word Jonah prayed. Deep inside a fish, at the bottom of the sea, no one is ever too far away for God to hear and to save."
+    },
+    {
+      "art": "story_jonah/jonah_p4.png",
+      "heading": "A Second Chance",
+      "text": "Then God spoke to the fish, and it gently brought Jonah up and set him safely on dry land. Jonah was soggy and amazed — and alive! Once more God said, “Go to Nineveh.” This time Jonah went. He walked through the great city and told the people God's message. And something wonderful happened: the whole city listened! From the greatest to the smallest, the people were sorry and turned to God. And God, who is full of mercy, forgave them all. Jonah learned that God's kindness is far bigger than he ever imagined. God cares for runaways. God cares even for enemies. There is no one so lost, so far away, or so afraid that God's mercy cannot reach them. That is the kind of God we have — a God who loves to rescue."
+    }
+  ],
+  "verse": { "ref": "Jonah 2:9", "text": "Salvation comes from the Lord.", "translation": "NIrV" },
+  "christ_connection": { "heading": "The Greater Rescue", "text": "Jonah spent three days in the deep, then came out to bring God's message to a whole city. Long after, Jesus said Jonah's story was a picture of himself. Jesus spent three days in the grave, and then he rose again — coming out to bring God's rescue to the whole world. God's mercy reached the runaways and enemies of Nineveh, and that very same mercy reaches all the way to us in Jesus." },
+  "reward": { "icon": "fish", "name": "The Deep-Sea Pearl", "text": "You uncovered a treasure! Come back tomorrow to keep exploring the trail." }
+}

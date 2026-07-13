@@ -1,0 +1,31 @@
+{
+  "_comment": "Easter / The Resurrection — warm 7-9 gospel-centered retell; gentle about the death, joyful about the risen Jesus. NEVER verbatim Scripture in narrative; verse text is a stand-in to verify against the licensed NIrV before ship.",
+  "id": "easter",
+  "title": "The First Easter",
+  "subtitle": "Jesus Is Alive!",
+  "pages": [
+    {
+      "art": "story_easter/easter_p1.png",
+      "heading": "A Very Sad Day",
+      "text": "It was the saddest day Jesus' friends had ever known. Jesus, who had healed the sick and blessed the little children, had died. He had done nothing wrong, yet he gave his life to rescue us — because that was God's loving plan all along. His friends could hardly believe he was gone. Gently and with great care, they wrapped his body and laid it in a quiet tomb cut into the rock. Then they rolled a big, heavy stone across the door to close it. The sky felt gray, and hearts felt heavy. His friends went home crying, wondering how anything good could ever come again. But God was not finished. Even on that very sad day, God was quietly working out the most wonderful rescue the world would ever see."
+    },
+    {
+      "art": "story_easter/easter_p2.png",
+      "heading": "The Longest Wait",
+      "text": "The next day was a quiet, aching Saturday. The great stone still sat heavy against the tomb, sealed shut, and Jesus' friends did not know what to do. Some sat together and cried. Some remembered his kind voice and the wonderful things he had said, and cried even more. The whole world seemed hushed and gray, as if it were holding its breath. It felt as though all hope was gone, and the waiting stretched on and on like the longest day there ever was. But even in that sad, silent quiet, God had not forgotten his people, and he had not forgotten his promise. God was still working, gently and surely, behind the sealed stone. The story God was telling was not over — the very best part was almost here."
+    },
+    {
+      "art": "story_easter/easter_p3.png",
+      "heading": "The Empty Tomb",
+      "text": "Very early on Sunday morning, while the sky was still soft and gray, some women who loved Jesus walked to the tomb. Their feet were slow and their hearts were sad. \"Who will roll away that great, heavy stone for us?\" they wondered. But when they came near, they stopped and stared. The huge stone had already been rolled away! They peeked inside — and the tomb was empty. Jesus was not there. Suddenly a bright, shining angel appeared, glowing like sunshine. \"Do not be afraid,\" the angel said kindly. \"You're looking for Jesus here, but he isn't in the tomb anymore. He is alive again!\" The women's sadness began to melt away like morning mist. Their tears turned into wonder, and their wonder turned into hope, and they ran to tell the others the news."
+    },
+    {
+      "art": "story_easter/easter_p4.png",
+      "heading": "He Is Alive!",
+      "text": "It was true — Jesus was alive again! Not a dream, not a story, but really, truly alive. Soon his friends saw him with their own eyes. He spoke their names in his gentle voice. They saw his face and knew for certain it was really him. Their hearts filled up with joy until they could hardly hold it all. Jesus was risen! Death had not won after all. God's rescue plan was complete, just as he had promised long ago. The One who made the world had beaten the darkest enemy, and now nothing could ever separate his people from his love. That first Easter morning, sadness turned into singing. The tomb was empty, but the world was full of hope — because Jesus was alive, and he is alive forever."
+    }
+  ],
+  "verse": { "ref": "Luke 24:6", "text": "He is not here! He has risen!", "translation": "NIrV" },
+  "christ_connection": { "heading": "The Happiest News", "text": "This is the happiest news in the whole world: Jesus died to rescue us from all our wrongdoing, and then he rose again to defeat death forever. Because Jesus is alive, everyone who trusts him can one day live with God, full of joy that never ends. You don't have to be good enough or brave enough — Jesus already did everything for you. His empty tomb is God's promise that his love wins." },
+  "reward": { "icon": "sunrise", "name": "The Sunrise of Easter", "text": "You uncovered a treasure! Come back tomorrow to keep exploring the trail." }
+}

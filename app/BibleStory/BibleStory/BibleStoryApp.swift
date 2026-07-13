@@ -3,13 +3,26 @@ import BibleStoryCore
 
 @main
 struct BibleStoryApp: App {
-    @State private var env = AppEnvironment(
-        responder: StubQuestionResponder(),   // P5 swaps in the on-device model here
-        gate: BiometricParentGate()
-    )
+    @State private var env: AppEnvironment
 
     init() {
         AppFonts.register()   // register bundled IM Fell English / Atkinson faces
+        #if DEBUG
+        // `-uiPreviewParent` opens the biometric-gated parent dashboard directly
+        // (dev/screenshot only): swap in a gate that always passes so the phase can
+        // reach `.parent` on a simulator with no enrolled biometrics.
+        let gate: ParentGate = ProcessInfo.processInfo.arguments.contains("-uiPreviewParent")
+            ? AlwaysPassGate() : BiometricParentGate()
+        #else
+        let gate: ParentGate = BiometricParentGate()
+        #endif
+        _env = State(wrappedValue: AppEnvironment(
+            // Phase C: the real tiered-stance pipeline (guards + classifier) running on the
+            // scripted engine. Phase A swaps the engine for MLXModelEngine (on-device model),
+            // leaving this pipeline unchanged.
+            responder: GuidedResponder(engine: ScriptedModelEngine()),
+            gate: gate
+        ))
     }
 
     var body: some Scene {
@@ -23,16 +36,36 @@ struct BibleStoryApp: App {
             } else {
                 RootView(env: env)
                     .onAppear {
+                        let args = ProcessInfo.processInfo.arguments
                         // `-uiPreviewChild` jumps past onboarding straight to the
                         // child-zone treasure map (dev/screenshot only).
-                        if ProcessInfo.processInfo.arguments.contains("-uiPreviewChild") {
+                        if args.contains("-uiPreviewChild") {
                             env.completeOnboarding(
                                 child: ChildProfile(name: "Explorer", age: 8),
                                 translation: .nirv
                             )
                         }
+                        #if DEBUG
+                        // `-uiPreviewParent` drives on to the gated parent dashboard
+                        // (paired with AlwaysPassGate above). Dev/screenshot only.
+                        if args.contains("-uiPreviewParent") {
+                            env.completeOnboarding(
+                                child: ChildProfile(name: "Ruthie", age: 8, avatar: "🦊"),
+                                translation: .nirv
+                            )
+                            Task { await env.enterParentZone() }
+                        }
+                        #endif
                     }
             }
         }
     }
 }
+
+#if DEBUG
+/// Dev-only gate that always authenticates, so `-uiPreviewParent` can reach the
+/// parent dashboard on a simulator without enrolled biometrics. Never used in release.
+private struct AlwaysPassGate: ParentGate {
+    func authenticate() async -> Bool { true }
+}
+#endif

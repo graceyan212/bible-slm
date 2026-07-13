@@ -1,0 +1,37 @@
+{
+  "_comment": "Daniel and the Lions — warm 7-9 gospel-centered retell. NEVER verbatim Scripture in narrative; verse text is a stand-in to verify against the licensed NIrV before ship.",
+  "id": "daniel_lions",
+  "title": "Daniel and the Lions",
+  "subtitle": "God Is Faithful",
+  "pages": [
+    {
+      "art": "story_daniel/daniel_p1.png",
+      "heading": "The Man Who Kept Praying",
+      "text": "Daniel loved God with his whole heart. Every day, three times a day, he knelt by his open window and talked to God — thanking him, trusting him, telling him everything. God was Daniel's best friend, and Daniel wanted to stay close to him. But some important men were jealous of Daniel. They wanted to get him in trouble. So they went to the king with a sneaky plan. “Make a new law,” they said. “For thirty days, no one may pray to anyone but you, O king!” The king felt proud, and he signed it. Now praying to God was against the law. When Daniel heard the news, he didn't stop and he didn't hide. He went home, opened his window toward God's holy city, and knelt down to pray, just like always. Daniel trusted God more than he feared the king's law."
+    },
+    {
+      "art": "story_daniel/daniel_p2.png",
+      "heading": "Thrown to the Lions",
+      "text": "The jealous men were watching, and they caught Daniel praying to God. They hurried to the king. “Daniel broke your law!” they said. “He must be thrown to the lions!” The king's heart sank. He liked Daniel very much, and he did not want to hurt him. All day long the king tried to find a way to save him, but the law could not be changed. As the sun went down, Daniel was brought to a deep den where hungry lions paced and growled. Yet Daniel was not alone — God was with him. Before the heavy stone was rolled over the opening, the king leaned close and said something full of hope: “May the God you serve, the God you never stop trusting, rescue you.” Then the king went back to his palace. He was too worried to eat, too worried to sleep. All night he waited, hoping and hoping that Daniel's God would save him."
+    },
+    {
+      "art": "story_daniel/daniel_p3.png",
+      "heading": "Not Even a Scratch",
+      "text": "Down in the dark den, something wonderful was happening. God sent his angel, and the angel gently shut the lions' mouths. The big lions lay down like sleepy kittens, calm and quiet all night long. Daniel rested, safe and at peace, because his faithful God was holding onto him. As soon as morning came, the king ran to the den and called out, “Daniel! Was your God able to save you?” And Daniel answered, “God sent his angel to keep me safe all night — the lions never hurt me at all!” The king was overjoyed. When they lifted Daniel out, there was not even a scratch on him. Then the amazed king sent a message to everyone in his whole kingdom: “Honor the living God of Daniel! He rescues and he saves. He is faithful forever.” God had done what no law and no lion could stop."
+    }
+  ],
+  "verse": {
+    "ref": "Daniel 6:22",
+    "text": "My God sent his angel, and he shut the mouths of the lions.",
+    "translation": "NIrV"
+  },
+  "christ_connection": {
+    "heading": "A Greater Rescue",
+    "text": "God kept Daniel safe in the lions' den because Daniel trusted him — but God did something even greater in Jesus. Jesus walked right into death itself for us, and on Easter morning he rose again, alive forever. Just as God rescued Daniel, God rescues everyone who trusts in Jesus. Our God is faithful, and he never lets go of his people."
+  },
+  "reward": {
+    "icon": "star",
+    "name": "The Faithful Lantern",
+    "text": "You uncovered a treasure! Come back tomorrow to keep exploring the trail."
+  }
+}

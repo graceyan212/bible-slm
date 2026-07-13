@@ -33,6 +33,10 @@ public final class AskSessionModel {
     private let responder: QuestionResponder
     private let context: StoryContext
 
+    /// Called with the child's question whenever a reply DEFLECTS to the grown-up,
+    /// so the app can log it to the parent's Wonderings. Set by the composition root.
+    public var onDeflect: (@MainActor (String) -> Void)?
+
     public init(responder: QuestionResponder, context: StoryContext) {
         self.responder = responder
         self.context = context
@@ -54,6 +58,7 @@ public final class AskSessionModel {
 
         let reply = await responder.respond(to: trimmed, context: context, history: history)
         response = reply
+        if reply.logToConversationGuide { onDeflect?(trimmed) }   // → parent's Wonderings
         history.append(ConversationTurn(question: trimmed, reply: reply.spokenText))
         thread.append(AskTurn(isChild: false, text: reply.spokenText, response: reply))
         poliState = .answering

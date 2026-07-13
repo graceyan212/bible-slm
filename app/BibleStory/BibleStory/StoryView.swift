@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 import BibleStoryCore
 
 /// The Story Reader (design/story-reader.html): a paged illustrated narrative with
@@ -17,6 +18,7 @@ struct StoryView: View {
     @State private var page = 0
     @State private var showComplete = false
     @State private var showAsk = false
+    @State private var synth = AVSpeechSynthesizer()   // read-aloud (parent setting)
 
     private let story: StoryContent?
     init(env: AppEnvironment, storyID: String = "creation", onClose: (() -> Void)? = nil) {
@@ -88,36 +90,43 @@ struct StoryView: View {
             topBar(s)
             progressStrip(total: s.pages.count, current: page)
 
-            Image(p.assetName)
-                .resizable()
-                .scaledToFill()
-                .frame(height: 220)
-                .frame(maxWidth: .infinity)
+            // Fixed art band. `.id(page)` gives each page's illustration its own view
+            // identity so switching pages SWAPS cleanly instead of interpolating between
+            // two differently-cropped images (which looked like the art resizing/animating
+            // and shifted everything below it). `.allowsHitTesting(false)` keeps the
+            // scaledToFill overflow from stealing taps from the top bar.
+            // Fill the art INSIDE a fixed, width-bounded box. A bare `scaledToFill` image
+            // reports its (aspect-driven) intrinsic width, which is wider than the screen
+            // and pushed the whole reading column past both edges. Color.clear has no
+            // intrinsic width, so it takes exactly the screen width and clips the fill.
+            Color.clear
+                .frame(height: 240)
+                .overlay { Image(p.assetName).resizable().scaledToFill() }
                 .clipped()
                 .overlay(alignment: .top) { Rectangle().fill(hairline).frame(height: 1.5) }
                 .overlay(alignment: .bottom) { Rectangle().fill(hairline).frame(height: 1.5) }
-                // The illustration is decorative. `scaledToFill` overflows its box
-                // and (despite `.clipped()`, which only clips drawing) its hit-test
-                // region bleeds up over the top-bar back button, making the arrow
-                // untappable. Explicitly opting out of hit-testing frees the back
-                // control (and every other top-bar button).
                 .allowsHitTesting(false)
+                .id(page)
 
             ScrollView {
-                VStack(alignment: .leading, spacing: 12) {
-                    Text(p.heading)
-                        .font(Theme.display(32))
-                        .foregroundStyle(heading)
-                        .padding(.top, 4)
-                    Text(dropCapAttributed(p.text))
-                        .lineSpacing(7)
+                VStack(alignment: .leading, spacing: 14) {
+                    HStack(alignment: .firstTextBaseline) {
+                        Text(p.heading)
+                            .font(Theme.display(30 * env.readingSize.scale))
+                            .foregroundStyle(heading)
+                        Spacer(minLength: 8)
+                        if env.readAloud { readAloudButton(p.text) }
+                    }
+                    Text(dropCapAttributed(p.text, scale: env.readingSize.scale))
+                        .lineSpacing(7 * env.readingSize.scale)
                         .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, alignment: .leading)   // pin to container width — stops the mixed-size drop-cap Text over-claiming width and clipping at the edges
                     if isLast { verseCard(s.verse) }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal, 22)
-                .padding(.top, 16)
-                .padding(.bottom, 16)
+                .padding(.top, 18)
+                .padding(.bottom, 22)
             }
 
             footer(s, isLast: isLast)
@@ -126,23 +135,29 @@ struct StoryView: View {
 
     private func topBar(_ s: StoryContent) -> some View {
         HStack(spacing: 8) {
-            Button { back() } label: {
-                Image(systemName: "arrow.left")
-                    .font(.system(size: 26, weight: .semibold))
-                    .frame(width: 44, height: 44)      // HIG-min tap target
-                    .contentShape(Rectangle())         // whole 44×44 is tappable
+            // Always returns straight to the map (one tap, from any page or the
+            // finish screen). Page-to-page navigation is the progress bar + NEXT.
+            Button { close() } label: {
+                HStack(spacing: 5) {
+                    Image(systemName: "chevron.left").font(.system(size: 20, weight: .bold))
+                    Text("Map").font(Theme.body(16, weight: .bold))
+                }
+                .padding(.horizontal, 10)
+                .frame(height: 44)
+                .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
-            .accessibilityLabel("Back")
+            .accessibilityLabel("Back to the map")
             Spacer()
             Text(s.title)
                 .font(Theme.display(24)).foregroundStyle(topInk)
                 .lineLimit(1).minimumScaleFactor(0.6)
             Spacer()
             // Tap Poli to ask a question out loud (opens the Ask-Poli sheet).
+            // Larger than the other controls so it's easy for young readers to see + hit.
             Button { showAsk = true } label: {
-                PoliCompassView(size: 36)
-                    .frame(width: 44, height: 44)
+                PoliImage(pose: .waving, size: 60)
+                    .frame(width: 60, height: 60)
                     .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
@@ -150,7 +165,7 @@ struct StoryView: View {
         }
         .foregroundStyle(topIcon)
         .padding(.horizontal, 12)
-        .frame(height: 54)
+        .frame(height: 48)
     }
 
     private func footer(_ s: StoryContent, isLast: Bool) -> some View {
@@ -178,7 +193,9 @@ struct StoryView: View {
     }
 
     /// Slim treasure-map progress: one refined capsule per page, filled (brass) up
-    /// to the current page, plus a small count. Lives once, under the title.
+    /// to the current page, plus a small count. Sits tight under the top bar. Each
+    /// segment is its OWN tap target — tapping a segment jumps straight to that page
+    /// (seek forward or back), alongside the back arrow.
     private func progressStrip(total: Int, current: Int) -> some View {
         HStack(spacing: 8) {
             HStack(spacing: 5) {
@@ -194,6 +211,12 @@ struct StoryView: View {
                                 Capsule().strokeBorder(Color(hex: 0xCBB27A), lineWidth: 1)
                             }
                         }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)          // tall, easy tap target per page
+                        .contentShape(Rectangle())
+                        .onTapGesture { seek(to: i) }
+                        .accessibilityLabel("Go to page \(i + 1) of \(total)")
+                        .accessibilityAddTraits(i == current ? [.isButton, .isSelected] : .isButton)
                 }
             }
             Text("\(current + 1)/\(total)")
@@ -201,7 +224,14 @@ struct StoryView: View {
                 .foregroundStyle(Color(hex: 0x8A5F22))
         }
         .padding(.horizontal, 22)
-        .padding(.top, 10)
+        .padding(.top, 2)
+    }
+
+    /// Jump the reader to a specific page (progress-bar seek).
+    private func seek(to index: Int) {
+        guard index != page else { return }
+        stopSpeaking()
+        page = index        // instant, clean swap
     }
 
     // MARK: Verse card (visibly distinct from the retell)
@@ -262,6 +292,15 @@ struct StoryView: View {
                         .font(Theme.display(26)).foregroundStyle(Color(hex: 0x4A3520))
                     Rectangle().fill(Color(hex: 0xCBB27A)).frame(width: 46, height: 2).padding(.top, 6)
 
+                    // Nights together — a star lit tonight (grace, not guilt: only grows).
+                    NightSkyBadge(count: NightsProgress.count).padding(.top, 10)
+                    if let m = NightsProgress.milestone(NightsProgress.count) {
+                        Text(m)
+                            .font(Theme.body(14, weight: .bold))
+                            .foregroundStyle(Color(hex: 0x8A5F22))
+                            .padding(.top, 2)
+                    }
+
                     Text(s.christConnection.heading)
                         .font(Theme.display(30)).foregroundStyle(heading)
                         .padding(.top, 16)
@@ -301,14 +340,18 @@ struct StoryView: View {
     // MARK: Actions
 
     private func advance(_ s: StoryContent) {
+        stopSpeaking()
         if page < s.pages.count - 1 {
-            withAnimation(.easeInOut(duration: 0.22)) { page += 1 }
+            page += 1        // instant, clean swap (no size-morph animation)
         } else {
+            NightsProgress.recordTonight()   // light tonight's star (grace, not guilt — only ever grows)
+            env.markStoryComplete(storyID)   // unlock the next stop on the trail
             withAnimation(.easeInOut(duration: 0.3)) { showComplete = true }
         }
     }
 
     private func back() {
+        stopSpeaking()
         if showComplete {
             withAnimation { showComplete = false }
         } else if page > 0 {
@@ -320,25 +363,55 @@ struct StoryView: View {
 
     /// Leave the reader (back to the map).
     private func close() {
+        stopSpeaking()
         if let onClose { onClose() } else { dismiss() }
     }
 
     /// Illuminated initial + body: the first glyph in the display serif/gold, the
     /// rest in the body face (a warm stand-in for the CSS drop-cap).
-    private func dropCapAttributed(_ text: String) -> AttributedString {
+    private func dropCapAttributed(_ text: String, scale: Double = 1) -> AttributedString {
         var out = AttributedString()
         if let first = text.first {
             var cap = AttributedString(String(first))
-            cap.font = Theme.display(56)   // illuminated initial
+            cap.font = Theme.display(56 * scale)   // illuminated initial
             cap.foregroundColor = dropCap
             out.append(cap)
         }
         var rest = AttributedString(String(text.dropFirst()))
-        rest.font = Theme.body(22)         // big, kid-legible narrative
+        rest.font = Theme.body(22 * scale)         // big, kid-legible narrative
         rest.foregroundColor = bodyInk
         out.append(rest)
         return out
     }
+
+    // MARK: Read aloud (voice output — enabled from the parent dashboard)
+
+    private func readAloudButton(_ text: String) -> some View {
+        Button { speak(text) } label: {
+            HStack(spacing: 6) {
+                Image(systemName: "speaker.wave.2.fill").font(.system(size: 13, weight: .bold))
+                Text("Read to me").font(Theme.body(14, weight: .bold))
+            }
+            .foregroundStyle(Color(hex: 0x5E3A16))
+            .padding(.horizontal, 12).padding(.vertical, 7)
+            .background(Capsule().fill(Color(hex: 0xE6D4A8)))
+            .overlay(Capsule().strokeBorder(Color(hex: 0xCBB27A), lineWidth: 1))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Read this page aloud")
+    }
+
+    /// Speak the page with a gentle, slightly-slow child-friendly voice.
+    private func speak(_ text: String) {
+        synth.stopSpeaking(at: .immediate)
+        let u = AVSpeechUtterance(string: text)
+        u.rate = 0.44
+        u.pitchMultiplier = 1.05
+        u.postUtteranceDelay = 0.1
+        synth.speak(u)
+    }
+
+    private func stopSpeaking() { synth.stopSpeaking(at: .immediate) }
 }
 
 /// The completion reward token: a gold medallion with a ray-burst and the story's

@@ -53,26 +53,46 @@ enum Theme {
         switch w { case .semibold, .bold, .heavy, .black: return true; default: return false }
     }
 
+    /// Global type scale. It's a kids' app (ages 7–9), so everything runs a bit larger
+    /// than a typical adult UI — applied uniformly so the visual hierarchy is preserved.
+    static let textScale: CGFloat = 1.15
+
     /// Display serif — IM Fell English (falls back to bold system serif).
     static func display(_ size: CGFloat, weight: Font.Weight = .black) -> Font {
-        available(imFellRoman) ? .custom(imFellRoman, size: size)
-                               : .system(size: size, weight: weight, design: .serif)
+        let s = size * textScale
+        return available(imFellRoman) ? .custom(imFellRoman, size: s)
+                                      : .system(size: s, weight: weight, design: .serif)
     }
     /// Small-caps map/label serif — IM Fell English SC (falls back to system serif).
     static func mapCaps(_ size: CGFloat, weight: Font.Weight = .semibold) -> Font {
-        available(imFellSC) ? .custom(imFellSC, size: size)
-                            : .system(size: size, weight: weight, design: .serif)
+        let s = size * textScale
+        return available(imFellSC) ? .custom(imFellSC, size: s)
+                                   : .system(size: s, weight: weight, design: .serif)
     }
     /// Body / UI — Atkinson Hyperlegible (Regular or Bold; falls back to rounded system).
     static func body(_ size: CGFloat, weight: Font.Weight = .regular) -> Font {
         let name = isBoldish(weight) ? atkinsonBold : atkinson
+        let s = size * textScale
+        return available(name) ? .custom(name, size: s)
+                               : .system(size: s, weight: weight, design: .rounded)
+    }
+    /// Bottom nav-bar labels. These deliberately OPT OUT of the global `textScale`:
+    /// the wood plank is a fixed height and must seat 4 word-labels + the center
+    /// mascot without them touching, so nav labels use an explicit compact point size.
+    static func navLabel(_ size: CGFloat, weight: Font.Weight = .regular) -> Font {
+        let name = isBoldish(weight) ? atkinsonBold : atkinson
         return available(name) ? .custom(name, size: size)
                                : .system(size: size, weight: weight, design: .rounded)
     }
-    /// The warm "hand" — IM Fell English Italic (falls back to italic system serif).
+
+    /// Poli's warm "voice" (speech bubbles, verse text, asides). This USED to be the
+    /// decorative IM Fell English Italic script, but that italic is hard for 7–9-year-olds
+    /// to read — so it now uses the same highly legible Atkinson Hyperlegible as body copy
+    /// (a touch bolder for warmth). Readability wins in a kids' app.
     static func hand(_ size: CGFloat) -> Font {
-        available(imFellItalic) ? .custom(imFellItalic, size: size)
-                                : .system(size: size, weight: .semibold, design: .serif).italic()
+        let s = size * textScale
+        return available(atkinson) ? .custom(atkinson, size: s)
+                                   : .system(size: s, weight: .medium, design: .rounded)
     }
 }
 
@@ -183,6 +203,39 @@ struct PoliFAB: View {
         }
         .buttonStyle(.plain)
         .padding(.bottom, 8)
+    }
+}
+
+/// The ONE standard page header for every top-level screen (Map, Story Library,
+/// Treasures, Family Dashboard) so titles share the same position, font, and size.
+/// Place it pinned at the top of each screen's content.
+struct ScreenTitle: View {
+    let text: String
+    var subtitle: String? = nil
+    /// Positional init so callers read naturally: `ScreenTitle("Story Library", subtitle: …)`.
+    init(_ text: String, subtitle: String? = nil) {
+        self.text = text
+        self.subtitle = subtitle
+    }
+    var body: some View {
+        VStack(spacing: 2) {
+            Text(text)
+                .font(Theme.display(30, weight: .black))
+                .foregroundStyle(Theme.brassDeep)
+                .shadow(color: Theme.cream.opacity(0.6), radius: 0.5, x: 0, y: -1)
+                .lineLimit(1).minimumScaleFactor(0.6)
+            if let subtitle {
+                Text(subtitle)
+                    .font(Theme.body(14))
+                    .foregroundStyle(Theme.inkSoft)
+                    .multilineTextAlignment(.center)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.top, 12)
+        .padding(.bottom, 8)
+        .padding(.horizontal, 20)
+        .accessibilityAddTraits(.isHeader)
     }
 }
 
@@ -948,52 +1001,219 @@ private struct GroundShape: Shape {
 
 // MARK: Bottom map tab bar
 
+/// A small filled treasure-chest glyph (rounded lid + body with a seam gap + clasp),
+/// tinted by the parent's foreground — used for the Treasures tab so the icon matches
+/// the treasure theme instead of a generic box.
+struct TreasureChestGlyph: View {
+    var body: some View {
+        GeometryReader { g in
+            let w = g.size.width, h = g.size.height
+            let lidH = h * 0.42
+            let gap = h * 0.07
+            let bodyH = max(0, h - lidH - gap)
+            let r = w * 0.17
+            ZStack(alignment: .top) {
+                UnevenRoundedRectangle(topLeadingRadius: r, bottomLeadingRadius: 0,
+                                       bottomTrailingRadius: 0, topTrailingRadius: r, style: .continuous)
+                    .frame(width: w, height: lidH)
+                UnevenRoundedRectangle(topLeadingRadius: 0, bottomLeadingRadius: r * 0.6,
+                                       bottomTrailingRadius: r * 0.6, topTrailingRadius: 0, style: .continuous)
+                    .frame(width: w, height: bodyH)
+                    .offset(y: lidH + gap)
+                // clasp straddling the lid/body seam
+                RoundedRectangle(cornerRadius: w * 0.06, style: .continuous)
+                    .frame(width: w * 0.2, height: h * 0.28)
+                    .offset(y: lidH - h * 0.11)
+            }
+            .frame(width: w, height: h)
+        }
+        .aspectRatio(1, contentMode: .fit)
+    }
+}
+
 enum MapTab: String, CaseIterable, Hashable {
     case map = "Map"
     case stories = "Stories"
-    case ask = "Ask"
     case treasures = "Treasures"
+    case grownUps = "Grown-ups"
     var systemImage: String {
         switch self {
         case .map:       return "map"
         case .stories:   return "book.pages"
-        case .ask:       return "questionmark.circle"
         case .treasures: return "shippingbox.fill"
+        case .grownUps:  return "person.crop.circle"
         }
     }
 }
 
 struct MapTabBar: View {
     @Binding var selection: MapTab
-    /// When true, no parchment backing is drawn — the bar rides directly on the
-    /// painted map's own tan strip (Map tab).
+    /// When true (the Map tab) the bar renders as a distinct carved-WOOD plank so it
+    /// reads as a clear "shelf" separate from the parchment map above it. Other tabs
+    /// keep the light parchment backing.
     var transparent: Bool = false
+    /// Center action — opens Ask-Poli. Grown-ups action — the (gated) parent area.
+    var onPoli: () -> Void = {}
+    var onGrownUps: () -> Void = {}
+    /// Bottom safe-area inset (home indicator), passed from HomeView. The plank
+    /// background bleeds down through it to the very screen edge, while the button
+    /// row is padded up by the same amount so it stays clear of the indicator.
+    var bottomSafeInset: CGFloat = 0
+    // The carved-wood plank art is the bar on every tab now, so icons always use the
+    // on-wood (cream / brass) treatment.
+    private var onWood: Bool { true }
+
     var body: some View {
-        HStack(spacing: 0) {
-            ForEach(MapTab.allCases, id: \.self) { tab in tabButton(for: tab) }
+        HStack(alignment: .bottom, spacing: 0) {
+            tabButton(for: .map)
+            tabButton(for: .stories)
+            // Center column reserves the middle 1/5 slot as empty space; the Poli
+            // mascot is drawn as a top-anchored OVERLAY (below) so it can break above
+            // the plank without making the bar taller AND without the offset-vs-hit-
+            // target mismatch. Height is CAPPED — an uncapped Color.clear is greedy and
+            // would balloon the bar (and its plank background) to full height.
+            Color.clear.frame(maxWidth: .infinity).frame(height: 44)
+            tabButton(for: .treasures)
+            grownUpsButton
         }
-        .padding(.horizontal, 12).padding(.top, 12).padding(.bottom, 6)
-        .background { if !transparent { barBackground } }
+        .padding(.horizontal, 8).padding(.top, 6)
+        .padding(.bottom, 6 + bottomSafeInset)   // lift buttons above the home indicator
+        .background { plankBackground }
+        .clipped()                               // crop the plank's rounded ends (zoom-to-fill)
+        .shadow(color: Theme.ink.opacity(0.35), radius: 10, x: 0, y: -4)
+        // Poli overlays the center: horizontally centered, lifted above the board.
+        // Overlays don't contribute to the HStack's height, so the bar stays put.
+        .overlay(alignment: .top) { poliButton }
+        .ignoresSafeArea(edges: .bottom)         // bar (plank included) bleeds to the screen edge
     }
+
+    /// The carved-wood plank as a full-bleed bar background — zoomed to FILL the bar
+    /// (`scaledToFill`), so the rounded gold ends are cropped off and only wood shows.
+    private var plankBackground: some View {
+        Image("NavPlank")
+            .resizable()
+            .scaledToFill()
+            .frame(maxWidth: .infinity)
+    }
+
+    /// The prominent center button: Poli's face — no disc, just the mascot — raised so
+    /// it breaks ABOVE the plank (the only control that does), TikTok-style.
+    ///
+    /// It's an OVERLAY (see `body`), not an HStack child, which fixes two things:
+    /// (1) it no longer makes the bar taller, and (2) the WHOLE visible mascot + its
+    /// label is the tappable area. The old version drew the mascot with a big negative
+    /// `.offset`, which moves pixels but NOT the hit target — so taps on the visible
+    /// mascot (sitting high above its tiny layout slot) missed. The mascot + label
+    /// VStack is now the real content shape, so any tap on Poli reliably opens Ask-Poli.
+    private var poliButton: some View {
+        Button(action: onPoli) {
+            VStack(spacing: 2) {
+                PoliImage(pose: .waving, size: 84)
+                    .shadow(color: Theme.ink.opacity(0.35), radius: 5, x: 0, y: 3)
+                Text("Ask Poli")
+                    .font(Theme.navLabel(11, weight: .bold))
+                    .foregroundStyle(iconColor(false))
+                    .lineLimit(1)
+                    .shadow(color: Color(hex: 0x2A180A, opacity: 0.5), radius: 1, x: 0, y: 1)
+            }
+            .padding(.horizontal, 26)   // generous horizontal tap margin around Poli
+            .padding(.bottom, 4)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .offset(y: -40)                 // lift so the mascot breaks above the plank
+        .accessibilityLabel("Ask Poli")
+    }
+
+    /// The parent dashboard ("Grown-ups") — now a real selectable TAB (it highlights
+    /// when active), but tapping it still runs the biometric gate first (see HomeView's
+    /// `onGrownUps`), so the grown-up must authenticate before the dashboard shows.
+    private var grownUpsButton: some View {
+        let isSelected = selection == .grownUps
+        let tint = iconColor(isSelected)
+        return Button(action: onGrownUps) {
+            VStack(spacing: 4) {
+                ZStack {
+                    if isSelected {
+                        Circle().fill((onWood ? Theme.brassLit : Theme.brass).opacity(onWood ? 0.22 : 0.16))
+                            .frame(width: 40, height: 40).blur(radius: 6)
+                    }
+                    Image(systemName: "person.crop.circle")
+                        .font(.system(size: isSelected ? 27 : 25, weight: isSelected ? .semibold : .regular))
+                        .foregroundStyle(tint)
+                        .shadow(color: isSelected ? (onWood ? Theme.brassLit : Theme.brass).opacity(0.6) : .clear,
+                                radius: isSelected ? 6 : 0)
+                        .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
+                }
+                .frame(height: 32)
+                Text("Grown-ups")
+                    .font(Theme.navLabel(isSelected ? 12.5 : 12, weight: isSelected ? .bold : .regular))
+                    .foregroundStyle(tint)
+                    .lineLimit(1)
+                    .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
+            }
+            .frame(maxWidth: .infinity, minHeight: 44)
+            .scaleEffect(isSelected ? 1.08 : 1.0)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Grown-ups area")
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+    }
+
+    // Wood palette (matches the map's carved wood-frame browns).
+    private static let woodTop  = Color(hex: 0xB07C46)   // lit caramel
+    private static let woodMid  = Color(hex: 0x7C4F2B)   // walnut
+    private static let woodDeep = Color(hex: 0x4A2E17)   // dark brown
+
+    /// Active tab → brass/gold; inactive → light cream (both legible on wood).
+    private func iconColor(_ selected: Bool) -> Color {
+        onWood ? (selected ? Theme.brassLit : Theme.cream)
+               : (selected ? Theme.brass : Theme.inkSoft)
+    }
+
     private func tabButton(for tab: MapTab) -> some View {
         let isSelected = selection == tab
+        let tint = iconColor(isSelected)
         return Button {
             withAnimation(.spring(response: 0.32, dampingFraction: 0.7)) { selection = tab }
         } label: {
             VStack(spacing: 4) {
                 ZStack {
                     if isSelected {
-                        Circle().fill(Theme.brass.opacity(0.16)).frame(width: 40, height: 40).blur(radius: 6)
+                        Circle().fill((onWood ? Theme.brassLit : Theme.brass).opacity(onWood ? 0.22 : 0.16))
+                            .frame(width: 40, height: 40).blur(radius: 6)
                     }
-                    Image(systemName: tab.systemImage)
-                        .font(.system(size: isSelected ? 27 : 25, weight: isSelected ? .semibold : .regular))
-                        .foregroundStyle(isSelected ? Theme.brass : Theme.inkSoft)
-                        .shadow(color: isSelected ? Theme.brass.opacity(0.5) : .clear, radius: isSelected ? 6 : 0)
+                    Group {
+                        if tab == .treasures {
+                            // Prefer a bundled icon named "TreasureChest" (drop a Flaticon
+                            // SVG/PNG into Assets.xcassets as a Template image); else the glyph.
+                            Group {
+                                if UIImage(named: "TreasureChest") != nil {
+                                    Image("TreasureChest").renderingMode(.template).resizable().scaledToFit()
+                                } else {
+                                    TreasureChestGlyph()
+                                }
+                            }
+                            .frame(width: isSelected ? 30 : 28, height: isSelected ? 30 : 28)
+                            .foregroundStyle(tint)
+                        } else {
+                            Image(systemName: tab.systemImage)
+                                .font(.system(size: isSelected ? 27 : 25, weight: isSelected ? .semibold : .regular))
+                                .foregroundStyle(tint)
+                        }
+                    }
+                    .shadow(color: isSelected ? (onWood ? Theme.brassLit : Theme.brass).opacity(0.6) : .clear,
+                            radius: isSelected ? 6 : 0)
+                    // On wood, a soft dark drop keeps light glyphs crisp against grain.
+                    .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
                 }
                 .frame(height: 32)
                 Text(tab.rawValue)
-                    .font(Theme.body(isSelected ? 15 : 14, weight: isSelected ? .bold : .regular))
-                    .foregroundStyle(isSelected ? Theme.brass : Theme.inkSoft)
+                    .font(Theme.navLabel(isSelected ? 12.5 : 12, weight: isSelected ? .bold : .regular))
+                    .foregroundStyle(tint)
+                    .lineLimit(1)
+                    .shadow(color: onWood ? Color(hex: 0x2A180A, opacity: 0.5) : .clear, radius: 1, x: 0, y: 1)
             }
             .frame(maxWidth: .infinity, minHeight: 44)
             .scaleEffect(isSelected ? 1.08 : 1.0)
@@ -1003,10 +1223,51 @@ struct MapTabBar: View {
         .accessibilityLabel(tab.rawValue)
         .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
+
+    /// The carved-wood plank: warm brown gradient + subtle vertical grain, a lit
+    /// top bevel for clear separation from the map, extended under the safe area.
+    private var woodBackground: some View {
+        LinearGradient(colors: [Self.woodTop, Self.woodMid, Self.woodDeep],
+                       startPoint: .top, endPoint: .bottom)
+            .overlay(WoodGrain().opacity(0.5))
+            .overlay(alignment: .top) {
+                // Top bevel: bright brass highlight over a thin dark seam.
+                VStack(spacing: 0) {
+                    Rectangle().fill(Theme.brassLit.opacity(0.85)).frame(height: 1.5)
+                    Rectangle().fill(Color(hex: 0xE7C98A, opacity: 0.28)).frame(height: 2)
+                    Rectangle().fill(Color(hex: 0x2A180A, opacity: 0.45)).frame(height: 1)
+                }
+            }
+            .compositingGroup()
+            .shadow(color: Theme.ink.opacity(0.35), radius: 10, x: 0, y: -4)
+            .ignoresSafeArea(edges: .bottom)
+    }
+
     private var barBackground: some View {
         Theme.parchmentLit
             .overlay(alignment: .top) { Rectangle().fill(Theme.sepiaLine).frame(height: 1) }
             .shadow(color: Theme.ink.opacity(0.12), radius: 8, x: 0, y: -3)
             .ignoresSafeArea(edges: .bottom)
+    }
+}
+
+/// Faint vertical wood-grain streaks (a few soft light/dark bands) drawn to fill.
+private struct WoodGrain: View {
+    var body: some View {
+        Canvas { ctx, size in
+            let cols: [(x: CGFloat, w: CGFloat, light: Bool)] = [
+                (0.08, 2, false), (0.16, 1, true), (0.27, 3, false), (0.38, 1, true),
+                (0.46, 2, false), (0.57, 1, true), (0.66, 3, false), (0.74, 1, true),
+                (0.83, 2, false), (0.92, 1, true),
+            ]
+            for c in cols {
+                let rect = CGRect(x: size.width * c.x, y: 0, width: c.w, height: size.height)
+                let color = c.light ? Color(hex: 0xD9AE72, opacity: 0.35)
+                                    : Color(hex: 0x35200F, opacity: 0.35)
+                ctx.fill(Path(rect), with: .color(color))
+            }
+        }
+        .blur(radius: 1.2)
+        .allowsHitTesting(false)
     }
 }
