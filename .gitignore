@@ -34,3 +34,6 @@ youtube-transcripts/
 sbc-merged/
 models/sbc-mlx-4bit/
 *.safetensors
+
+# Local-only working notes (never published)
+notes/
