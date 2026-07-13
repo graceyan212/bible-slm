@@ -49,7 +49,8 @@ struct HomeView: View {
                 // Grown-ups authenticates, then selects the gated dashboard tab.
                 MapTabBar(selection: $tab, transparent: tab == .map,
                           onPoli: { path.append(.compass) },
-                          onGrownUps: { enterGrownUps() })
+                          onGrownUps: { enterGrownUps() },
+                          bottomSafeInset: proxy.safeAreaInsets.bottom)
             }
             .background(Theme.parchment.ignoresSafeArea())
             .toolbarBackground(.hidden, for: .navigationBar)
@@ -59,6 +60,7 @@ struct HomeView: View {
                 case .story(let id): StoryView(env: env, storyID: id, onClose: pop)
                 case .compass: CompassView(env: env, onClose: pop)
                 }
+            }
             }
         }
     }
