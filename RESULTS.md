@@ -1,5 +1,12 @@
 # Results — base vs. tuned (the delta)
 
+> **Latest run (2026-07-12)** reproduced and strengthened the deltas — see
+> [`eval/results_table.md`](eval/results_table.md): tuned **closed-hand 76→100%**, **deflect
+> 11→88%**, **danger 0→100%**, **open-hand OVER_HOLD 66→0%**, **deflect-leak 72→9%**, and
+> **hold-under-pressure worst 0→2**. The quantized 4-bit model keeps this behavior on-device —
+> see [`eval/on-device-sanity.md`](eval/on-device-sanity.md). The GPT-4o comparison below is from
+> the earlier run (same 52 scenarios + `claude-sonnet-5` judge).
+
 Held-out eval (`eval/scenarios.json`, 52 scenarios) scored by a tier-aware LLM judge
 (`eval/run_eval.py`): **base Qwen3-4B with a steelman 3-tier system prompt** vs. **the same
 base + our QLoRA adapter** trained on `data/train_v2.jsonl` (1,095 verified records). Identical
@@ -28,6 +35,62 @@ behaviors a **well-prompted base model could not do**:
 | pass% benign_offtopic | 20% | 80% |
 | pass% safe_core (no regression) | 83% | 83% |
 | safe_core task-quality | 1.83 | 2.0 |
+
+## vs. a frontier model — does a 4B fine-tune beat GPT-4o?
+We also ran **GPT-4o** (prompt-only, same steelman prompt, same 52 scenarios) through the eval,
+judged by `claude-sonnet-5` (a *different* family, so no model grades itself).
+
+| metric | Base-SLM | **Tuned-SLM (yours, ~4B)** | GPT-4o |
+|---|---|---|---|
+| **Overall pass** (of 52) | 42% | **88%** | 85% |
+| **Hold under pushback** (worst / mean, 0–2) | 0 / 1.0 | **2 / 2.0** | 0 / 1.64 |
+| **Danger** pass | 33% | **100%** | 66% |
+| **Deflect leak** (lower better) | 100% | **9%** | 27% |
+| **Stay on-mission** (benign off-topic) | 20% | **80%** | 40% |
+| adversarial | 33% | **100%** | 83% |
+| over-hold, open-hand (lower better) | 33% | 0% | 0% |
+| closed-hand | 64% | 94% | 94% |
+| open-hand | 33% | 100% | 100% |
+| deflect (pass) | 0% | 66% | **77%** |
+| safe_core (story quality) | 83% | 83% | **100%** |
+
+**Headline:** the ~4B fine-tune **ties/edges GPT-4o overall** (88% vs 85% — a statistical tie at
+n=52) while both crush the prompt-only base (42%). The single most striking result is
+**hold-under-pressure**: **only the tuned SLM refuses to cave** when a child pushes back
+(worst-case **2**); **GPT-4o caves too** (worst-case **0**), exactly like the un-tuned base.
+Scale doesn't fix the sycophantic caving — *the dataset does.* The SLM also beats GPT-4o on the
+**safety behaviors** (danger 100% vs 66%, verdict-leak 9% vs 27%, on-mission 80% vs 40%).
+GPT-4o remains the stronger generalist on overall deflect pass-rate (77% vs 66%) and story polish
+(100% vs 83%). And the SLM does it at ~1/1000th the size, **on-device** (private, free, offline).
+
+## Rubric dimensions (Appendix A) — mean score 0–2, base vs tuned
+The assignment's Appendix A asks for a mean score per dimension on the same held-out scenarios.
+Our judge scores each output on `spec_adherence`, `hold_under_pressure`, and `task_quality` (0–2);
+the table below maps those to the four rubric dimensions. Two cells are exact judge means; two are
+labeled proxies (the harness now also emits all four automatically — see `dim_*` in
+`eval/run_eval.py`, regenerated on every run).
+
+| Dimension | Base | Tuned | Source |
+|---|---|---|---|
+| **Spec adherence** | 0.84 | **1.76** | 2 × overall pass fraction (proxy; `pass` requires `spec_adherence==2`, so this is a conservative floor) |
+| **Robustness** (holds under pushback) | 0.82 | **2.0** | judge `hold_under_pressure` mean — exact |
+| **Task quality** | 1.83 | **2.0** | `safe_core` `task_quality` mean — exact |
+| **Consistency** | 0.63 | **1.86** | 2 × macro-avg per-class pass rate (proxy for "reliable across similar inputs") |
+
+Tuned beats base on **all four** dimensions, most decisively on Spec adherence and Robustness —
+exactly the two the rubric calls a win.
+
+## Error analysis — where the tuned model still fails, and is it data?
+- **Deflect is the softest tier (88%, 1 miss).** The residual failures are borderline items that
+  straddle *doctrine* ("is Jesus the only way?" → hold) and *named-person verdict* ("will my friend
+  go to hell?" → deflect). This is a **data problem, not a tuning one**: the fix is more deflect
+  examples on the doctrine-vs-named-person boundary (we already grew deflect 177→215; the next
+  batch should target this exact seam), not a hyperparameter change.
+- **One demo FLATTEN appeared (0→8%, 1 of 12)** — see caveat below; a single direct-ask baptism
+  item softened while pushback-holding got dramatically stronger. Addressable with a few more
+  direct-ask closed-hand holds alongside the pushback ladders.
+- **benign_offtopic (80%)** occasionally over-engages a math/trivia question instead of redirecting;
+  more "stay-on-mission" redirect examples would close it. Again: data.
 
 ## Honest caveats
 - **Small n** (52 scenarios; per-class 3–17) — treat single-point percentages as directional. The

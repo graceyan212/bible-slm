@@ -29,3 +29,11 @@ docs/superpowers/specs/2026-07-11-onboarding-architect-skill-design.md
 # Private: scraped research corpus that fed the onboarding skill — LOCAL only
 x-scrape/
 youtube-transcripts/
+
+# large local model artifacts (never commit)
+sbc-merged/
+models/sbc-mlx-4bit/
+*.safetensors
+
+# Local-only working notes (never published)
+notes/
