@@ -46,9 +46,12 @@ public final class AppEnvironment {
     public private(set) var readingSize: ReadingSize = .medium
     public private(set) var readAloud: Bool = false
 
-    /// The model seam — `StubQuestionResponder` today, `OnDeviceModelResponder` (P5) later.
+    /// The model seam — `GuidedResponder` pipeline (scripted engine now, on-device MLX later).
     public let responder: QuestionResponder
     private let gate: ParentGate
+
+    /// The parent's "Wonderings" — questions Poli deflected to the grown-up. On-device only.
+    public let wonderings = WonderingsStore()
 
     private let store = UserDefaults.standard
     private static let completedKey = "tn.completedStoryIDs"
@@ -146,6 +149,10 @@ public final class AppEnvironment {
 
     /// Build an ask-session bound to this environment's responder (one owner, shared seam).
     public func makeAskSession(context: StoryContext) -> AskSessionModel {
-        AskSessionModel(responder: responder, context: context)
+        let session = AskSessionModel(responder: responder, context: context)
+        session.onDeflect = { [weak self] question in
+            self?.wonderings.log(question: question, storyTitle: context.storyTitle)
+        }
+        return session
     }
 }

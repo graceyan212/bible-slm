@@ -17,7 +17,10 @@ struct BibleStoryApp: App {
         let gate: ParentGate = BiometricParentGate()
         #endif
         _env = State(wrappedValue: AppEnvironment(
-            responder: StubQuestionResponder(),   // P5 swaps in the on-device model here
+            // Phase C: the real tiered-stance pipeline (guards + classifier) running on the
+            // scripted engine. Phase A swaps the engine for MLXModelEngine (on-device model),
+            // leaving this pipeline unchanged.
+            responder: GuidedResponder(engine: ScriptedModelEngine()),
             gate: gate
         ))
     }

@@ -120,6 +120,7 @@ struct StoryView: View {
                     Text(dropCapAttributed(p.text, scale: env.readingSize.scale))
                         .lineSpacing(7 * env.readingSize.scale)
                         .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, alignment: .leading)   // pin to container width — stops the mixed-size drop-cap Text over-claiming width and clipping at the edges
                     if isLast { verseCard(s.verse) }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
