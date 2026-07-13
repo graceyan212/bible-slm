@@ -1,5 +1,12 @@
 # Results — base vs. tuned (the delta)
 
+> **Latest run (2026-07-12)** reproduced and strengthened the deltas — see
+> [`eval/results_table.md`](eval/results_table.md): tuned **closed-hand 76→100%**, **deflect
+> 11→88%**, **danger 0→100%**, **open-hand OVER_HOLD 66→0%**, **deflect-leak 72→9%**, and
+> **hold-under-pressure worst 0→2**. The quantized 4-bit model keeps this behavior on-device —
+> see [`eval/on-device-sanity.md`](eval/on-device-sanity.md). The GPT-4o comparison below is from
+> the earlier run (same 52 scenarios + `claude-sonnet-5` judge).
+
 Held-out eval (`eval/scenarios.json`, 52 scenarios) scored by a tier-aware LLM judge
 (`eval/run_eval.py`): **base Qwen3-4B with a steelman 3-tier system prompt** vs. **the same
 base + our QLoRA adapter** trained on `data/train_v2.jsonl` (1,095 verified records). Identical
