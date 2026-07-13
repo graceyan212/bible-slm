@@ -158,6 +158,20 @@ struct OnboardingView: View {
                 .disabled(step == .welcome)
                 .accessibilityLabel("Go back a step")
                 Spacer()
+                #if DEBUG
+                // Dev only (never ships): jump straight past onboarding to the map.
+                Button { complete() } label: {
+                    HStack(spacing: 3) {
+                        Text("Skip").font(OnbFont.body(14, .bold))
+                        Image(systemName: "arrow.right").font(.system(size: 12, weight: .bold))
+                    }
+                    .foregroundStyle(OnbColors.inkSoft)
+                    .padding(.horizontal, 12).frame(height: 34)
+                    .background(Capsule().fill(OnbColors.sand.opacity(0.5)))
+                    .overlay(Capsule().strokeBorder(OnbColors.sepiaLine, lineWidth: 1.5))
+                }
+                .accessibilityLabel("Skip onboarding (dev)")
+                #endif
             }
         }
         .padding(.horizontal, 22)
