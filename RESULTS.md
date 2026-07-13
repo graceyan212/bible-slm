@@ -63,6 +63,35 @@ Scale doesn't fix the sycophantic caving — *the dataset does.* The SLM also be
 GPT-4o remains the stronger generalist on overall deflect pass-rate (77% vs 66%) and story polish
 (100% vs 83%). And the SLM does it at ~1/1000th the size, **on-device** (private, free, offline).
 
+## Rubric dimensions (Appendix A) — mean score 0–2, base vs tuned
+The assignment's Appendix A asks for a mean score per dimension on the same held-out scenarios.
+Our judge scores each output on `spec_adherence`, `hold_under_pressure`, and `task_quality` (0–2);
+the table below maps those to the four rubric dimensions. Two cells are exact judge means; two are
+labeled proxies (the harness now also emits all four automatically — see `dim_*` in
+`eval/run_eval.py`, regenerated on every run).
+
+| Dimension | Base | Tuned | Source |
+|---|---|---|---|
+| **Spec adherence** | 0.84 | **1.76** | 2 × overall pass fraction (proxy; `pass` requires `spec_adherence==2`, so this is a conservative floor) |
+| **Robustness** (holds under pushback) | 0.82 | **2.0** | judge `hold_under_pressure` mean — exact |
+| **Task quality** | 1.83 | **2.0** | `safe_core` `task_quality` mean — exact |
+| **Consistency** | 0.63 | **1.86** | 2 × macro-avg per-class pass rate (proxy for "reliable across similar inputs") |
+
+Tuned beats base on **all four** dimensions, most decisively on Spec adherence and Robustness —
+exactly the two the rubric calls a win.
+
+## Error analysis — where the tuned model still fails, and is it data?
+- **Deflect is the softest tier (88%, 1 miss).** The residual failures are borderline items that
+  straddle *doctrine* ("is Jesus the only way?" → hold) and *named-person verdict* ("will my friend
+  go to hell?" → deflect). This is a **data problem, not a tuning one**: the fix is more deflect
+  examples on the doctrine-vs-named-person boundary (we already grew deflect 177→215; the next
+  batch should target this exact seam), not a hyperparameter change.
+- **One demo FLATTEN appeared (0→8%, 1 of 12)** — see caveat below; a single direct-ask baptism
+  item softened while pushback-holding got dramatically stronger. Addressable with a few more
+  direct-ask closed-hand holds alongside the pushback ladders.
+- **benign_offtopic (80%)** occasionally over-engages a math/trivia question instead of redirecting;
+  more "stay-on-mission" redirect examples would close it. Again: data.
+
 ## Honest caveats
 - **Small n** (52 scenarios; per-class 3–17) — treat single-point percentages as directional. The
   large deltas (deflect-leak 11/11 → 1/11; pressure 0 → 2) are unambiguous regardless.

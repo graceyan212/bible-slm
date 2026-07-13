@@ -35,6 +35,25 @@
 
 ---
 
+## Did data → behavior hold? (evidence)
+The thesis was falsifiable: a tradition-anchored SFT dataset should make a small model *reliably*
+hold the 3-tier stance a well-prompted base model can't sustain. It held. On the held-out eval
+(`eval/scenarios.json`, tier-aware `claude-sonnet-5` judge; full numbers in
+[`RESULTS.md`](RESULTS.md)), the QLoRA fine-tune of Qwen3-4B moved:
+
+- **Hold-under-pressure (the core claim):** worst-case **0 → 2** — the base *caves* when a child
+  pushes "but my teacher said…"; the tuned model holds every time. Notably **GPT-4o also caves
+  (worst-case 0)** — scale doesn't fix sycophantic caving; *the dataset does.*
+- **Deflect-leak (family-owned questions):** **100% → 9%.**
+- **Rubric dimensions (0–2):** Spec adherence 0.84 → **1.76**, Robustness 0.82 → **2.0**,
+  Consistency 0.63 → **1.86**, Task quality 1.83 → **2.0** (no regression).
+- **Overall:** base 42% → tuned **88%**, a statistical tie with prompt-only **GPT-4o (85%)** at
+  ~1/1000th the size and fully on-device.
+
+This is the "behavior from data, not scale" result: the win is a *reliable constrained behavior* in
+a tiny local model, not raw capability. The one soft spot — the doctrine-vs-named-person deflect
+boundary — is a **data** gap (more boundary examples), not a tuning one, exactly as SPOV 2 predicts.
+
 ## Experts
 
 - **Expert 1**
