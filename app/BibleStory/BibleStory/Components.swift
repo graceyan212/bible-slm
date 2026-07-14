@@ -1004,28 +1004,48 @@ private struct GroundShape: Shape {
 /// A small filled treasure-chest glyph (rounded lid + body with a seam gap + clasp),
 /// tinted by the parent's foreground — used for the Treasures tab so the icon matches
 /// the treasure theme instead of a generic box.
+/// A single-tint treasure-chest icon that stays legible at nav-bar size. The key is
+/// contrast within ONE color: a FILLED lid cap on top of a HOLLOW (outlined) body, so
+/// the shape reads as a chest — not a solid blob — whether cream (inactive) or brass
+/// (active) on the wood plank. A clasp + keyhole straddle the seam.
 struct TreasureChestGlyph: View {
     var body: some View {
         GeometryReader { g in
             let w = g.size.width, h = g.size.height
-            let lidH = h * 0.42
-            let gap = h * 0.07
-            let bodyH = max(0, h - lidH - gap)
-            let r = w * 0.17
+            let lw = max(1.6, w * 0.085)          // outline weight
+            let lidH = h * 0.40
+            let bodyH = h * 0.60
+            let rTop = w * 0.22
+            let rBot = w * 0.10
             ZStack(alignment: .top) {
-                UnevenRoundedRectangle(topLeadingRadius: r, bottomLeadingRadius: 0,
-                                       bottomTrailingRadius: 0, topTrailingRadius: r, style: .continuous)
+                // Body — hollow outline (lower ~60%), so wood shows through the chest.
+                UnevenRoundedRectangle(topLeadingRadius: w * 0.04, bottomLeadingRadius: rBot,
+                                       bottomTrailingRadius: rBot, topTrailingRadius: w * 0.04,
+                                       style: .continuous)
+                    .stroke(lineWidth: lw)
+                    .frame(width: w - lw, height: bodyH - lw * 0.5)
+                    .offset(y: lidH)
+
+                // Lid — filled dome cap (top ~40%) with a hairline base band drawn by the
+                // body outline meeting it, giving a clear lid/body seam.
+                UnevenRoundedRectangle(topLeadingRadius: rTop, bottomLeadingRadius: 0,
+                                       bottomTrailingRadius: 0, topTrailingRadius: rTop,
+                                       style: .continuous)
                     .frame(width: w, height: lidH)
-                UnevenRoundedRectangle(topLeadingRadius: 0, bottomLeadingRadius: r * 0.6,
-                                       bottomTrailingRadius: r * 0.6, topTrailingRadius: 0, style: .continuous)
-                    .frame(width: w, height: bodyH)
-                    .offset(y: lidH + gap)
-                // clasp straddling the lid/body seam
-                RoundedRectangle(cornerRadius: w * 0.06, style: .continuous)
-                    .frame(width: w * 0.2, height: h * 0.28)
-                    .offset(y: lidH - h * 0.11)
+
+                // Clasp straddling the seam + a keyhole punched out of it.
+                RoundedRectangle(cornerRadius: lw, style: .continuous)
+                    .frame(width: w * 0.24, height: h * 0.34)
+                    .overlay(alignment: .center) {
+                        Circle()
+                            .frame(width: w * 0.09, height: w * 0.09)
+                            .blendMode(.destinationOut)
+                            .offset(y: -h * 0.01)
+                    }
+                    .offset(y: lidH - h * 0.15)
             }
             .frame(width: w, height: h)
+            .compositingGroup()                    // let the keyhole punch show the wood
         }
         .aspectRatio(1, contentMode: .fit)
     }
@@ -1193,17 +1213,12 @@ struct MapTabBar: View {
                     }
                     Group {
                         if tab == .treasures {
-                            // Prefer a bundled icon named "TreasureChest" (drop a Flaticon
-                            // SVG/PNG into Assets.xcassets as a Template image); else the glyph.
-                            Group {
-                                if UIImage(named: "TreasureChest") != nil {
-                                    Image("TreasureChest").renderingMode(.template).resizable().scaledToFit()
-                                } else {
-                                    TreasureChestGlyph()
-                                }
-                            }
-                            .frame(width: isSelected ? 30 : 28, height: isSelected ? 30 : 28)
-                            .foregroundStyle(tint)
+                            // A single-tint chest glyph that matches the other line icons
+                            // (the illustrated chest PNG is a full scene, unusable as a
+                            // template icon — it just fills to a solid block).
+                            TreasureChestGlyph()
+                                .frame(width: isSelected ? 30 : 28, height: isSelected ? 30 : 28)
+                                .foregroundStyle(tint)
                         } else {
                             Image(systemName: tab.systemImage)
                                 .font(.system(size: isSelected ? 27 : 25, weight: isSelected ? .semibold : .regular))
