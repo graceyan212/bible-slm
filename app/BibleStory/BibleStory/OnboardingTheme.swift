@@ -162,6 +162,8 @@ struct OnbGhostButtonStyle: ButtonStyle {
             .frame(maxWidth: .infinity)
             .padding(.vertical, 12)
             .padding(.horizontal, 20)
+            .background(Capsule().fill(Color.white.opacity(0.001)))  // hit-test fill: whole capsule is tappable, not just the text + border
+            .contentShape(Capsule())
             .overlay(Capsule().stroke(OnbColors.caramel, lineWidth: 3))
             .offset(y: pressed ? 2 : 0)
             .opacity(pressed ? 0.7 : 1)

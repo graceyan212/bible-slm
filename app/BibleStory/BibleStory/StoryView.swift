@@ -14,6 +14,12 @@ struct StoryView: View {
     /// hidden; falls back to `dismiss()` if not provided.
     var onClose: (() -> Void)? = nil
 
+    /// Where "leaving" the reader goes. In the app it returns to the trail map;
+    /// during onboarding there's no map yet, so the labels read as a neutral
+    /// "Done / Continue" instead of the misleading "Back to the map".
+    enum ExitContext { case map, onboarding }
+    var exitContext: ExitContext = .map
+
     @Environment(\.dismiss) private var dismiss
     @State private var page = 0
     @State private var showComplete = false
@@ -21,10 +27,12 @@ struct StoryView: View {
     @State private var synth = AVSpeechSynthesizer()   // read-aloud (parent setting)
 
     private let story: StoryContent?
-    init(env: AppEnvironment, storyID: String = "creation", onClose: (() -> Void)? = nil) {
+    init(env: AppEnvironment, storyID: String = "creation", onClose: (() -> Void)? = nil,
+         exitContext: ExitContext = .map) {
         self.env = env
         self.storyID = storyID
         self.onClose = onClose
+        self.exitContext = exitContext
         let loaded = StoryContent.load(storyID)
         self.story = loaded
         // Dev/screenshot deep-links for the later reader states.
@@ -140,14 +148,14 @@ struct StoryView: View {
             Button { close() } label: {
                 HStack(spacing: 5) {
                     Image(systemName: "chevron.left").font(.system(size: 20, weight: .bold))
-                    Text("Map").font(Theme.body(16, weight: .bold))
+                    Text(exitContext == .map ? "Map" : "Done").font(Theme.body(16, weight: .bold))
                 }
                 .padding(.horizontal, 10)
                 .frame(height: 44)
                 .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
-            .accessibilityLabel("Back to the map")
+            .accessibilityLabel(exitContext == .map ? "Back to the map" : "Close the story")
             Spacer()
             Text(s.title)
                 .font(Theme.display(24)).foregroundStyle(topInk)
@@ -315,8 +323,8 @@ struct StoryView: View {
 
                     Button { close() } label: {
                         HStack(spacing: 8) {
-                            Image(systemName: "location.north.circle.fill").font(.system(size: 18))
-                            Text("BACK TO THE MAP").font(Theme.mapCaps(20)).tracking(1.5)
+                            Image(systemName: exitContext == .map ? "location.north.circle.fill" : "checkmark.circle.fill").font(.system(size: 18))
+                            Text(exitContext == .map ? "BACK TO THE MAP" : "CONTINUE").font(Theme.mapCaps(20)).tracking(1.5)
                         }
                         .foregroundStyle(Color(hex: 0x5E3A16))
                         .padding(.horizontal, 26).padding(.vertical, 14)

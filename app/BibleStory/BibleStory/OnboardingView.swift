@@ -128,7 +128,7 @@ struct OnboardingView: View {
             StoryView(env: env, storyID: "creation", onClose: {
                 showStory = false
                 go(to: .gate)
-            })
+            }, exitContext: .onboarding)
         }
         .task {
             #if DEBUG
