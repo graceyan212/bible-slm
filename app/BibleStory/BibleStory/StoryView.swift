@@ -25,6 +25,8 @@ struct StoryView: View {
     @State private var showComplete = false
     @State private var showAsk = false
     @State private var synth = AVSpeechSynthesizer()   // read-aloud (parent setting)
+    /// Pages whose onboarding coach-mark has been dismissed (onboarding only).
+    @State private var coachDismissed: Set<Int> = []
 
     private let story: StoryContent?
     init(env: AppEnvironment, storyID: String = "creation", onClose: (() -> Void)? = nil,
@@ -37,6 +39,8 @@ struct StoryView: View {
         self.story = loaded
         // Dev/screenshot deep-links for the later reader states.
         let args = ProcessInfo.processInfo.arguments
+        // Force onboarding coaching context for screenshots without a tap tool.
+        if args.contains("-uiPreviewOnbStory") { self.exitContext = .onboarding }
         if args.contains("-uiPreviewStoryLast") {
             _page = State(initialValue: max(0, (loaded?.pages.count ?? 1) - 1))
         }
@@ -139,6 +143,87 @@ struct StoryView: View {
 
             footer(s, isLast: isLast)
         }
+        .overlay(alignment: currentCoach(s)?.align ?? .center) {
+            if let c = currentCoach(s) { coachBubble(c) }
+        }
+    }
+
+    // MARK: Coach-marks (onboarding sample story only)
+    //
+    // Light, non-modal pointer bubbles that introduce the real features live — the
+    // whole point of the sample story. One per page: Ask-Poli (+ the safety message),
+    // faithful retelling + navigation, and verse provenance. Tap a bubble to dismiss.
+
+    private struct Coach {
+        let text: String
+        let align: Alignment      // where the bubble sits on the reader
+        let caret: Edge           // which edge the little caret points from (toward target)
+        let offset: CGSize
+        let page: Int
+    }
+
+    private var coaching: Bool { exitContext == .onboarding }
+
+    /// The coach-mark to show for the current page, or nil (not onboarding, on the
+    /// completion screen, or already dismissed).
+    private func currentCoach(_ s: StoryContent) -> Coach? {
+        guard coaching, !showComplete, !coachDismissed.contains(page) else { return nil }
+        let last = s.pages.count - 1
+        if page == 0 {
+            return Coach(
+                text: "Questions? Your child taps Poli up here to ask. It's a safe, closed space — no open chat, no strangers — and the big questions come home to you.",
+                align: .topTrailing, caret: .top, offset: CGSize(width: -10, height: 56), page: page)
+        } else if page == last {
+            return Coach(
+                text: "“Where's this from?” The real verse is shown straight from your family's Bible — never reworded.",
+                align: .bottom, caret: .bottom, offset: CGSize(width: 0, height: -84), page: page)
+        } else {
+            return Coach(
+                text: "Every story is retold faithfully, in gentle words. Tap the dots up top to jump between pages.",
+                align: .top, caret: .top, offset: CGSize(width: 0, height: 86), page: page)
+        }
+    }
+
+    private func coachBubble(_ c: Coach) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(c.text)
+                .font(Theme.hand(19))
+                .foregroundStyle(Color(hex: 0x3F2F1C))
+                .fixedSize(horizontal: false, vertical: true)
+            Text("Got it ✓")
+                .font(Theme.mapCaps(12)).tracking(1)
+                .foregroundStyle(Color(hex: 0x8A5F22))
+                .frame(maxWidth: .infinity, alignment: .trailing)
+        }
+        .padding(14)
+        .frame(maxWidth: 290, alignment: .leading)
+        .background(RoundedRectangle(cornerRadius: 16).fill(Color(hex: 0xFBF3E1)))
+        .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color(hex: 0xC89A3E), lineWidth: 2))
+        .overlay(alignment: caretAlignment(c.caret)) {
+            Image(systemName: c.caret == .bottom ? "arrowtriangle.down.fill" : "arrowtriangle.up.fill")
+                .font(.system(size: 22))
+                .foregroundStyle(Color(hex: 0xFBF3E1))
+                .shadow(color: Color(hex: 0xC89A3E), radius: 0.6)
+                .offset(y: c.caret == .bottom ? 12 : -12)
+        }
+        .shadow(color: Color(hex: 0x5A3C19, opacity: 0.28), radius: 12, x: 0, y: 6)
+        .padding(.horizontal, 16)
+        .offset(c.offset)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            withAnimation(.easeInOut(duration: 0.2)) { _ = coachDismissed.insert(c.page) }
+        }
+        .transition(.opacity.combined(with: .scale(scale: 0.94)))
+        .accessibilityAddTraits(.isButton)
+        .accessibilityHint("Tap to dismiss the tip")
+    }
+
+    private func caretAlignment(_ edge: Edge) -> Alignment {
+        switch edge {
+        case .top:    return .top
+        case .bottom: return .bottom
+        default:      return .top
+        }
     }
 
     private func topBar(_ s: StoryContent) -> some View {
@@ -166,6 +251,13 @@ struct StoryView: View {
             Button { showAsk = true } label: {
                 PoliImage(pose: .waving, size: 60)
                     .frame(width: 60, height: 60)
+                    .background {
+                        // Onboarding only: a gentle attention pulse draws the eye to Poli
+                        // while the page-0 coach-mark is up.
+                        if coaching && page == 0 && !coachDismissed.contains(0) {
+                            CoachPulse().frame(width: 58, height: 58)
+                        }
+                    }
                     .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
@@ -478,5 +570,20 @@ private struct RayBurst: Shape {
             p.move(to: tip); p.addLine(to: b1); p.addLine(to: b2); p.closeSubpath()
         }
         return p
+    }
+}
+
+/// A gentle expanding-ring "attention" pulse used to draw the eye to Poli during the
+/// onboarding sample story.
+private struct CoachPulse: View {
+    @State private var on = false
+    var body: some View {
+        Circle()
+            .stroke(Color(hex: 0xD19A34), lineWidth: 3)
+            .scaleEffect(on ? 1.4 : 0.85)
+            .opacity(on ? 0 : 0.9)
+            .animation(.easeOut(duration: 1.4).repeatForever(autoreverses: false), value: on)
+            .onAppear { on = true }
+            .allowsHitTesting(false)
     }
 }

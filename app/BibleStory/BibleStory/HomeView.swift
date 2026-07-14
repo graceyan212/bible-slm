@@ -23,7 +23,9 @@ struct HomeView: View {
         // Jump straight to the Grown-ups TAB, bypassing the biometric gate for
         // screenshots (dev only — the real tap always runs the gate; see enterGrownUps).
         if args.contains("-uiPreviewGrownUps") { _tab = State(initialValue: .grownUps) }
-        if args.contains("-uiPreviewStory") { _path = State(initialValue: [.story("creation")]) }
+        if args.contains("-uiPreviewStory") || args.contains("-uiPreviewOnbStory") {
+            _path = State(initialValue: [.story("creation")])
+        }
         previewMapBottom = args.contains("-uiPreviewMapBottom")
     }
 

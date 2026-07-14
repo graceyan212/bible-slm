@@ -4,30 +4,26 @@ import BibleStoryCore
 
 /// First-run onboarding, in the True North storybook/treasure-map aesthetic.
 ///
-/// Flow (designed with the `onboarding-architect` skill; see
-/// docs/research/12-onboarding-flow-spec.md + 13-onboarding-copy-deck.md):
+/// Flow (trimmed BETA version — a longer, personalized onboarding is future work
+/// once the answers actually drive story selection):
 ///
 ///   1. Welcome ............. Poli + the outcome hook
 ///   2. Founder's note ...... "we're parents too" — trust before any ask
-///   3. Story preview ....... the grown-up walks through a REAL story as their child will (the sale)
-///   4. Parent gate ......... hold-to-continue; setup + plan stay in the grown-up's hands
-///   5. Name ................ the child's name (used everywhere after)
-///   6. Age ................. 7 / 8 / 9
-///   7. Family's Bible ...... translation Poli points back to
-///   8. Where you are ....... current Bible-time habit (grace-framed)
-///   9. Your hope ........... what they want the child to carry
-///  10. Your worry .......... surfaced here, answered on the Promise
-///  11. Building ........... a short delight beat while the plan is charted
-///  12. Plan reveal ........ the personalized journey (reflects the answers)
-///  13. Parent Promise ..... the trust keystone (answers the worry)
-///  14. Social proof ....... loved by Christian families
-///  15. Notification prime .. custom screen before the OS prompt
-///  16. Paywall ............ honest free-trial (annual default, "Most Popular", timeline)
-///  17. Finale ............. celebrate → **Enter the trail map**
+///   3. Story preview ....... the grown-up walks through a REAL story as their child will,
+///                            with live coach-marks demoing the features (the sale)
+///   4. Name ................ the child's name (used everywhere after)
+///   5. Age ................. 7 / 8 / 9
+///   6. Family's Bible ...... translation Poli points back to
+///   7. Our promises ........ the trust keystone — ONE tap-to-expand accordion
+///   8. Try Ask Poli ........ interactive 3-tier demo (hold / acknowledge / deflect)
+///   9. Notification prime .. custom screen before the OS prompt
+///  10. Paywall ............ honest free-trial (annual default, "Most Popular", timeline)
+///  11. Finale ............. celebrate → **Enter the trail map**
 ///
-/// The final CTA calls the SAME completion contract as before —
-/// `env.completeOnboarding(child:translation:)` — now with the REAL name + age
-/// collected in the quiz. That wiring is the functional invariant.
+/// The final CTA calls the SAME completion contract —
+/// `env.completeOnboarding(child:translation:)` — with the REAL name + age. That wiring is
+/// the functional invariant. (The old journey quiz / plan-reveal was removed: its answers
+/// were never persisted and changed nothing in the app.)
 struct OnboardingView: View {
     let env: AppEnvironment
 
@@ -246,11 +242,8 @@ struct OnboardingView: View {
             OnbPoli(height: 92)
             card {
                 VStack(alignment: .leading, spacing: 14) {
-                    Text("We're parents too. We built this for our own kids first.")
+                    Text("We're parents too. We built this for our own kids first — reverent, gentle, and safe.")
                         .font(OnbFont.body(20, .bold)).foregroundStyle(OnbColors.ink)
-                        .fixedSize(horizontal: false, vertical: true)
-                    Text("When your child wonders about the hard things, Poli sends them to you — never replaces you.")
-                        .font(OnbFont.body(17)).foregroundStyle(OnbColors.inkSoft)
                         .fixedSize(horizontal: false, vertical: true)
                         .lineSpacing(3)
                     Text("— The True North family")
@@ -265,8 +258,8 @@ struct OnboardingView: View {
             OnbPoli(height: 130, pose: .pointing)
             glowTitle("See a story first", size: 34)
             Text("Experience exactly what your child will.")
-                .font(OnbFont.body(21))
-                .foregroundStyle(OnbColors.ink)
+                .font(OnbFont.body(18))
+                .foregroundStyle(OnbColors.inkSoft)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 320)
             OnbSpeechBubble(text: "I'll read you the very first story — \u{201C}Creation.\u{201D} ✦")
@@ -356,65 +349,84 @@ struct OnboardingView: View {
         }
     }
 
+    // MARK: Our promises (tap-to-expand trust accordion)
+
+    /// The trust keystone, distilled into ONE digestible list: each promise is a short
+    /// bold line; tap to expand its detail. Replaces the two former text-heavy screens
+    /// ("Our promise to you" + "The big questions stay yours").
+    private var promiseItems: [(icon: String, title: String, detail: String)] {
+        [
+            ("book.closed.fill", "Told faithfully",
+             "Poli retells every story in its own gentle words and never quotes Scripture wrong. Real verses come straight from your \(translation.displayName)."),
+            ("checkmark.seal.fill", "Sound doctrine",
+             "Written to align with the Baptist Faith & Message (2000)."),
+            ("figure.wave", "The big questions come home to you",
+             "Poli gives no spiritual advice and is never your child's pastor. Tender wonderings — grief, suffering, \u{201C}is my friend saved?\u{201D} — it gently hands back to you."),
+            ("lock.fill", "A safe, walled garden",
+             "No ads, no open chat, no strangers. A closed space, always."),
+            ("hand.raised.fill", "Nothing taken",
+             "No data collected about your child, and never used to train any AI."),
+        ]
+    }
+
     private var promiseStep: some View {
-        VStack(spacing: 16) {
-            eyebrow("Our promise to you")
-            OnbPoli(height: 88)
-            card {
-                VStack(alignment: .leading, spacing: 16) {
-                    OnbPromiseRow(icon: "book.closed.fill", title: "Told faithfully.",
-                                  detail: "Poli retells in its own words and never quotes Scripture wrong — real verses come from your \(translation.displayName).")
-                    OnbPromiseRow(icon: "checkmark.seal.fill", title: "Sound doctrine.",
-                                  detail: "Written to align with the Baptist Faith & Message (2000).")
-                    OnbPromiseRow(icon: "figure.wave", title: "Never your child's pastor.",
-                                  detail: "Poli gives no spiritual advice — the big questions come home to you.")
-                    OnbPromiseRow(icon: "lock.fill", title: "A walled garden.",
-                                  detail: "No ads, no chat, no strangers. Ever.")
-                    OnbPromiseRow(icon: "hand.raised.fill", title: "Nothing taken.",
-                                  detail: "No data collected about your child, and never used to train any AI.")
-                    OnbPromiseRow(icon: "house.fill", title: "Yours to leave.",
-                                  detail: "Cancel anytime, in two taps.", tint: OnbColors.terracotta)
-                }
+        VStack(spacing: 14) {
+            eyebrow("Our promises")
+            OnbPoli(height: 84)
+            glowTitle("Made for parents to trust", size: 26)
+                .multilineTextAlignment(.center)
+            Text("Tap any promise to read more.")
+                .font(OnbFont.body(15)).foregroundStyle(OnbColors.inkSoft)
+                .multilineTextAlignment(.center)
+            VStack(spacing: 10) {
+                ForEach(promiseItems, id: \.title) { item in promiseRow(item) }
             }
+            .padding(.top, 2)
+            .frame(maxWidth: 360)
         }
     }
 
-    // MARK: Comes home to you (the DEFLECT list)
-
-    /// One kind of tender question Poli gently redirects to the grown-up.
-    private let sendHomeItems: [(icon: String, title: String, detail: String, tint: Color)] = [
-        ("cloud.fill", "\u{201C}Where is grandma now?\u{201D}",
-         "Death, heaven, and grief — held with you, not a screen.", OnbColors.caramel),
-        ("bandage.fill", "\u{201C}Why did someone I love get sick?\u{201D}",
-         "Suffering and loss, in your family's own words.", OnbColors.terracotta),
-        ("figure.child", "Bodies, growing up, and hard family moments",
-         "Tender and personal — yours to walk through together.", OnbColors.sage),
-        ("person.fill.questionmark", "\u{201C}Is my friend saved?\u{201D}",
-         "Where a specific person stands with God is never Poli's to say.", OnbColors.brassDeep),
-        ("building.columns.fill", "The specifics your church teaches",
-         "The details your family and church pass on — kept with you.", OnbColors.brass),
-    ]
-
-    private var sendHomeStep: some View {
-        VStack(spacing: 16) {
-            eyebrow("What comes home to you")
-            OnbPoli(height: 88, pose: .pointing)
-            glowTitle("The big questions stay yours", size: 26)
-                .multilineTextAlignment(.center)
-            Text("Poli answers what it can tell faithfully. But some wonderings belong in your arms, not an app's. Here are the ones Poli will gently hand back to you:")
-                .font(OnbFont.body(15)).foregroundStyle(OnbColors.inkSoft)
-                .multilineTextAlignment(.center).lineSpacing(3).frame(maxWidth: 340)
-            card {
-                VStack(alignment: .leading, spacing: 16) {
-                    ForEach(Array(sendHomeItems.enumerated()), id: \.offset) { _, item in
-                        OnbPromiseRow(icon: item.icon, title: item.title,
-                                      detail: item.detail, tint: item.tint)
-                    }
+    private func promiseRow(_ item: (icon: String, title: String, detail: String)) -> some View {
+        let open = expandedPromise == item.title
+        return VStack(spacing: 0) {
+            Button {
+                withAnimation(.easeInOut(duration: 0.22)) { expandedPromise = open ? nil : item.title }
+            } label: {
+                HStack(spacing: 12) {
+                    Image(systemName: item.icon)
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundStyle(OnbColors.brassDeep)
+                        .frame(width: 26)
+                    Text(item.title).font(OnbFont.body(17, .bold)).foregroundStyle(OnbColors.ink)
+                        .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Spacer(minLength: 8)
+                    Image(systemName: "chevron.down")
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundStyle(OnbColors.brassDeep)
+                        .rotationEffect(.degrees(open ? 180 : 0))
                 }
+                .padding(.vertical, 15).padding(.horizontal, 16)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .contentShape(Rectangle())
             }
-            OnbSpeechBubble(text: "For these, I'll say: \u{201C}What a wonderful question to bring to your grown-up.\u{201D} \u{2726}")
-                .padding(.top, 4)
+            .buttonStyle(.plain)
+            if open {
+                Text(item.detail)
+                    .font(OnbFont.body(15)).foregroundStyle(OnbColors.inkSoft)
+                    .lineSpacing(3)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 16).padding(.bottom, 15)
+                    .transition(.opacity)
+            }
         }
+        .background(RoundedRectangle(cornerRadius: 16).fill(open ? OnbColors.sand : OnbColors.surface))
+        .overlay(RoundedRectangle(cornerRadius: 16)
+            .stroke(open ? OnbColors.brass : OnbColors.sepiaLine, lineWidth: open ? 3 : 2))
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(item.title). \(item.detail)")
+        .accessibilityHint(open ? "Collapse" : "Expand")
     }
 
     // MARK: Try Ask Poli (interactive 3-tier demo)
@@ -439,7 +451,7 @@ struct OnboardingView: View {
             OnbPoli(height: 84, pose: .waving)
             glowTitle("See how Poli answers", size: 26)
                 .multilineTextAlignment(.center)
-            Text("Tap a question to see how Poli would respond. It answers what it can tell faithfully — and sends the tender ones home to you.")
+            Text("Tap a question to see how Poli responds.")
                 .font(OnbFont.body(15)).foregroundStyle(OnbColors.inkSoft)
                 .multilineTextAlignment(.center).lineSpacing(3).frame(maxWidth: 340)
             VStack(spacing: 12) {
@@ -521,31 +533,6 @@ struct OnboardingView: View {
         }
     }
 
-    private var socialStep: some View {
-        VStack(spacing: 16) {
-            eyebrow("Loved by Christian families")
-            HStack(spacing: 6) {
-                ForEach(0..<5, id: \.self) { _ in
-                    Image(systemName: "star.fill").font(.system(size: 16)).foregroundStyle(OnbColors.brass)
-                }
-                Text("4.8").font(OnbFont.body(16, .bold)).foregroundStyle(OnbColors.ink)
-            }
-            testimonial("I was nervous about anything \u{201C}AI\u{201D} near the Bible. But it just retells the stories — faithfully — and when my daughter asked a hard question, it sent her to me. That's what sold me.", "Rachel, mom of two")
-            testimonial("We'd been meaning to do this for years. Ten minutes after dinner, and now it just… happens.", "David, dad")
-        }
-    }
-
-    private func testimonial(_ quote: String, _ who: String) -> some View {
-        card {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("\u{201C}\(quote)\u{201D}")
-                    .font(OnbFont.body(15)).foregroundStyle(OnbColors.ink)
-                    .fixedSize(horizontal: false, vertical: true).lineSpacing(3)
-                Text("— \(who)").font(OnbFont.body(13, .bold)).foregroundStyle(OnbColors.inkSoft)
-            }
-        }
-    }
-
     private var notifyStep: some View {
         VStack(spacing: 20) {
             OnbPoli(height: 120)
@@ -557,34 +544,34 @@ struct OnboardingView: View {
     }
 
     private var paywallStep: some View {
-        VStack(spacing: 14) {
-            glowTitle("Keep walking with \(name)", size: 28)
+        VStack(spacing: 12) {
+            glowTitle("Keep walking with \(name)", size: 26)
                 .multilineTextAlignment(.center)
             Text("The whole journey, ready when you are.")
-                .font(OnbFont.body(18)).foregroundStyle(OnbColors.inkSoft)
+                .font(OnbFont.body(16)).foregroundStyle(OnbColors.inkSoft)
                 .multilineTextAlignment(.center).frame(maxWidth: 320)
 
-            VStack(spacing: 12) {
-                planCard(annual: true,  title: "Family · Yearly",  price: "$39.99 / year",
-                         note: "7-day free trial · about $3.33 a month", badge: "MOST POPULAR")
-                planCard(annual: false, title: "Monthly", price: "$5.99 / month",
+            VStack(spacing: 10) {
+                planCard(annual: true,  title: "Yearly",  price: "$39.99 / yr",
+                         note: "7-day free trial · about $3.33 / mo", badge: "MOST POPULAR")
+                planCard(annual: false, title: "Monthly", price: "$5.99 / mo",
                          note: "billed monthly", badge: nil)
             }
 
             card {
-                VStack(alignment: .leading, spacing: 12) {
+                VStack(alignment: .leading, spacing: 10) {
                     Text("How your free week works")
-                        .font(OnbFont.body(16, .bold)).foregroundStyle(OnbColors.ink)
+                        .font(OnbFont.body(15, .bold)).foregroundStyle(OnbColors.ink)
                     trialRow(icon: "lock.open.fill", tint: OnbColors.sage,
                              text: "Today — full access unlocks. No charge.")
                     trialRow(icon: "bell.fill", tint: OnbColors.brassDeep,
                              text: "Day 5 — a friendly reminder before your trial ends.")
                     trialRow(icon: "checkmark.circle.fill", tint: OnbColors.caramel,
-                             text: "Day 7 — your plan begins, only if you keep it. Cancel anytime in Settings.")
+                             text: "Day 7 — your plan begins only if you keep it. Cancel anytime.")
                 }
             }
 
-            Text("This is a preview — no charge yet.  Cancel anytime · Restore purchase")
+            Text("This is a preview — no charge yet · Restore purchase")
                 .font(OnbFont.body(12)).foregroundStyle(OnbColors.inkSoft)
                 .multilineTextAlignment(.center)
         }
@@ -689,17 +676,7 @@ struct OnboardingView: View {
                     .font(.system(size: 22))
                     .foregroundStyle(selected ? OnbColors.brassDeep : OnbColors.sepiaLine)
                 VStack(alignment: .leading, spacing: 2) {
-                    HStack(spacing: 8) {
-                        Text(title).font(OnbFont.body(17, .bold)).foregroundStyle(OnbColors.ink)
-                        if let badge {
-                            Text(badge)
-                                .font(OnbFont.body(10, .bold))
-                                .foregroundStyle(OnbColors.ctaInk)
-                                .padding(.vertical, 3).padding(.horizontal, 8)
-                                .background(Capsule().fill(OnbColors.brass))
-                                .overlay(Capsule().stroke(OnbColors.outline, lineWidth: 1.5))
-                        }
-                    }
+                    Text(title).font(OnbFont.body(17, .bold)).foregroundStyle(OnbColors.ink)
                     Text(note).font(OnbFont.body(13)).foregroundStyle(OnbColors.inkSoft)
                         .fixedSize(horizontal: false, vertical: true)
                 }
@@ -711,10 +688,25 @@ struct OnboardingView: View {
             .background(RoundedRectangle(cornerRadius: 20).fill(selected ? OnbColors.sand : OnbColors.surface))
             .overlay(RoundedRectangle(cornerRadius: 20)
                 .stroke(selected ? OnbColors.brass : OnbColors.sepiaLine, lineWidth: selected ? 3 : 2))
+            // Badge as a corner pill that can't be squeezed by the row: single line, sized
+            // to its text, floated at the top edge so it never competes for row width.
+            .overlay(alignment: .topTrailing) {
+                if let badge {
+                    Text(badge)
+                        .font(OnbFont.body(10, .bold))
+                        .lineLimit(1)
+                        .fixedSize()
+                        .foregroundStyle(OnbColors.ctaInk)
+                        .padding(.vertical, 3).padding(.horizontal, 10)
+                        .background(Capsule().fill(OnbColors.brass))
+                        .overlay(Capsule().stroke(OnbColors.outline, lineWidth: 1.5))
+                        .offset(x: -14, y: -9)
+                }
+            }
         }
         .buttonStyle(.plain)
         .animation(.spring(response: 0.25, dampingFraction: 0.7), value: selected)
-        .accessibilityLabel("\(title) plan, \(price)")
+        .accessibilityLabel("\(title) plan, \(price)\(badge != nil ? ", \(badge!)" : "")")
         .accessibilityAddTraits(selected ? [.isSelected, .isButton] : .isButton)
     }
 
@@ -762,7 +754,7 @@ struct OnboardingView: View {
     }
 
     private func resetFlow() {
-        childName = ""; age = nil; habit = nil; hopes = []; worry = nil; expandedWorry = nil
+        childName = ""; age = nil; expandedPromise = nil; demoPick = nil
         go(to: .welcome)
     }
 

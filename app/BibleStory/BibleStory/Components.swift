@@ -1076,15 +1076,20 @@ struct MapTabBar: View {
             tabButton(for: .treasures)
             grownUpsButton
         }
-        .padding(.horizontal, 8).padding(.top, 6)
-        .padding(.bottom, 6 + bottomSafeInset)   // lift buttons above the home indicator
-        .background { plankBackground }
-        .clipped()                               // crop the plank's rounded ends (zoom-to-fill)
-        .shadow(color: Theme.ink.opacity(0.35), radius: 10, x: 0, y: -4)
+        .padding(.horizontal, 8).padding(.top, 4).padding(.bottom, 4)
+        .frame(maxWidth: .infinity)
+        // ONLY the wood background bleeds into the home-indicator area, so the plank is
+        // always flush to the physical bottom on every device — while the button row
+        // stays inside the safe area, just above the indicator. This replaces the old
+        // measured-inset + `.clipped()` approach, which cropped the bleed on devices
+        // where the passed-in inset didn't match (leaving a gap under the bar).
+        .background(alignment: .top) {
+            plankBackground.ignoresSafeArea(edges: .bottom)
+        }
+        .shadow(color: Theme.ink.opacity(0.3), radius: 8, x: 0, y: -3)
         // Poli overlays the center: horizontally centered, lifted above the board.
         // Overlays don't contribute to the HStack's height, so the bar stays put.
         .overlay(alignment: .top) { poliButton }
-        .ignoresSafeArea(edges: .bottom)         // bar (plank included) bleeds to the screen edge
     }
 
     /// The plain carved-wood plank as a full-bleed bar background. The plank is a
