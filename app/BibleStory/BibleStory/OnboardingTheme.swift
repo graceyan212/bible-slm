@@ -144,9 +144,9 @@ struct OnbPrimaryButtonStyle: ButtonStyle {
             .background(Capsule().fill(OnbColors.brass))
             .overlay(Capsule().stroke(OnbColors.outline, lineWidth: 3))
             .compositingGroup()
-            .shadow(color: OnbColors.outline, radius: 0, x: 0, y: pressed ? 2 : 6)
-            .offset(y: pressed ? 4 : 0)
-            .opacity(isEnabled ? 1 : 0.45)
+            // No hard drop "ledge" shadow — just a subtle press scale for feedback.
+            .scaleEffect(pressed ? 0.98 : 1)
+            .opacity(isEnabled ? (pressed ? 0.92 : 1) : 0.45)
             .grayscale(isEnabled ? 0 : 0.4)
             .animation(.spring(response: 0.18, dampingFraction: 0.6), value: pressed)
     }

@@ -1087,12 +1087,14 @@ struct MapTabBar: View {
         .ignoresSafeArea(edges: .bottom)         // bar (plank included) bleeds to the screen edge
     }
 
-    /// The carved-wood plank as a full-bleed bar background — zoomed to FILL the bar
-    /// (`scaledToFill`), so the rounded gold ends are cropped off and only wood shows.
+    /// The plain carved-wood plank as a full-bleed bar background. The plank is a
+    /// uniform horizontal wood grain (no frame / rounded ends), so we STRETCH it to
+    /// fill the entire bar frame — including the home-indicator inset the bar bleeds
+    /// into — leaving no parchment gap at any edge. Stretching horizontal grain is
+    /// invisible; there are no corners to distort.
     private var plankBackground: some View {
         Image("NavPlank")
-            .resizable()
-            .scaledToFill()
+            .resizable(resizingMode: .stretch)
             .frame(maxWidth: .infinity)
     }
 
