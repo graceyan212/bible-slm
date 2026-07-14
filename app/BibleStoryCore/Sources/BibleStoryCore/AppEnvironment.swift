@@ -53,15 +53,31 @@ public final class AppEnvironment {
     /// The parent's "Wonderings" — questions Poli deflected to the grown-up. On-device only.
     public let wonderings = WonderingsStore()
 
+    /// On-device observability log for the beta (traces + 👍/👎). Export is consent-gated.
+    public let traceStore = LocalTraceStore()
+    /// Label for which engine produced a trace (updates when the on-device model goes live).
+    public var modelVersion: String = "scripted"
+
+    /// Sanitized danger/crisis events for the parent dashboard (on-device only).
+    public let crisisEvents: CrisisEventStore
+    /// Drives the danger/crisis screen (P7). ⚠️ SAFE placeholder wording — a licensed
+    /// child-safety professional signs the copy + escalation before ship (docs/SAFETY-AND-COPPA.md).
+    public let crisisFlow: CrisisFlowModel
+
     private let store = UserDefaults.standard
     private static let completedKey = "tn.completedStoryIDs"
     private static let translationKey = "tn.translation"
     private static let readingSizeKey = "tn.readingSize"
     private static let readAloudKey = "tn.readAloud"
 
-    public init(responder: QuestionResponder, gate: ParentGate) {
+    public init(responder: QuestionResponder,
+                gate: ParentGate,
+                crisisAlertService: CrisisAlertService = NoOpCrisisAlertService()) {
         self.responder = responder
         self.gate = gate
+        let events = CrisisEventStore()
+        self.crisisEvents = events
+        self.crisisFlow = CrisisFlowModel(alertService: crisisAlertService, store: events)
         completedStoryIDs = Set(store.stringArray(forKey: Self.completedKey) ?? [])
         if let raw = store.string(forKey: Self.translationKey),
            let saved = BibleTranslation(rawValue: raw) { translation = saved }
@@ -149,9 +165,22 @@ public final class AppEnvironment {
 
     /// Build an ask-session bound to this environment's responder (one owner, shared seam).
     public func makeAskSession(context: StoryContext) -> AskSessionModel {
-        let session = AskSessionModel(responder: responder, context: context)
+        let session = AskSessionModel(responder: responder, context: context,
+                                      tracer: traceStore, modelVersion: modelVersion)
         session.onDeflect = { [weak self] question in
             self?.wonderings.log(question: question, storyTitle: context.storyTitle)
+        }
+        // Fire-toward-safety: a danger/crisis reply opens the crisis flow. We pass a FIXED
+        // category reason (never the child's words) — privacy per docs/SAFETY-AND-COPPA.md.
+        session.onCrisis = { [weak self] in
+            guard let self else { return }
+            let childID = self.activeChild?.id ?? UUID()
+            Task {
+                await self.crisisFlow.trigger(
+                    childID: childID,
+                    reason: "The child shared something that needs a caring grown-up."
+                )
+            }
         }
         return session
     }

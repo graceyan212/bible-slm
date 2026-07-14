@@ -7,6 +7,27 @@ options:
 packages:
   BibleStoryCore:
     path: ../BibleStoryCore
+  # ── On-device model (Apple MLX) — TEMPORARILY DISABLED, see MLX-SETUP.md ──────────
+  # The wiring is COMPLETE and compiles against the real API (MLXModelEngine.swift,
+  # FallbackModelEngine.swift, ModelLoadState.swift, BibleStoryApp.makeEngine — all
+  # guarded by `#if canImport(MLXLLM)…`, so with these deps absent the app builds and
+  # runs on ScriptedModelEngine). To ENABLE the real model, uncomment the four package
+  # entries below AND the six product dependencies in the target, then `xcodegen generate`.
+  #
+  # BLOCKER (2026-07): `swift-transformers`'s `Hub` module does not compile under
+  # Swift 6.3.3 / Xcode 26 (an `ObjectKey`/generics error in Hub/Config.swift — upstream,
+  # not our code). Re-enable once swift-transformers ships a Swift-6.3-compatible release,
+  # or build with an Xcode whose Swift is ≤ 6.2.
+  #
+  # mlx-swift-lm:
+  #   url: https://github.com/ml-explore/mlx-swift-lm
+  #   branch: main          # pin to a tag before shipping
+  # swift-huggingface:
+  #   url: https://github.com/huggingface/swift-huggingface
+  #   from: "0.9.0"
+  # swift-transformers:
+  #   url: https://github.com/huggingface/swift-transformers
+  #   from: "1.3.0"
 targets:
   BibleStory:
     type: application
@@ -16,6 +37,17 @@ targets:
     dependencies:
       - package: BibleStoryCore
         product: BibleStoryCore
+      # ── Uncomment to enable the on-device MLX model (see note above + MLX-SETUP.md) ──
+      # - package: mlx-swift-lm
+      #   product: MLXLLM
+      # - package: mlx-swift-lm
+      #   product: MLXLMCommon
+      # - package: mlx-swift-lm
+      #   product: MLXHuggingFace
+      # - package: swift-huggingface
+      #   product: HuggingFace
+      # - package: swift-transformers
+      #   product: Tokenizers
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.graceyan.treasuretrail

@@ -47,7 +47,16 @@ public final class SpeechDictation {
     @discardableResult
     public func requestAuthorization() async -> Bool {
         guard hasUsageStrings else { availability = .missingUsageDescription; return false }
-        guard recognizer != nil else { availability = .unavailable; return false }
+        guard let recognizer else { availability = .unavailable; return false }
+
+        // Kids' privacy (COPPA): voice is allowed ONLY when speech can run fully on-device.
+        // If the device can't do on-device recognition we do NOT fall back to Apple's server
+        // recognition (which would send the child's audio off-device) — voice is disabled and
+        // the child types instead. See docs/SAFETY-AND-COPPA.md §4.
+        guard recognizer.supportsOnDeviceRecognition else {
+            availability = .unavailable
+            return false
+        }
 
         let speechStatus = await withCheckedContinuation { (cont: CheckedContinuation<SFSpeechRecognizerAuthorizationStatus, Never>) in
             SFSpeechRecognizer.requestAuthorization { cont.resume(returning: $0) }
@@ -90,9 +99,9 @@ public final class SpeechDictation {
 
         let req = SFSpeechAudioBufferRecognitionRequest()
         req.shouldReportPartialResults = true
-        if recognizer?.supportsOnDeviceRecognition == true {
-            req.requiresOnDeviceRecognition = true
-        }
+        // Always on-device: requestAuthorization() has already gated on
+        // supportsOnDeviceRecognition, so the child's audio never leaves the device.
+        req.requiresOnDeviceRecognition = true
         request = req
 
         let input = audioEngine.inputNode

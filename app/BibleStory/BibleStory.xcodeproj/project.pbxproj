@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09FEFA2362DA68C4CD6B2DCF /* CrisisScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EA3C02F1B08CE99789ACC5 /* CrisisScreen.swift */; };
 		1B7E7A9DFC343CC09A63A2A7 /* creation.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F0A3558923D410125D71912 /* creation.json */; };
 		20E2EED34BE22EB0B9F310F3 /* OnboardingTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F672A6DEAB6F7826A1B0CCF /* OnboardingTheme.swift */; };
 		278016A5D5971B7B293EA1DE /* AtkinsonHyperlegible-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F674FCF04692AD05E7B33F37 /* AtkinsonHyperlegible-Regular.ttf */; };
@@ -17,6 +18,7 @@
 		409349B5ECF19823AB9C67C2 /* BibleStoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF53E5A1DEA05B865D09C14 /* BibleStoryApp.swift */; };
 		4533045AF6CE2CCA186A77C8 /* AskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2751716D2F7BE556DE63630E /* AskView.swift */; };
 		48EB77470806377E4E35E70E /* IMFeENsc28P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2ACD8865EE27F31EE9A9B0A8 /* IMFeENsc28P.ttf */; };
+		5681E7C4DE7872D431638ECB /* FallbackModelEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AE2D87684E47B653BB7AFF /* FallbackModelEngine.swift */; };
 		5760EFFECB2462D2DAC40744 /* red_sea.json in Resources */ = {isa = PBXBuildFile; fileRef = 73A688B76B048F0AD828CE5C /* red_sea.json */; };
 		57E9ECB7B2CF4A4473A9E8BB /* AtkinsonHyperlegible-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B54ECFAD1E84109C1CCF6355 /* AtkinsonHyperlegible-Bold.ttf */; };
 		6A24D3C523BBC9FD6AB4C0FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 122DFAFE7CC62CB06BBEDA94 /* Assets.xcassets */; };
@@ -25,6 +27,7 @@
 		7F5E3FD54DFA3C67F14D1968 /* zacchaeus.json in Resources */ = {isa = PBXBuildFile; fileRef = 65995FEFB2A686E45C196962 /* zacchaeus.json */; };
 		7F86FCAB21DE4ED6F0015761 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9779E94CB9D658872118D8C /* Fonts.swift */; };
 		872CEFC9F95F48C6C602B8DA /* prodigal_son.json in Resources */ = {isa = PBXBuildFile; fileRef = E846A5C188782947B26B0573 /* prodigal_son.json */; };
+		873352418BC90A70BBE282A7 /* LocalNotificationCrisisAlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE844765043D5BE6552F5B3B /* LocalNotificationCrisisAlertService.swift */; };
 		8EB78790C19F2630DFFBE49F /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78D09CF65C46A2745498362 /* Components.swift */; };
 		92EEBA5C1726EE9189463031 /* BackNavigationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7AEC3F07C2C3263EB11D82 /* BackNavigationUITests.swift */; };
 		9F36C2EC0642332243F0E1F8 /* BiometricParentGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9489C61C969D52CE9194B5 /* BiometricParentGate.swift */; };
@@ -34,7 +37,10 @@
 		AC94CFB7F6D6AC26E816CD78 /* jesus_children.json in Resources */ = {isa = PBXBuildFile; fileRef = 79880DB536C50E71DAE25C39 /* jesus_children.json */; };
 		B1A1DB742759EF66E4D167F2 /* CompassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4DDAD15B1D838153F05E77 /* CompassView.swift */; };
 		B78D9BD87F9EC3AD18A446F1 /* good_shepherd.json in Resources */ = {isa = PBXBuildFile; fileRef = 11EEFD77F8BBDE2EF41FF7C8 /* good_shepherd.json */; };
+		B979047B6E2FBDCD57F4F9B0 /* MLXModelEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4416825FCB31462954DD1411 /* MLXModelEngine.swift */; };
+		BDDF013FD72D1AE59E3B8A82 /* ModelLoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530F64974E6C320E1C99C38B /* ModelLoadState.swift */; };
 		BDE21FF6D1A42D23BDDF98BD /* PaintedMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431CDD2300DDB5E98060AE76 /* PaintedMap.swift */; };
+		C94478C191E276CA921B1D14 /* LangFuseExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64877A5308A84102A8C8C8CC /* LangFuseExporter.swift */; };
 		C9921D36E97033329AF0AB60 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E7509E9BB780ED4DCCEEA5 /* HomeView.swift */; };
 		C9F6AC7521F9D4D95AC9E538 /* first_christmas.json in Resources */ = {isa = PBXBuildFile; fileRef = D21A6D305AD3F4FD96776E0C /* first_christmas.json */; };
 		CC71A7AAD530F89376C3BE34 /* the_promise.json in Resources */ = {isa = PBXBuildFile; fileRef = EFE881F43FED78140F7A80FF /* the_promise.json */; };
@@ -60,15 +66,19 @@
 /* Begin PBXFileReference section */
 		11EEFD77F8BBDE2EF41FF7C8 /* good_shepherd.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = good_shepherd.json; sourceTree = "<group>"; };
 		122DFAFE7CC62CB06BBEDA94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		24AE2D87684E47B653BB7AFF /* FallbackModelEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallbackModelEngine.swift; sourceTree = "<group>"; };
 		25E25D3197F54C81B9A51FAA /* BibleStoryCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BibleStoryCore; path = ../BibleStoryCore; sourceTree = SOURCE_ROOT; };
 		2751716D2F7BE556DE63630E /* AskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskView.swift; sourceTree = "<group>"; };
 		2ACD8865EE27F31EE9A9B0A8 /* IMFeENsc28P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMFeENsc28P.ttf; sourceTree = "<group>"; };
 		2EBAB105025E606861E5DEB0 /* NightsProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NightsProgress.swift; sourceTree = "<group>"; };
 		42D818FDAB0393844B4B8CC6 /* IMFeENrm28P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IMFeENrm28P.ttf; sourceTree = "<group>"; };
 		431CDD2300DDB5E98060AE76 /* PaintedMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintedMap.swift; sourceTree = "<group>"; };
+		4416825FCB31462954DD1411 /* MLXModelEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLXModelEngine.swift; sourceTree = "<group>"; };
 		46F13E397CFC289A50A4BA90 /* david_goliath.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = david_goliath.json; sourceTree = "<group>"; };
 		4DF8A58F98985CB808DC873E /* daniel_lions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = daniel_lions.json; sourceTree = "<group>"; };
 		50E0F23036641AE174D45D8D /* easter.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = easter.json; sourceTree = "<group>"; };
+		530F64974E6C320E1C99C38B /* ModelLoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelLoadState.swift; sourceTree = "<group>"; };
+		64877A5308A84102A8C8C8CC /* LangFuseExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangFuseExporter.swift; sourceTree = "<group>"; };
 		65995FEFB2A686E45C196962 /* zacchaeus.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = zacchaeus.json; sourceTree = "<group>"; };
 		677BBFB221A67495FEB6017F /* BibleStoryUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = BibleStoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C7AEC3F07C2C3263EB11D82 /* BackNavigationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNavigationUITests.swift; sourceTree = "<group>"; };
@@ -85,6 +95,7 @@
 		9C7852791DE394C9C0F83617 /* BibleStory.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = BibleStory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54ECFAD1E84109C1CCF6355 /* AtkinsonHyperlegible-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AtkinsonHyperlegible-Bold.ttf"; sourceTree = "<group>"; };
 		B78D09CF65C46A2745498362 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		B8EA3C02F1B08CE99789ACC5 /* CrisisScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrisisScreen.swift; sourceTree = "<group>"; };
 		C3042E3E486F721B5F5BF75D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		C6459BD007C05B52F1C6D3C2 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		D21A6D305AD3F4FD96776E0C /* first_christmas.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = first_christmas.json; sourceTree = "<group>"; };
@@ -94,6 +105,7 @@
 		E6529AA880BF03A87893733D /* ParentZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentZoneView.swift; sourceTree = "<group>"; };
 		E846A5C188782947B26B0573 /* prodigal_son.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = prodigal_son.json; sourceTree = "<group>"; };
 		EBF53E5A1DEA05B865D09C14 /* BibleStoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleStoryApp.swift; sourceTree = "<group>"; };
+		EE844765043D5BE6552F5B3B /* LocalNotificationCrisisAlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationCrisisAlertService.swift; sourceTree = "<group>"; };
 		EFE881F43FED78140F7A80FF /* the_promise.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = the_promise.json; sourceTree = "<group>"; };
 		F674FCF04692AD05E7B33F37 /* AtkinsonHyperlegible-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AtkinsonHyperlegible-Regular.ttf"; sourceTree = "<group>"; };
 		F9779E94CB9D658872118D8C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -130,8 +142,14 @@
 				8E9489C61C969D52CE9194B5 /* BiometricParentGate.swift */,
 				7C4DDAD15B1D838153F05E77 /* CompassView.swift */,
 				B78D09CF65C46A2745498362 /* Components.swift */,
+				B8EA3C02F1B08CE99789ACC5 /* CrisisScreen.swift */,
+				24AE2D87684E47B653BB7AFF /* FallbackModelEngine.swift */,
 				F9779E94CB9D658872118D8C /* Fonts.swift */,
 				99E7509E9BB780ED4DCCEEA5 /* HomeView.swift */,
+				64877A5308A84102A8C8C8CC /* LangFuseExporter.swift */,
+				EE844765043D5BE6552F5B3B /* LocalNotificationCrisisAlertService.swift */,
+				4416825FCB31462954DD1411 /* MLXModelEngine.swift */,
+				530F64974E6C320E1C99C38B /* ModelLoadState.swift */,
 				2EBAB105025E606861E5DEB0 /* NightsProgress.swift */,
 				7F672A6DEAB6F7826A1B0CCF /* OnboardingTheme.swift */,
 				C3042E3E486F721B5F5BF75D /* OnboardingView.swift */,
@@ -337,8 +355,14 @@
 				9F36C2EC0642332243F0E1F8 /* BiometricParentGate.swift in Sources */,
 				B1A1DB742759EF66E4D167F2 /* CompassView.swift in Sources */,
 				8EB78790C19F2630DFFBE49F /* Components.swift in Sources */,
+				09FEFA2362DA68C4CD6B2DCF /* CrisisScreen.swift in Sources */,
+				5681E7C4DE7872D431638ECB /* FallbackModelEngine.swift in Sources */,
 				7F86FCAB21DE4ED6F0015761 /* Fonts.swift in Sources */,
 				C9921D36E97033329AF0AB60 /* HomeView.swift in Sources */,
+				C94478C191E276CA921B1D14 /* LangFuseExporter.swift in Sources */,
+				873352418BC90A70BBE282A7 /* LocalNotificationCrisisAlertService.swift in Sources */,
+				B979047B6E2FBDCD57F4F9B0 /* MLXModelEngine.swift in Sources */,
+				BDDF013FD72D1AE59E3B8A82 /* ModelLoadState.swift in Sources */,
 				A06B0DA3743F2E10FB0BA4AA /* NightsProgress.swift in Sources */,
 				20E2EED34BE22EB0B9F310F3 /* OnboardingTheme.swift in Sources */,
 				2935EB127A0B8B271F8DE6B3 /* OnboardingView.swift in Sources */,

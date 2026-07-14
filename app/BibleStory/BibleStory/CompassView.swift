@@ -34,6 +34,14 @@ struct CompassView: View {
                 session = env.makeAskSession(context: Self.context)
             }
         }
+        .fullScreenCover(isPresented: crisisPresented) {
+            CrisisScreen(resources: env.crisisFlow.resources) { env.crisisFlow.dismiss() }
+        }
+    }
+
+    private var crisisPresented: Binding<Bool> {
+        Binding(get: { env.crisisFlow.isPresenting },
+                set: { if !$0 { env.crisisFlow.dismiss() } })
     }
 
     static let context = StoryContext(
@@ -71,6 +79,12 @@ struct AskPoliSheet: View {
                     session = env.makeAskSession(context: CompassView.context)
                 }
             }
+            .fullScreenCover(isPresented: Binding(
+                get: { env.crisisFlow.isPresenting },
+                set: { if !$0 { env.crisisFlow.dismiss() } }
+            )) {
+                CrisisScreen(resources: env.crisisFlow.resources) { env.crisisFlow.dismiss() }
+            }
         }
     }
 }
@@ -85,6 +99,7 @@ struct VoiceAskView: View {
     @State private var text = ""
     @State private var dictation = SpeechDictation()
     @State private var voice = PoliVoice()
+    @State private var load = ModelLoadState.shared
 
     private let topics = [
         "Noah's Ark", "Why do we get baptized?", "The end of the world",
@@ -107,6 +122,20 @@ struct VoiceAskView: View {
                     }
                     .accessibilityLabel(voice.enabled ? "Mute Poli's voice" : "Unmute Poli's voice")
                 }
+
+            // First-launch: while the on-device model downloads/loads from Hugging Face.
+            if let banner = load.banner {
+                Text(banner)
+                    .font(Theme.body(14, weight: .bold))
+                    .foregroundStyle(Theme.inkSoft)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 14).padding(.vertical, 8)
+                    .frame(maxWidth: .infinity)
+                    .background(Theme.parchmentLit, in: RoundedRectangle(cornerRadius: 12))
+                    .overlay(RoundedRectangle(cornerRadius: 12).strokeBorder(Theme.sepiaLine.opacity(0.5), lineWidth: 1))
+                    .padding(.horizontal)
+                    .transition(.opacity)
+            }
 
             ScrollView {
                 VStack(alignment: .leading, spacing: 12) {
@@ -131,7 +160,12 @@ struct VoiceAskView: View {
                                 .background(Theme.sea.opacity(0.5), in: RoundedRectangle(cornerRadius: 14))
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                         } else if let response = turn.response {
-                            ReplySurfaceView(response: response)
+                            VStack(alignment: .leading, spacing: 6) {
+                                ReplySurfaceView(response: response)
+                                if let traceID = turn.traceID {
+                                    feedbackRow(traceID: traceID)
+                                }
+                            }
                         }
                     }
                 }
@@ -195,6 +229,29 @@ struct VoiceAskView: View {
         }
         .padding(.horizontal)
         .padding(.bottom, 8)
+    }
+
+    /// Grown-up rating of an answer (beta observability). Labeled for a grown-up so kids
+    /// don't game it; drives the 👍/👎 selected state via the session's trace feedback.
+    @ViewBuilder
+    private func feedbackRow(traceID: UUID) -> some View {
+        let current = session.feedbackByTrace[traceID]
+        HStack(spacing: 18) {
+            Text("Grown-up:").font(Theme.body(12)).foregroundStyle(Theme.inkSoft)
+            Button { session.rate(.up, for: traceID) } label: {
+                Image(systemName: current == .up ? "hand.thumbsup.fill" : "hand.thumbsup")
+                    .foregroundStyle(current == .up ? Theme.sage : Theme.inkSoft)
+            }
+            .accessibilityLabel("Good answer")
+            Button { session.rate(.down, for: traceID) } label: {
+                Image(systemName: current == .down ? "hand.thumbsdown.fill" : "hand.thumbsdown")
+                    .foregroundStyle(current == .down ? Theme.terracotta : Theme.inkSoft)
+            }
+            .accessibilityLabel("Not a good answer")
+        }
+        .font(.system(size: 15))
+        .buttonStyle(.plain)
+        .padding(.leading, 4)
     }
 
     /// A gentle nudge only when voice can't run — typing always works.

@@ -17,12 +17,33 @@ struct BibleStoryApp: App {
         let gate: ParentGate = BiometricParentGate()
         #endif
         _env = State(wrappedValue: AppEnvironment(
-            // Phase C: the real tiered-stance pipeline (guards + classifier) running on the
-            // scripted engine. Phase A swaps the engine for MLXModelEngine (on-device model),
-            // leaving this pipeline unchanged.
-            responder: GuidedResponder(engine: ScriptedModelEngine()),
-            gate: gate
+            // The tiered-stance pipeline (guards + classifier) runs on whatever engine
+            // `makeEngine()` returns: the real on-device MLX model when the dependency is
+            // linked, else the scripted engine. The pipeline itself is unchanged.
+            responder: GuidedResponder(engine: Self.makeEngine()),
+            gate: gate,
+            crisisAlertService: LocalNotificationCrisisAlertService()
         ))
+    }
+
+    /// The on-device model, with a graceful fallback to the scripted engine.
+    /// Uses the real MLX engine when `mlx-swift-examples` is linked (Xcode build with the
+    /// SPM package resolved); otherwise — and at runtime on a device below the RAM floor or
+    /// if the model fails to load — it degrades to `ScriptedModelEngine` so Ask-Poli always works.
+    private static func makeEngine() -> ModelEngine {
+        #if canImport(MLXLLM) && canImport(MLXLMCommon) && canImport(MLXHuggingFace)
+        let mlx = MLXModelEngine(
+            repoID: "graceyan212/true-north-sbc-kids-4b-mlx",
+            progressHandler: { fraction in
+                Task { @MainActor in
+                    ModelLoadState.shared.phase = fraction < 1.0 ? .downloading(fraction) : .loading
+                }
+            }
+        )
+        return FallbackModelEngine(primary: mlx, secondary: ScriptedModelEngine())
+        #else
+        return ScriptedModelEngine()
+        #endif
     }
 
     var body: some Scene {

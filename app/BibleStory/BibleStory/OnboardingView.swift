@@ -32,14 +32,14 @@ struct OnboardingView: View {
     let env: AppEnvironment
 
     enum Step: Int, CaseIterable {
-        case welcome, founder, storyIntro, gate,
-             name, age, bible, habit, hope, worry,
-             building, plan, promise, sendHome, askDemo, social, notify,
+        case welcome, founder, storyIntro,
+             name, age, bible,
+             promise, askDemo, notify,
              paywall, finale
     }
 
     /// The quiz steps that show the "filling map path" progress dots.
-    private static let quizSteps: [Step] = [.name, .age, .bible, .habit, .hope, .worry]
+    private static let quizSteps: [Step] = [.name, .age, .bible]
 
     @State private var step: Step = OnboardingView.startStep
 
@@ -55,15 +55,12 @@ struct OnboardingView: View {
     @State private var childName = ""
     @State private var age: Int? = nil
     @State private var translation: BibleTranslation = .nirv
-    @State private var habit: String? = nil
-    @State private var hopes: Set<String> = []
-    @State private var worry: String? = nil        // the concern they last opened (pins on the Promise)
-    @State private var expandedWorry: String? = nil
     @State private var annualPlan = true
     @State private var showStory = false
     /// Which sample question is expanded in the "Try Ask Poli" demo (nil = none yet).
     @State private var demoPick: Int? = nil
-    @State private var gateHeld = false
+    /// Which promise row is expanded in the "Our promises" accordion (nil = none).
+    @State private var expandedPromise: String? = nil
 
     /// The child's display name once entered; a warm fallback before then.
     private var name: String {
@@ -71,27 +68,6 @@ struct OnboardingView: View {
         return trimmed.isEmpty ? "your explorer" : trimmed
     }
     private var possessive: String { "\(name)'s" }
-
-    /// The chosen hopes as a natural phrase ("courage", "courage and kindness",
-    /// "courage, kindness, and wonder at God"). Falls back to "wonder" if none.
-    private var hopesPhrase: String {
-        let items = hopeOptions.filter { hopes.contains($0) }.map { $0.lowercased() }
-        switch items.count {
-        case 0: return "wonder"
-        case 1: return items[0]
-        case 2: return "\(items[0]) and \(items[1])"
-        default: return items.dropLast().joined(separator: ", ") + ", and " + items.last!
-        }
-    }
-
-    private let habitOptions = [
-        "We're just getting started",
-        "We try, but it's on-and-off",
-        "We have a rhythm, and want to grow it",
-        "It's mostly at church",
-    ]
-    private let hopeOptions = ["Courage", "Kindness", "Wonder at God", "Knowing they're loved", "Wisdom for hard choices"]
-    private let worryOptions = ["Will it get the Bible right?", "Screen time", "Is it safe & private?", "Will it try to replace me?"]
 
     var body: some View {
         ZStack {
@@ -127,7 +103,7 @@ struct OnboardingView: View {
             // child will. Closing it advances to the parent gate.
             StoryView(env: env, storyID: "creation", onClose: {
                 showStory = false
-                go(to: .gate)
+                go(to: .name)
             }, exitContext: .onboarding)
         }
         .task {
@@ -188,33 +164,17 @@ struct OnboardingView: View {
                 primary("Sounds good ✦") { go(to: .storyIntro) }
             case .storyIntro:
                 primary("Play a story", icon: "arrow.right") { showStory = true }
-                ghost("Maybe later") { go(to: .gate) }
-            case .gate:
-                EmptyView()   // the hold-to-continue control lives in the body
+                ghost("Maybe later") { go(to: .name) }
             case .name:
                 primary("Continue ✦") { go(to: .age) }
                     .disabled(childName.trimmingCharacters(in: .whitespaces).isEmpty)
             case .age:
                 primary("Continue ✦") { go(to: .bible) }.disabled(age == nil)
             case .bible:
-                primary("Continue ✦") { go(to: .habit) }
-            case .habit:
-                primary("Continue ✦") { go(to: .hope) }.disabled(habit == nil)
-            case .hope:
-                primary("Continue ✦") { go(to: .worry) }.disabled(hopes.isEmpty)
-            case .worry:
-                primary("Continue ✦") { go(to: .building) }   // informational — no selection required
-            case .building:
-                EmptyView()   // auto-advances
-            case .plan:
-                primary("This looks right ✦") { go(to: .promise) }
+                primary("Continue ✦") { go(to: .promise) }
             case .promise:
-                primary("I trust this — continue ✦") { go(to: .sendHome) }
-            case .sendHome:
-                primary("Continue ✦") { go(to: .askDemo) }
+                primary("I trust this — continue ✦") { go(to: .askDemo) }
             case .askDemo:
-                primary("Continue ✦") { go(to: .social) }
-            case .social:
                 primary("Continue ✦") { go(to: .notify) }
             case .notify:
                 primary("Yes, a gentle reminder") { requestNotifications(); go(to: .paywall) }
@@ -253,23 +213,11 @@ struct OnboardingView: View {
         case .welcome:    welcomeStep
         case .founder:    founderStep
         case .storyIntro: storyIntroStep
-        case .gate:       gateStep
         case .name:       nameStep
         case .age:        ageStep
         case .bible:      bibleStep
-        case .habit:      selectStep(title: "How's Bible time at home now?",
-                                     subtitle: "So we start \(name)'s path in the right place.",
-                                     options: habitOptions, selection: $habit)
-        case .hope:       multiSelectStep(title: "What do you hope \(name) grows in?",
-                                          subtitle: "Pick as many as you like — we'll lean the stories toward these.",
-                                          options: hopeOptions, selection: $hopes)
-        case .worry:      worryStep
-        case .building:   buildingStep
-        case .plan:       planStep
         case .promise:    promiseStep
-        case .sendHome:   sendHomeStep
         case .askDemo:    askDemoStep
-        case .social:     socialStep
         case .notify:     notifyStep
         case .paywall:    paywallStep
         case .finale:     EmptyView()
@@ -323,40 +271,6 @@ struct OnboardingView: View {
                 .frame(maxWidth: 320)
             OnbSpeechBubble(text: "I'll read you the very first story — \u{201C}Creation.\u{201D} ✦")
         }
-    }
-
-    private var gateStep: some View {
-        VStack(spacing: 20) {
-            OnbPoli(height: 120)
-            glowTitle("Grown-ups only", size: 32)
-                .multilineTextAlignment(.center)
-            holdToContinue.padding(.top, 6)
-            Text("Press and hold to continue.")
-                .font(OnbFont.body(16)).foregroundStyle(OnbColors.inkSoft)
-        }
-    }
-
-    /// A light parent gate: press-and-hold (0.7s) to proceed — keeps setup + the
-    /// paywall out of a 7-year-old's reach without blocking a testing grown-up.
-    private var holdToContinue: some View {
-        ZStack {
-            Circle().fill(OnbColors.surface)
-                .overlay(Circle().stroke(OnbColors.outline, lineWidth: 3))
-            Circle().fill(OnbColors.brass.opacity(gateHeld ? 0.35 : 0))
-            Image(systemName: "hand.tap.fill")
-                .font(.system(size: 30, weight: .bold))
-                .foregroundStyle(OnbColors.brassDeep)
-        }
-        .frame(width: 96, height: 96)
-        .scaleEffect(gateHeld ? 0.92 : 1)
-        .animation(.spring(response: 0.2, dampingFraction: 0.7), value: gateHeld)
-        .gesture(
-            LongPressGesture(minimumDuration: 0.7)
-                .onChanged { _ in gateHeld = true }
-                .onEnded { _ in gateHeld = false; go(to: .name) }
-        )
-        .accessibilityLabel("Press and hold to continue as a grown-up")
-        .accessibilityAddTraits(.isButton)
     }
 
     private var nameStep: some View {
@@ -439,201 +353,6 @@ struct OnboardingView: View {
             }
             .padding(.top, 4)
             .frame(maxWidth: 360)
-        }
-    }
-
-    /// A short "why we're asking" line under a question title.
-    private func questionHead(_ title: String, _ subtitle: String) -> some View {
-        VStack(spacing: 8) {
-            Text(title).font(OnbFont.title(29)).foregroundStyle(OnbColors.ink)
-                .multilineTextAlignment(.center)
-                .fixedSize(horizontal: false, vertical: true)
-                .frame(maxWidth: 340)
-            Text(subtitle).font(OnbFont.body(16)).foregroundStyle(OnbColors.inkSoft)
-                .multilineTextAlignment(.center)
-                .fixedSize(horizontal: false, vertical: true)
-                .frame(maxWidth: 320)
-        }
-    }
-
-    /// A single-select question screen (habit / worry): pick exactly one.
-    private func selectStep(title: String, subtitle: String, options: [String],
-                            selection: Binding<String?>) -> some View {
-        VStack(spacing: 18) {
-            OnbPoli(height: 80)
-            questionHead(title, subtitle)
-            VStack(spacing: 10) {
-                ForEach(options, id: \.self) { opt in
-                    optionRow(opt, selected: selection.wrappedValue == opt) {
-                        selection.wrappedValue = opt
-                    }
-                }
-            }
-            .padding(.top, 2)
-            .frame(maxWidth: 360)
-        }
-    }
-
-    /// A multi-select question screen (hope): pick as many as apply (per the skill's
-    /// "allow multi-intent" guidance for goal questions — forcing one felt wrong).
-    private func multiSelectStep(title: String, subtitle: String, options: [String],
-                                 selection: Binding<Set<String>>) -> some View {
-        VStack(spacing: 18) {
-            OnbPoli(height: 80)
-            questionHead(title, subtitle)
-            VStack(spacing: 10) {
-                ForEach(options, id: \.self) { opt in
-                    optionRow(opt, selected: selection.wrappedValue.contains(opt), multi: true) {
-                        if selection.wrappedValue.contains(opt) { selection.wrappedValue.remove(opt) }
-                        else { selection.wrappedValue.insert(opt) }
-                    }
-                }
-            }
-            .padding(.top, 2)
-            .frame(maxWidth: 360)
-        }
-    }
-
-    /// The worry screen is NOT a pick — its job is to *answer* fears (trust is this
-    /// app's bottleneck). So it's an accordion: tap a concern, its answer drops down,
-    /// and the parent can read the answer to every one.
-    private var worryStep: some View {
-        VStack(spacing: 18) {
-            OnbPoli(height: 80)
-            questionHead("Worried about a Bible app?", "Tap any concern to see our answer.")
-            VStack(spacing: 10) {
-                ForEach(worryOptions, id: \.self) { w in worryRow(w) }
-            }
-            .padding(.top, 2)
-            .frame(maxWidth: 360)
-        }
-    }
-
-    private func worryRow(_ w: String) -> some View {
-        let open = expandedWorry == w
-        return VStack(spacing: 0) {
-            Button {
-                withAnimation(.easeInOut(duration: 0.22)) { expandedWorry = open ? nil : w }
-                worry = w   // remember the last concern opened (pins on the Promise)
-            } label: {
-                HStack(spacing: 12) {
-                    Text(w).font(OnbFont.body(18, .bold)).foregroundStyle(OnbColors.ink)
-                        .multilineTextAlignment(.leading)
-                        .fixedSize(horizontal: false, vertical: true)
-                    Spacer(minLength: 8)
-                    Image(systemName: "chevron.down")
-                        .font(.system(size: 15, weight: .bold))
-                        .foregroundStyle(OnbColors.brassDeep)
-                        .rotationEffect(.degrees(open ? 180 : 0))
-                }
-                .padding(.vertical, 15).padding(.horizontal, 18)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
-            if open {
-                Text(worryAnswer(w))
-                    .font(OnbFont.body(16)).foregroundStyle(OnbColors.inkSoft)
-                    .lineSpacing(3)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 18).padding(.bottom, 15)
-                    .transition(.opacity)
-            }
-        }
-        .background(RoundedRectangle(cornerRadius: 16).fill(open ? OnbColors.sand : OnbColors.surface))
-        .overlay(RoundedRectangle(cornerRadius: 16)
-            .stroke(open ? OnbColors.brass : OnbColors.sepiaLine, lineWidth: open ? 3 : 2))
-        .accessibilityElement(children: .combine)
-        .accessibilityHint(open ? "Collapse answer" : "Expand answer")
-    }
-
-    private func worryAnswer(_ w: String) -> String {
-        switch w {
-        case worryOptions[0]: return "Poli retells in its own words and never quotes Scripture wrong — exact verses come from your family's Bible. Aligned with the Baptist Faith & Message (2000)."
-        case worryOptions[1]: return "About 10 calm minutes a night. No autoplay, no endless feed, no ads — it ends when the story ends."
-        case worryOptions[2]: return "No ads, no chat, no strangers. Nothing is collected about your child, and nothing is used to train any AI."
-        case worryOptions[3]: return "Never. When your child asks a big question, Poli hands it back to you — you're the one who answers."
-        default: return ""
-        }
-    }
-
-    private func optionRow(_ label: String, selected: Bool, multi: Bool = false, _ action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            HStack(spacing: 12) {
-                Image(systemName: multi ? (selected ? "checkmark.square.fill" : "square")
-                                        : (selected ? "largecircle.fill.circle" : "circle"))
-                    .font(.system(size: 20))
-                    .foregroundStyle(selected ? OnbColors.brassDeep : OnbColors.sepiaLine)
-                Text(label).font(OnbFont.body(19, selected ? .bold : .regular))
-                    .foregroundStyle(OnbColors.ink)
-                    .fixedSize(horizontal: false, vertical: true)
-                Spacer(minLength: 0)
-            }
-            .padding(.vertical, 16).padding(.horizontal, 18)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(RoundedRectangle(cornerRadius: 16).fill(selected ? OnbColors.sand : OnbColors.surface))
-            .overlay(RoundedRectangle(cornerRadius: 16).stroke(selected ? OnbColors.brass : OnbColors.sepiaLine, lineWidth: selected ? 3 : 2))
-        }
-        .buttonStyle(.plain)
-        .animation(.spring(response: 0.25, dampingFraction: 0.7), value: selected)
-        .accessibilityAddTraits(selected ? [.isSelected, .isButton] : .isButton)
-    }
-
-    private var buildingStep: some View {
-        VStack(spacing: 18) {
-            OnbPoli(height: 120)
-            glowTitle("Charting \(possessive) path…", size: 26)
-                .multilineTextAlignment(.center)
-            Text("Choosing stories for \(hopesPhrase)… setting a gentle pace…")
-                .font(OnbFont.hand(19)).foregroundStyle(OnbColors.inkSoft)
-                .multilineTextAlignment(.center).frame(maxWidth: 320)
-            ProgressView().tint(OnbColors.brassDeep).scaleEffect(1.2).padding(.top, 4)
-        }
-        .task(id: step) {
-            guard step == .building else { return }
-            try? await Task.sleep(nanoseconds: 2_200_000_000)
-            if step == .building { go(to: .plan) }
-        }
-    }
-
-    private var planStep: some View {
-        VStack(spacing: 14) {
-            eyebrow("\(name)'s journey")
-            glowTitle("12 weeks through the Story", size: 27)
-                .multilineTextAlignment(.center)
-            card {
-                VStack(alignment: .leading, spacing: 12) {
-                    planBullet("timer", "About 10 minutes a night, at your pace — no streaks, no pressure.")
-                    planBullet("bubble.left.and.bubble.right.fill", "One \u{201C}wondering question\u{201D} to talk over together each night.")
-                    planBullet("book.closed.fill", "Verses shown from your \(translation.displayName).")
-                    planBullet("sparkles", "Chosen to help \(name) grow in \(hopesPhrase).")
-                    planBullet("leaf.fill", planStartLine)
-                }
-            }
-            HStack(spacing: 8) {
-                Image(systemName: "checkmark.circle.fill").foregroundStyle(OnbColors.brassDeep)
-                Text("First stop: Creation — you've already seen this one.")
-                    .font(OnbFont.body(13)).foregroundStyle(OnbColors.inkSoft)
-            }
-        }
-    }
-
-    private var planStartLine: String {
-        switch habit {
-        case habitOptions[0]: return "Starting gently, since you're just getting started."
-        case habitOptions[3]: return "Bringing church stories home, one night at a time."
-        default:              return "Building on the rhythm you already have."
-        }
-    }
-
-    private func planBullet(_ icon: String, _ text: String, tint: Color = OnbColors.brassDeep) -> some View {
-        HStack(alignment: .top, spacing: 12) {
-            Image(systemName: icon).font(.system(size: 20, weight: .semibold))
-                .foregroundStyle(tint).frame(width: 26)
-            Text(text).font(OnbFont.body(17)).foregroundStyle(OnbColors.ink)
-                .fixedSize(horizontal: false, vertical: true)
-            Spacer(minLength: 0)
         }
     }
 
